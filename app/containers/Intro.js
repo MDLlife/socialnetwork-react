@@ -2,6 +2,7 @@ import React, {Component, ReactClass } from 'util/safe-react';
 import {connect} from 'react-redux';
 import Helmet from "react-helmet";
 import {loadIntroDetail} from 'actions/intro'
+import image from '../../img/IntroLoginBG.jpg'
 
 
 class Intro extends Component {
@@ -28,7 +29,7 @@ class Intro extends Component {
                     ]}
                 >
                 </Helmet>
-
+                <img src={image}/>
             </div>
         );
     }

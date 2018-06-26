@@ -1,1 +1,1 @@
-{"version":3,"file":"../../styles/main.css","sources":["styles/main.scss","styles/_intro.scss"],"sourcesContent":["@import \"_intro\";",".intro {\n  text-align: center;\n}\n"],"names":[],"mappings":"ACAA,AAAA,MAAM,CAAC;EACL,UAAU,EAAE,MAAM,GACnB"}
+{"version":3,"file":"../../styles/main.css","sources":["styles/main.scss","styles/_intro.scss"],"sourcesContent":["@import \"_intro\";",".intro {\r\n  text-align: center;\r\n}\r\n"],"names":[],"mappings":"ACAA,AAAA,MAAM,CAAC;EACL,UAAU,EAAE,MAAM,GACnB"}
