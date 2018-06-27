@@ -14,13 +14,13 @@ module.exports.getStyleSrc = function () {
         styleSrc = [
             `//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800`,
             '//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900',
-            `//static/all.min.css?hash=${GIT_HASH}`,
+            `/static/all.min.css?hash=${GIT_HASH}`,
         ]
     } else {
         styleSrc = [
             `//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800`,
             '//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900',
-            '//static/all.css',
+            '/static/all.css',
         ]
     }
     return styleSrc
