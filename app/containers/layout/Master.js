@@ -214,44 +214,44 @@ class Master extends Component {
                      })();`
                     }}/>
                 </Helmet>
+                {children}
+                {/*<AppBar*/}
+                    {/*onLeftIconButtonClick={this.handleTouchTapLeftIconButton}*/}
+                    {/*title={ <a href="/#" onClick={this.showHome}*/}
+                                 {/*style={{color: '#fff', textDecoration: 'none', float: 'left', fontSize: '16px'}}> M D L </a>}*/}
+                    {/*zDepth={0}*/}
+                    {/*iconElementRight={ LoginStore.isLoggedIn() ?*/}
+                        {/*<a href={`${host}/logout`} style={{color: '#fff !important', visited: '#fff !important'}} > Welcome back { LoginStore.user.username}! &#160;*/}
+                            {/*<FlatButton backgroundColor='#fff' className="logout-button" label="Log out"/> </a> :*/}
+                        {/*<a href={`${host}/login`} style={{color: '#fff !important', visited: '#fff !important'}}>*/}
+                            {/*<FlatButton backgroundColor='#fff' rippleColor='#fff' className="login-button" label="Log In"/> </a> }*/}
 
-                <AppBar
-                    onLeftIconButtonClick={this.handleTouchTapLeftIconButton}
-                    title={ <a href="/#" onClick={this.showHome}
-                                 style={{color: '#fff', textDecoration: 'none', float: 'left', fontSize: '16px'}}> M D L </a>}
-                    zDepth={0}
-                    iconElementRight={ LoginStore.isLoggedIn() ?
-                        <a href={`${host}/logout`} style={{color: '#fff !important', visited: '#fff !important'}} > Welcome back { LoginStore.user.username}! &#160;
-                            <FlatButton backgroundColor='#fff' className="logout-button" label="Log out"/> </a> :
-                        <a href={`${host}/login`} style={{color: '#fff !important', visited: '#fff !important'}}>
-                            <FlatButton backgroundColor='#fff' rippleColor='#fff' className="login-button" label="Log In"/> </a> }
+                    {/*style={styles.appBar}*/}
+                    {/*showMenuIconButton={showMenuIconButton}*/}
+                {/*/>*/}
+                {/*<div style={{*/}
+                {/*paddingTop: '64px',*/}
 
-                    style={styles.appBar}
-                    showMenuIconButton={showMenuIconButton}
-                />
-                <div style={{
-                paddingTop: '64px',
-
-                }}>{children}</div>
-                <AppNavDrawer
-                    style={styles.navDrawer}
-                    location={location}
-                    docked={docked}
-                    onRequestChangeNavDrawer={this.handleChangeRequestNavDrawer}
-                    onChangeList={this.handleChangeList}
-                    open={navDrawerOpen}
-                />
+                {/*}}>{children}</div>*/}
+                {/*<AppNavDrawer*/}
+                    {/*style={styles.navDrawer}*/}
+                    {/*location={location}*/}
+                    {/*docked={docked}*/}
+                    {/*onRequestChangeNavDrawer={this.handleChangeRequestNavDrawer}*/}
+                    {/*onChangeList={this.handleChangeList}*/}
+                    {/*open={navDrawerOpen}*/}
+                {/*/>*/}
 
 
-                    <Row  style={{ padding: '5rem'}}>
-                        <ul style={{listStyle: 'none', display: 'inline-flex', margin: 'auto'}}>
-                            <li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="//mdl.life">About</a></li>
-                            <li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">API</a></li>
-                            <li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Contact</a></li>
-                            <li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Terms of Use</a></li>
-                            <li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Privacy Policy</a></li>
-                        </ul>
-                    </Row>
+                    {/*<Row  style={{ padding: '5rem'}}>*/}
+                        {/*<ul style={{listStyle: 'none', display: 'inline-flex', margin: 'auto'}}>*/}
+                            {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="//mdl.life">About</a></li>*/}
+                            {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">API</a></li>*/}
+                            {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Contact</a></li>*/}
+                            {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Terms of Use</a></li>*/}
+                            {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Privacy Policy</a></li>*/}
+                        {/*</ul>*/}
+                    {/*</Row>*/}
             </div>
         );
     }

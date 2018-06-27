@@ -5,6 +5,8 @@ import Layout from 'containers/layout/Master';
 import Intro from 'containers/Intro';
 import Notfound from 'containers/Notfound';
 
+import Login from 'containers/Login';
+
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -13,11 +15,11 @@ injectTapEventPlugin();
 export default function (history) {
     return (
         <Router history={history}>
-
             <Route path="/" component={Layout}>
 
                 <IndexRoute component={Intro}/>
-                
+                <Route path='/login' component={Login} />
+
                 <Route path="*" component={Notfound}/>
             </Route>
         </Router>

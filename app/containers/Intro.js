@@ -1,9 +1,7 @@
 import React, {Component, ReactClass } from 'util/safe-react';
 import {connect} from 'react-redux';
 import Helmet from "react-helmet";
-import {loadIntroDetail} from 'actions/intro'
-import image from '../../img/IntroLoginBG.jpg'
-
+import {loadIntroDetail} from 'actions/intro';
 
 class Intro extends Component {
     static fetchData({store, params}) {
@@ -29,7 +27,7 @@ class Intro extends Component {
                     ]}
                 >
                 </Helmet>
-                <img src={image}/>
+                <span className='span-text'>Hello</span>
             </div>
         );
     }
