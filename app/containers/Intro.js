@@ -1,8 +1,7 @@
 import React, {Component, ReactClass } from 'util/safe-react';
 import {connect} from 'react-redux';
 import Helmet from "react-helmet";
-import {loadIntroDetail} from 'actions/intro'
-
+import {loadIntroDetail} from 'actions/intro';
 
 class Intro extends Component {
     static fetchData({store, params}) {
@@ -28,7 +27,7 @@ class Intro extends Component {
                     ]}
                 >
                 </Helmet>
-
+                <span className='span-text'>Hello</span>
             </div>
         );
     }

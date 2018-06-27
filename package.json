@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "MDL ReactJS",
   "scripts": {
-    "dev": "REDIS_HOST=localhost DISABLE_CACHE=true DEBUG=true WEBPACK_PORT=3004 cross-env NODE_PATH=./app concurrent --kill-others \"nodemon app/server\" \"node webpack.server.js\" \"gulp css:watch\"",
+    "dev": "cross-env REDIS_HOST=localhost DISABLE_CACHE=true DEBUG=true WEBPACK_PORT=3004 NODE_PATH=./app concurrent --kill-others \"nodemon app/server\" \"node webpack.server.js\" \"gulp css:watch\"",
     "webpack": "webpack",
     "bower": "bower install",
-    "build": "rimraf ./dist/ && npm run bower && NODE_ENV=production npm run webpack --optimize-minimize -p && gulp prod && node scripts/writeVersion",
+    "build": "rimraf ./dist/ && npm run bower && cross-env NODE_ENV=production npm run webpack --optimize-minimize -p && gulp prod && node scripts/writeVersion",
     "flow": "yarn run flow",
     "version": "node scripts/writeVersion",
     "install-prod": "rimraf ./node_modules/ && NPM_CONFIG_LOGLEVEL=error NPM_CONFIG_PRODUCTION=true NODE_VERBOSE=false NODE_ENV=production NODE_MODULES_CACHE=true yarn && NODE_ENV=production PORT=3005 NODE_PATH=./app node app/server",
