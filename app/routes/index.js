@@ -1,11 +1,12 @@
 import React from 'util/safe-react';
 import {Router, Route, IndexRoute} from 'react-router';
 
-import Layout from 'containers/layout/Master';
-import Intro from 'containers/Intro';
+import Login from 'containers/Login';
+import SocialLogin from 'containers/SocialLogin';
+import LoginLayout from 'containers/login/Master';
 import Notfound from 'containers/Notfound';
 
-import Login from 'containers/Login';
+
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -15,11 +16,9 @@ injectTapEventPlugin();
 export default function (history) {
     return (
         <Router history={history}>
-            <Route path="/" component={Layout}>
-
-                <IndexRoute component={Intro}/>
-                <Route path='/login' component={Login} />
-
+            <Route path="/" component={LoginLayout}>
+                <IndexRoute component={Login}/>
+                <Route path='/social' component={SocialLogin} />
                 <Route path="*" component={Notfound}/>
             </Route>
         </Router>
