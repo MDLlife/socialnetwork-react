@@ -34,10 +34,11 @@ module.exports = function (app, REDIS_CONNECTION, limiter) {
         })
 
         let store = configureStore()
-        let routes = createRoutes(history)
         const history = syncHistoryWithStore(memoryHistory, store, {
             selectLocationState: () => (state => state.routing),
         })
+        let routes = createRoutes(history)
+
 
         match({routes, location},
             (error, redirectLocation, renderProps) => {
