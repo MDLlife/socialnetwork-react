@@ -13,7 +13,7 @@ class Login extends Component {
                 height: '100vh'
             }}>
                 <div>
-                    <a href="/social">
+                    <a href="/login">
                         <img
                             style={{
                                 display: 'block',

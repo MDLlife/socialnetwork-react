@@ -17,3 +17,83 @@
   color: white;
   margin-bottom: 12px;
 }
+
+.menu-footer {
+  list-style: none;
+  display: inline-flex;
+  padding: 20px 50px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.main-button {
+  color: white;
+  background-image: -moz-linear-gradient(left, rgba(235,51,134,1) 0%, rgba(192,53,160,1) 100%);
+  background-image: -webkit-linear-gradient(left, rgba(235,51,134,1) 0%, rgba(192,53,160,1) 100%);
+  background-image: -o-linear-gradient(left, rgba(235,51,134,1) 0%, rgba(192,53,160,1) 100%);
+  background-image: -ms-linear-gradient(left, rgba(235,51,134,1) 0%, rgba(192,53,160,1) 100%);
+  background-image: linear-gradient(to right, rgba(235,51,134,1) 0%, rgba(192,53,160,1) 100%);
+  margin-top: 35px;
+}
+
+.email-confirmation-actions-buttons {
+  background-color: white;
+  border: none;
+  color: #EB3386;
+}
+
+.email-confirmation-actions-buttons:focus {
+  outline: none;
+}
+
+@media (max-width: 576px) {
+  .menu-footer {
+    position: initial;
+    display: block;
+    margin-top: 100px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .main-content-container {
+    height: 90%;
+  }
+
+  .menu-footer{
+    position: relative;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .main-content-container {
+    height: 90%;
+  }
+
+  .menu-footer{
+    position: relative;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (min-width: 993px) and (max-width: 1200px) {
+  .main-content-container {
+    height: 90%;
+  }
+
+  .menu-footer{
+    position: relative;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+}
