@@ -33,8 +33,6 @@ class Master extends Component {
                     <div
                         className='multi-bg'
                         style={{
-                            height: '100vh',
-                            width: '100vw',
                             backgroundImage: `url("${topRight}"), url("${bottomLeft}")`,
                             backgroundRepeat: 'no-repeat, no-repeat',
                             backgroundPosition: 'top right, bottom left'

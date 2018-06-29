@@ -9,7 +9,7 @@ class SocailLogin extends Component {
         return [
             <Row key='b'>
                 <Col xs={12}>
-                    <h1 className='log-in-with text-center'>Log in with</h1>
+                    <h1 className='log-in-with text-center login-header-margin'>Log in with</h1>
                     <img className='center-line' src="/static/img/Line.png" alt=""/>
                 </Col>
             </Row>,
@@ -19,21 +19,21 @@ class SocailLogin extends Component {
                         <li>
                             <button
                                 style={{backgroundColor: '#3B5998', marginTop: 42}}
-                                className='login-button clear-button'>
+                                className='radius-button clear-button'>
                                 Facebook
                             </button>
                         </li>
                         <li>
-                            <button style={{backgroundColor: '#1DA1F2'}} className='login-button clear-button'>Twitter</button>
+                            <button style={{backgroundColor: '#1DA1F2'}} className='radius-button clear-button'>Twitter</button>
                         </li>
                         <li>
-                            <button style={{backgroundColor: '#DB4437'}} className='login-button clear-button'>Google</button>
+                            <button style={{backgroundColor: '#DB4437'}} className='radius-button clear-button'>Google</button>
                         </li>
                         <li>
-                            <button style={{backgroundColor: '#6CC644'}} className='login-button clear-button'>GitHub</button>
+                            <button style={{backgroundColor: '#6CC644'}} className='radius-button clear-button'>GitHub</button>
                         </li>
                         <li>
-                            <button style={{backgroundColor: '#102938'}} className='login-button clear-button'>YOYOW</button>
+                            <button style={{backgroundColor: '#102938'}} className='radius-button clear-button'>YOYOW</button>
                         </li>
                     </ul>
                 </Col>

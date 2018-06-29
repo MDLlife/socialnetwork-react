@@ -35,7 +35,7 @@ class ActivateAccount extends Component {
         return [
             <Row key='b'>
                 <Col xs={12}>
-                    <h1 className='log-in-with text-center'>Acctivate account</h1>
+                    <h1 className='log-in-with text-center login-header-margin'>Acctivate account</h1>
                     <img className='center-line' src="/static/img/Line.png" alt=""/>
                 </Col>
             </Row>,
@@ -52,7 +52,7 @@ class ActivateAccount extends Component {
             </Row>,
             <Row>
                 <Col xs={12} className='center'>
-                    <button className='main-button login-button clear-button'>
+                    <button className='main-button radius-button clear-button'>
                         Send confirmation
                     </button>
                 </Col>

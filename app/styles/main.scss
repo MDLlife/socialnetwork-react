@@ -19,12 +19,13 @@ html, body {
   font-family: 'Gilroy Light', sans-serif;
 }
 
-.clear-button:focus {
-  outline: none;
+div[role='menu'] > span:hover {
+  background-color: black;
 }
 
-@import "login";
 @import "socialLogin";
 @import "activateAccount";
-@import "emailConfirmation";
 @import "selectRole";
+@import "talentRole";
+@import "additionalStyle";
+@import "selectTalents";

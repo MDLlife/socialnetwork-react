@@ -16,12 +16,12 @@ class EmailConfirmation extends Component {
         return [
             <Row>
                 <Col xs={12}>
-                    <h1 className='log-in-with text-center'>Email confirmation</h1>
+                    <h1 className='log-in-with text-center login-header-margin'>Email confirmation</h1>
                     <img className='center-line' src="/static/img/Line.png" alt=""/>
                 </Col>
             </Row>,
             <Row>
-                <Col xs={12} className='center' style={{ marginTop: 50, fontSize: 16 }}>
+                <Col xs={12} className='center text-center' style={{ marginTop: 50, fontSize: 16 }}>
                     Please check your email example and confirm your email address
                 </Col>
             </Row>,
@@ -33,13 +33,14 @@ class EmailConfirmation extends Component {
             </Row>,
             <Row>
                 <Col xs={12} className='center' style={{ marginTop: 10 }}>
-                    <button className='email-confirmation-actions-buttons clear-button' style={{ marginRight: 20 }}>Correct my email</button>
-                    <button className='email-confirmation-actions-buttons clear-button'>Resend confirmation</button>
+                    <button className='email-confirmation-actions-buttons clear-button' style={{ marginRight: 20, backgroundColor: 'transparent' }}>Correct my email</button>
+                    <button className='email-confirmation-actions-buttons clear-button' style={{ backgroundColor: 'transparent' }}>Resend confirmation</button>
                 </Col>
             </Row>,
             <Row>
                 <Col xs={12} className='center'>
-                    <button className='main-button login-button clear-button'>
+                    <button style={{ width: 150 }}
+                            className='main-button radius-button clear-button'>
                         Skip
                     </button>
                 </Col>

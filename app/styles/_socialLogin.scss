@@ -1,3 +1,8 @@
+.multi-bg {
+  height: 100vh;
+  width: 100vw;
+}
+
 .log-in-with {
   font-size: 48px;
 }
@@ -7,7 +12,7 @@
   margin: 0 auto;
 }
 
-.login-button {
+.radius-button {
   height: 45px;
   width: 220px;
   border-radius: 30px;
@@ -32,11 +37,36 @@
   justify-content: center;
 }
 
+.main-button {
+  color: white;
+  background-image: -moz-linear-gradient(left, rgba(235,51,134,1) 0%, rgba(192,53,160,1) 100%);
+  background-image: -webkit-linear-gradient(left, rgba(235,51,134,1) 0%, rgba(192,53,160,1) 100%);
+  background-image: -o-linear-gradient(left, rgba(235,51,134,1) 0%, rgba(192,53,160,1) 100%);
+  background-image: -ms-linear-gradient(left, rgba(235,51,134,1) 0%, rgba(192,53,160,1) 100%);
+  background-image: linear-gradient(to right, rgba(235,51,134,1) 0%, rgba(192,53,160,1) 100%);
+  margin-top: 35px;
+}
+
+.email-confirmation-actions-buttons {
+  background-color: white;
+  border: none;
+  color: #EB3386;
+}
+
+.clear-button:focus {
+  outline: none;
+}
+
 @media (max-width: 576px) {
   .menu-footer {
     position: initial;
     display: block;
     margin-top: 100px;
+  }
+
+  .multi-bg {
+    height: 100%;
+    width: 100%;
   }
 }
 
@@ -51,6 +81,11 @@
     display: flex;
     justify-content: center;
   }
+
+  .multi-bg {
+    height: 100%;
+    width: 100%;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 992px) {
@@ -64,7 +99,13 @@
     display: flex;
     justify-content: center;
   }
+
+  .multi-bg {
+    height: 100%;
+    width: 100%;
+  }
 }
+
 @media (min-width: 993px) and (max-width: 1200px) {
   .main-content-container {
     height: 90%;
@@ -75,5 +116,10 @@
     padding: 0;
     display: flex;
     justify-content: center;
+  }
+
+  .multi-bg {
+    height: 100vh;
+    width: 100vw;
   }
 }

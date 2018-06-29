@@ -3,42 +3,29 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Row, Col} from 'react-bootstrap';
 
-class SelectRole extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            image: ''
-        }
-    }
-
+class BookerRole extends Component {
     render() {
         return [
             <Row>
-                <Col >
+                <Col xs={12}>
                     <h1 className='log-in-with text-center login-header-margin'>Hi, Username</h1>
                     <img className='center-line' src="/static/img/Line.png" alt=""/>
                 </Col>
             </Row>,
             <Row>
-                <Col  className='center avatar-container'>
-                    <img className='avatar' src={this.state.image ? this.state.image : 'http://via.placeholder.com/145x145'} alt=""/>
+                <Col xs={12} style={{  marginTop: 40 }} className='center'>
+                    <h2 className='login-header-margin'>Are you looking for</h2>
                 </Col>
             </Row>,
             <Row>
-                <Col  className='center'>
-                    <h2>Who are you?</h2>
-                </Col>
-            </Row>,
-            <Row>
-                <Col className='center'>
+                <Col xs={12} className='center'>
                     <button style={{ width: 150, marginRight: 24 }}
                             className='main-button radius-button clear-button'>
-                        Booker
+                        Gigs
                     </button>
                     <button style={{ width: 150 }}
                             className='main-button radius-button clear-button'>
-                        Talent
+                        Talents
                     </button>
                 </Col>
             </Row>
@@ -46,4 +33,4 @@ class SelectRole extends Component {
     }
 }
 
-export default connect()(SelectRole);
+export default connect()(BookerRole);

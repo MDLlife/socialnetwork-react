@@ -9,6 +9,10 @@ import SocialLogin from 'containers/SocialLogin';
 import ActivateAccount from 'containers/ActivateAccount';
 import EmailConfirmation from 'containers/EmailConfirmation.js';
 import SelectRole from 'containers/SelectRole';
+import BookerRole from 'containers/BookerRole';
+import TalentRole from 'containers/TalentRole';
+import SelectTalents from 'containers/SelectTalents';
+import GeneralInformation from 'containers/GeneralInformation';
 
 import Notfound from 'containers/Notfound';
 
@@ -29,6 +33,10 @@ export default function (history) {
                 <Route path="/activate-account" component={ActivateAccount}/>
                 <Route path="/email-confirmation" component={EmailConfirmation}/>
                 <Route path="/select-role" component={SelectRole}/>
+                <Route path="/booker-role" component={BookerRole}/>
+                <Route path="/talent-role" component={TalentRole}/>
+                <Route path="/select-talents" component={SelectTalents}/>
+                <Route path="/general-information" component={GeneralInformation}/>
                 <Route path="*" component={Notfound}/>
             </Route>
         </Router>

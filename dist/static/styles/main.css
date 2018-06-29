@@ -15,8 +15,12 @@ html, body {
   min-height: 100%;
   font-family: 'Gilroy Light', sans-serif; }
 
-.clear-button:focus {
-  outline: none; }
+div[role='menu'] > span:hover {
+  background-color: black; }
+
+.multi-bg {
+  height: 100vh;
+  width: 100vw; }
 
 .log-in-with {
   font-size: 48px; }
@@ -25,7 +29,7 @@ html, body {
   display: block;
   margin: 0 auto; }
 
-.login-button {
+.radius-button {
   height: 45px;
   width: 220px;
   border-radius: 30px;
@@ -47,11 +51,31 @@ html, body {
   display: flex;
   justify-content: center; }
 
+.main-button {
+  color: white;
+  background-image: -moz-linear-gradient(left, #eb3386 0%, #c035a0 100%);
+  background-image: -webkit-linear-gradient(left, #eb3386 0%, #c035a0 100%);
+  background-image: -o-linear-gradient(left, #eb3386 0%, #c035a0 100%);
+  background-image: -ms-linear-gradient(left, #eb3386 0%, #c035a0 100%);
+  background-image: linear-gradient(to right, #eb3386 0%, #c035a0 100%);
+  margin-top: 35px; }
+
+.email-confirmation-actions-buttons {
+  background-color: white;
+  border: none;
+  color: #EB3386; }
+
+.clear-button:focus {
+  outline: none; }
+
 @media (max-width: 576px) {
   .menu-footer {
     position: initial;
     display: block;
-    margin-top: 100px; } }
+    margin-top: 100px; }
+  .multi-bg {
+    height: 100%;
+    width: 100%; } }
 
 @media (min-width: 577px) and (max-width: 768px) {
   .main-content-container {
@@ -60,7 +84,10 @@ html, body {
     position: relative;
     padding: 0;
     display: flex;
-    justify-content: center; } }
+    justify-content: center; }
+  .multi-bg {
+    height: 100%;
+    width: 100%; } }
 
 @media (min-width: 769px) and (max-width: 992px) {
   .main-content-container {
@@ -69,7 +96,10 @@ html, body {
     position: relative;
     padding: 0;
     display: flex;
-    justify-content: center; } }
+    justify-content: center; }
+  .multi-bg {
+    height: 100%;
+    width: 100%; } }
 
 @media (min-width: 993px) and (max-width: 1200px) {
   .main-content-container {
@@ -78,7 +108,10 @@ html, body {
     position: relative;
     padding: 0;
     display: flex;
-    justify-content: center; } }
+    justify-content: center; }
+  .multi-bg {
+    height: 100vh;
+    width: 100vw; } }
 
 .main-button {
   color: white;
@@ -93,5 +126,48 @@ html, body {
   background-color: white;
   border: none;
   color: #EB3386; }
+
+.avatar-container {
+  margin-top: 40px;
+  padding: 20px;
+  background: url("../static/img/BackgroundAvatar.png") no-repeat center center; }
+
+.avatar {
+  border-radius: 50%; }
+
+@media (max-width: 576px) {
+  .step {
+    margin-top: 10px !important;
+    margin-bottom: 30px; } }
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .step {
+    margin-top: 10px !important;
+    margin-bottom: 30px; } }
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .step {
+    margin-top: 10px !important;
+    margin-bottom: 30px; } }
+
+.clear-button:focus {
+  outline: none; }
+
+.login-header-margin {
+  margin: 0.67em 0 18px; }
+
+label {
+  font-weight: initial; }
+
+.info-panel {
+  background-image: -moz-linear-gradient(left, #cc33cc 0%, #6699cc 100%);
+  background-image: -webkit-linear-gradient(left, #cc33cc 0%, #6699cc 100%);
+  background-image: -o-linear-gradient(left, #cc33cc 0%, #6699cc 100%);
+  background-image: -ms-linear-gradient(left, #cc33cc 0%, #6699cc 100%);
+  background-image: linear-gradient(to right, #cc33cc 0%, #6699cc 100%);
+  color: white;
+  height: 84px;
+  border-radius: 20px;
+  margin-top: 20px; }
 
 /*# sourceMappingURL=../maps/styles/main.css.map */
