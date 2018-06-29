@@ -1,7 +1,30 @@
+@font-face {
+  font-family: 'Gilroy ExtraBold';
+  src: url('../fonts/Gilroy-ExtraBold.otf');
+}
+
+@font-face {
+  font-family: 'Gilroy Light';
+  src: url('../fonts/Gilroy-Light.otf');
+}
+
+@font-face {
+  font-family: 'Gilroy Medium';
+  src: url('../fonts/Radomir_Tinkov-Gilroy_Medium.otf');
+}
+
 html, body {
   min-width: 100%;
   min-height: 100%;
+  font-family: 'Gilroy Light', sans-serif;
+}
+
+.clear-button:focus {
+  outline: none;
 }
 
 @import "login";
 @import "socialLogin";
+@import "activateAccount";
+@import "emailConfirmation";
+@import "selectRole";

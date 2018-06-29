@@ -19,21 +19,21 @@ class SocailLogin extends Component {
                         <li>
                             <button
                                 style={{backgroundColor: '#3B5998', marginTop: 42}}
-                                className='login-button'>
+                                className='login-button clear-button'>
                                 Facebook
                             </button>
                         </li>
                         <li>
-                            <button style={{backgroundColor: '#1DA1F2'}} className='login-button'>Twitter</button>
+                            <button style={{backgroundColor: '#1DA1F2'}} className='login-button clear-button'>Twitter</button>
                         </li>
                         <li>
-                            <button style={{backgroundColor: '#DB4437'}} className='login-button'>Google</button>
+                            <button style={{backgroundColor: '#DB4437'}} className='login-button clear-button'>Google</button>
                         </li>
                         <li>
-                            <button style={{backgroundColor: '#6CC644'}} className='login-button'>GitHub</button>
+                            <button style={{backgroundColor: '#6CC644'}} className='login-button clear-button'>GitHub</button>
                         </li>
                         <li>
-                            <button style={{backgroundColor: '#102938'}} className='login-button'>YOYOW</button>
+                            <button style={{backgroundColor: '#102938'}} className='login-button clear-button'>YOYOW</button>
                         </li>
                     </ul>
                 </Col>

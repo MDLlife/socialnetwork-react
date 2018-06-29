@@ -21,25 +21,25 @@ class EmailConfirmation extends Component {
                 </Col>
             </Row>,
             <Row>
-                <Col xs={12} className='center' style={{marginTop: 50}}>
+                <Col xs={12} className='center' style={{ marginTop: 50, fontSize: 16 }}>
                     Please check your email example and confirm your email address
                 </Col>
             </Row>,
             <Row>
-                <Col xs={12} className='center' style={{textAlign: 'center'}}>
+                <Col xs={12} className='center' style={{ textAlign: 'center', marginTop: 30 }}>
                     <p>If you don't see a message in your inbox, make sure the email<br/>
                     address is correct and check your span folder.</p>
                 </Col>
             </Row>,
             <Row>
-                <Col xs={12} className='center'>
-                    <button className='email-confirmation-actions-buttons'>Correct my email</button>
-                    <button className='email-confirmation-actions-buttons'>Resend confirmation</button>
+                <Col xs={12} className='center' style={{ marginTop: 10 }}>
+                    <button className='email-confirmation-actions-buttons clear-button' style={{ marginRight: 20 }}>Correct my email</button>
+                    <button className='email-confirmation-actions-buttons clear-button'>Resend confirmation</button>
                 </Col>
             </Row>,
             <Row>
                 <Col xs={12} className='center'>
-                    <button className='main-button login-button'>
+                    <button className='main-button login-button clear-button'>
                         Skip
                     </button>
                 </Col>

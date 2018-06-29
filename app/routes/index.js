@@ -8,6 +8,7 @@ import Main from 'containers/Main';
 import SocialLogin from 'containers/SocialLogin';
 import ActivateAccount from 'containers/ActivateAccount';
 import EmailConfirmation from 'containers/EmailConfirmation.js';
+import SelectRole from 'containers/SelectRole';
 
 import Notfound from 'containers/Notfound';
 
@@ -27,6 +28,7 @@ export default function (history) {
                 <IndexRoute component={SocialLogin}/>
                 <Route path="/activate-account" component={ActivateAccount}/>
                 <Route path="/email-confirmation" component={EmailConfirmation}/>
+                <Route path="/select-role" component={SelectRole}/>
                 <Route path="*" component={Notfound}/>
             </Route>
         </Router>

@@ -52,7 +52,7 @@ class ActivateAccount extends Component {
             </Row>,
             <Row>
                 <Col xs={12} className='center'>
-                    <button className='main-button login-button'>
+                    <button className='main-button login-button clear-button'>
                         Send confirmation
                     </button>
                 </Col>

@@ -1,6 +1,22 @@
+@font-face {
+  font-family: 'Gilroy ExtraBold';
+  src: url("../fonts/Gilroy-ExtraBold.otf"); }
+
+@font-face {
+  font-family: 'Gilroy Light';
+  src: url("../fonts/Gilroy-Light.otf"); }
+
+@font-face {
+  font-family: 'Gilroy Medium';
+  src: url("../fonts/Radomir_Tinkov-Gilroy_Medium.otf"); }
+
 html, body {
   min-width: 100%;
-  min-height: 100%; }
+  min-height: 100%;
+  font-family: 'Gilroy Light', sans-serif; }
+
+.clear-button:focus {
+  outline: none; }
 
 .log-in-with {
   font-size: 48px; }
@@ -30,23 +46,6 @@ html, body {
 .center {
   display: flex;
   justify-content: center; }
-
-.main-button {
-  color: white;
-  background-image: -moz-linear-gradient(left, #eb3386 0%, #c035a0 100%);
-  background-image: -webkit-linear-gradient(left, #eb3386 0%, #c035a0 100%);
-  background-image: -o-linear-gradient(left, #eb3386 0%, #c035a0 100%);
-  background-image: -ms-linear-gradient(left, #eb3386 0%, #c035a0 100%);
-  background-image: linear-gradient(to right, #eb3386 0%, #c035a0 100%);
-  margin-top: 35px; }
-
-.email-confirmation-actions-buttons {
-  background-color: white;
-  border: none;
-  color: #EB3386; }
-
-.email-confirmation-actions-buttons:focus {
-  outline: none; }
 
 @media (max-width: 576px) {
   .menu-footer {
@@ -80,5 +79,19 @@ html, body {
     padding: 0;
     display: flex;
     justify-content: center; } }
+
+.main-button {
+  color: white;
+  background-image: -moz-linear-gradient(left, #eb3386 0%, #c035a0 100%);
+  background-image: -webkit-linear-gradient(left, #eb3386 0%, #c035a0 100%);
+  background-image: -o-linear-gradient(left, #eb3386 0%, #c035a0 100%);
+  background-image: -ms-linear-gradient(left, #eb3386 0%, #c035a0 100%);
+  background-image: linear-gradient(to right, #eb3386 0%, #c035a0 100%);
+  margin-top: 35px; }
+
+.email-confirmation-actions-buttons {
+  background-color: white;
+  border: none;
+  color: #EB3386; }
 
 /*# sourceMappingURL=../maps/styles/main.css.map */
