@@ -5,7 +5,6 @@ import {Row, Col} from 'react-bootstrap';
 import AutoComplete from 'material-ui/AutoComplete';
 import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
-import MenuItem from 'material-ui/MenuItem';
 
 const styles = {
     block: {

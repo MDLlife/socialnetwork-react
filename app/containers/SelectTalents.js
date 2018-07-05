@@ -19,8 +19,17 @@ class SelectTalents extends Component {
             </Row>,
             <Row>
                 <Col xs={12} sm={12} md={4} lg={4} style={{textAlign: 'center'}}>
-                    <img src="" alt=""/>
-                    <p><b>Model</b></p>
+                    <img src="/static/img/actor.png" alt="" style={{ width: 150, height: 150 }}/>
+                    <p style={{fontSize: 20, marginTop: 20}}><b>Actor</b></p>
+                    <p>I am looking for actor gigs</p>
+                    <button style={{ width: 200, marginTop: 10 }}
+                            className='main-button radius-button clear-button'>
+                        Select
+                    </button>
+                </Col>
+                <Col xs={12} sm={12} md={4} lg={4} style={{textAlign: 'center'}}>
+                    <img src="/static/img/model.png" alt="" style={{ width: 150, height: 150 }}/>
+                    <p style={{fontSize: 20, marginTop: 20}}><b>Model</b></p>
                     <p>I am looking for model gigs</p>
                     <button style={{ width: 200, marginTop: 10 }}
                             className='main-button radius-button clear-button'>
@@ -28,18 +37,9 @@ class SelectTalents extends Component {
                     </button>
                 </Col>
                 <Col xs={12} sm={12} md={4} lg={4} style={{textAlign: 'center'}}>
-                    <img src="" alt=""/>
-                    <p><b>Model</b></p>
-                    <p>I am looking for model gigs</p>
-                    <button style={{ width: 200, marginTop: 10 }}
-                            className='main-button radius-button clear-button'>
-                        Select
-                    </button>
-                </Col>
-                <Col xs={12} sm={12} md={4} lg={4} style={{textAlign: 'center'}}>
-                    <img src="" alt=""/>
-                    <p><b>Model</b></p>
-                    <p>I am looking for model gigs</p>
+                    <img src="/static/img/dancer.png" alt="" style={{ width: 150, height: 150 }}/>
+                    <p style={{fontSize: 20, marginTop: 20}}><b>Dancer</b></p>
+                    <p>I am looking for dancer gigs</p>
                     <button style={{ width: 200, marginTop: 10 }}
                             className='main-button radius-button clear-button'>
                         Select
