@@ -214,7 +214,6 @@ class Master extends Component {
                      })();`
                     }}/>
                 </Helmet>
-
                 <AppBar
                     onLeftIconButtonClick={this.handleTouchTapLeftIconButton}
                     title={ <a href="/#" onClick={this.showHome}

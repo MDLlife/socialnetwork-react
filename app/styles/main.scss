@@ -1,1 +1,31 @@
-@import "_intro";
+@font-face {
+  font-family: 'Gilroy ExtraBold';
+  src: url('../fonts/Gilroy-ExtraBold.otf');
+}
+
+@font-face {
+  font-family: 'Gilroy Light';
+  src: url('../fonts/Gilroy-Light.otf');
+}
+
+@font-face {
+  font-family: 'Gilroy Medium';
+  src: url('../fonts/Radomir_Tinkov-Gilroy_Medium.otf');
+}
+
+html, body {
+  min-width: 100%;
+  min-height: 100%;
+  font-family: 'Gilroy Light', sans-serif;
+}
+
+div[role='menu'] > span:hover {
+  background-color: black;
+}
+
+@import "socialLogin";
+@import "activateAccount";
+@import "selectRole";
+@import "talentRole";
+@import "additionalStyle";
+@import "selectTalents";

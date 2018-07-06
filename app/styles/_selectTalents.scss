@@ -1,0 +1,11 @@
+.info-panel {
+  background-image: -moz-linear-gradient(left, rgba(204,51,204,1) 0%, rgba(102,153,204,1) 100%);
+  background-image: -webkit-linear-gradient(left, rgba(204,51,204,1) 0%, rgba(102,153,204,1) 100%);
+  background-image: -o-linear-gradient(left, rgba(204,51,204,1) 0%, rgba(102,153,204,1) 100%);
+  background-image: -ms-linear-gradient(left, rgba(204,51,204,1) 0%, rgba(102,153,204,1) 100%);
+  background-image: linear-gradient(to right, rgba(204,51,204,1) 0%, rgba(102,153,204,1) 100%);
+  color: white;
+  height: 84px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
