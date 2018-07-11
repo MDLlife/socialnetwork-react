@@ -111,7 +111,7 @@ class StepOne extends Component {
             <Row>
                 <Col xs={12} style={{display: 'flex', flexDirection: 'column'}}>
                     <div className='cards'>
-                        <div className='card-avatar' style={{backgroundColor: '#fafafa', width: '50%'}}>
+                        <div className='card-avatar' style={{backgroundColor: '#fafafa', width: '56%'}}>
                             <img src="/static/img/dancer.png" alt="" style={{width: '100%', margin: '30px 10px'}}/>
                         </div>
                         <div className='inputs' style={{width: '50%', display: 'flex', flexDirection: 'column', marginLeft: 40, marginBottom: 10}}>
@@ -139,7 +139,8 @@ class StepOne extends Component {
                                 <label
                                     style={{
                                         position: 'absolute',
-                                        top: 42
+                                        top: 42,
+                                        left: 235
                                     }}
                                 >cm</label>
                             </div>
@@ -167,7 +168,8 @@ class StepOne extends Component {
                                 <label
                                     style={{
                                         position: 'absolute',
-                                        top: 42
+                                        top: 42,
+                                        left: 235
                                     }}
                                 >cm</label>
                             </div>
@@ -195,7 +197,8 @@ class StepOne extends Component {
                                 <label
                                     style={{
                                         position: 'absolute',
-                                        top: 42
+                                        top: 42,
+                                        left: 235
                                     }}
                                 >cm</label>
                             </div>
@@ -223,7 +226,8 @@ class StepOne extends Component {
                                 <label
                                     style={{
                                         position: 'absolute',
-                                        top: 42
+                                        top: 42,
+                                        left: 235
                                     }}
                                 >cm</label>
                             </div>
@@ -252,7 +256,8 @@ class StepOne extends Component {
                                 <label
                                     style={{
                                         position: 'absolute',
-                                        top: 42
+                                        top: 42,
+                                        left: 235
                                     }}
                                 >cm</label>
                             </div>
@@ -270,74 +275,98 @@ class StepOne extends Component {
                         <div className='card-avatar' style={{backgroundColor: '#fafafa', width: '50%'}}>
                             <img src="/static/img/appearence.png" alt="" style={{width: '60%', margin: '20px auto', display: 'block'}}/>
                         </div>
-                        <div className='inputs' style={{display: 'flex', flexDirection: 'column', marginLeft: 40, marginBottom: 10, width: '50%'}}>
-                            {/*<div*/}
-                                {/*style={{position: 'relative'}}*/}
-                            {/*>*/}
+                        <div className='inputs' style={{
+                            display: 'grid',
+                            alignItems: 'center',
+                            gridTemplateColumns: 300,
+                            marginLeft: 40
+                        }}>
+                            <div style={{position: 'relative'}}>
+                                <div style={{
+                                    position: 'absolute',
+                                    top: -7
+                                }}>
+                                    <label>Eye color</label>
+                                </div>
+
                                 <DropDownMenu
                                     hintText='Eye color'
                                     value={eyes}
                                     onChange={this.selectEyes}
                                     underlineStyle={{ marginLeft: 0}}
+                                    style={{width: '100%'}}
+                                    labelStyle={{paddingLeft: 30}}
                                 >
                                     {listEyes}
                                 </DropDownMenu>
-                                {/*<img*/}
-                                    {/*src="/static/img/eye color.svg"*/}
-                                    {/*alt=""*/}
-                                    {/*style={{*/}
-                                        {/*position: 'absolute',*/}
-                                        {/*width: 24,*/}
-                                        {/*top: 17,*/}
-                                        {/*left: 0,*/}
-                                    {/*}}*/}
-                                {/*/>*/}
-                            {/*</div>*/}
-                            {/*<div*/}
-                                {/*style={{position: 'relative'}}*/}
-                            {/*>*/}
+                                <div style={{
+                                    position: 'absolute',
+                                    width: 24,
+                                    top: 15,
+                                }}>
+                                    <img
+                                        src="/static/img/eye color.svg"
+                                        alt=""
+                                    />
+                                </div>
+
+                            </div>
+                            <div style={{position: 'relative'}}>
+                                <div style={{
+                                    position: 'absolute',
+                                    top: -7
+                                }}>
+                                    <label>Hair color</label>
+                                </div>
                                 <DropDownMenu
                                     hintText='Hair color'
                                     value={hair}
                                     onChange={this.selectHair}
                                     underlineStyle={{ marginLeft: 0}}
+                                    style={{width: '100%'}}
+                                    labelStyle={{paddingLeft: 30}}
                                 >
                                     {listHair}
                                 </DropDownMenu>
-                                {/*<img*/}
-                                    {/*src="/static/img/hair color.svg"*/}
-                                    {/*alt=""*/}
-                                    {/*style={{*/}
-                                        {/*position: 'absolute',*/}
-                                        {/*width: 24,*/}
-                                        {/*top: 17,*/}
-                                        {/*left: 0*/}
-                                    {/*}}*/}
-                                {/*/>*/}
-                            {/*</div>*/}
-                            {/*<div*/}
-                                {/*style={{position: 'relative'}}*/}
-                            {/*>*/}
+                                <div style={{
+                                    position: 'absolute',
+                                    width: 24,
+                                    top: 15,
+                                }}>
+                                    <img
+                                        src="/static/img/hair color.svg"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                            <div style={{position: 'relative'}}>
+                                <div style={{
+                                    position: 'absolute',
+                                    top: -7
+                                }}>
+                                    <label>Hair length</label>
+                                </div>
                                 <DropDownMenu
                                     hintText='Hair length'
                                     value={hairLenght}
                                     onChange={this.selectLenght}
                                     underlineStyle={{ marginLeft: 0}}
+                                    style={{width: '100%'}}
+                                    labelStyle={{paddingLeft: 30}}
                                 >
                                     {listLenght}
                                 </DropDownMenu>
-                                {/*<img*/}
-                                    {/*src="/static/img/hair lenght.svg"*/}
-                                    {/*alt=""*/}
-                                    {/*style={{*/}
-                                        {/*position: 'absolute',*/}
-                                        {/*width: 24,*/}
-                                        {/*top: 17,*/}
-                                        {/*left: 0*/}
-                                    {/*}}*/}
-                                {/*/>*/}
-                            {/*</div>*/}
-
+                                <div style={{
+                                    position: 'absolute',
+                                    width: 24,
+                                    top: 15,
+                                }}>
+                                    <img
+                                        src="/static/img/hair lenght.svg"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </Col>

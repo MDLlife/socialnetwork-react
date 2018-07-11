@@ -23,7 +23,7 @@ class OnboardingSteps extends Component {
         super(props);
 
         this.state = {
-            step: 3,
+            step: 2,
             finished: false,
         }
     }
@@ -75,15 +75,11 @@ class OnboardingSteps extends Component {
         }
     };
 
-    componentDidMount() {
-        console.log(window.innerWidth)
-    }
-
     render() {
         let {step} = this.state;
 
         return (
-            <Grid className='main-content-container onboarding'>
+            <Grid className='main-content-container onboarding' style={{marginBottom: 50}}>
                 <Row>
                     <Col xs={12} className='onboarding-header'>
                         <h1>{this.switchHeaderContent(step)}</h1>

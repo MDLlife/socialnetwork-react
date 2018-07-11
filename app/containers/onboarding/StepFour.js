@@ -4,6 +4,13 @@ import {connect} from 'react-redux';
 import {Row, Col} from 'react-bootstrap';
 import TextField from 'material-ui/TextField';
 
+const compCards = [
+    '/static/img/comp card 1.svg',
+    '/static/img/comp card 2.svg',
+    '/static/img/comp card 3.svg',
+    '/static/img/comp card 4.svg'
+];
+
 class StepOne extends Component {
     constructor(props) {
         super(props);
@@ -38,11 +45,73 @@ class StepOne extends Component {
         return [
             <Row>
                 <Col xs={12} className='comp-card'>
-                    <button value='0' onClick={this.handleClick}>1</button>
-                    <button value='1' onClick={this.handleClick}>2</button>
-                    <button value='2' onClick={this.handleClick}>3</button>
-                    <button value='3' onClick={this.handleClick}>4</button>
-                    <h2>Comp Card</h2>
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        marginTop: 20,
+                        marginBottom: 20
+                    }}>
+                        <div>
+                            <h2 style={{margin: 0}}>Comp Card</h2>
+                        </div>
+                        <div>
+                            <button
+                                className='comp-card'
+
+                                style={{
+                                    background: `url('${compCards[0]}') center center no-repeat`,
+                                    border: 'none',
+                                    width: 36,
+                                    height: 36,
+                                    opacity: this.state.scheme === 0 ? 1 : 0.1
+                                }}
+                                value='0'
+                                onClick={this.handleClick}
+                            />
+                            <button
+                                className='comp-card'
+                                style={{
+                                    background: `url('${compCards[1]}') center center no-repeat`,
+                                    border: 'none',
+                                    width: 36,
+                                    height: 36,
+                                    opacity: this.state.scheme === 1 ? 1 : 0.1
+
+                                }}
+                                value='1'
+                                onClick={this.handleClick}
+                            />
+                            <button
+                                className='comp-card'
+
+                                style={{
+                                    background: `url('${compCards[2]}') center center no-repeat`,
+                                    border: 'none',
+                                    width: 36,
+                                    height: 36,
+                                    opacity: this.state.scheme === 2 ? 1 : 0.1
+
+                                }}
+                                value='2'
+                                onClick={this.handleClick}
+                            />
+                            <button
+                                className='comp-card'
+
+                                style={{
+                                    background: `url('${compCards[3]}') center center no-repeat`,
+                                    border: 'none',
+                                    width: 36,
+                                    height: 36,
+                                    opacity: this.state.scheme === 3 ? 1 : 0.1
+
+                                }}
+                                value='3'
+                                onClick={this.handleClick}
+                            />
+                        </div>
+                    </div>
+
                     {
                         this.changeSchemas(this.state.scheme)
                     }

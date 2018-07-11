@@ -6,7 +6,7 @@ import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import DatePicker from 'material-ui/DatePicker';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
-import TextField from 'material-ui/TextField';
+import AutoComplete from 'material-ui/AutoComplete';
 import Chip from 'material-ui/Chip';
 import Plus from 'material-ui/svg-icons/content/add';
 
@@ -20,11 +20,16 @@ class StepOne extends Component {
         super(props);
 
         this.state = {
+            search: '',
             ethnic: null,
+            selectedLangs: [],
             language: [
                 {key: 0, label: 'Chinese'},
                 {key: 1, label: 'English'},
                 {key: 2, label: 'Russian'},
+            ],
+            searchLanguages: [
+                'Spanish','French', 'German','Japanese','Danish','Belorussian'
             ]
         }
     }
@@ -38,29 +43,48 @@ class StepOne extends Component {
 
     selectedChip = e => {
         let elem = e.target.parentNode;
-        console.log(elem)
         if (elem.classList.contains('selected')) {
             elem.classList.remove('selected');
         } else {
             elem.classList.add('selected');
         }
-    }
+    };
+
+    updateLanguageInput = searchText => {
+        this.setState({
+            search: searchText
+        })
+    };
+
+    handleNewRequest = () => {
+        this.setState({
+            selectedLangs: [...this.state.selectedLangs, {key: this.state.search, label: this.state.search}]
+        }, () => {
+            this.setState({
+                searchLanguages: this.state.searchLanguages.filter((x) => {
+                    return this.indexOf(x) < 0
+                }, this.state.selectedLangs.map(x => x.label)),
+                search: ''
+            })
+        })
+    };
 
     renderChip = data => {
         return (
             <Chip
                 key={data.key}
-                style={{width: 100, marginLeft: data.key === 0 ? 0 : 10, fontFamily: 'inherit'}}
+                className='chip'
+                style={{marginLeft: data.key === 0 ? 0 : 10, fontFamily: 'inherit'}}
                 onClick={this.selectedChip}
             >
                 {data.label}
-                <Plus style={{verticalAlign: 'middle', marginLeft: 5, paddingBottom: 4}} />
+                {/*<Plus style={{verticalAlign: 'middle', marginLeft: 5, paddingBottom: 4}} />*/}
             </Chip>
         )
     };
 
     render() {
-        let {ethnic} = this.state;
+        let {ethnic, searchLanguages} = this.state;
 
         return [
             <Row>
@@ -123,10 +147,20 @@ class StepOne extends Component {
             <Row>
                 <Col xs={12}>
                     <h2>Languages spoken</h2>
-                    <TextField
-                        hintText='Language'
+                    <AutoComplete
+                        filter={AutoComplete.fuzzyFilter}
+                        dataSource={searchLanguages}
+                        maxSearchResults={5}
+                        searchText={this.state.search}
+                        onUpdateInput={this.updateLanguageInput}
+                        onNewRequest={this.handleNewRequest}
                     />
-                    <h4 style={{color: '#ea2f85'}}>TOP MOST POPULAR LANGUAGES</h4>
+                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                        {
+                            this.state.selectedLangs.length > 0 && this.state.selectedLangs.map(this.renderChip, this)
+                        }
+                    </div>
+                    <h4 style={{color: '#ea2f85', marginTop: 30}}>TOP MOST POPULAR LANGUAGES</h4>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
                             this.state.language.map(this.renderChip, this)

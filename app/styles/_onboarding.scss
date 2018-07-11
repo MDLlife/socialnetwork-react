@@ -61,6 +61,11 @@
   box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.15);
 }
 
+.comp-card:focus {
+  outline: none;
+  background-color: #541065;
+}
+
 @media (min-width: 1201px) {
   .onboarding {
     width: 800px;
