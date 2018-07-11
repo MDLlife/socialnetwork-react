@@ -3,16 +3,18 @@ import {Router, Route, IndexRoute} from 'react-router';
 
 import MainLayout from 'containers/main/Master';
 import LoginLayout from 'containers/login/Master';
+import OnboardingLayout from 'containers/onboarding/Master';
 
-import Main from 'containers/Main';
-import SocialLogin from 'containers/SocialLogin';
-import ActivateAccount from 'containers/ActivateAccount';
-import EmailConfirmation from 'containers/EmailConfirmation.js';
-import SelectRole from 'containers/SelectRole';
-import BookerRole from 'containers/BookerRole';
-import TalentRole from 'containers/TalentRole';
-import SelectTalents from 'containers/SelectTalents';
-import GeneralInformation from 'containers/GeneralInformation';
+import Main from 'containers/main/Main';
+import SocialLogin from 'containers/login/SocialLogin';
+import ActivateAccount from 'containers/login/ActivateAccount';
+import EmailConfirmation from 'containers/login/EmailConfirmation.js';
+import SelectRole from 'containers/login/SelectRole';
+import BookerRole from 'containers/login/BookerRole';
+import TalentRole from 'containers/login/TalentRole';
+import SelectTalents from 'containers/login/SelectTalents';
+import GeneralInformation from 'containers/login/GeneralInformation';
+import Onboarding from 'containers/onboarding/OnboardingSteps';
 
 import Notfound from 'containers/Notfound';
 
@@ -38,6 +40,10 @@ export default function (history) {
                 <Route path="/select-talents" component={SelectTalents}/>
                 <Route path="/general-information" component={GeneralInformation}/>
                 <Route path="*" component={Notfound}/>
+            </Route>
+
+            <Route path='/onboarding' component={OnboardingLayout}>
+                <IndexRoute component={Onboarding}/>
             </Route>
         </Router>
     );
