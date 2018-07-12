@@ -228,6 +228,9 @@ label {
   outline: none;
   background-color: #541065; }
 
+.alt-stepper {
+  display: none; }
+
 @media (min-width: 1201px) {
   .onboarding {
     width: 800px; } }
@@ -246,12 +249,27 @@ label {
   .onboarding {
     width: 520px; }
   .card-avatar {
+    display: none; }
+  .profile-name,
+  .profile-img {
     display: none; } }
 
 @media (max-width: 576px) {
   .onboarding {
     width: 450px; }
   .card-avatar {
+    display: none; }
+  .profile-name,
+  .profile-img {
+    display: none; }
+  .stepper-step > * {
+    display: grid !important; }
+  .stepper-step > span.stepper > span {
+    align-self: center;
+    justify-self: center; }
+  .alt-stepper {
+    display: flex; }
+  .stepper-main {
     display: none; } }
 
 /*# sourceMappingURL=../maps/styles/main.css.map */

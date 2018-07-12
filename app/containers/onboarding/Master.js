@@ -5,6 +5,11 @@ import Helmet from 'react-helmet';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import getMuiTheme from "material-ui/styles/getMuiTheme";
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+
 
 const muiTheme = getMuiTheme({
     stepper: {
@@ -34,7 +39,30 @@ class Master extends Component {
                 </Helmet>
                 <MuiThemeProvider muiTheme={muiTheme}>
                     <AppBar
+                        showMenuIconButton={false}
                         title={<img src="/static/img/logo_with_text.svg" alt="" style={{height: 60}}/>}
+                        iconElementRight={
+                            <div>
+                                <span
+                                    className='profile-name'
+                                    style={{
+                                    position: 'relative',
+                                    top: -7,
+                                    right: 15,
+                                }}>Username</span>
+                                <img
+                                    className='profile-img'
+                                    src="http://via.placeholder.com/36x36"
+                                    alt=""
+                                    style={{
+                                        position: 'relative',
+                                        top: -7,
+                                        borderRadius: '50%'
+                                    }}
+                                />
+                                <ProfileMenu/>
+                            </div>
+                        }
                         style={{
                             backgroundColor: 'white',
                         }}
@@ -56,6 +84,23 @@ class Master extends Component {
             </div>
         )
     }
+}
+
+
+const ProfileMenu = props => {
+    return (
+        <IconMenu
+            iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+            targetOrigin={{horizontal: 'right', vertical: 'top'}}
+        >
+            <MenuItem primaryText="Refresh" />
+            <MenuItem primaryText="Send feedback" />
+            <MenuItem primaryText="Settings" />
+            <MenuItem primaryText="Help" />
+            <MenuItem primaryText="Sign out" />
+        </IconMenu>
+    )
 }
 
 Master.propTypes = {

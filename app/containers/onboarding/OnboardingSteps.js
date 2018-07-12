@@ -15,6 +15,12 @@ const styles = {
     },
     balanced: {
         marginRight: 10
+    },
+    altStepper: {
+        display: 'flex',
+        justifyContent: 'center',
+        fontSize: 36,
+        borderBottom: '2px solid #ea2f85',
     }
 };
 
@@ -23,7 +29,7 @@ class OnboardingSteps extends Component {
         super(props);
 
         this.state = {
-            step: 2,
+            step: 0,
             finished: false,
         }
     }
@@ -75,6 +81,19 @@ class OnboardingSteps extends Component {
         }
     };
 
+    alternativeStepper = (step) => {
+        switch(step) {
+            case 0:
+                return <div style={styles.altStepper}>Personal</div>;
+            case 1:
+                return <div style={styles.altStepper}>Categories</div>;
+            case 2:
+                return <div style={styles.altStepper}>Measurements</div>;
+            case 3:
+                return <div style={styles.altStepper}>Media</div>
+        }
+    };
+
     render() {
         let {step} = this.state;
 
@@ -85,26 +104,34 @@ class OnboardingSteps extends Component {
                         <h1>{this.switchHeaderContent(step)}</h1>
                     </Col>
                 </Row>
-                <Row>
-                    <Col>
+                <Row className='stepper-main'>
+                    <Col xs={12}>
                         <Stepper
                             connector={false}
                             activeStep={step}
+                            className='stepper-main'
                             //style={{padding: '0px 10px'}}
                         >
-                            <Step style={step === 0 ? styles.stepBorder : null}>
+                            <Step className='stepper-step' style={step === 0 ? styles.stepBorder : null}>
                                 <StepLabel className='stepper' style={{margin: 'auto'}}>Personal</StepLabel>
                             </Step>
-                            <Step style={step === 1 ? styles.stepBorder : null}>
+                            <Step className='stepper-step' style={step === 1 ? styles.stepBorder : null}>
                                 <StepLabel className='stepper' style={{margin: 'auto'}}>Categories</StepLabel>
                             </Step>
-                            <Step style={step === 2 ? styles.stepBorder : null}>
+                            <Step className='stepper-step' style={step === 2 ? styles.stepBorder : null}>
                                 <StepLabel className='stepper' style={{margin: 'auto'}}>Measurements</StepLabel>
                             </Step>
-                            <Step style={step === 3 ? styles.stepBorder : null}>
+                            <Step className='stepper-step' style={step === 3 ? styles.stepBorder : null}>
                                 <StepLabel className='stepper' style={{margin: 'auto'}}>Media</StepLabel>
                             </Step>
                         </Stepper>
+                    </Col>
+                </Row>
+                <Row className='alt-stepper'>
+                    <Col xs={12}>
+                        {
+                            this.alternativeStepper(step)
+                        }
                     </Col>
                 </Row>
                 {this.switchSteps(this.state.step)}
@@ -121,5 +148,6 @@ class OnboardingSteps extends Component {
         )
     }
 }
+
 
 export default connect()(OnboardingSteps);

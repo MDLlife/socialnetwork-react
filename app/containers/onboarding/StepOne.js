@@ -61,7 +61,7 @@ class StepOne extends Component {
             selectedLangs: [...this.state.selectedLangs, {key: this.state.search, label: this.state.search}]
         }, () => {
             this.setState({
-                searchLanguages: this.state.searchLanguages.filter((x) => {
+                searchLanguages: this.state.searchLanguages.filter(function(x){
                     return this.indexOf(x) < 0
                 }, this.state.selectedLangs.map(x => x.label)),
                 search: ''
@@ -74,7 +74,7 @@ class StepOne extends Component {
             <Chip
                 key={data.key}
                 className='chip'
-                style={{marginLeft: data.key === 0 ? 0 : 10, fontFamily: 'inherit'}}
+                style={{marginRight: 10, fontFamily: 'inherit'}}
                 onClick={this.selectedChip}
             >
                 {data.label}
@@ -154,6 +154,7 @@ class StepOne extends Component {
                         searchText={this.state.search}
                         onUpdateInput={this.updateLanguageInput}
                         onNewRequest={this.handleNewRequest}
+                        id='language'
                     />
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
@@ -171,5 +172,7 @@ class StepOne extends Component {
         ]
     }
 }
+
+
 
 export default connect()(StepOne);
