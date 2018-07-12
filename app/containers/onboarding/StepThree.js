@@ -114,7 +114,15 @@ class StepOne extends Component {
                         <div className='card-avatar' style={{backgroundColor: '#fafafa', width: '56%'}}>
                             <img src="/static/img/dancer.png" alt="" style={{width: '100%', margin: '30px 10px'}}/>
                         </div>
-                        <div className='inputs' style={{width: '50%', display: 'flex', flexDirection: 'column', marginLeft: 40, marginBottom: 10}}>
+                        <div
+                            className='inputs'
+                            style={{
+                                width: '50%',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                marginLeft: 40,
+                                marginBottom: 10,
+                            }}>
                             <div style={{position: 'relative'}}>
                                 <TextField
                                     floatingLabelText="Height"
@@ -279,7 +287,8 @@ class StepOne extends Component {
                             display: 'grid',
                             alignItems: 'center',
                             gridTemplateColumns: 300,
-                            marginLeft: 40
+                            marginLeft: 40,
+                            paddingTop: 15
                         }}>
                             <div style={{position: 'relative'}}>
                                 <div style={{

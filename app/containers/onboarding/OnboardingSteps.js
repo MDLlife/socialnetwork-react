@@ -29,7 +29,7 @@ class OnboardingSteps extends Component {
         super(props);
 
         this.state = {
-            step: 0,
+            step: 1,
             finished: false,
         }
     }
@@ -110,7 +110,6 @@ class OnboardingSteps extends Component {
                             connector={false}
                             activeStep={step}
                             className='stepper-main'
-                            //style={{padding: '0px 10px'}}
                         >
                             <Step className='stepper-step' style={step === 0 ? styles.stepBorder : null}>
                                 <StepLabel className='stepper' style={{margin: 'auto'}}>Personal</StepLabel>
@@ -141,7 +140,13 @@ class OnboardingSteps extends Component {
                         justifyContent: 'flex-end'
                     }}>
                         <button className='back-btn' onClick={this.handlePrev}>Back</button>
-                        <button className='next-btn' onClick={step === 3 ? () => this.previewProfile() : () => this.handleNext()}>{step === 3 ? 'Preview profile' : 'Next'}</button>
+                        <button
+                            className='next-btn tooltip-main'
+                            onClick={step === 3 ? () => this.previewProfile() : () => this.handleNext()
+                        }>
+                            {step === 3 ? 'Preview profile' : 'Next'}
+                            {step === 12 ? <span className='tooltip-text'>ToolTip</span> : null}
+                        </button>
                     </Col>
                 </Row>
             </Grid>

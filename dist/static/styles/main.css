@@ -231,6 +231,25 @@ label {
 .alt-stepper {
   display: none; }
 
+.tooltip-main {
+  position: relative; }
+
+.tooltip-text {
+  position: absolute;
+  top: -55px;
+  left: 68px;
+  color: black; }
+
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent; }
+
 @media (min-width: 1201px) {
   .onboarding {
     width: 800px; } }

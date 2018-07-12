@@ -20,6 +20,7 @@ class StepOne extends Component {
         super(props);
 
         this.state = {
+            year: null,
             search: '',
             ethnic: null,
             selectedLangs: [],
@@ -36,9 +37,11 @@ class StepOne extends Component {
 
     selectEthnic = (event, index, value) => this.setState({ethnic: value});
     selectedDateBirth = (event, date) => {
+        let now = new Date().getUTCFullYear();
         this.setState({
             birthday: date,
-        }, () => console.log(this.state.birthday.getYear()));
+            year: now - date.getUTCFullYear(),
+        }, () => console.log(typeof this.state.year))
     };
 
     selectedChip = e => {
@@ -83,6 +86,22 @@ class StepOne extends Component {
         )
     };
 
+    switchAgeComponent = year => {
+        if (year <= 10) {
+            return <AgeComponent age='Kid (0-10 y.o.)'/>;
+        } else if (year >= 11 && year <= 17) {
+            return <AgeComponent age='Teen (11-17 y.o.)'/>;
+        } else if (year >= 18 && year <= 25) {
+            return <AgeComponent age='Young (18-25 y.o.)'/>;
+        } else if (year >= 26 && year <= 35) {
+            return <AgeComponent age='Mature (26-35 y.o.)'/>;
+        } else if (year >= 36) {
+            return <AgeComponent age='Senior (35+ y.o.)'/>;
+        } else {
+            return <div>Hello LEXA</div>;
+        }
+    };
+
     render() {
         let {ethnic, searchLanguages} = this.state;
 
@@ -111,11 +130,10 @@ class StepOne extends Component {
             <Row>
                 <Col xs={12}>
                     <h2>Date of birth <span style={{color: '#ea2f85'}}>*</span></h2>
-                    <div style={{position: 'relative'}}>
+                    <div style={{position: 'relative', display: 'flex'}}>
                         <DatePicker
                             hintText="mm/dd/yyyy"
                             container='inline'
-                            mode="landscape"
                             onChange={this.selectedDateBirth}
                         />
                         <img
@@ -128,6 +146,9 @@ class StepOne extends Component {
                                 left: 228,
                             }}
                         />
+                        {
+                            this.state.year && this.switchAgeComponent(this.state.year)
+                        }
                     </div>
                 </Col>
             </Row>,
@@ -173,6 +194,23 @@ class StepOne extends Component {
     }
 }
 
+const AgeComponent = props => {
+    return (
+        <div style={{
+            borderRadius: 4,
+            backgroundColor: '#660066',
+            color: 'white',
+            textAlign: 'center',
+            lineHeight: '30px',
+            paddingLeft: 20,
+            paddingRight: 20,
+            height: 30,
+            margin: 10
+        }}>
+            {props.age}
+        </div>
+    )
+};
 
 
 export default connect()(StepOne);
