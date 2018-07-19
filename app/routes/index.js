@@ -4,6 +4,7 @@ import {Router, Route, IndexRoute} from 'react-router';
 import MainLayout from 'containers/main/Master';
 import LoginLayout from 'containers/login/Master';
 import OnboardingLayout from 'containers/onboarding/Master';
+import TodayLayout from 'containers/today/Master';
 
 import Main from 'containers/main/Main';
 import SocialLogin from 'containers/login/SocialLogin';
@@ -15,6 +16,9 @@ import TalentRole from 'containers/login/TalentRole';
 import SelectTalents from 'containers/login/SelectTalents';
 import GeneralInformation from 'containers/login/GeneralInformation';
 import Onboarding from 'containers/onboarding/OnboardingSteps';
+import ProfilePreview from 'containers/onboarding/ProfilePreview';
+import TodayContainer from 'containers/today/TodayContainer';
+import FullPost from 'containers/today/FullPost';
 
 import Notfound from 'containers/Notfound';
 
@@ -44,6 +48,12 @@ export default function (history) {
 
             <Route path='/onboarding' component={OnboardingLayout}>
                 <IndexRoute component={Onboarding}/>
+                <Route path='/profile-preview' component={ProfilePreview}/>
+            </Route>
+
+            <Route path='/today' component={TodayLayout}>
+                <IndexRoute component={TodayContainer}/>
+                <Route path='/today/fullpost' component={FullPost}/>
             </Route>
         </Router>
     );

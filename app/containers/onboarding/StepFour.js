@@ -130,27 +130,50 @@ class StepOne extends Component {
     }
 }
 
+const UploadButton = props => {
+    return (
+        <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            textAlign: 'center'
+        }}>
+            <p>Drag and drop photo</p>
+            <p>or</p>
+            <button
+                className='email-confirmation-actions-buttons clear-button'
+                style={{
+                    background: 'transparent',
+                    fontWeight: 'bold'
+                }}
+            >Upload</button>
+        </div>
+    )
+};
+
 const SchemeOne = props => {
     return (
         <div>
-            <div style={{position: 'relative', backgroundColor: 'grey', width: '100%', height: 464, marginBottom: 10}}>
-
+            <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '100%', height: 464, marginBottom: 10, border: '3px dotted #CCCFD1'}}>
+                <UploadButton/>
             </div>
             <div style={{position: 'relative', width: '100%', display: 'inline-flex'}}>
                 <div style={{position: 'relative', width: '50%', marginRight: 10}}>
-                    <div style={{position: 'relative', backgroundColor: 'black', width: '100%', height: 249, marginBottom: 10}}>
-
+                    <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '100%', height: 249, marginBottom: 10, border: '3px dotted #CCCFD1'}}>
+                        <UploadButton/>
                     </div>
-                    <div style={{position: 'relative', backgroundColor: 'red', width: '100%', height: 182}}>
-
+                    <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '100%', height: 182, border: '3px dotted #CCCFD1'}}>
+                        <UploadButton/>
                     </div>
                 </div>
                 <div style={{position: 'relative', width: '50%'}}>
-                    <div style={{position: 'relative', backgroundColor: 'blue', width: '100%', height: 182, marginBottom: 10}}>
-
+                    <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '100%', height: 182, marginBottom: 10, border: '3px dotted #CCCFD1'}}>
+                        <UploadButton/>
                     </div>
-                    <div style={{position: 'relative', backgroundColor: 'green', width: '100%', height: 249}}>
-
+                    <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '100%', height: 249, border: '3px dotted #CCCFD1'}}>
+                        <UploadButton/>
                     </div>
                 </div>
             </div>
@@ -160,24 +183,24 @@ const SchemeOne = props => {
 const SchemeTwo = props => {
     return (
         <div>
-            <div style={{position: 'relative', backgroundColor: 'grey', width: '100%', height: 464, marginBottom: 10}}>
-
+            <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '100%', height: 464, marginBottom: 10, border: '3px dotted #CCCFD1'}}>
+                <UploadButton/>
             </div>
             <div style={{position: 'relative', width: '100%', display: 'inline-flex'}}>
                 <div style={{position: 'relative', width: '50%', marginRight: 10}}>
-                    <div style={{position: 'relative', backgroundColor: 'black', width: '100%', height: 215, marginBottom: 10}}>
-
+                    <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '100%', height: 215, marginBottom: 10, border: '3px dotted #CCCFD1'}}>
+                        <UploadButton/>
                     </div>
-                    <div style={{position: 'relative', backgroundColor: 'red', width: '100%', height: 215}}>
-
+                    <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '100%', height: 215, border: '3px dotted #CCCFD1'}}>
+                        <UploadButton/>
                     </div>
                 </div>
                 <div style={{position: 'relative', width: '50%'}}>
-                    <div style={{position: 'relative', backgroundColor: 'blue', width: '100%', height: 215, marginBottom: 10}}>
-
+                    <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '100%', height: 215, marginBottom: 10, border: '3px dotted #CCCFD1'}}>
+                        <UploadButton/>
                     </div>
-                    <div style={{position: 'relative', backgroundColor: 'green', width: '100%', height: 215}}>
-
+                    <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '100%', height: 215, border: '3px dotted #CCCFD1'}}>
+                        <UploadButton/>
                     </div>
                 </div>
             </div>
@@ -187,21 +210,21 @@ const SchemeTwo = props => {
 const SchemeThree = props => {
     return (
         <div>
-            <div style={{position: 'relative', backgroundColor: 'grey', width: '100%', height: 464, marginBottom: 10}}>
-
+            <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '100%', height: 464, marginBottom: 10, border: '3px dotted #CCCFD1'}}>
+                <UploadButton/>
             </div>
-            <div style={{position: 'relative', backgroundColor: 'black', width: '100%', height: 215, marginBottom: 10}}>
-
+            <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '100%', height: 215, marginBottom: 10, border: '3px dotted #CCCFD1'}}>
+                <UploadButton/>
             </div>
             <div style={{position: 'relative', width: '100%', display: 'inline-flex'}}>
-                <div style={{position: 'relative', backgroundColor: 'red', width: '33%', height: 215, marginRight: 10}}>
-
+                <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '33%', height: 215, marginRight: 10, border: '3px dotted #CCCFD1'}}>
+                    <UploadButton/>
                 </div>
-                <div style={{position: 'relative', backgroundColor: 'blue', width: '33%', height: 215, marginRight: 10}}>
-
+                <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '33%', height: 215, marginRight: 10, border: '3px dotted #CCCFD1'}}>
+                    <UploadButton/>
                 </div>
-                <div style={{position: 'relative', backgroundColor: 'green', width: '33%', height: 215}}>
-
+                <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '33%', height: 215, border: '3px dotted #CCCFD1'}}>
+                    <UploadButton/>
                 </div>
             </div>
         </div>
@@ -210,23 +233,23 @@ const SchemeThree = props => {
 const SchemeFour = props => {
     return (
         <div>
-            <div style={{position: 'relative', backgroundColor: 'grey', width: '100%', height: 464, marginBottom: 10}}>
-
+            <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '100%', height: 464, marginBottom: 10, border: '3px dotted #CCCFD1'}}>
+                <UploadButton/>
             </div>
             <div style={{position: 'relative', width: '100%', display: 'inline-flex'}}>
-                <div style={{position: 'relative', backgroundColor: 'red', width: '33%', height: 440, marginRight: 10}}>
-
+                <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '33%', height: 440, marginRight: 10, border: '3px dotted #CCCFD1'}}>
+                    <UploadButton/>
                 </div>
                 <div style={{position: 'relative', width: '33%', marginRight: 10}}>
-                    <div style={{position: 'relative', backgroundColor: 'black', width: '100%', height: 215, marginBottom: 10}}>
-
+                    <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '100%', height: 215, marginBottom: 10, border: '3px dotted #CCCFD1'}}>
+                        <UploadButton/>
                     </div>
-                    <div style={{position: 'relative', backgroundColor: 'blue', width: '100%', height: 215, marginRight: 10}}>
-
+                    <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '100%', height: 215, marginRight: 10, border: '3px dotted #CCCFD1'}}>
+                        <UploadButton/>
                     </div>
                 </div>
-                <div style={{position: 'relative', backgroundColor: 'green', width: '33%', height: 440}}>
-
+                <div style={{position: 'relative', backgroundColor: '#EEF2F5', width: '33%', height: 440, border: '3px dotted #CCCFD1'}}>
+                    <UploadButton/>
                 </div>
             </div>
         </div>
