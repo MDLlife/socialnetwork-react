@@ -116,7 +116,9 @@ var config = {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             filname: 'vendor.js',
-            minChunks: Infinity,
+            minChunks: module => {
+              return module.context && module.context.includes('node_modules');
+            },
         }),
         new webpack.LoaderOptionsPlugin({
             minimize: true,
@@ -306,8 +308,9 @@ if (DEBUG) {
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'manifest',
+            filename: '[name].js',
             minChunks: Infinity,
-            filename: 'manifest.json',
+            chunks: ['vendor']
         }),
     ])
 }
