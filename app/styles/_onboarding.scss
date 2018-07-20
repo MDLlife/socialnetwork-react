@@ -1,0 +1,163 @@
+.back-btn:focus,
+.next-btn:focus {
+  outline: none;
+}
+
+.back-btn, .next-btn {
+  border: none;
+  background: none;
+  font-size: 16px;
+  margin-top: 30px;
+  margin-bottom: 17px;
+}
+
+.next-btn {
+  color: white;
+  background-color: #660066;
+  width: 190px;
+  height: 42px;
+  line-height: 42px;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+
+.onboarding {
+  margin-top: 20px;
+  -webkit-box-shadow: -1px 4px 20px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: -1px 4px 20px -5px rgba(0,0,0,0.75);
+  box-shadow: -1px 4px 20px -5px rgba(0,0,0,0.75);
+  border-radius: 10px;
+  width: min-content;
+}
+
+.onboarding-header {
+  text-align: center;
+  background: url(/static/img/Onboarding.png) ;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.hover-chip:hover {
+  background-color: #DDCFE0 !important;
+  color: #612371 !important;
+}
+
+.selected,
+.selected:hover{
+  background-color: #612371 !important;
+}
+
+.selected > * {
+  color: white !important;
+}
+
+.cards {
+  display: inline-flex;
+  border-radius: 10px;
+  width: 100%;
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.15);
+  -moz-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.15);
+  box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.15);
+}
+
+.comp-card:focus {
+  outline: none;
+  background-color: #541065;
+}
+
+.alt-stepper {
+  display: none;
+}
+
+.tooltip-main {
+  position: relative;
+}
+
+.tooltip-text {
+  position: absolute;
+  top: -55px;
+  left: 68px;
+  color: black;
+}
+
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+@media (min-width: 1201px) {
+  .onboarding {
+    width: 800px;
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+  .onboarding {
+    width: 700px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .onboarding {
+    width: 600px;
+  }
+
+  .card-avatar {
+    display: none;
+  }
+
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .onboarding {
+    width: 520px;
+  }
+
+  .card-avatar {
+    display: none;
+  }
+
+  .profile-name,
+  .profile-img {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .onboarding {
+    width: 450px;
+  }
+
+  .card-avatar {
+    display: none;
+  }
+
+  .profile-name,
+  .profile-img  {
+    display: none;
+  }
+
+  .stepper-step > *{
+    display: grid !important;
+  }
+
+  .stepper-step > span.stepper > span {
+    align-self: center;
+    justify-self: center;
+  }
+
+  .alt-stepper {
+    display: flex;
+  }
+  
+  .stepper-main {
+    display: none;
+  }
+}
