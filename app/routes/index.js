@@ -70,8 +70,8 @@ export default function (history) {
 
                     <IndexRoute component={login}/>
 
-                    <Route path="activate-account" component={ActivateAccount} onEnter={checkAuth}/>
-                    <Route path="email-confirmation" component={EmailConfirmation} onEnter={checkAuth}/>
+                    <Route path="activate-account" component={ActivateAccount}/>
+                    <Route path="email-confirmation" component={EmailConfirmation} />
                     <Route path="select-role" component={SelectRole} onEnter={checkAuth}/>
                     <Route path="booker-role" component={BookerRole} onEnter={checkAuth}/>
                     <Route path="talent-role" component={TalentRole} onEnter={checkAuth}/>

@@ -8,7 +8,6 @@ class SelectRole extends Component {
     constructor(props) {
         super(props);
         this.state = {}
-        console.log("state", this.props)
     }
 
     componentDidMount() {

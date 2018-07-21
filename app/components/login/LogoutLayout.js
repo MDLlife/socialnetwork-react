@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Card, CardHeader, CardText} from 'material-ui/Card';
+import $ from 'jquery';
 
 class LoginLayout extends Component {
 
@@ -16,10 +17,49 @@ class LoginLayout extends Component {
 
             console.log("*&*&*&* Process logout page");
 
-            setTimeout(function(){
 
-                window.location.href = "/login";
-            },1000)
+            var request = $.ajax({
+                url: "/logout",
+                type: 'get',
+                xhrFields: {
+                    withCredentials: true
+                }
+            });
+
+            console.log("POST signup email ")
+
+            request.done(function (data, textStatus, jqXHR) {
+
+                if (jqXHR.status === 200) {
+                    console.log("LOGOUT BACKEND OK");
+                } else if (jqXHR.status === 400) {
+                    console.log("LOGOUT BACKEND FAIL");
+                } else if (jqXHR.status === 406) {
+                    //show err
+                    console.log("LOGOUT BACKEND FAIL");
+                }
+
+                setTimeout(function () {
+
+                    window.location.href = "/login";
+                }, 500)
+
+            });
+            request.fail(function (jqXHR) {
+                if (jqXHR.status === 200) {
+                    console.log("LOGOUT BACKEND OK");
+                } else if (jqXHR.status === 400) {
+                    console.log("LOGOUT BACKEND FAIL");
+                } else if (jqXHR.status === 406) {
+                    //show err
+                    console.log("LOGOUT BACKEND FAIL");
+                }
+
+                setTimeout(function () {
+
+                    window.location.href = "/login";
+                }, 500)
+            });
 
         }
 

@@ -1,8 +1,22 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Col, Row} from 'react-bootstrap';
+import LoginStore from 'store/LoginStore';
 
 class BookerRole extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {}
+    }
+
+     componentDidMount() {
+        const username = LoginStore.user && LoginStore.user.username ? LoginStore.user.username : '';
+
+        this.setState({
+            username: username,
+        })
+    }
 
     onClickGigs() {
         if (typeof window !== 'undefined') {
@@ -20,7 +34,7 @@ class BookerRole extends Component {
         return [
             <Row>
                 <Col xs={12}>
-                    <h1 className='log-in-with text-center login-header-margin'>Hi, Username</h1>
+                    <h1 className='log-in-with text-center login-header-margin'>Hi, {this.state.username}</h1>
                     <img className='center-line' src="/static/img/Line.png" alt=""/>
                 </Col>
             </Row>,
