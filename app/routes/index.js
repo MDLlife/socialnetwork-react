@@ -75,6 +75,7 @@ export default function (history) {
                     <Route path="select-role" component={SelectRole} onEnter={checkAuth}/>
                     <Route path="booker-role" component={BookerRole} onEnter={checkAuth}/>
                     <Route path="talent-role" component={TalentRole} onEnter={checkAuth}/>
+
                     <Route path="select-talents" component={SelectTalents} onEnter={checkAuth}/>
                     <Route path="general-information" component={GeneralInformation} onEnter={checkAuth}/>
 

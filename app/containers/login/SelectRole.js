@@ -7,19 +7,13 @@ import Avatar from 'material-ui/Avatar';
 class SelectRole extends Component {
     constructor(props) {
         super(props);
-
-
-
         this.state = {}
-
-
-
         console.log("state", this.props)
     }
 
     componentDidMount() {
-        const avatarurl = LoginStore.user && LoginStore.user.avatarurl ? LoginStore.user.avatarurl : 'http://via.placeholder.com/145x145';
         const username = LoginStore.user && LoginStore.user.username ? LoginStore.user.username : '';
+        const avatarurl = LoginStore.user && LoginStore.user.avatarurl ? LoginStore.user.avatarurl : 'http://via.placeholder.com/145x145';
 
         this.setState({
             avatarurl: avatarurl,
@@ -27,8 +21,19 @@ class SelectRole extends Component {
         })
     }
 
-    render() {
+    onClickBooker(){
+         if (typeof window !== 'undefined') {
+            window.location.href = '/login/booker-role'
+        }
+    }
 
+    onClickTalent(){
+         if (typeof window !== 'undefined') {
+            window.location.href = '/login/talent-role'
+        }
+    }
+
+    render() {
 
         return [
             <Row>
@@ -49,11 +54,11 @@ class SelectRole extends Component {
             </Row>,
             <Row>
                 <Col className='center'>
-                    <button style={{width: 150, marginRight: 24}}
+                    <button onClick={this.onClickBooker}  href="" style={{width: 150, marginRight: 24}}
                             className='main-button radius-button clear-button'>
                         Booker
                     </button>
-                    <button style={{width: 150}}
+                    <button onClick={this.onClickTalent} style={{width: 150}}
                             className='main-button radius-button clear-button'>
                         Talent
                     </button>

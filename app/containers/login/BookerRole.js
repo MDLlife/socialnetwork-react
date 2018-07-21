@@ -1,9 +1,21 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Row, Col} from 'react-bootstrap';
+import {Col, Row} from 'react-bootstrap';
 
 class BookerRole extends Component {
+
+    onClickGigs() {
+        if (typeof window !== 'undefined') {
+            // window.location.href = '/login/booker-role'
+        }
+    }
+
+    onClickTalents() {
+        if (typeof window !== 'undefined') {
+            // window.location.href = '/login/select-talents'
+        }
+    }
+
     render() {
         return [
             <Row>
@@ -13,17 +25,17 @@ class BookerRole extends Component {
                 </Col>
             </Row>,
             <Row>
-                <Col xs={12} style={{  marginTop: 40 }} className='center'>
+                <Col xs={12} style={{marginTop: 40}} className='center'>
                     <h2 className='login-header-margin'>Are you looking for</h2>
                 </Col>
             </Row>,
             <Row>
                 <Col xs={12} className='center'>
-                    <button style={{ width: 150, marginRight: 24 }}
+                    <button onClick={this.onClickGigs} style={{width: 150, marginRight: 24}}
                             className='main-button radius-button clear-button'>
                         Gigs
                     </button>
-                    <button style={{ width: 150 }}
+                    <button onClick={this.onClickTalents} style={{width: 150}}
                             className='main-button radius-button clear-button'>
                         Talents
                     </button>
