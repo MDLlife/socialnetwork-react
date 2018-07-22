@@ -5,6 +5,8 @@ import {Row, Col} from 'react-bootstrap';
 import AutoComplete from 'material-ui/AutoComplete';
 import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
+import LoginStore from 'store/LoginStore';
+import Avatar from 'material-ui/Avatar';
 
 const styles = {
     block: {
@@ -38,6 +40,16 @@ class GeneralInformation extends Component {
         })
     }
 
+    componentDidMount() {
+        const username = LoginStore.user && LoginStore.user.username ? LoginStore.user.username : '';
+        const avatarurl = LoginStore.user && LoginStore.user.avatarurl ? LoginStore.user.avatarurl : 'http://via.placeholder.com/145x145';
+
+        this.setState({
+            avatarurl: avatarurl,
+            username: username,
+        })
+    }
+
     handleUpdateInput = value => {
         this.setState({
             dataSource: [
@@ -60,7 +72,7 @@ class GeneralInformation extends Component {
             </Row>,
             <Row>
                 <Col xs={12} className='center avatar-container'>
-                    <img className='avatar' src={this.state.image ? this.state.image : 'http://via.placeholder.com/145x145'} alt=""/>
+                    <Avatar src={this.state.avatarurl} size={145} style={{float: 'right'}} />
                 </Col>
             </Row>,
             <Row>
@@ -71,6 +83,7 @@ class GeneralInformation extends Component {
             <Row>
                 <Col xs={12} className='center'>
                     <TextField
+                        value={this.state.username}
                         floatingLabelText='Name'
                         onChange={this.handleChange}
                     />

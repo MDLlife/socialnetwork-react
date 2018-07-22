@@ -54,7 +54,11 @@ div[role='menu'] > span:hover {
 
 .main-button {
   color: white;
-  background-color: #660066;
+  background-image: -moz-linear-gradient(left, #eb3386 0%, #c035a0 100%);
+  background-image: -webkit-linear-gradient(left, #eb3386 0%, #c035a0 100%);
+  background-image: -o-linear-gradient(left, #eb3386 0%, #c035a0 100%);
+  background-image: -ms-linear-gradient(left, #eb3386 0%, #c035a0 100%);
+  background-image: linear-gradient(to right, #eb3386 0%, #c035a0 100%);
   margin-top: 35px; }
 
 .email-confirmation-actions-buttons {
@@ -72,9 +76,7 @@ div[role='menu'] > span:hover {
     margin-top: 100px; }
   .multi-bg {
     height: 100%;
-    width: 100%; }
-  .radius-button {
-    width: 150px; } }
+    width: 100%; } }
 
 @media (min-width: 577px) and (max-width: 768px) {
   .main-content-container {

@@ -11,9 +11,6 @@ import config from 'config'
 import FlatButton from 'material-ui/FlatButton';
 import Helmet from "react-helmet";
 
-// var GIT_HASH = require("../../server/version.js").GIT_HASH;
-var host = config.API_URL;
-
 import {Row} from 'react-styled-flexboxgrid';
 
 import {
@@ -197,6 +194,15 @@ class Master extends Component {
             styles.footer.paddingLeft = 256;
         }
 
+        let loginButton =   <span style={{color: '#fff !important', visited: '#fff !important'}}>
+                            <FlatButton href="/login" backgroundColor='#fff' rippleColor='#fff' className="login-button" label="Log In"/> </span>
+
+        if(LoginStore.isLoggedIn()){
+
+            loginButton = <span style={{color: '#fff !important', visited: '#fff !important'}} > Welcome back { LoginStore.user.username}! &#160;
+                            <FlatButton href="/logout" backgroundColor='#fff' className="logout-button" label="Log out"/> </span>
+        }
+
         return (
             <div>
                 <Helmet
@@ -219,12 +225,7 @@ class Master extends Component {
                     title={ <a href="/#" onClick={this.showHome}
                                  style={{color: '#fff', textDecoration: 'none', float: 'left', fontSize: '16px'}}> M D L </a>}
                     zDepth={0}
-                    iconElementRight={ LoginStore.isLoggedIn() ?
-                        <a href={`${host}/logout`} style={{color: '#fff !important', visited: '#fff !important'}} > Welcome back { LoginStore.user.username}! &#160;
-                            <FlatButton backgroundColor='#fff' className="logout-button" label="Log out"/> </a> :
-                        <a href={`${host}/login`} style={{color: '#fff !important', visited: '#fff !important'}}>
-                            <FlatButton backgroundColor='#fff' rippleColor='#fff' className="login-button" label="Log In"/> </a> }
-
+                    iconElementRight={loginButton}
                     style={styles.appBar}
                     showMenuIconButton={showMenuIconButton}
                 />

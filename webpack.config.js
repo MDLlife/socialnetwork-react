@@ -12,10 +12,7 @@ const chalk = require('chalk')
 const APP_DIR = path.resolve(__dirname, 'app/app')
 const PUBLIC_DIR = path.resolve(__dirname, '../', 'public')
 
-var GIT_HASH = require('child_process').
-    execSync('git rev-parse --short HEAD').
-    toString().
-    trim()
+var GIT_HASH = require('child_process').execSync('git rev-parse --short HEAD').toString().trim()
 
 console.log(`Building with GIT_HASH: ${GIT_HASH}`)
 
@@ -81,7 +78,7 @@ const VENDOR_LIBS = [
     'xml2js'
 ]
 
-if(process.env.PRINT_DEPS) {
+if (process.env.PRINT_DEPS) {
     const packagejson = require('./package.json')
     console.log(Object.keys(packagejson.dependencies))
 }
@@ -119,7 +116,9 @@ var config = {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             filname: 'vendor.js',
-            minChunks: Infinity,
+            minChunks: module => {
+              return module.context && module.context.includes('node_modules');
+            },
         }),
         new webpack.LoaderOptionsPlugin({
             minimize: true,
@@ -166,7 +165,7 @@ var config = {
                             options: {sourceMap: true},
                         },
                     ],
-                    
+
                 }),
                 include: path.join(__dirname,
                     'vendor/**/*.scss'),
@@ -211,7 +210,7 @@ if (DEBUG) {
         `webpack-dev-server/client?http://localhost:${WEBPACK_PORT}`,
         'webpack/hot/only-dev-server',
     ]
-    
+
     config.plugins = config.plugins.concat([
         new webpack.HotModuleReplacementPlugin(),
     ])
@@ -309,8 +308,9 @@ if (DEBUG) {
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'manifest',
+            filename: '[name].js',
             minChunks: Infinity,
-            filname: 'manifest.json',
+            chunks: ['vendor']
         }),
     ])
 }

@@ -4,6 +4,30 @@ import {connect} from 'react-redux';
 import {Row, Col} from 'react-bootstrap';
 
 class SelectTalents extends Component {
+    onClickActor(){
+         if (typeof window !== 'undefined') {
+            window.location.href = '/onboarding'
+        }
+    }
+
+    onClickModel(){
+         if (typeof window !== 'undefined') {
+            window.location.href = '/onboarding'
+        }
+    }
+
+    onClickDancer(){
+         if (typeof window !== 'undefined') {
+            window.location.href = '/onboarding'
+        }
+    }
+
+    onClickFan(){
+         if (typeof window !== 'undefined') {
+            window.location.href = '/login/general-information'
+        }
+    }
+
     render() {
         return [
             <Row>
@@ -22,7 +46,7 @@ class SelectTalents extends Component {
                     <img src="/static/img/actor.png" alt="" style={{ width: 150, height: 150 }}/>
                     <p style={{fontSize: 20, marginTop: 20}}><b>Actor</b></p>
                     <p>I am looking for actor gigs</p>
-                    <button style={{ width: 200, marginTop: 10 }}
+                    <button onClick={this.onClickActor} style={{ width: 200, marginTop: 10 }}
                             className='main-button radius-button clear-button'>
                         Select
                     </button>
@@ -31,7 +55,7 @@ class SelectTalents extends Component {
                     <img src="/static/img/model.png" alt="" style={{ width: 150, height: 150 }}/>
                     <p style={{fontSize: 20, marginTop: 20}}><b>Model</b></p>
                     <p>I am looking for model gigs</p>
-                    <button style={{ width: 200, marginTop: 10 }}
+                    <button onClick={this.onClickModel} style={{ width: 200, marginTop: 10 }}
                             className='main-button radius-button clear-button'>
                         Select
                     </button>
@@ -40,7 +64,7 @@ class SelectTalents extends Component {
                     <img src="/static/img/dancer.png" alt="" style={{ width: 150, height: 150 }}/>
                     <p style={{fontSize: 20, marginTop: 20}}><b>Dancer</b></p>
                     <p>I am looking for dancer gigs</p>
-                    <button style={{ width: 200, marginTop: 10 }}
+                    <button onClick={this.onClickDancer} style={{ width: 200, marginTop: 10 }}
                             className='main-button radius-button clear-button'>
                         Select
                     </button>
@@ -56,9 +80,9 @@ class SelectTalents extends Component {
                     position: 'relative',
                     top: -57,
                 }}>
-                    <button style={{border: '2px solid white'}}
+                    <button onClick={this.onClickFan} style={{border: '2px solid white'}}
                             className='main-button radius-button clear-button'>
-                        Continue
+                        Continue as Fan
                     </button>
                 </Col>
             </Row>
