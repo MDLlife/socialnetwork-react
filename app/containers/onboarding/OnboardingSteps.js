@@ -50,7 +50,10 @@ class OnboardingSteps extends Component {
     };
 
     previewProfile = () => {
-        alert('All is good')
+        alert('Its all good');
+        if (typeof window !== 'undefined') {
+            window.location.href = '/onboarding/profile-preview'
+        }
     };
 
     switchSteps = (step) => {
