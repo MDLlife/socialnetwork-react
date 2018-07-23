@@ -17,6 +17,8 @@ import TalentRole from 'containers/login/TalentRole';
 import SelectTalents from 'containers/login/SelectTalents';
 import GeneralInformation from 'containers/login/GeneralInformation';
 import Onboarding from 'containers/onboarding/OnboardingSteps';
+import OnboardingFan from 'containers/onboarding/OnboardingFan';
+
 import ProfilePreview from 'containers/onboarding/ProfilePreview';
 
 import TodayContainer from 'containers/today/TodayContainer';
@@ -88,13 +90,15 @@ export default function (history) {
 
                 <Route path='/onboarding' component={OnboardingLayout} onEnter={checkAuth}>
                     <IndexRoute component={Onboarding}/>
-                    <Route path='/profile-preview' component={ProfilePreview}/>
+                    <Route path='fan' component={OnboardingFan}/>
+
+                    <Route path='profile-preview' component={ProfilePreview}/>
                     <Route path="*" component={Notfound}/>
                 </Route>
 
                 <Route path='/today' component={TodayLayout}>
                     <IndexRoute component={TodayContainer}/>
-                    <Route path='/today/fullpost' component={FullPost}/>
+                    <Route path='fullpost' component={FullPost}/>
                 </Route>
 
                 <Route path="*" component={Notfound}/>
