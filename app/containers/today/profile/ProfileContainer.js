@@ -8,7 +8,7 @@ class ProfileContainer extends Component {
         super(props);
 
         this.state = {
-            edit: false
+            edit: true
         }
     }
 
