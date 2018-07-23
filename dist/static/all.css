@@ -54,11 +54,7 @@ div[role='menu'] > span:hover {
 
 .main-button {
   color: white;
-  background-image: -moz-linear-gradient(left, #eb3386 0%, #c035a0 100%);
-  background-image: -webkit-linear-gradient(left, #eb3386 0%, #c035a0 100%);
-  background-image: -o-linear-gradient(left, #eb3386 0%, #c035a0 100%);
-  background-image: -ms-linear-gradient(left, #eb3386 0%, #c035a0 100%);
-  background-image: linear-gradient(to right, #eb3386 0%, #c035a0 100%);
+  background-color: #660066;
   margin-top: 35px; }
 
 .email-confirmation-actions-buttons {
@@ -76,7 +72,9 @@ div[role='menu'] > span:hover {
     margin-top: 100px; }
   .multi-bg {
     height: 100%;
-    width: 100%; } }
+    width: 100%; }
+  .radius-button {
+    width: 150px; } }
 
 @media (min-width: 577px) and (max-width: 768px) {
   .main-content-container {
@@ -217,6 +215,7 @@ label {
 .onboarding-header {
   text-align: center;
   background-size: cover !important;
+  background: url(/static/img/Onboarding.png);
   color: white;
   padding-top: 25px;
   padding-bottom: 25px;
