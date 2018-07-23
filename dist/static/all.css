@@ -363,4 +363,45 @@ label {
 .post-action-icons img {
   border-radius: 50%; }
 
+.ribbon {
+  width: 132px;
+  height: 132px;
+  overflow: hidden;
+  position: absolute; }
+
+.ribbon span {
+  position: absolute;
+  display: block;
+  width: 225px;
+  padding: 5px 0;
+  background-color: #ff3399;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  text-align: center; }
+
+/* top left*/
+.ribbon-top-left {
+  top: 0px;
+  left: 0px; }
+
+.ribbon-top-left::before,
+.ribbon-top-left::after {
+  border-top-color: transparent;
+  border-left-color: transparent; }
+
+.ribbon-top-left::before {
+  top: 0;
+  right: 0; }
+
+.ribbon-top-left::after {
+  bottom: 0;
+  left: 0; }
+
+.ribbon-top-left span {
+  right: -25px;
+  top: 30px;
+  transform: rotate(-45deg); }
+
 /*# sourceMappingURL=../maps/styles/main.css.map */

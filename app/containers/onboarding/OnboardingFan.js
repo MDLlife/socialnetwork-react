@@ -61,10 +61,8 @@ class OnboardingFan extends Component {
                         />
                     </RadioButtonGroup>
                 </Col>
-            </Row>,
-            <Row>
-                    <Col xs={12}>
-                            <h2>Date of birth <span style={{color: '#ea2f85'}}>*</span></h2>
+                <Col xs={12}>
+                    <h2>Date of birth <span style={{color: '#ea2f85'}}>*</span></h2>
                     <div style={{position: 'relative', display: 'flex'}}>
                         <DatePicker
                             hintText="mm/dd/yyyy"

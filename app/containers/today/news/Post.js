@@ -14,7 +14,7 @@ class Post extends Component {
                     position: 'relative'
                 }}>
                     <img
-                        src="http://via.placeholder.com/36x36"
+                        src="http://via.placeholder.com/450x250"
                         alt=""
                         style={{
                             width: '100%',

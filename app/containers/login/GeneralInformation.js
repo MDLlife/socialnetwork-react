@@ -36,7 +36,7 @@ class GeneralInformation extends Component {
         this.setState({
             name: event.target.value
         })
-    }
+    };
 
     handleUpdateInput = value => {
         this.setState({

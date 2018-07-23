@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Grid, Row, Col} from 'react-bootstrap';
 import NewsFeed from './NewsFeed';
-import Profile from './profile/Profile';
+import ProfileContainer from './profile/ProfileContainer';
 
 class TodayContainer extends Component {
     constructor(props) {
@@ -52,7 +52,7 @@ class TodayContainer extends Component {
                         </ul>
                     </Col>
                     {
-                        this.state.menu === 1 ? <NewsFeed/> : <Profile/>
+                        this.state.menu === 1 ? <NewsFeed/> : <ProfileContainer/>
                     }
                 </Row>
             </Grid>
