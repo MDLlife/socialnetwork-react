@@ -5,12 +5,9 @@ import Helmet from 'react-helmet';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import getMuiTheme from "material-ui/styles/getMuiTheme";
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import IconButton from 'material-ui/IconButton';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import LoginStore from 'store/LoginStore';
 import Avatar from 'material-ui/Avatar';
+import ProfileMenu from '../Menu';
 
 
 const muiTheme = getMuiTheme({
@@ -85,23 +82,6 @@ class Master extends Component {
             </div>
         )
     }
-}
-
-
-const ProfileMenu = props => {
-    return (
-        <IconMenu
-            iconButtonElement={<IconButton><MoreVertIcon/></IconButton>}
-            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-            targetOrigin={{horizontal: 'right', vertical: 'top'}}
-        >
-            <MenuItem primaryText="Refresh"/>
-            <MenuItem primaryText="Send feedback"/>
-            <MenuItem primaryText="Settings"/>
-            <MenuItem primaryText="Help"/>
-            <MenuItem primaryText="Sign out"/>
-        </IconMenu>
-    )
 }
 
 Master.propTypes = {

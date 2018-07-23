@@ -29,7 +29,8 @@ class GeneralInformation extends Component {
         this.state ={
             image: null,
             dataSource: [],
-            name: ''
+            name: '',
+            role: '2' // user role: 1 - talent or booker, 2 - fan
         }
     }
 
@@ -37,7 +38,7 @@ class GeneralInformation extends Component {
         this.setState({
             name: event.target.value
         })
-    }
+    };
 
     componentDidMount() {
         const username = LoginStore.user && LoginStore.user.username ? LoginStore.user.username : '';
@@ -98,17 +99,19 @@ class GeneralInformation extends Component {
                     />
                 </Col>
             </Row>,
-            <Row>
-                <Col xs={12} className='center'>
-                    <div style={styles.block}>
-                        <Toggle
-                            label="Open for business trips"
-                            thumbSwitchedStyle={styles.thumbSwitched}
-                            trackSwitchedStyle={styles.trackSwitched}
-                        />
-                    </div>
-                </Col>
-            </Row>,
+            this.state.role === '1' ? (
+                <Row>
+                    <Col xs={12} className='center'>
+                        <div style={styles.block}>
+                            <Toggle
+                                label="Open for business trips"
+                                thumbSwitchedStyle={styles.thumbSwitched}
+                                trackSwitchedStyle={styles.trackSwitched}
+                            />
+                        </div>
+                    </Col>
+                </Row>
+            ) : <div></div>
         ]
     }
 }

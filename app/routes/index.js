@@ -4,6 +4,7 @@ import {IndexRoute, Route, Router} from 'react-router';
 import MainLayout from 'containers/main/Master';
 
 import LoginLayout from 'containers/login/Master';
+import TodayLayout from 'containers/today/Master';
 
 import OnboardingLayout from 'containers/onboarding/Master';
 
@@ -16,6 +17,12 @@ import TalentRole from 'containers/login/TalentRole';
 import SelectTalents from 'containers/login/SelectTalents';
 import GeneralInformation from 'containers/login/GeneralInformation';
 import Onboarding from 'containers/onboarding/OnboardingSteps';
+import OnboardingFan from 'containers/onboarding/OnboardingFan';
+
+import ProfilePreview from 'containers/onboarding/ProfilePreview';
+
+import TodayContainer from 'containers/today/TodayContainer';
+import FullPost from 'containers/today/FullPost';
 
 import Notfound from 'containers/Notfound';
 // Needed for onTouchTap
@@ -67,7 +74,6 @@ export default function (history) {
                 </Route>
 
                 <Route path="/login" component={LoginLayout}>
-
                     <IndexRoute component={login}/>
 
                     <Route path="activate-account" component={ActivateAccount}/>
@@ -79,18 +85,24 @@ export default function (history) {
                     <Route path="select-talents" component={SelectTalents} onEnter={checkAuth}/>
                     <Route path="general-information" component={GeneralInformation} onEnter={checkAuth}/>
 
-
+                    <Route path="*" component={Notfound}/>
                 </Route>
 
                 <Route path='/onboarding' component={OnboardingLayout} onEnter={checkAuth}>
                     <IndexRoute component={Onboarding}/>
+                    <Route path='fan' component={OnboardingFan}/>
+
+                    <Route path='profile-preview' component={ProfilePreview}/>
                     <Route path="*" component={Notfound}/>
+                </Route>
+
+                <Route path='/today' component={TodayLayout}>
+                    <IndexRoute component={TodayContainer}/>
+                    <Route path='fullpost' component={FullPost}/>
                 </Route>
 
                 <Route path="*" component={Notfound}/>
             </Route>
-
-
             <Route path="*" component={Notfound}/>
         </Router>
     );

@@ -1,0 +1,32 @@
+.info-container {
+  padding-left: 328px;
+  padding-right: 328px
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+  .info-container {
+    padding-left: 257px;
+    padding-right: 257px
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .info-container {
+    padding-left: 139px;
+    padding-right: 139px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .info-container {
+    padding-left: 59px;
+    padding-right: 59px;
+  }
+}
+
+@media (max-width: 576px) {
+  .info-container {
+    padding-left: 57px;
+    padding-right: 57px;
+  }
+}

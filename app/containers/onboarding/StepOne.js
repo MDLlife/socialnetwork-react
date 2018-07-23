@@ -41,7 +41,7 @@ class StepOne extends Component {
         this.setState({
             birthday: date,
             year: now - date.getUTCFullYear(),
-        }, () => console.log(typeof this.state.year))
+        })
     };
 
     selectedChip = e => {
@@ -72,6 +72,13 @@ class StepOne extends Component {
         })
     };
 
+    handleRequestDelete = (key) => {
+        this.selectedLangs = this.state.selectedLangs;
+        const chipToDelete = this.selectedLangs.map((chip) => chip.key).indexOf(key);
+        this.selectedLangs.splice(chipToDelete, 1);
+        this.setState({selectedLangs: this.selectedLangs});
+    };
+
     renderChip = data => {
         return (
             <Chip
@@ -79,6 +86,24 @@ class StepOne extends Component {
                 className='chip'
                 style={{marginRight: 10, fontFamily: 'inherit'}}
                 onClick={this.selectedChip}
+            >
+                {data.label}
+                {/*<Plus style={{verticalAlign: 'middle', marginLeft: 5, paddingBottom: 4}} />*/}
+            </Chip>
+        )
+    };
+
+    renderSearchChip = data => {
+        return (
+            <Chip
+                key={data.key}
+                className='selected'
+                style={{marginRight: 10, fontFamily: 'inherit'}}
+                // onClick={this.selectedChip}
+                onRequestDelete={() => this.handleRequestDelete(data.key)}
+                deleteIconStyle={{
+                    fill: 'rgb(255,255,255)'
+                }}
             >
                 {data.label}
                 {/*<Plus style={{verticalAlign: 'middle', marginLeft: 5, paddingBottom: 4}} />*/}
@@ -98,7 +123,7 @@ class StepOne extends Component {
         } else if (year >= 36) {
             return <AgeComponent age='Senior (35+ y.o.)'/>;
         } else {
-            return <div>Hello LEXA</div>;
+            return <div></div>;
         }
     };
 
@@ -152,7 +177,7 @@ class StepOne extends Component {
                     </div>
                 </Col>
             </Row>,
-            <Row>
+            <Row style={{paddingBottom: 35}}>
                 <Col xs={12}>
                     <h2>Ethnicity <span style={{color: '#ea2f85'}}>*</span></h2>
                     <DropDownMenu
@@ -165,7 +190,7 @@ class StepOne extends Component {
                     </DropDownMenu>
                 </Col>
             </Row>,
-            <Row>
+            <Row style={{paddingTop: 20, borderTop: '1px solid lightgrey'}}>
                 <Col xs={12}>
                     <h2>Languages spoken</h2>
                     <AutoComplete
@@ -179,7 +204,7 @@ class StepOne extends Component {
                     />
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
-                            this.state.selectedLangs.length > 0 && this.state.selectedLangs.map(this.renderChip, this)
+                            this.state.selectedLangs.length > 0 && this.state.selectedLangs.map(this.renderSearchChip, this)
                         }
                     </div>
                     <h4 style={{color: '#ea2f85', marginTop: 30}}>TOP MOST POPULAR LANGUAGES</h4>

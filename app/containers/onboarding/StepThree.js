@@ -31,7 +31,7 @@ const listLenght = [];
     listEyes.push(<MenuItem value={el} key={el} primaryText={el} />)
 });
 
-['Black', 'Dark brown', 'Light brown', 'Blond', 'Platinum', 'Auburn', 'Red', 'Gray', 'White', 'Other'].forEach((el) => {
+['Black', 'Dark brown', 'Light brown', 'Blond', 'Platinum', 'Auburn', 'Red', 'Gray', 'White', 'Bold','Other'].forEach((el) => {
     listHair.push(<MenuItem value={el} key={el} primaryText={el} />)
 });
 
@@ -61,7 +61,7 @@ class StepOne extends Component {
 
     selectType = (event, index, value) => this.setState({bodyType: value});
     selectEyes = (event, index, value) => this.setState({eyes: value});
-    selectHair = (event, index, value) => this.setState({hair: value});
+    selectHair = (event, index, value) => this.setState({hair: value}, () => {console.log(this.state)});
     selectLenght = (event, index, value) => this.setState({hairLenght: value});
 
     showTattoo = () => {
@@ -348,7 +348,10 @@ class StepOne extends Component {
                                     />
                                 </div>
                             </div>
-                            <div style={{position: 'relative'}}>
+                            <div style={{
+                                position: 'relative',
+                                opacity: this.state.hair === 'Bold' ? 0.3 : 1
+                            }}>
                                 <div style={{
                                     position: 'absolute',
                                     top: -7
@@ -356,6 +359,7 @@ class StepOne extends Component {
                                     <label>Hair length</label>
                                 </div>
                                 <DropDownMenu
+                                    disabled={this.state.hair === 'Bold' ? true : false}
                                     hintText='Hair length'
                                     value={hairLenght}
                                     onChange={this.selectLenght}

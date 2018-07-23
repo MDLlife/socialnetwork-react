@@ -3,12 +3,28 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Row, Col} from 'react-bootstrap';
 import Chip from 'material-ui/Chip';
+import Toggle from 'material-ui/Toggle';
+
+const styles = {
+    block: {
+        width: 260,
+        marginTop: 38,
+        fontFamily: 'Gilroy Light'
+    },
+    thumbSwitched: {
+        backgroundColor: '#EB3386',
+    },
+    trackSwitched: {
+        backgroundColor: '#F599C2',
+    },
+}
 
 class StepOne extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            pierce: false,
             showTattoo: false,
             areas: [
                 {key: 0, label: 'Fashion show'},
@@ -58,18 +74,15 @@ class StepOne extends Component {
         }
     };
 
-    selectedTattoo = e => {
-        let elem = e.target.parentNode;
-        if (elem.classList.contains('selected')) {
-            elem.classList.remove('selected');
-            elem.classList.add('hover-chip');
-        } else {
-            elem.classList.remove('hover-chip');
-            elem.classList.add('selected');
-        }
-
+    selectedTattoo = () => {
         this.setState({
             showTattoo: !this.state.showTattoo
+        })
+    };
+
+    selectedPiercing = () => {
+        this.setState({
+            pierce: !this.state.pierce
         })
     }
 
@@ -104,7 +117,7 @@ class StepOne extends Component {
             </Row>,
             <Row>
                 <Col xs={12}>
-                    <h2>Style</h2>
+                    <h2>Niches</h2>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
                             this.state.styles.map(this.renderChip, this)
@@ -113,31 +126,37 @@ class StepOne extends Component {
                 </Col>
             </Row>,
             <Row>
-                <Col xs={12}>
-                    <h2>Features</h2>
-                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                        <Chip
-                            className='hover-chip'
-                            style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
-                            onClick={this.selectedTattoo}
-                        >
-                            Tattoo
-                        </Chip>
-                        <Chip
-                            className='hover-chip'
-                            style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
-                            onClick={this.selectedChip}
-                        >
-                            Bold
-                        </Chip>
+                <Col xs={12} style={{display: 'inline-flex', justifyContent: 'space-between'}}>
+                    <div>
+                        <h2>Piercing</h2>
+                    </div>
+                    <div>
+                        <Toggle
+                            style={{marginTop: 24}}
+                            thumbSwitchedStyle={styles.thumbSwitched}
+                            trackSwitchedStyle={styles.trackSwitched}
+                            onToggle={this.selectedPiercing}
+                        />
+                    </div>
+                </Col>
+            </Row>,
+            <Row>
+                <Col xs={12} style={{display: 'inline-flex', justifyContent: 'space-between'}}>
+                    <div>
+                        <h2>Tattoo</h2>
+                    </div>
+                    <div>
+                        <Toggle
+                            style={{marginTop: 24}}
+                            thumbSwitchedStyle={styles.thumbSwitched}
+                            trackSwitchedStyle={styles.trackSwitched}
+                            onToggle={this.selectedTattoo}
+                        />
                     </div>
                 </Col>
             </Row>,
             <Row>
                 <Col xs={12}>
-                    {
-                        this.state.showTattoo && <h3>Tattoo placement</h3>
-                    }
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
                             this.state.showTattoo &&
@@ -145,7 +164,8 @@ class StepOne extends Component {
                         }
                     </div>
                 </Col>
-            </Row>
+            </Row>,
+
         ]
     }
 }
