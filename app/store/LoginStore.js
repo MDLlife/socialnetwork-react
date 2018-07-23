@@ -1,7 +1,7 @@
 /** LOGIN COMPONENT **/
 
 import jwt_decode from 'jwt-decode';
-import { EventEmitter } from 'events';
+import {EventEmitter} from 'events';
 
 class LoginStore extends EventEmitter {
 
@@ -23,7 +23,7 @@ class LoginStore extends EventEmitter {
         if (typeof window !== 'undefined') {
             let jwt = localStorage.getItem("jv_jwt");
 
-            if (!jwt) {
+            if (!jwt || jwt === "null") {
 
                 var vars = [], hash;
                 var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -49,23 +49,27 @@ class LoginStore extends EventEmitter {
                     console.log("&*&*&* autologin success");
 
                 } else {
-                  console.log("&*&*&* failed to get session or jwt token :| --> "+window.location.href);
+                    console.log("&*&*&* failed to get session or jwt token :| --> " + window.location.href);
                 }
             } else {
                 console.log("&*&*&* will login from localStorage");
                 this._jwt = jwt;
-                this._user = jwt_decode(this.jwt);
-                //console.log(this._user);
-                console.log("&*&*&* autologin success");
+                console.log("this._jwt, ", this._jwt);
+                if (this._jwt) {
+                    this._user = jwt_decode(this.jwt);
+                    console.log("&*&*&* autologin success");
+                } else {
+                    console.log("&*&*&* failed to get session or jwt token :| --> " + window.location.href);
+                }
             }
 
 
             console.log("&*&*&* will remove credentials from url");
             //TODO: remove only session and jv_jwt from parameters, it may affect other pages in case we start using params :|
 
-            if (window.parent.location.href.match(/session=/)){
-                if (typeof (history.pushState) != "undefined") {
-                    var obj = { Title: document.title, Url: window.parent.location.pathname };
+            if (window.parent.location.href.match(/session=/)) {
+                if (typeof (history.pushState) !== "undefined") {
+                    var obj = {Title: document.title, Url: window.parent.location.pathname};
                     history.pushState(obj, obj.Title, obj.Url);
                 } else {
                     window.parent.location = window.parent.location.pathname;

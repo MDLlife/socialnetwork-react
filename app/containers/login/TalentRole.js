@@ -4,6 +4,12 @@ import {connect} from 'react-redux';
 import {Row, Col} from 'react-bootstrap';
 
 class TalentRole extends Component {
+    onClickTalent(){
+         if (typeof window !== 'undefined') {
+            window.location.href = '/login/select-talents'
+        }
+    }
+
     render() {
         return [
             <Row>
@@ -32,7 +38,7 @@ class TalentRole extends Component {
             </Row>,
             <Row>
                 <Col xs={12} className='center'>
-                    <button style={{ width: 200, marginTop: 56, marginBottom: 50 }}
+                    <button onClick={this.onClickTalent}  style={{ width: 200, marginTop: 56, marginBottom: 50 }}
                             className='main-button radius-button clear-button'>
                         Next
                     </button>

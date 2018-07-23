@@ -1,14 +1,40 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Row, Col} from 'react-bootstrap';
+import {Col, Row} from 'react-bootstrap';
+import LoginStore from 'store/LoginStore';
 
 class BookerRole extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {}
+    }
+
+     componentDidMount() {
+        const username = LoginStore.user && LoginStore.user.username ? LoginStore.user.username : '';
+
+        this.setState({
+            username: username,
+        })
+    }
+
+    onClickGigs() {
+        if (typeof window !== 'undefined') {
+            // window.location.href = '/login/booker-role'
+        }
+    }
+
+    onClickTalents() {
+        if (typeof window !== 'undefined') {
+            // window.location.href = '/login/select-talents'
+        }
+    }
+
     render() {
         return [
             <Row>
                 <Col xs={12}>
-                    <h1 className='log-in-with text-center login-header-margin'>Talent</h1>
+                    <h1 className='log-in-with text-center login-header-margin'>Hi, {this.state.username}</h1>
                     <img className='center-line' src="/static/img/Line.png" alt=""/>
                 </Col>
             </Row>,
@@ -18,18 +44,18 @@ class BookerRole extends Component {
                 </Col>
             </Row>,
             <Row style={{marginTop: 30}}>
-                <Col  xs={6} smOffset={2} sm={4} mdOffset={3} lgOffset={3} md={3} lg={3} style={{textAlign: 'center'}}>
-                    <img src="/static/img/model.png" alt="" style={{ width: 150, height: 150 }}/>
-                    <button
-                            className='main-button radius-button clear-button'>
-                        Talent
-                    </button>
-                </Col>
                 <Col xs={6} sm={4} md={3} lg={3} style={{textAlign: 'center'}}>
                     <img src="/static/img/dancer.png" alt="" style={{ width: 150, height: 150 }}/>
-                    <button
+                    <button onClick={this.onClickGigs}
                             className='main-button radius-button clear-button'>
                         Gigs
+                    </button>
+                </Col>
+                <Col  xs={6} smOffset={2} sm={4} mdOffset={3} lgOffset={3} md={3} lg={3} style={{textAlign: 'center'}}>
+                    <img src="/static/img/model.png" alt="" style={{ width: 150, height: 150 }}/>
+                    <button onClick={this.onClickTalents}
+                            className='main-button radius-button clear-button'>
+                        Talent
                     </button>
                 </Col>
             </Row>,
