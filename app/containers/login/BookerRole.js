@@ -49,11 +49,17 @@ class BookerRole extends Component {
             </Row>,
             <Row>
                 <Col xs={12} className='center'>
-                    <h2>Are you looking for</h2>
+                    <h2>Are you looking for...</h2>
                 </Col>
             </Row>,
             <Row style={{marginTop: 30}}>
-                <Col  xs={6} smOffset={2} sm={4} mdOffset={3} lgOffset={3} md={3} lg={3} style={{textAlign: 'center'}}>
+                <Col xs={6} smOffset={2} sm={4} mdOffset={3} lgOffset={3} md={3} lg={3}
+                     style={{
+                         textAlign: 'center',
+                         boxShadow: '0px 0px 150px -30px rgba(0,0,0,0.75)',
+                         borderRadius: 10
+                     }}
+                >
                     <img src="/static/img/model.png" alt="" style={{ width: 150, height: 150 }}/>
                     <button onClick={this.onClickTalents}
                             className='main-button radius-button clear-button'>

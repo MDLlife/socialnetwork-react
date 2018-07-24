@@ -30,7 +30,7 @@ class GeneralInformation extends Component {
             image: null,
             dataSource: [],
             name: '',
-            role: '2' // user role: 1 - talent or booker, 2 - fan
+            role: '1' // user role: 1 - talent or booker, 2 - fan
         }
     }
 

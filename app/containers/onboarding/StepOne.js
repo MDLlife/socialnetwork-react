@@ -10,6 +10,16 @@ import AutoComplete from 'material-ui/AutoComplete';
 import Chip from 'material-ui/Chip';
 import Plus from 'material-ui/svg-icons/content/add';
 
+import {
+    SELECT_GENDER,
+    SELECT_ETHNICITY,
+    DATE_OF_BIRTH,
+    SELECT_LANGUAGE,
+    REMOVE_LANGUAGE,
+    SEARCH_LANGUAGE,
+    REMOVE_SEARCH_LANGUAGE
+} from 'actions/onboarding';
+
 const list = [];
 ['Asian', 'Eurasian', 'Caucasian', 'Black', 'Hispanic', 'Middle Eastern', 'Indian'].forEach((el) => {
     list.push(<MenuItem value={el} key={el} primaryText={el} />)
@@ -20,9 +30,9 @@ class StepOne extends Component {
         super(props);
 
         this.state = {
-            year: null,
+            //year: null,
             search: '',
-            ethnic: null,
+            //ethnic: null,
             selectedLangs: [],
             language: [
                 {key: 0, label: 'Chinese'},
@@ -31,25 +41,31 @@ class StepOne extends Component {
             ],
             searchLanguages: [
                 'Spanish','French', 'German','Japanese','Danish','Belorussian'
-            ]
+            ],
+            //languages_spoken: []
         }
     }
 
-    selectEthnic = (event, index, value) => this.setState({ethnic: value});
+    selectGender = (event, value) => {
+        this.props.SELECT_GENDER(value);
+    };
+
+    selectEthnic = (event, index, value) => {
+        this.props.SELECT_ETHNICITY(value);
+    };
+
     selectedDateBirth = (event, date) => {
-        let now = new Date().getUTCFullYear();
-        this.setState({
-            birthday: date,
-            year: now - date.getUTCFullYear(),
-        })
+        this.props.DATE_OF_BIRTH(date)
     };
 
     selectedChip = e => {
         let elem = e.target.parentNode;
         if (elem.classList.contains('selected')) {
             elem.classList.remove('selected');
+            this.props.REMOVE_LANGUAGE(e.target.innerHTML)
         } else {
             elem.classList.add('selected');
+            this.props.SELECT_LANGUAGE(e.target.innerHTML)
         }
     };
 
@@ -60,8 +76,10 @@ class StepOne extends Component {
     };
 
     handleNewRequest = () => {
+        this.props.SELECT_LANGUAGE(this.state.search);
+        this.props.SEARCH_LANGUAGE(this.state.search);
         this.setState({
-            selectedLangs: [...this.state.selectedLangs, {key: this.state.search, label: this.state.search}]
+            selectedLangs: [...this.state.selectedLangs, {key: this.state.search, label: this.state.search}],
         }, () => {
             this.setState({
                 searchLanguages: this.state.searchLanguages.filter(function(x){
@@ -74,9 +92,15 @@ class StepOne extends Component {
 
     handleRequestDelete = (key) => {
         this.selectedLangs = this.state.selectedLangs;
+        const labelToDelete = this.state.selectedLangs.map((chip) => chip.key);
         const chipToDelete = this.selectedLangs.map((chip) => chip.key).indexOf(key);
+        this.props.REMOVE_LANGUAGE(labelToDelete[0]);
+        this.props.REMOVE_SEARCH_LANGUAGE(labelToDelete[0]);
         this.selectedLangs.splice(chipToDelete, 1);
-        this.setState({selectedLangs: this.selectedLangs});
+        this.setState({
+            selectedLangs: this.selectedLangs,
+            searchLanguages: [...this.state.searchLanguages, labelToDelete[0]]
+        });
     };
 
     renderChip = data => {
@@ -128,14 +152,18 @@ class StepOne extends Component {
     };
 
     render() {
-        let {ethnic, searchLanguages} = this.state;
-
+        let {searchLanguages} = this.state;
+        console.log(this.props.profile);
         return [
             <Row>
                 <Col xs={12}>
                     <h2>Gender<span style={{color: '#ea2f85'}}>*</span></h2>
                     <p>If you don't indentify yourself as female or male then please select 'Other'</p>
-                    <RadioButtonGroup name="gender" defaultSelected="female">
+                    <RadioButtonGroup
+                        name="gender"
+                        onChange={this.selectGender}
+                        valueSelected={this.props.profile.gender || null}
+                    >
                         <RadioButton
                             value="female"
                             label="Female"
@@ -160,6 +188,7 @@ class StepOne extends Component {
                             hintText="mm/dd/yyyy"
                             container='inline'
                             onChange={this.selectedDateBirth}
+                            value={this.props.profile.dateOfBirth || null}
                         />
                         <img
                             src="/static/img/calendar.svg"
@@ -172,7 +201,7 @@ class StepOne extends Component {
                             }}
                         />
                         {
-                            this.state.year && this.switchAgeComponent(this.state.year)
+                            this.props.profile.dateOfBirth && this.switchAgeComponent(this.props.profile.year)
                         }
                     </div>
                 </Col>
@@ -181,7 +210,7 @@ class StepOne extends Component {
                 <Col xs={12}>
                     <h2>Ethnicity <span style={{color: '#ea2f85'}}>*</span></h2>
                     <DropDownMenu
-                        value={ethnic}
+                        value={this.props.profile.ethnic || ''}
                         onChange={this.selectEthnic}
                         style={{width: 280}}
                         underlineStyle={{ marginLeft: 0}}
@@ -204,7 +233,7 @@ class StepOne extends Component {
                     />
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
-                            this.state.selectedLangs.length > 0 && this.state.selectedLangs.map(this.renderSearchChip, this)
+                            this.props.profile.search_language.length > 0 && this.props.profile.search_language.map(this.renderSearchChip, this)
                         }
                     </div>
                     <h4 style={{color: '#ea2f85', marginTop: 30}}>TOP MOST POPULAR LANGUAGES</h4>
@@ -238,4 +267,21 @@ const AgeComponent = props => {
 };
 
 
-export default connect()(StepOne);
+function mapStateToProps(state) {
+    return {
+        profile: state.onboarding
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    {
+        SELECT_GENDER,
+        SELECT_ETHNICITY,
+        DATE_OF_BIRTH,
+        SELECT_LANGUAGE,
+        REMOVE_LANGUAGE,
+        SEARCH_LANGUAGE,
+        REMOVE_SEARCH_LANGUAGE
+    }
+)(StepOne);

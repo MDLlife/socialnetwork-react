@@ -13,8 +13,7 @@
 html, body {
   min-width: 100%;
   min-height: 100%;
-  font-family: 'Gilroy Light', sans-serif;
-  background-color: #EEF2F5; }
+  font-family: 'Gilroy Light', sans-serif; }
 
 div[role='menu'] > span:hover {
   background-color: black; }
@@ -215,6 +214,7 @@ label {
 .onboarding-header {
   text-align: center;
   background-size: cover !important;
+  background: url(/static/img/Onboarding.png);
   color: white;
   padding-top: 25px;
   padding-bottom: 25px;

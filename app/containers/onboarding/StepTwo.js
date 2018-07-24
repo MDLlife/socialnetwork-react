@@ -5,6 +5,17 @@ import {Row, Col} from 'react-bootstrap';
 import Chip from 'material-ui/Chip';
 import Toggle from 'material-ui/Toggle';
 
+import {
+    SELECT_WORK_AREAS,
+    REMOVE_WORK_AREAS,
+    SELECT_WORK_NICHES,
+    REMOVE_WORK_NICHES,
+    SELECT_TATTOO,
+    REMOVE_TATTOO,
+    TOGGLE_PIERCING,
+    TOGGLE_TATTOO
+} from "../../actions/onboarding";
+
 const styles = {
     block: {
         width: 260,
@@ -63,36 +74,60 @@ class StepOne extends Component {
         }
     }
 
-    selectedChip = e => {
+    selectedChipWorkAreas = e => {
         let elem = e.target.parentNode;
         if (elem.classList.contains('selected')) {
             elem.classList.remove('selected');
             elem.classList.add('hover-chip');
+            this.props.REMOVE_WORK_AREAS(e.target.innerHTML)
         } else {
             elem.classList.remove('hover-chip');
             elem.classList.add('selected');
+            this.props.SELECT_WORK_AREAS(e.target.innerHTML)
+        }
+    };
+
+    selectedChipStyle = e => {
+        let elem = e.target.parentNode;
+        if (elem.classList.contains('selected')) {
+            elem.classList.remove('selected');
+            elem.classList.add('hover-chip');
+            this.props.REMOVE_WORK_NICHES(e.target.innerHTML)
+        } else {
+            elem.classList.remove('hover-chip');
+            elem.classList.add('selected');
+            this.props.SELECT_WORK_NICHES(e.target.innerHTML)
+        }
+    };
+
+    selectedChipTattoo = e => {
+        let elem = e.target.parentNode;
+        if (elem.classList.contains('selected')) {
+            elem.classList.remove('selected');
+            elem.classList.add('hover-chip');
+            this.props.REMOVE_TATTOO(e.target.innerHTML)
+        } else {
+            elem.classList.remove('hover-chip');
+            elem.classList.add('selected');
+            this.props.SELECT_TATTOO(e.target.innerHTML)
         }
     };
 
     selectedTattoo = () => {
-        this.setState({
-            showTattoo: !this.state.showTattoo
-        })
+        this.props.TOGGLE_TATTOO(!this.state.showTattoo)
     };
 
     selectedPiercing = () => {
-        this.setState({
-            pierce: !this.state.pierce
-        })
-    }
+        this.props.TOGGLE_PIERCING(!this.state.pierce)
+    };
 
-    renderChip = data => {
+    renderChipWorkAreas = data => {
         return (
             <Chip
                 className='hover-chip'
                 key={data.key}
                 style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
-                onClick={this.selectedChip}
+                onClick={this.selectedChipWorkAreas}
             >
                 {data.label}
                 {/*{*/}
@@ -102,15 +137,48 @@ class StepOne extends Component {
         )
     };
 
+    renderChipStyle = data => {
+        return (
+            <Chip
+                className='hover-chip'
+                key={data.key}
+                style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
+                onClick={this.selectedChipStyle}
+            >
+                {data.label}
+                {/*{*/}
+                {/*data.key % 2 !== 0 ? <img src="/static/img/fire.svg" alt="" style={{width: 16}}/> : null*/}
+                {/*}*/}
+            </Chip>
+        )
+    };
+
+    renderChipTattoo = data => {
+        return (
+            <Chip
+                className='hover-chip'
+                key={data.key}
+                style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
+                onClick={this.selectedChipTattoo}
+            >
+                {data.label}
+                {/*{*/}
+                {/*data.key % 2 !== 0 ? <img src="/static/img/fire.svg" alt="" style={{width: 16}}/> : null*/}
+                {/*}*/}
+            </Chip>
+        )
+    };
+
 
     render() {
+        console.log(this.props.profile)
         return [
             <Row>
                 <Col xs={12}>
                     <h2>Work areas</h2>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
-                            this.state.areas.map(this.renderChip, this)
+                            this.state.areas.map(this.renderChipWorkAreas, this)
                         }
                     </div>
                 </Col>
@@ -120,7 +188,7 @@ class StepOne extends Component {
                     <h2>Niches</h2>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
-                            this.state.styles.map(this.renderChip, this)
+                            this.state.styles.map(this.renderChipStyle, this)
                         }
                     </div>
                 </Col>
@@ -159,8 +227,8 @@ class StepOne extends Component {
                 <Col xs={12}>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
-                            this.state.showTattoo &&
-                                this.state.tattoo.map(this.renderChip, this)
+                            this.props.profile.tattoo &&
+                                this.state.tattoo.map(this.renderChipTattoo, this)
                         }
                     </div>
                 </Col>
@@ -170,4 +238,22 @@ class StepOne extends Component {
     }
 }
 
-export default connect()(StepOne);
+function mapStateToProps(state) {
+    return {
+        profile: state.onboarding
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    {
+        SELECT_WORK_AREAS,
+        REMOVE_WORK_AREAS,
+        SELECT_WORK_NICHES,
+        REMOVE_WORK_NICHES,
+        SELECT_TATTOO,
+        REMOVE_TATTOO,
+        TOGGLE_PIERCING,
+        TOGGLE_TATTOO
+    }
+)(StepOne);
