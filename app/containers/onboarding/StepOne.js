@@ -107,7 +107,7 @@ class StepOne extends Component {
         return (
             <Chip
                 key={data.key}
-                className='chip'
+                className={`chip ${this.props.profile.language_spoken.find(e => e === data.label) ? 'selected' : ''}`}
                 style={{marginRight: 10, fontFamily: 'inherit'}}
                 onClick={this.selectedChip}
             >

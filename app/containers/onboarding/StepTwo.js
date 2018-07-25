@@ -124,7 +124,7 @@ class StepOne extends Component {
     renderChipWorkAreas = data => {
         return (
             <Chip
-                className='hover-chip'
+                className={`hover-chip ${this.props.profile.work_areas.find(e => e === data.label) ? 'selected' : ''}`}
                 key={data.key}
                 style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
                 onClick={this.selectedChipWorkAreas}
@@ -140,7 +140,7 @@ class StepOne extends Component {
     renderChipStyle = data => {
         return (
             <Chip
-                className='hover-chip'
+                className={`hover-chip ${this.props.profile.style.find(e => e === data.label) ? 'selected' : ''}`}
                 key={data.key}
                 style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
                 onClick={this.selectedChipStyle}
@@ -156,7 +156,7 @@ class StepOne extends Component {
     renderChipTattoo = data => {
         return (
             <Chip
-                className='hover-chip'
+                className={`hover-chip ${this.props.profile.tattoo_where.find(e => e === data.label) ? 'selected' : ''}`}
                 key={data.key}
                 style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
                 onClick={this.selectedChipTattoo}
@@ -204,6 +204,7 @@ class StepOne extends Component {
                             thumbSwitchedStyle={styles.thumbSwitched}
                             trackSwitchedStyle={styles.trackSwitched}
                             onToggle={this.selectedPiercing}
+                            toggled={this.props.profile.piercing ? true : false}
                         />
                     </div>
                 </Col>
@@ -219,6 +220,7 @@ class StepOne extends Component {
                             thumbSwitchedStyle={styles.thumbSwitched}
                             trackSwitchedStyle={styles.trackSwitched}
                             onToggle={this.selectedTattoo}
+                            toggled={this.props.profile.tattoo ? true : false}
                         />
                     </div>
                 </Col>
