@@ -5,8 +5,19 @@ import {Row, Col} from 'react-bootstrap';
 import MenuItem from 'material-ui/MenuItem';
 import {DropDownMenu} from "material-ui/DropDownMenu";
 import TextField from "material-ui/TextField";
-import Toggle from "material-ui/Toggle";
-import Chip from "material-ui/Chip";
+
+import {
+    SELECT_BODY_TYPE,
+    TYPE_HEIGHT,
+    TYPE_BUST,
+    TYPE_WAIST,
+    TYPE_HIPS,
+    TYPE_SHOE_SIZE,
+    SELECT_EYE_COLOR,
+    SELECT_HAIR_COLOR,
+    SELECT_HAIR_LENGTH
+} from "../../actions/onboarding";
+
 
 const styles = {
     thumbSwitched: {
@@ -44,7 +55,7 @@ class StepOne extends Component {
         super(props);
 
         this.state = {
-            bodyType: null,
+            //bodyType: null,
             eyes: null,
             hair: null,
             hairLenght: null,
@@ -59,37 +70,31 @@ class StepOne extends Component {
         }
     }
 
-    selectType = (event, index, value) => this.setState({bodyType: value});
-    selectEyes = (event, index, value) => this.setState({eyes: value});
-    selectHair = (event, index, value) => this.setState({hair: value}, () => {console.log(this.state)});
-    selectLenght = (event, index, value) => this.setState({hairLenght: value});
+    selectType = (event, index, value) => this.props.SELECT_BODY_TYPE(value);
+    selectEyes = (event, index, value) => this.props.SELECT_EYE_COLOR(value);
+    selectHair = (event, index, value) => this.props.SELECT_HAIR_COLOR(value);
+    selectLength = (event, index, value) => this.props.SELECT_HAIR_LENGTH(value);
 
-    showTattoo = () => {
-        this.setState({
-            showTattoo: !this.state.showTattoo
-        })
+
+    changeInputHeight = (event) => {
+        this.props.TYPE_HEIGHT(event.target.value)
+    };
+    changeInputBust = (event) => {
+        this.props.TYPE_BUST(event.target.value)
+    };
+    changeInputWaist = (event) => {
+        this.props.TYPE_WAIST(event.target.value)
+    };
+    changeInputHips = (event) => {
+        this.props.TYPE_HIPS(event.target.value)
+    };
+    changeInputShoe = (event) => {
+        this.props.TYPE_SHOE_SIZE(event.target.value)
     };
 
-    selectedChip = e => {
-        let elem = e.target.parentNode;
-        if (elem.classList.contains('selected')) {
-            elem.classList.remove('selected');
-            elem.classList.add('hover-chip');
-        } else {
-            elem.classList.remove('hover-chip');
-            elem.classList.add('selected');
-        }
-    };
-
-    changeInput = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-    };
 
     render() {
-        let {bodyType, eyes, hair, hairLenght} = this.state;
-
+        console.log(this.props.profile)
         return [
             <Row>
                 <Col xs={12}>
@@ -99,7 +104,7 @@ class StepOne extends Component {
                     <h2>Body</h2>
                     <h4>Body type</h4>
                     <DropDownMenu
-                        value={bodyType}
+                        value={this.props.profile.body_type || null}
                         onChange={this.selectType}
                         style={{width: 280}}
                         underlineStyle={{ marginLeft: 0}}
@@ -132,7 +137,7 @@ class StepOne extends Component {
                                         paddingLeft: 30,
                                         paddingRight: 30
                                     }}
-                                    onChange={this.changeInput}
+                                    onChange={this.changeInputHeight}
                                 />
                                 <img
                                     src="/static/img/height.svg"
@@ -161,7 +166,7 @@ class StepOne extends Component {
                                         paddingLeft: 30,
                                         paddingRight: 30
                                     }}
-                                    onChange={this.changeInput}
+                                    onChange={this.changeInputBust}
                                 />
                                 <img
                                     src="/static/img/bust.svg"
@@ -190,7 +195,7 @@ class StepOne extends Component {
                                         paddingLeft: 30,
                                         paddingRight: 30
                                     }}
-                                    onChange={this.changeInput}
+                                    onChange={this.changeInputWaist}
                                 />
                                 <img
                                     src="/static/img/waist.svg"
@@ -219,7 +224,7 @@ class StepOne extends Component {
                                         paddingLeft: 30,
                                         paddingRight: 30
                                     }}
-                                    onChange={this.changeInput}
+                                    onChange={this.changeInputHips}
                                 />
                                 <img
                                     src="/static/img/hips.svg"
@@ -248,7 +253,7 @@ class StepOne extends Component {
                                         paddingLeft: 30,
                                         paddingRight: 30
                                     }}
-                                    onChange={this.changeInput}
+                                    onChange={this.changeInputShoe}
                                     style={{marginBottom: 30}}
                                 />
                                 <img
@@ -300,7 +305,7 @@ class StepOne extends Component {
 
                                 <DropDownMenu
                                     hintText='Eye color'
-                                    value={eyes}
+                                    value={this.props.profile.eye_color || null}
                                     onChange={this.selectEyes}
                                     underlineStyle={{ marginLeft: 0}}
                                     style={{width: '100%'}}
@@ -329,7 +334,7 @@ class StepOne extends Component {
                                 </div>
                                 <DropDownMenu
                                     hintText='Hair color'
-                                    value={hair}
+                                    value={this.props.profile.hair_color || null}
                                     onChange={this.selectHair}
                                     underlineStyle={{ marginLeft: 0}}
                                     style={{width: '100%'}}
@@ -350,7 +355,7 @@ class StepOne extends Component {
                             </div>
                             <div style={{
                                 position: 'relative',
-                                opacity: this.state.hair === 'Bold' ? 0.3 : 1
+                                opacity: this.props.profile.hair_color === 'Bold' ? 0.3 : 1
                             }}>
                                 <div style={{
                                     position: 'absolute',
@@ -359,10 +364,10 @@ class StepOne extends Component {
                                     <label>Hair length</label>
                                 </div>
                                 <DropDownMenu
-                                    disabled={this.state.hair === 'Bold' ? true : false}
+                                    disabled={this.props.profile.hair_color === 'Bold' ? true : false}
                                     hintText='Hair length'
-                                    value={hairLenght}
-                                    onChange={this.selectLenght}
+                                    value={this.props.profile.hair_length || null}
+                                    onChange={this.selectLength}
                                     underlineStyle={{ marginLeft: 0}}
                                     style={{width: '100%'}}
                                     labelStyle={{paddingLeft: 30}}
@@ -388,4 +393,23 @@ class StepOne extends Component {
     }
 }
 
-export default connect()(StepOne);
+function mapStateToProps(state) {
+    return {
+        profile: state.onboarding
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    {
+        SELECT_BODY_TYPE,
+        TYPE_HEIGHT,
+        TYPE_BUST,
+        TYPE_WAIST,
+        TYPE_HIPS,
+        TYPE_SHOE_SIZE,
+        SELECT_EYE_COLOR,
+        SELECT_HAIR_COLOR,
+        SELECT_HAIR_LENGTH
+    }
+)(StepOne);
