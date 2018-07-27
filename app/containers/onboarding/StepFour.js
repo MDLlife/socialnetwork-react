@@ -111,7 +111,6 @@ class StepOne extends Component {
                             />
                         </div>
                     </div>
-
                     {
                         this.changeSchemas(this.state.scheme)
                     }

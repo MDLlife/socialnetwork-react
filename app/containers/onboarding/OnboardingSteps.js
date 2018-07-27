@@ -3,12 +3,18 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Stepper, Step, StepLabel} from 'material-ui/Stepper';
 import {Grid, Row, Col} from 'react-bootstrap';
+import LoginStore from 'store/LoginStore';
 
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import StepThree from './StepThree';
 import StepFour from './StepFour';
 import OnboardingFan from './OnboardingFan';
+
+import {
+    FETCH_GET_USER_DATA,
+    FETCH_UPDATE_USER_DATA
+} from "../../actions/onboarding";
 
 const styles = {
     stepBorder: {
@@ -50,10 +56,34 @@ class OnboardingSteps extends Component {
     };
 
     previewProfile = () => {
-        alert('Its all good');
-        if (typeof window !== 'undefined') {
-            window.location.href = '/onboarding/profile-preview'
-        }
+        //alert('Its all good');
+        //this.props.FETCH_GET_USER_DATA(LoginStore.user._key)
+        this.props.FETCH_UPDATE_USER_DATA({
+            _key: LoginStore.user._key,
+            gender: this.props.profile.gender,
+            date_of_birth: this.props.profile.dateOfBirth,
+            ethnicity: this.props.profile.ethnic.toLowerCase(),
+            languages_spoken: this.props.profile.language_spoken.forEach(el => el.toLowerCase()),
+            work_areas: this.props.profile.work_areas.forEach(el => el.toLowerCase()),
+            style: this.props.profile.style.forEach(el => el.toLowerCase()),
+            //piercing: this.props.profile.piercing,
+            tattoo: this.props.profile.tattoo,
+            tattoo_where: this.props.profile.tattoo_where.forEach(el => el.toLowerCase()),
+            body_type: this.props.profile.body_type.toLowerCase(),
+            height: +this.props.profile.height,
+            bust: +this.props.profile.bust,
+            waist: +this.props.profile.waist,
+            hips: +this.props.profile.hips,
+            shoe_size: +this.props.profile.shoe_size,
+            eye_color: this.props.profile.eye_color.toLowerCase(),
+            hair_length: this.props.profile.hair_length.toLowerCase(),
+            hair_color: this.props.profile.hair_color ? this.props.profile.hair_color.toLowerCase() : '',
+            comp_card: [],
+            video: []
+        })
+        // if (typeof window !== 'undefined') {
+        //     window.location.href = '/onboarding/profile-preview'
+        // }
     };
 
     switchSteps = (step) => {
@@ -187,5 +217,16 @@ class OnboardingSteps extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        profile: state.onboarding
+    }
+}
 
-export default connect()(OnboardingSteps);
+export default connect(
+    mapStateToProps,
+    {
+        FETCH_GET_USER_DATA,
+        FETCH_UPDATE_USER_DATA
+    }
+)(OnboardingSteps);

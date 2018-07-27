@@ -26,7 +26,7 @@ const styles = {
     trackSwitched: {
         backgroundColor: '#F599C2',
     },
-}
+};
 
 const list = [];
 const listEyes = [];
@@ -34,7 +34,7 @@ const listHair = [];
 const listLenght = [];
 
 
-['Skinny', 'Fit ', 'Average ', 'Curvy '].forEach((el) => {
+['Skinny', 'Fit', 'Average', 'Curvy'].forEach((el) => {
     list.push(<MenuItem value={el} key={el} primaryText={el} />)
 });
 
@@ -42,11 +42,11 @@ const listLenght = [];
     listEyes.push(<MenuItem value={el} key={el} primaryText={el} />)
 });
 
-['Black', 'Dark brown', 'Light brown', 'Blond', 'Platinum', 'Auburn', 'Red', 'Gray', 'White', 'Bold','Other'].forEach((el) => {
+['Black', 'Dark brown', 'Light brown', 'Blond', 'Platinum', 'Auburn', 'Red', 'Gray', 'White', 'Other'].forEach((el) => {
     listHair.push(<MenuItem value={el} key={el} primaryText={el} />)
 });
 
-['Short', 'Mid', 'Long'].forEach((el) => {
+['Short', 'Mid', 'Long', 'Bold'].forEach((el) => {
     listLenght.push(<MenuItem value={el} key={el} primaryText={el} />)
 });
 
@@ -138,6 +138,7 @@ class StepOne extends Component {
                                         paddingRight: 30
                                     }}
                                     onChange={this.changeInputHeight}
+                                    value={this.props.profile.height || ''}
                                 />
                                 <img
                                     src="/static/img/height.svg"
@@ -167,6 +168,7 @@ class StepOne extends Component {
                                         paddingRight: 30
                                     }}
                                     onChange={this.changeInputBust}
+                                    value={this.props.profile.bust || ''}
                                 />
                                 <img
                                     src="/static/img/bust.svg"
@@ -196,6 +198,7 @@ class StepOne extends Component {
                                         paddingRight: 30
                                     }}
                                     onChange={this.changeInputWaist}
+                                    value={this.props.profile.waist || ''}
                                 />
                                 <img
                                     src="/static/img/waist.svg"
@@ -225,6 +228,7 @@ class StepOne extends Component {
                                         paddingRight: 30
                                     }}
                                     onChange={this.changeInputHips}
+                                    value={this.props.profile.hips || ''}
                                 />
                                 <img
                                     src="/static/img/hips.svg"
@@ -255,6 +259,7 @@ class StepOne extends Component {
                                     }}
                                     onChange={this.changeInputShoe}
                                     style={{marginBottom: 30}}
+                                    value={this.props.profile.shoe_size || ''}
                                 />
                                 <img
                                     src="/static/img/shoe size.svg"
@@ -325,37 +330,9 @@ class StepOne extends Component {
                                 </div>
 
                             </div>
-                            <div style={{position: 'relative'}}>
-                                <div style={{
-                                    position: 'absolute',
-                                    top: -7
-                                }}>
-                                    <label>Hair color</label>
-                                </div>
-                                <DropDownMenu
-                                    hintText='Hair color'
-                                    value={this.props.profile.hair_color || null}
-                                    onChange={this.selectHair}
-                                    underlineStyle={{ marginLeft: 0}}
-                                    style={{width: '100%'}}
-                                    labelStyle={{paddingLeft: 30}}
-                                >
-                                    {listHair}
-                                </DropDownMenu>
-                                <div style={{
-                                    position: 'absolute',
-                                    width: 24,
-                                    top: 15,
-                                }}>
-                                    <img
-                                        src="/static/img/hair color.svg"
-                                        alt=""
-                                    />
-                                </div>
-                            </div>
+
                             <div style={{
                                 position: 'relative',
-                                opacity: this.props.profile.hair_color === 'Bold' ? 0.3 : 1
                             }}>
                                 <div style={{
                                     position: 'absolute',
@@ -364,9 +341,8 @@ class StepOne extends Component {
                                     <label>Hair length</label>
                                 </div>
                                 <DropDownMenu
-                                    disabled={this.props.profile.hair_color === 'Bold' ? true : false}
                                     hintText='Hair length'
-                                    value={this.props.profile.hair_length || null}
+                                    value={this.props.profile.hair_length || ''}
                                     onChange={this.selectLength}
                                     underlineStyle={{ marginLeft: 0}}
                                     style={{width: '100%'}}
@@ -381,6 +357,39 @@ class StepOne extends Component {
                                 }}>
                                     <img
                                         src="/static/img/hair lenght.svg"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+
+                            <div style={{
+                                position: 'relative',
+                                opacity: this.props.profile.hair_length === 'Bold' ? 0.3 : 1
+                            }}>
+                                <div style={{
+                                    position: 'absolute',
+                                    top: -7
+                                }}>
+                                    <label>Hair color</label>
+                                </div>
+                                <DropDownMenu
+                                    disabled={this.props.profile.hair_length === 'Bold' ? true : false}
+                                    hintText='Hair color'
+                                    value={this.props.profile.hair_color}
+                                    onChange={this.selectHair}
+                                    underlineStyle={{ marginLeft: 0}}
+                                    style={{width: '100%'}}
+                                    labelStyle={{paddingLeft: 30}}
+                                >
+                                    {listHair}
+                                </DropDownMenu>
+                                <div style={{
+                                    position: 'absolute',
+                                    width: 24,
+                                    top: 15,
+                                }}>
+                                    <img
+                                        src="/static/img/hair color.svg"
                                         alt=""
                                     />
                                 </div>

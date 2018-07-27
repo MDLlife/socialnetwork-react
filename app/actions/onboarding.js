@@ -1,3 +1,9 @@
+import superagent from 'superagent';
+import users_schema from 'model/users_schema';
+import validate_schema from 'model/validate_schema';
+
+const url = 'https://api.mdl.live/v1';
+
 export const SELECT_GENDER = gender => ({
     type: 'SELECT_GENDER',
     payload: gender
@@ -117,3 +123,42 @@ export const SELECT_HAIR_LENGTH = length => ({
     type: 'SELECT_HAIR_LENGTH',
     payload: length
 });
+
+// Requests to api
+
+export const GET_USER_DATA = data => ({
+    type: 'GET_USER_DATA',
+    payload: data
+});
+
+export const FETCH_GET_USER_DATA = id => {
+    return (dispatch) => {
+        return superagent
+            .get(url + `/read/users/${id}`)
+            // .set('Content-Type', 'application/json')
+            .end((err, res) => {
+                if (err)
+                    return err;
+                dispatch(GET_USER_DATA(res.body.data))
+            })
+    }
+};
+
+export const FETCH_UPDATE_USER_DATA = data => {
+
+    const result = validate_schema.validate(data, users_schema);
+    if (result.error) {
+        console.log("NOT VALID, ", result)
+    } else {
+        return (dispatch) => {
+            return superagent
+                .post(url + '/update/users')
+                .send(data)
+                .withCredentials()
+                .then(res => {
+                    console.log('Success', res);
+                })
+        }
+    }
+
+};

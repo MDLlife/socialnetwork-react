@@ -52,6 +52,8 @@ export default function (state = {language_spoken: [], work_areas: [], style: []
             return {...state, hair_color: action.payload};
         case 'SELECT_HAIR_LENGTH':
             return {...state, hair_length: action.payload};
+        case 'GET_USER_DATA':
+            return {...state, user_data: action.payload};
         default:
             return state;
     }

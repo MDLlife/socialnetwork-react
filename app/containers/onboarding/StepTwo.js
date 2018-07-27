@@ -28,7 +28,7 @@ const styles = {
     trackSwitched: {
         backgroundColor: '#F599C2',
     },
-}
+};
 
 class StepOne extends Component {
     constructor(props) {
