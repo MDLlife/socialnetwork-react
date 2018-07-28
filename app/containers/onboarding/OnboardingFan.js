@@ -46,56 +46,70 @@ class OnboardingFan extends Component {
     }
 
     render() {
-        return [
-            <Row>
-                <Col xs={12}>
-                    <h2>Gender<span style={{color: '#ea2f85'}}>*</span></h2>
-                    <p>If you don't indentify yourself as female or male then please select 'Other'</p>
-                    <RadioButtonGroup name="gender" defaultSelected="female">
-                        <RadioButton
-                            value="female"
-                            label="Female"
-                            inputStyle={{color: '#541065'}}
-                        />
-                        <RadioButton
-                            value="male"
-                            label="Male"
-                        />
-                        <RadioButton
-                            value="other"
-                            label="Other"
-                        />
-                    </RadioButtonGroup>
-                </Col>
-                <Col xs={12}>
-                    <h2>Date of birth <span style={{color: '#ea2f85'}}>*</span></h2>
-                    <div style={{position: 'relative', display: 'flex'}}>
-                        <DatePicker
-                            hintText="mm/dd/yyyy"
-                            container='inline'
-                            onChange={this.selectedDateBirth}
-                        />
-                        <img
-                            src="/static/img/calendar.svg"
-                            alt=""
-                            style={{
-                                width: 24,
-                                position: 'absolute',
-                                top: 12,
-                                left: 228,
-                            }}
-                        />
-                        {
-                            this.state.year && this.switchAgeComponent(this.state.year)
-                        }
-                    </div>
-                    <button onClick={this.onClickToday} style={{border: '2px solid white'}}
-                            className='main-button radius-button clear-button'>
-                        Continue
-                    </button>
-                </Col>
-            </Row>
-        ]
+        return (
+            <Grid className='main-content-container onboarding' style={{marginBottom: 50}}>
+                <Row>
+                    <Col
+                        xs={12}
+                        className='onboarding-header'
+                        style={{
+                            background: `url('/static/img/onboarding fan img.png') center center no-repeat`,
+                            backgroundSize: 'cover'
+                        }}
+                    >
+                        <h1>MDL Talent Hub is for everyone</h1>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12}>
+                        <h2>Gender<span style={{color: '#ea2f85'}}>*</span></h2>
+                        <p>If you don't indentify yourself as female or male then please select 'Other'</p>
+                        <RadioButtonGroup name="gender" defaultSelected="female">
+                            <RadioButton
+                                value="female"
+                                label="Female"
+                                inputStyle={{color: '#541065'}}
+                            />
+                            <RadioButton
+                                value="male"
+                                label="Male"
+                            />
+                            <RadioButton
+                                value="other"
+                                label="Other"
+                            />
+                        </RadioButtonGroup>
+                    </Col>
+                    <Col xs={12}>
+                        <h2>Date of birth <span style={{color: '#ea2f85'}}>*</span></h2>
+                        <div style={{position: 'relative', display: 'flex'}}>
+                            <DatePicker
+                                hintText="mm/dd/yyyy"
+                                container='inline'
+                                onChange={this.selectedDateBirth}
+                            />
+                            <img
+                                src="/static/img/calendar.svg"
+                                alt=""
+                                style={{
+                                    width: 24,
+                                    position: 'absolute',
+                                    top: 12,
+                                    left: 228,
+                                }}
+                            />
+                            {
+                                this.state.year && this.switchAgeComponent(this.state.year)
+                            }
+                        </div>
+                        <button onClick={this.onClickToday} style={{border: '2px solid white'}}
+                                className='main-button radius-button clear-button'>
+                            Continue
+                        </button>
+                    </Col>
+                </Row>
+            </Grid>
+        )
     }
 }
 

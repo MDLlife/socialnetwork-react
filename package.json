@@ -8,7 +8,7 @@
     "prod": "npm run build && REDIS_HOST=localhost NODE_ENV=production PORT=3005 NODE_PATH=./app node app/server",
     "webpack": "webpack",
     "bower": "bower install",
-    "build": "rimraf ./dist/ && npm run bower && NODE_ENV=production npm run webpack --optimize-minimize -p && gulp prod && node scripts/writeVersion",
+    "build": "rimraf ./dist/ && npm run bower && cross-env NODE_ENV=production npm run webpack --optimize-minimize -p && gulp prod && node scripts/writeVersion",
     "flow": "yarn run flow",
     "version": "node scripts/writeVersion",
     "install-prod": "rimraf ./node_modules/ && REDIS_HOST=localhost NPM_CONFIG_LOGLEVEL=error NPM_CONFIG_PRODUCTION=true NODE_VERBOSE=false NODE_ENV=production NODE_MODULES_CACHE=true yarn && REDIS_HOST=localhost NODE_ENV=production PORT=3005 NODE_PATH=./app node app/server",

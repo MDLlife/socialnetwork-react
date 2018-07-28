@@ -171,7 +171,6 @@ class StepOne extends Component {
 
 
     render() {
-        console.log(this.props.profile)
         return [
             <Row>
                 <Col xs={12}>

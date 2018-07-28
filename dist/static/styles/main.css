@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: 'Gilroy Medium';
-  src: url("../fonts/Radomir_Tinkov-Gilroy_Medium.otf"); }
+  src: url("../fonts/Radomir Tinkov - Gilroy-Medium.otf"); }
 
 html, body {
   min-width: 100%;
@@ -219,7 +219,8 @@ label {
   padding-top: 25px;
   padding-bottom: 25px;
   border-top-left-radius: 10px;
-  border-top-right-radius: 10px; }
+  border-top-right-radius: 10px;
+  font-family: Gilroy Medium; }
 
 .hover-chip:hover {
   background-color: #DDCFE0 !important;
@@ -266,9 +267,51 @@ label {
   border-style: solid;
   border-color: #555 transparent transparent transparent; }
 
+.talent-cards {
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  width: 32%;
+  height: 164px;
+  border-radius: 10px;
+  margin-right: 14px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 18px; }
+
+.talent-cards:last-child {
+  margin-right: 0px; }
+
+.talent-cards:hover {
+  -webkit-box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.15); }
+
+#selected-talents-cards-id {
+  border-top: none;
+  padding-top: 0; }
+
+.selected-talents-cards {
+  border-top: 1px solid lightgrey;
+  padding-top: 45px; }
+
+.onboarding-booker-button {
+  padding: 15px 77px;
+  background-color: #660066;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-family: Gilroy Medium;
+  font-size: 16px;
+  margin-top: 80px;
+  margin-bottom: 35px; }
+
 @media (min-width: 1201px) {
   .onboarding {
-    width: 800px; } }
+    width: 750px; } }
 
 @media (min-width: 993px) and (max-width: 1200px) {
   .onboarding {
@@ -276,7 +319,7 @@ label {
 
 @media (min-width: 769px) and (max-width: 992px) {
   .onboarding {
-    width: 600px; }
+    width: 650px; }
   .card-avatar {
     display: none; } }
 

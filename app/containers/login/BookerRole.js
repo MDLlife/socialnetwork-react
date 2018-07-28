@@ -27,14 +27,12 @@ class BookerRole extends Component {
 
     onClickTalents() {
         if (typeof window !== 'undefined') {
-            //TODO: link when having new layout
-            // window.location.href = '/login/select-talents'
+            window.location.href = '/onboarding/booker'
         }
     }
 
     onClickFan(){
          if (typeof window !== 'undefined') {
-             //TODO: link when having new layout
             window.location.href = '/onboarding/fan'
         }
     }

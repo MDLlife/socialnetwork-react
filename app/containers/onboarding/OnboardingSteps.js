@@ -9,7 +9,6 @@ import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import StepThree from './StepThree';
 import StepFour from './StepFour';
-import OnboardingFan from './OnboardingFan';
 
 import {
     FETCH_GET_USER_DATA,
@@ -38,7 +37,6 @@ class OnboardingSteps extends Component {
         this.state = {
             step: 0, // first step in onboarding
             finished: false,
-            role: '1', // user role: 1 - talent or booker, 2 - fan
         }
     }
 
@@ -161,42 +159,38 @@ class OnboardingSteps extends Component {
                         <h1>{this.state.role === '1' ? this.switchHeaderContent(step) : 'MDL Talent Hub is for everyone'}</h1>
                     </Col>
                 </Row>
-                {
-                    this.state.role === '1' ?
-                        [
-                            <Row className='stepper-main'>
-                                <Col xs={12}>
-                                    <Stepper
-                                        connector={false}
-                                        activeStep={step}
-                                        className='stepper-main'
-                                    >
-                                        <Step className='stepper-step' style={step === 0 ? styles.stepBorder : null}>
-                                            <StepLabel className='stepper' style={{margin: 'auto'}}>Personal</StepLabel>
-                                        </Step>
-                                        <Step className='stepper-step' style={step === 1 ? styles.stepBorder : null}>
-                                            <StepLabel className='stepper' style={{margin: 'auto'}}>Categories</StepLabel>
-                                        </Step>
-                                        <Step className='stepper-step' style={step === 2 ? styles.stepBorder : null}>
-                                            <StepLabel className='stepper' style={{margin: 'auto'}}>Measurements</StepLabel>
-                                        </Step>
-                                        <Step className='stepper-step' style={step === 3 ? styles.stepBorder : null}>
-                                            <StepLabel className='stepper' style={{margin: 'auto'}}>Media</StepLabel>
-                                        </Step>
-                                    </Stepper>
-                                </Col>
-                            </Row>,
-                            <Row className='alt-stepper'>
-                                <Col xs={12}>
-                                    {
-                                        this.alternativeStepper(step)
-                                    }
-                                </Col>
-                            </Row>
-                        ] : null
-                }
+                <Row className='stepper-main'>
+                    <Col xs={12}>
+                        <Stepper
+                            connector={false}
+                            activeStep={step}
+                            className='stepper-main'
+                        >
+                            <Step className='stepper-step' style={step === 0 ? styles.stepBorder : null}>
+                                <StepLabel className='stepper' style={{margin: 'auto'}}>Personal</StepLabel>
+                            </Step>
+                            <Step className='stepper-step' style={step === 1 ? styles.stepBorder : null}>
+                                <StepLabel className='stepper' style={{margin: 'auto'}}>Categories</StepLabel>
+                            </Step>
+                            <Step className='stepper-step' style={step === 2 ? styles.stepBorder : null}>
+                                <StepLabel className='stepper' style={{margin: 'auto'}}>Measurements</StepLabel>
+                            </Step>
+                            <Step className='stepper-step' style={step === 3 ? styles.stepBorder : null}>
+                                <StepLabel className='stepper' style={{margin: 'auto'}}>Media</StepLabel>
+                            </Step>
+                        </Stepper>
+                    </Col>
+                </Row>
+                <Row className='alt-stepper'>
+                    <Col xs={12}>
+                        {
+                            this.alternativeStepper(step)
+                        }
+                    </Col>
+                </Row>
 
-                {this.state.role === '1' ? this.switchSteps(this.state.step) : <OnboardingFan/>}
+                {this.switchSteps(this.state.step)}
+
                 <Row>
                     <Col xs={12} style={{
                         display: 'flex',
@@ -205,10 +199,10 @@ class OnboardingSteps extends Component {
                         <button className='back-btn' onClick={this.handlePrev}>Back</button>
                         <button
                             className='next-btn tooltip-main'
-                            onClick={this.state.role !== '1' || step === 3 ? () => this.previewProfile() : () => this.handleNext()
+                            onClick={step === 3 ? () => this.previewProfile() : () => this.handleNext()
                         }>
-                            {this.state.role !== '1' || step === 3 ? 'Preview profile' : 'Next'}
-                            {step === 12 ? <span className='tooltip-text'>ToolTip</span> : null}
+                            {step === 3 ? 'Preview profile' : 'Next'}
+                            {/*{step === 2 ? <span className='tooltip-text'>ToolTip</span> : null}*/}
                         </button>
                     </Col>
                 </Row>

@@ -18,6 +18,7 @@ import SelectTalents from 'containers/login/SelectTalents';
 import GeneralInformation from 'containers/login/GeneralInformation';
 import Onboarding from 'containers/onboarding/OnboardingSteps';
 import OnboardingFan from 'containers/onboarding/OnboardingFan';
+import OnboardingBooker from 'containers/onboarding/OnboardingBooker';
 
 import ProfilePreview from 'containers/onboarding/ProfilePreview';
 
@@ -91,6 +92,7 @@ export default function (history) {
                 <Route path='/onboarding' component={OnboardingLayout} onEnter={checkAuth}>
                     <IndexRoute component={Onboarding}/>
                     <Route path='fan' component={OnboardingFan}/>
+                    <Route path='booker' component={OnboardingBooker}/>
 
                     <Route path='profile-preview' component={ProfilePreview}/>
                     <Route path="*" component={Notfound}/>
