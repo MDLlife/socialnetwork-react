@@ -75,7 +75,8 @@ const VENDOR_LIBS = [
     'styled-components',
     'superagent',
     'xhr',
-    'xml2js'
+    'xml2js',
+    'joi-browser'
 ]
 
 if (process.env.PRINT_DEPS) {
@@ -117,7 +118,7 @@ var config = {
             name: 'vendor',
             filname: 'vendor.js',
             minChunks: module => {
-              return module.context && module.context.includes('node_modules');
+                return module.context && module.context.includes('node_modules');
             },
         }),
         new webpack.LoaderOptionsPlugin({

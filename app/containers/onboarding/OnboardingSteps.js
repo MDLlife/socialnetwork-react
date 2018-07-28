@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Stepper, Step, StepLabel} from 'material-ui/Stepper';
-import {Grid, Row, Col} from 'react-bootstrap';
+import {Step, StepLabel, Stepper} from 'material-ui/Stepper';
+import {Col, Grid, Row} from 'react-bootstrap';
 import LoginStore from 'store/LoginStore';
 
 import StepOne from './StepOne';
@@ -10,10 +9,7 @@ import StepTwo from './StepTwo';
 import StepThree from './StepThree';
 import StepFour from './StepFour';
 
-import {
-    FETCH_GET_USER_DATA,
-    FETCH_UPDATE_USER_DATA
-} from "../../actions/onboarding";
+import {FETCH_GET_USER_DATA, FETCH_UPDATE_USER_DATA} from "../../actions/onboarding";
 
 const styles = {
     stepBorder: {
@@ -54,40 +50,40 @@ class OnboardingSteps extends Component {
     };
 
     previewProfile = () => {
-        //alert('Its all good');
+        alert('Its all good');
         //this.props.FETCH_GET_USER_DATA(LoginStore.user._key)
         this.props.FETCH_UPDATE_USER_DATA({
             _key: LoginStore.user._key,
             gender: this.props.profile.gender,
             date_of_birth: this.props.profile.dateOfBirth,
-            ethnicity: this.props.profile.ethnic.toLowerCase(),
+            ethnicity: this.props.profile.ethnic ? this.props.profile.ethnic.toLowerCase() : this.props.profile.ethnic,
             languages_spoken: this.props.profile.language_spoken.forEach(el => el.toLowerCase()),
             work_areas: this.props.profile.work_areas.forEach(el => el.toLowerCase()),
             style: this.props.profile.style.forEach(el => el.toLowerCase()),
             //piercing: this.props.profile.piercing,
             tattoo: this.props.profile.tattoo,
             tattoo_where: this.props.profile.tattoo_where.forEach(el => el.toLowerCase()),
-            body_type: this.props.profile.body_type.toLowerCase(),
+            body_type: this.props.profile.body_type ? this.props.profile.body_type.toLowerCase() : this.props.profile.body_type,
             height: +this.props.profile.height,
             bust: +this.props.profile.bust,
             waist: +this.props.profile.waist,
             hips: +this.props.profile.hips,
             shoe_size: +this.props.profile.shoe_size,
-            eye_color: this.props.profile.eye_color.toLowerCase(),
-            hair_length: this.props.profile.hair_length.toLowerCase(),
+            eye_color: this.props.profile.eye_color ? this.props.profile.eye_color.toLowerCase() : this.props.profile.eye_color,
+            hair_length: this.props.profile.hair_length ? this.props.profile.hair_length.toLowerCase() : this.props.profile.hair_length,
             hair_color: this.props.profile.hair_color ? this.props.profile.hair_color.toLowerCase() : '',
             comp_card: [],
             video: []
         })
-        // if (typeof window !== 'undefined') {
-        //     window.location.href = '/onboarding/profile-preview'
-        // }
+        if (typeof window !== 'undefined') {
+            window.location.href = '/onboarding/profile-preview'
+        }
     };
 
     switchSteps = (step) => {
-        switch(step) {
+        switch (step) {
             case 0:
-                return <StepOne />;
+                return <StepOne/>;
             case 1:
                 return <StepTwo/>;
             case 2:
@@ -100,7 +96,7 @@ class OnboardingSteps extends Component {
     };
 
     switchHeaderContent = (step) => {
-        switch(step) {
+        switch (step) {
             case 0:
                 return 'Do you now that 78% of people drop their creative hobbies and die in boredom?';
             case 1:
@@ -115,7 +111,7 @@ class OnboardingSteps extends Component {
     };
 
     switchHeaderImage = (step) => {
-        switch(step) {
+        switch (step) {
             case 0:
                 return `url('/static/img/Onboarding 1 step.png') center center no-repeat`;
             case 1:
@@ -130,7 +126,7 @@ class OnboardingSteps extends Component {
     };
 
     alternativeStepper = (step) => {
-        switch(step) {
+        switch (step) {
             case 0:
                 return <div style={styles.altStepper}>Personal</div>;
             case 1:
@@ -200,7 +196,7 @@ class OnboardingSteps extends Component {
                         <button
                             className='next-btn tooltip-main'
                             onClick={step === 3 ? () => this.previewProfile() : () => this.handleNext()
-                        }>
+                            }>
                             {step === 3 ? 'Preview profile' : 'Next'}
                             {/*{step === 2 ? <span className='tooltip-text'>ToolTip</span> : null}*/}
                         </button>

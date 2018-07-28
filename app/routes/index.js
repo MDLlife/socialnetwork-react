@@ -98,7 +98,7 @@ export default function (history) {
                     <Route path="*" component={Notfound}/>
                 </Route>
 
-                <Route path='/today' component={TodayLayout}>
+                <Route path='/today' component={TodayLayout} onEnter={checkAuth}>
                     <IndexRoute component={TodayContainer}/>
                     <Route path='fullpost' component={FullPost}/>
                 </Route>

@@ -93,9 +93,9 @@ gulp.task('minify-js', function () {
         .pipe(concat('all.js'))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(buildProperties.publicDir + "/static/"))
-        .pipe(babel({
-            presets: ['babel-preset-es2015'].map(require.resolve)
-        }))
+        // .pipe(babel({
+        //     presets: ['babel-preset-es2015'].map(require.resolve)
+        // }))
         .on('error', function (error) {
             console.log(error);
         })
@@ -121,7 +121,9 @@ gulp.task('fonts', function () {
     gulp.src(
         [
             "./bower_components/components-font-awesome/fonts/**/*",
-            "./bower_components/bootstrap/fonts/**/*"])
+            "./bower_components/bootstrap/fonts/**/*",
+            "./vendor/fonts/**/*",
+        ])
         .pipe(gulp.dest(buildProperties.publicDir + '/fonts/'))
         .on('error', function (error) {
             console.log(error);

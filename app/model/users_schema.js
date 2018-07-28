@@ -1,4 +1,4 @@
-const Joi = require('joi');
+const Joi = require('joi-browser');
 
 const users_schema = Joi.object().keys({
     // 0. From Login provider
