@@ -63,7 +63,7 @@
     "influx-collector": "^1.0.0",
     "isomorphic-fetch": "^2.2.1",
     "jdenticon": "1.3.2",
-    "joi-browser": "^10.4.1",
+    "joi-browser": "^10.6.1",
     "jquery": "^3.3.1",
     "jsdom": "^7.0.1",
     "jsonp": "^0.2.1",
