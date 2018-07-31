@@ -199,7 +199,10 @@ class OnboardingBooker extends Component {
 
         //TODO: this should be conditional trigger based on dispatch success action
         if (typeof window !== 'undefined') {
-            window.location.href = '/onboarding/profile-preview?profile=booker'
+            //TODO: later redirect to preview when preview is completed
+            // window.location.href = '/onboarding/profile-preview?profile=booker'
+
+            window.location.href = '/today'
         }
     };
 

@@ -150,6 +150,7 @@ export const FETCH_UPDATE_USER_DATA = data => {
     console.log("RESULT validate -> ", result);
     if (result.error) {
         console.log("NOT VALID, ", result);
+        //TODO:  dispatch ERROR
       return (dispatch) => {};
     } else {
         return dispatch => {

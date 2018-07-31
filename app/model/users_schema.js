@@ -36,11 +36,11 @@ const users_schema = Joi.object().keys({
 
     // 3. Measurements
     body_type: Joi.string().valid("skinny", "fit", "average", "curvy"),
-    height: Joi.number().integer().min(1).max(999),
-    bust: Joi.number().integer().min(1).max(999),
-    waist: Joi.number().integer().min(1).max(999),
-    hips: Joi.number().integer().min(1).max(999),
-    shoe_size: Joi.number().integer().min(1).max(99),
+    height: Joi.number().integer().min(0).max(999),
+    bust: Joi.number().integer().min(0).max(999),
+    waist: Joi.number().integer().min(0).max(999),
+    hips: Joi.number().integer().min(0).max(999),
+    shoe_size: Joi.number().integer().min(0).max(99),
 
     // 4. Appearance
     eye_color: Joi.string().valid("blue", "green", "black", "brown", "hazel"),

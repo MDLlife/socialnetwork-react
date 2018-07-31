@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Row, Col, Grid} from 'react-bootstrap';
+import {Col, Grid, Row} from 'react-bootstrap';
 import {RadioButton, RadioButtonGroup} from "material-ui/RadioButton";
 import DatePicker from 'material-ui/DatePicker';
+import LoginStore from 'store/LoginStore';
 
+import {DATE_OF_BIRTH, FETCH_FAN_DATA, SELECT_GENDER} from "../../actions/onboardingFan"
 
 class OnboardingFan extends Component {
     constructor(props) {
@@ -14,14 +15,6 @@ class OnboardingFan extends Component {
             year: null,
         }
     }
-
-    selectedDateBirth = (event, date) => {
-        let now = new Date().getUTCFullYear();
-        this.setState({
-            birthday: date,
-            year: now - date.getUTCFullYear(),
-        })
-    };
 
     switchAgeComponent = year => {
         if (year <= 10) {
@@ -39,14 +32,32 @@ class OnboardingFan extends Component {
         }
     };
 
-    onClickToday(){
+    selectGender = (event, value) => {
+        this.props.SELECT_GENDER(value);
+    };
+
+    selectedDateBirth = (event, date) => {
+        this.props.DATE_OF_BIRTH(date)
+    };
+
+    onClickToday = event => {
+        this.props.FETCH_FAN_DATA({
+            _key: LoginStore.user._key,
+            profiles: ['fan'],
+            gender: this.props.fan.gender,
+            date_of_birth: this.props.fan.dateOfBirth,
+            registration_fan_complete:true,
+        });
 
         //TODO: this should be conditional trigger based on dispatch success action
-         if (typeof window !== 'undefined') {
-            // window.location.href = '/today'
-            window.location.href = '/onboarding/profile-preview?profile=fan'
-        }
-    }
+        setTimeout(function () {
+            if (typeof window !== 'undefined') {
+                //TODO: later redirect to preview when preview is completed
+                // window.location.href = '/onboarding/profile-preview?profile=fan'
+                window.location.href = '/today'
+            }
+        }, 1000)
+    };
 
     render() {
         return (
@@ -67,7 +78,11 @@ class OnboardingFan extends Component {
                     <Col xs={12}>
                         <h2>Gender<span style={{color: '#ea2f85'}}>*</span></h2>
                         <p>If you don't indentify yourself as female or male then please select 'Other'</p>
-                        <RadioButtonGroup name="gender" defaultSelected="female">
+                        <RadioButtonGroup
+                            name="gender"
+                            onChange={this.selectGender}
+                            valueSelected={this.props.fan.gender || null}
+                        >
                             <RadioButton
                                 value="female"
                                 label="Female"
@@ -90,6 +105,7 @@ class OnboardingFan extends Component {
                                 hintText="mm/dd/yyyy"
                                 container='inline'
                                 onChange={this.selectedDateBirth}
+                                value={this.props.fan.dateOfBirth || null}
                             />
                             <img
                                 src="/static/img/calendar.svg"
@@ -105,10 +121,15 @@ class OnboardingFan extends Component {
                                 this.state.year && this.switchAgeComponent(this.state.year)
                             }
                         </div>
-                        <button onClick={this.onClickToday} style={{border: '2px solid white'}}
-                                className='main-button radius-button clear-button'>
-                            Continue
-                        </button>
+                        <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                            <button
+                                onClick={this.onClickToday}
+                                style={{border: '2px solid white'}}
+                                className='main-button radius-button clear-button'
+                            >
+                                Continue
+                            </button>
+                        </div>
                     </Col>
                 </Row>
             </Grid>
@@ -134,4 +155,17 @@ const AgeComponent = props => {
     )
 };
 
-export default connect()(OnboardingFan)
+function mapStateToProps(state) {
+    return {
+        fan: state.onboardingFan
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    {
+        SELECT_GENDER,
+        DATE_OF_BIRTH,
+        FETCH_FAN_DATA
+    }
+)(OnboardingFan)

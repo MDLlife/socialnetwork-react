@@ -50,9 +50,10 @@ class OnboardingSteps extends Component {
     };
 
     previewProfile = () => {
-        alert('Its all good');
+
         //this.props.FETCH_GET_USER_DATA(LoginStore.user._key)
-        this.props.FETCH_UPDATE_USER_DATA({
+
+        const data = {
             _key: LoginStore.user._key,
             profiles: ['talent'],
             gender: this.props.profile.gender,
@@ -65,23 +66,41 @@ class OnboardingSteps extends Component {
             tattoo: this.props.profile.tattoo,
             tattoo_where: this.props.profile.tattoo_where.forEach(el => el.toLowerCase()),
             body_type: this.props.profile.body_type ? this.props.profile.body_type.toLowerCase() : this.props.profile.body_type,
-            height: +this.props.profile.height,
-            bust: +this.props.profile.bust,
-            waist: +this.props.profile.waist,
-            hips: +this.props.profile.hips,
-            shoe_size: +this.props.profile.shoe_size,
-            eye_color: this.props.profile.eye_color ? this.props.profile.eye_color.toLowerCase() : this.props.profile.eye_color,
-            hair_length: this.props.profile.hair_length ? this.props.profile.hair_length.toLowerCase() : this.props.profile.hair_length,
-            hair_color: this.props.profile.hair_color ? this.props.profile.hair_color.toLowerCase() : '',
+
+            height: +(this.props.profile.height ? this.props.profile.height : 0),
+            bust: +(this.props.profile.bust ? this.props.profile.bust : 0),
+            waist: +(this.props.profile.waist ? this.props.profile.waist : 0),
+            hips: +(this.props.profile.hips ? this.props.profile.hips : 0),
+            shoe_size: +(this.props.profile.shoe_size ? this.props.profile.shoe_size : 0 ),
+
             comp_card: [],
             video: [],
             registration_talent_complete: true
-        });
+        }
+
+        if (this.props.profile.eye_color) {
+            data.eye_color = this.props.profile.eye_color.toLowerCase()
+        }
+        if (this.props.profile.hair_length) {
+            data.hair_length = this.props.profile.hair_length.toLowerCase()
+        }
+        if (this.props.profile.hair_color) {
+            data.hair_color = this.props.profile.hair_color.toLowerCase()
+        }
+
+        this.props.FETCH_UPDATE_USER_DATA(data);
 
         //TODO: this should be conditional trigger based on dispatch success action
-        if (typeof window !== 'undefined') {
-            window.location.href = '/onboarding/profile-preview?profile=talent'
-        }
+        setTimeout(function () {
+            if (typeof window !== 'undefined') {
+
+                //TODO: later redirect to preview when preview is completed
+                // window.location.href = '/onboarding/profile-preview?profile=talent'
+
+                window.location.href = '/today'
+            }
+        }, 1000)
+
     };
 
     switchSteps = (step) => {
