@@ -1,1 +1,1 @@
-export const GIT_HASH = "2f67b23"; export const VERSION = "1.0.3"; 
+export const GIT_HASH = "38a6cc6"; export const VERSION = "1.0.4"; 
