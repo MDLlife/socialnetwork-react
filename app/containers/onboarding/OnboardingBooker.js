@@ -3,6 +3,16 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Row, Col, Grid} from 'react-bootstrap';
 import Chip from 'material-ui/Chip';
+import LoginStore from 'store/LoginStore';
+import {
+    SELECT_WORK_AREAS_ACTOR,
+    SELECT_WORK_AREAS_DANCER,
+    SELECT_WORK_AREAS_MODEL,
+    UNSELECT_WORK_AREAS_ACTOR,
+    UNSELECT_WORK_AREAS_DANCER,
+    UNSELECT_WORK_AREAS_MODEL,
+    FETCH_BOOKER_DATA
+} from "../../actions/onboardingBooker";
 
 class OnboardingBooker extends Component {
     constructor(props) {
@@ -27,15 +37,35 @@ class OnboardingBooker extends Component {
                 {key: 2, label: 'Hostess'},
                 {key: 3, label: 'TVC'},
                 {key: 4, label: 'Movie'},
-                {key: 5, label: 'Original catalog'},
-                {key: 6, label: 'Unerwear Catalog'},
+                {key: 5, label: 'Ordinal catalog'},
+                {key: 6, label: 'Underwear Catalog'},
                 {key: 7, label: 'Exhibition'},
                 {key: 8, label: 'Promo event'},
                 {key: 9, label: 'Makeup show'},
                 {key: 10, label: 'Hairdress show'},
                 {key: 11, label: 'Body art'}
             ],
-
+            dancerAreas: {
+                video: [
+                    {key: 0, label: 'TV commercial'},
+                    {key: 1, label: 'Movie'},
+                    {key: 2, label: 'TV series'},
+                    {key: 3, label: 'Promo video'},
+                    {key: 4, label: 'TV show'}
+                ],
+                photo: [
+                    {key: 5, label: 'Commercial'},
+                    {key: 6, label: 'Editorial'},
+                ],
+                live: [
+                    {key: 7, label: 'Night Park'},
+                    {key: 8, label: 'Theme park'},
+                    {key: 9, label: 'Festival'},
+                    {key: 10, label: 'Stage'},
+                    {key: 11, label: 'Promo event'},
+                    {key: 12, label: 'Flashmob'},
+                ]
+            }
         }
     }
 
@@ -60,9 +90,11 @@ class OnboardingBooker extends Component {
         if (elem.classList.contains('selected')) {
             elem.classList.remove('selected');
             elem.classList.add('hover-chip');
+            this.props.UNSELECT_WORK_AREAS_ACTOR(e.target.innerHTML)
         } else {
             elem.classList.remove('hover-chip');
             elem.classList.add('selected');
+            this.props.SELECT_WORK_AREAS_ACTOR(e.target.innerHTML)
         }
     };
 
@@ -87,9 +119,12 @@ class OnboardingBooker extends Component {
         if (elem.classList.contains('selected')) {
             elem.classList.remove('selected');
             elem.classList.add('hover-chip');
+            this.props.UNSELECT_WORK_AREAS_MODEL(e.target.innerHTML)
+
         } else {
             elem.classList.remove('hover-chip');
             elem.classList.add('selected');
+            this.props.SELECT_WORK_AREAS_MODEL(e.target.innerHTML)
         }
     };
 
@@ -99,7 +134,7 @@ class OnboardingBooker extends Component {
                 className={`hover-chip`}
                 key={data.key}
                 style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
-                onClick={this.selectedChipModelWorkAreas}
+                onClick={this.selectedChipDancerWorkAreas}
             >
                 {data.label}
                 {/*{*/}
@@ -114,9 +149,11 @@ class OnboardingBooker extends Component {
         if (elem.classList.contains('selected')) {
             elem.classList.remove('selected');
             elem.classList.add('hover-chip');
+            this.props.UNSELECT_WORK_AREAS_DANCER(e.target.innerHTML)
         } else {
             elem.classList.remove('hover-chip');
             elem.classList.add('selected');
+            this.props.SELECT_WORK_AREAS_DANCER(e.target.innerHTML)
         }
     };
 
@@ -125,6 +162,45 @@ class OnboardingBooker extends Component {
         this.setState({
             [e.target.getAttribute('name')]: !this.state[e.target.getAttribute('name')]
         }, () => console.log(this.state))
+    };
+
+    saveBooker = () => {
+        console.log(this.props.booker);
+        let selectTalentsWorkAreas = [];
+
+        if(this.state.actorSelect) {
+            selectTalentsWorkAreas
+                .push({
+                    role: 'actor',
+                    work_areas: this.props.booker.actorAreas
+                })
+        }
+
+        if(this.state.modelSelect) {
+            selectTalentsWorkAreas.push({
+                role: 'model',
+                work_areas: this.props.booker.modelAreas
+            })
+        }
+
+        if(this.state.dancerSelect) {
+            selectTalentsWorkAreas.push({
+                role: 'dancer',
+                work_areas: this.props.booker.dancerAreas
+            })
+        }
+
+        this.props.FETCH_BOOKER_DATA({
+            _key: LoginStore.user._key,
+            profiles: ['booker'],
+            booker_work_areas: selectTalentsWorkAreas,
+            registration_booker_complete: true
+        })
+
+        //TODO: this should be conditional trigger based on dispatch success action
+        if (typeof window !== 'undefined') {
+            window.location.href = '/onboarding/profile-preview?profile=booker'
+        }
     };
 
     render() {
@@ -220,7 +296,12 @@ class OnboardingBooker extends Component {
 
                         {
                             this.state.actorSelect ? [
-                                <div style={{display: 'flex', marginTop: '35px'}}>
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        marginTop: '35px',
+                                    }}
+                                >
                                     <div
                                         className='talent-cards'
                                         onClick={this.selectedBlock}
@@ -251,7 +332,12 @@ class OnboardingBooker extends Component {
 
                         {
                             this.state.modelSelect ? [
-                                <div style={{display: 'flex', marginTop: '35px'}}>
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        marginTop: '35px',
+                                    }}
+                                >
                                     <div
                                         className='talent-cards'
                                         onClick={this.selectedBlock}
@@ -300,12 +386,42 @@ class OnboardingBooker extends Component {
                                     </div>
                                     <div style={{width: '68%'}}>
                                         <h4>Work areas</h4>
-                                        <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                                            {
-                                                this.state.modelAreas.map(this.renderChipDancerWorkAreas, this)
-                                            }
+                                        <div style={{borderBottom: '1px solid lightgrey', paddingBottom: 10}}>
+                                            <div style={{display: 'flex'}}>
+                                                <div style={{width: '25%'}}>
+                                                    <h5>Video shooting</h5>
+                                                </div>
+                                                <div style={{display: 'flex', flexWrap: 'wrap', width: '75%' }}>
+                                                    {
+                                                        this.state.dancerAreas.video.map(this.renderChipDancerWorkAreas, this)
+                                                    }
+                                                </div>
+                                            </div>
                                         </div>
-
+                                        <div style={{borderBottom: '1px solid lightgrey', paddingBottom: 10}}>
+                                            <div style={{display: 'flex'}}>
+                                                <div style={{width: '25%'}}>
+                                                    <h5>Photo shooting</h5>
+                                                </div>
+                                                <div style={{display: 'flex', flexWrap: 'wrap', width: '75%'}}>
+                                                    {
+                                                        this.state.dancerAreas.photo.map(this.renderChipDancerWorkAreas, this)
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div style={{display: 'flex'}}>
+                                                <div style={{width: '25%'}}>
+                                                    <h5>Live show</h5>
+                                                </div>
+                                                <div style={{display: 'flex', flexWrap: 'wrap', width: '75%'}}>
+                                                    {
+                                                        this.state.dancerAreas.live.map(this.renderChipDancerWorkAreas, this)
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             ] : null
@@ -317,7 +433,10 @@ class OnboardingBooker extends Component {
                                     display: 'flex',
                                     justifyContent: 'flex-end'
                                 }}>
-                                    <button className='onboarding-booker-button'>Save</button>
+                                    <button
+                                        className='onboarding-booker-button'
+                                        onClick={this.saveBooker}
+                                    >Save</button>
                                 </div> : null
                         }
                     </Col>
@@ -327,4 +446,21 @@ class OnboardingBooker extends Component {
     }
 }
 
-export default connect()(OnboardingBooker);
+function mapStateToProps(state) {
+    return {
+        booker: state.onboardingBooker
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    {
+        SELECT_WORK_AREAS_ACTOR,
+        SELECT_WORK_AREAS_DANCER,
+        SELECT_WORK_AREAS_MODEL,
+        UNSELECT_WORK_AREAS_ACTOR,
+        UNSELECT_WORK_AREAS_DANCER,
+        UNSELECT_WORK_AREAS_MODEL,
+        FETCH_BOOKER_DATA
+    }
+)(OnboardingBooker);

@@ -54,6 +54,7 @@ class OnboardingSteps extends Component {
         //this.props.FETCH_GET_USER_DATA(LoginStore.user._key)
         this.props.FETCH_UPDATE_USER_DATA({
             _key: LoginStore.user._key,
+            profiles: ['talent'],
             gender: this.props.profile.gender,
             date_of_birth: this.props.profile.dateOfBirth,
             ethnicity: this.props.profile.ethnic ? this.props.profile.ethnic.toLowerCase() : this.props.profile.ethnic,
@@ -73,10 +74,13 @@ class OnboardingSteps extends Component {
             hair_length: this.props.profile.hair_length ? this.props.profile.hair_length.toLowerCase() : this.props.profile.hair_length,
             hair_color: this.props.profile.hair_color ? this.props.profile.hair_color.toLowerCase() : '',
             comp_card: [],
-            video: []
-        })
+            video: [],
+            registration_talent_complete: true
+        });
+
+        //TODO: this should be conditional trigger based on dispatch success action
         if (typeof window !== 'undefined') {
-            window.location.href = '/onboarding/profile-preview'
+            window.location.href = '/onboarding/profile-preview?profile=talent'
         }
     };
 

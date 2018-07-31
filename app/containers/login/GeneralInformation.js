@@ -62,6 +62,13 @@ class GeneralInformation extends Component {
         });
     };
 
+    toOnboarding = () => {
+        //TODO: SAVE
+        if (typeof window !== 'undefined') {
+            window.location.href = "/login/select-role";
+        }
+    };
+
     render() {
         return [
             <Row>
@@ -111,7 +118,17 @@ class GeneralInformation extends Component {
                         </div>
                     </Col>
                 </Row>
-            ) : <div></div>
+            ) : <div></div>,
+            <Row>
+                <Col xs={12} style={{display: 'flex', justifyContent: 'center'}}>
+                    <button
+                        className='main-button radius-button clear-button'
+                        onClick={this.toOnboarding}
+                    >
+                        Save
+                    </button>
+                </Col>
+            </Row>
         ]
     }
 }

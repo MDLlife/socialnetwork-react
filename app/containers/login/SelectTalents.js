@@ -6,26 +6,30 @@ import {Row, Col} from 'react-bootstrap';
 class SelectTalents extends Component {
     onClickActor(){
          if (typeof window !== 'undefined') {
-            window.location.href = '/onboarding?role=actor'
+            //window.location.href = '/onboarding?role=actor'
+             window.location.href = '/login/general-information'
         }
     }
 
     onClickModel(){
          if (typeof window !== 'undefined') {
-            window.location.href = '/onboarding?role=model'
-        }
+            //window.location.href = '/onboarding?role=model'
+             window.location.href = '/login/general-information'
+         }
     }
 
     onClickDancer(){
          if (typeof window !== 'undefined') {
-            window.location.href = '/onboarding?role=dancer'
-        }
+            //window.location.href = '/onboarding?role=dancer'
+             window.location.href = '/login/general-information'
+         }
     }
 
     onClickFan(){
          if (typeof window !== 'undefined') {
-            window.location.href = '/onboarding/fan'
-        }
+            //window.location.href = '/onboarding/fan'
+             window.location.href = '/login/general-information'
+         }
     }
 
     render() {

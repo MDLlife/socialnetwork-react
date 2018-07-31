@@ -27,7 +27,18 @@ class LoginLayout extends Component {
                 console.log("*&*&*&* User logged in, going to redirect to next phase ", loggedIn);
                 //TODO: GET from API and check if user already completed his profile, if so redirect to main page, otherwise to next steps on registration
 
-                window.location.href = "/login/select-role";
+                //get user
+                var user = LoginStore.user;
+
+                console.log("JWT USER, ", user);
+
+                //validate if onboarding is complete
+                if(user.registration_booker_complete || user.registration_talent_complete || user.registration_fan_complete){
+                    window.location.href = "/today"
+                }else {
+                    //onboarding not complete, redirect general-info
+                    window.location.href = "/login/general-information";
+                }
             }
 
         }

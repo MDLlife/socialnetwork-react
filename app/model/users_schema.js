@@ -51,6 +51,36 @@ const users_schema = Joi.object().keys({
     comp_card: Joi.array().default([]),
     video: Joi.array().default([]),
 
+    //7. Booker
+    booker_work_areas: Joi.array().items(
+        Joi.object().keys({
+            role: Joi.string().valid("actor", "model", "dancer").default("model"),
+            work_areas: Joi.array().items(Joi.string().valid(
+                // MODEL
+                'tvc', 'movie', "ordinal catalog",
+                "underwear catalog", "fashion show",
+                "exhibition", "promo event", "makeup show",
+                "hairdress show", "fitting", "hostess", "body art",
+
+                // ACTOR
+                "extras", "stunt", "stage", "drama", "voice over", "puppet show", "stand up",
+
+                // DANCER
+                //video
+                "tv commercial", "tv series", "promo video", "tv show",
+                //photo
+                "commercial", "editorial",
+                //live:
+                "night park", "theme park", "festival", "stage", "promo event", "flashmob"
+            ).default("movie")),
+        })
+    ),
+
+    //6. Registration
+    registration_booker_complete: Joi.boolean().default(false),
+    registration_talent_complete: Joi.boolean().default(false),
+    registration_fan_complete: Joi.boolean().default(false),
+
 });
 
 

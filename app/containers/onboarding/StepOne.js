@@ -142,10 +142,10 @@ class StepOne extends Component {
             return <AgeComponent age='Teen (11-17 y.o.)'/>;
         } else if (year >= 18 && year <= 25) {
             return <AgeComponent age='Young (18-25 y.o.)'/>;
-        } else if (year >= 26 && year <= 35) {
-            return <AgeComponent age='Mature (26-35 y.o.)'/>;
-        } else if (year >= 36) {
-            return <AgeComponent age='Senior (35+ y.o.)'/>;
+        } else if (year >= 26 && year <= 45) {
+            return <AgeComponent age='Mature (26-45 y.o.)'/>;
+        } else if (year >= 46) {
+            return <AgeComponent age='Senior (45+ y.o.)'/>;
         } else {
             return <div></div>;
         }
