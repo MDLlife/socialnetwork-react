@@ -3,7 +3,7 @@ import path from 'path'
 var url = require('url')
 
 var expireLimit = process.env.EXPIRE_LIMIT || 60
-var maxLimit = process.env.MAX_LIMIT || 20
+var maxLimit = process.env.MAX_LIMIT || 60
 var delayLimit = process.env.DELAY_LIMIT || 0
 
 var RateLimit = require('server/handlers/express-rate-limit')
