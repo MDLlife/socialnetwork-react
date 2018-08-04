@@ -208,7 +208,7 @@ class OnboardingBooker extends Component {
 
     render() {
         return (
-            <Grid className='main-content-container onboarding' style={{marginBottom: 50}}>
+            <Grid className='main-content-container onboarding white-back' style={{marginBottom: 50}}>
                 <Row>
                     <Col
                         xs={12}

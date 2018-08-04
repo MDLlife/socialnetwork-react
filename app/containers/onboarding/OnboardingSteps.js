@@ -165,7 +165,7 @@ class OnboardingSteps extends Component {
         let {step} = this.state;
 
         return (
-            <Grid className='main-content-container onboarding' style={{marginBottom: 50}}>
+            <Grid className='main-content-container onboarding white-back' style={{marginBottom: 50}}>
                 <Row>
                     <Col
                         xs={12}

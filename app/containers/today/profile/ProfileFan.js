@@ -1,11 +1,28 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Col} from 'react-bootstrap';
 import EditIcon from 'material-ui/svg-icons/content/create';
+import LoginStore from "store/LoginStore";
+import Avatar from 'material-ui/Avatar';
 
 class Profile extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {}
+    }
+
+    componentDidMount() {
+        const username = LoginStore.user && LoginStore.user.username ? LoginStore.user.username : '';
+        const avatarurl = LoginStore.user && LoginStore.user.avatarurl ? LoginStore.user.avatarurl : 'http://via.placeholder.com/145x145';
+
+        this.setState({
+            avatarurl: avatarurl,
+            username: username,
+        })
+    }
+
     render() {
+
         return (
             <Col xs={8}>
                 <div
@@ -15,7 +32,8 @@ class Profile extends Component {
                 >
                     <div
                         style={{
-                            background: 'url(/static/img/IntroLoginBG.jpg) left center',                            width: '33%',
+                            background: 'url(/static/img/IntroLoginBG.jpg) left center',
+                            width: '33%',
                             height: 285,
                             marginRight: 10,
                             borderRadius: 5
@@ -56,14 +74,11 @@ class Profile extends Component {
                                     justifyContent: 'center'
                                 }}
                             >
-                                <img
-                                    src="http://via.placeholder.com/156x156"
-                                    alt=""
-                                    style={{
-                                        borderRadius: '50%',
-                                        border: '1px solid blue'
-                                    }}
-                                />
+                                <Avatar src={this.state.avatarurl} size={156} style={{
+                                    borderRadius: '50%',
+                                    border: '1px solid blue',
+                                    height: 156
+                                }}/>
                             </div>
                         </div>
                         <div
@@ -74,9 +89,8 @@ class Profile extends Component {
                                 justifyItems: 'center'
                             }}
                         >
-                            <div style={{fontSize: 24}}>Super Fan</div>
+                            <div style={{fontSize: 24}}>{this.state.username}</div>
                             <div>New York, USA</div>
-                            <div>Mature</div>
                         </div>
                     </div>
                     <div

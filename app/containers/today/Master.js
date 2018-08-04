@@ -6,9 +6,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import ProfileMenu from '../Menu';
-import LoginStore from 'store/LoginStore';
 import Avatar from 'material-ui/Avatar';
-
+import LoginStore from 'store/LoginStore';
 
 const muiTheme = getMuiTheme({
     stepper: {
@@ -23,9 +22,9 @@ class Master extends Component {
 
         const {children} = this.props;
         return (
-            <div>
+            <div style={{backgroundColor: '#EEF2F5'}}>
                 <Helmet
-                    htmlAttributes={{"lang": "en"}} // amp takes no value
+                    htmlAttributes={{"lang": "en", "class": "change-back-color"}} // amp takes no value
                     title="MDL website."
                     titleTemplate="MDL.live - %s"
                     meta={[
@@ -56,7 +55,7 @@ class Master extends Component {
                                     position: 'relative',
                                     top: -7,
                                     borderRadius: '50%'
-                                }}/>
+                                }} />
                                 <ProfileMenu/>
                             </div>
                         }
@@ -69,13 +68,13 @@ class Master extends Component {
                     />
                     {children}
                     {/*<div className='menu-footer-container'>*/}
-                    {/*<ul>*/}
-                    {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="//mdl.life">About</a></li>*/}
-                    {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">API</a></li>*/}
-                    {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Contact</a></li>*/}
-                    {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Terms of Use</a></li>*/}
-                    {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Privacy Policy</a></li>*/}
-                    {/*</ul>*/}
+                        {/*<ul>*/}
+                            {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="//mdl.life">About</a></li>*/}
+                            {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">API</a></li>*/}
+                            {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Contact</a></li>*/}
+                            {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Terms of Use</a></li>*/}
+                            {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Privacy Policy</a></li>*/}
+                        {/*</ul>*/}
                     {/*</div>*/}
                 </MuiThemeProvider>
             </div>

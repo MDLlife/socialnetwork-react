@@ -61,7 +61,7 @@ class OnboardingFan extends Component {
 
     render() {
         return (
-            <Grid className='main-content-container onboarding' style={{marginBottom: 50}}>
+            <Grid className='main-content-container onboarding white-back' style={{marginBottom: 50}}>
                 <Row>
                     <Col
                         xs={12}
@@ -118,7 +118,7 @@ class OnboardingFan extends Component {
                                 }}
                             />
                             {
-                                this.state.year && this.switchAgeComponent(this.state.year)
+                                this.props.fan.year && this.switchAgeComponent(this.props.fan.year)
                             }
                         </div>
                         <div style={{display: 'flex', justifyContent: 'flex-end'}}>

@@ -2,8 +2,25 @@ import React, {Component} from 'react';
 import {Col, Grid, Row} from 'react-bootstrap';
 import NewsFeed from './NewsFeed';
 import ProfileContainer from './profile/ProfileContainer';
+import LoginStore from "store/LoginStore";
 
 class TodayContainer extends Component {
+
+    componentDidMount() {
+        const username = LoginStore.user && LoginStore.user.username ? LoginStore.user.username : '';
+        const avatarurl = LoginStore.user && LoginStore.user.avatarurl ? LoginStore.user.avatarurl : 'http://via.placeholder.com/145x145';
+
+        const isBooker = !(LoginStore.user && LoginStore.user.registration_booker_complete);
+        const isTalent = !(LoginStore.user && LoginStore.user.registration_talent_complete);
+
+        this.setState({
+            isBooker: isBooker,
+            isTalent: isTalent,
+            avatarurl: avatarurl,
+            username: username,
+        })
+    }
+
     constructor(props) {
         super(props);
 
@@ -16,11 +33,19 @@ class TodayContainer extends Component {
 
     selectingMenu = event => {
         if (event.target.value === 2) {
-            window.location.href = '/today/me/profile'
+
+            if (this.state.isBooker) {
+                window.location.href = '/today/me/booker';
+            } else if (this.state.isTalent) {
+                window.location.href = '/today/me/talent';
+            } else {
+                window.location.href = '/today/me/fan';
+            }
+
         } else {
-            window.location.href = '/today'
+            window.location.href = '/today';
         }
-    };
+    }
 
     render() {
         let index = this.props.params && this.props.params.index ? this.props.params.index : '';
@@ -29,7 +54,7 @@ class TodayContainer extends Component {
 
         return (
             <Grid style={{
-                marginTop: 20
+                marginTop: 20,
             }}>
                 <Row>
                     <Col xs={2}>
@@ -48,7 +73,7 @@ class TodayContainer extends Component {
                                 Today
                             </li>
                             <li
-                                className={`${index === 'profile' ? 'selected-menu-item-today' : 'menu-item'}`}
+                                className={`${index === 'fan' || index === 'booker' || index === 'talent' ? 'selected-menu-item-today' : 'menu-item'}`}
                                 onClick={this.selectingMenu}
                                 value='2'
                             >
@@ -57,7 +82,7 @@ class TodayContainer extends Component {
                         </ul>
                     </Col>
                     {
-                        index === '' || index === 'genre'  ? <NewsFeed index={index} value={value}/> :
+                        index === '' || index === 'genre' ? <NewsFeed index={index} value={value}/> :
                             <ProfileContainer index={index} value={value}/>
                     }
                 </Row>

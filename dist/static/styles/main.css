@@ -18,6 +18,12 @@ html, body {
 div[role='menu'] > span:hover {
   background-color: black; }
 
+.change-back-color {
+  background-color: #EEF2F5; }
+
+.white-back {
+  background-color: white; }
+
 .multi-bg {
   height: 100vh;
   width: 100vw; }
