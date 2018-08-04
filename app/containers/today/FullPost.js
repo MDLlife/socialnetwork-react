@@ -1,10 +1,101 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Grid, Row, Col} from 'react-bootstrap';
+import {Col, Grid, Row} from 'react-bootstrap';
+import {loadArticleDetail} from 'actions/articles'
+import PropTypes from 'prop-types';
+import Date from "components/Date"
+
+import Avatar from 'material-ui/Avatar';
+
+var $ = require('jquery');
+var md5 = require('md5');
+var base64Encode = require("util/imgresizer").base64Encode;
+
+var width = "450";
+var height = "250";
+var quality = "50";
 
 class FullPost extends Component {
+    static fetchData({store, params}) {
+        let {id} = params
+        return store.dispatch(loadArticleDetail({id}))
+    }
+
+    componentDidMount() {
+        let {id} = this.props.params
+        if (typeof window !== 'undefined' && !this.props.article || !this.props.article.operator) {
+            console.log("ERROR: COULD NOT HYDRATE REACT STATE, WILL RETRY on client-side")
+            this.props.loadArticleDetail({id})
+        }
+    }
+
+    getImageElement() {
+
+        if (typeof window !== 'undefined') {
+
+            var src;
+
+            // use meta:og image if available
+            if (this.props.article.content && this.props.article.content.image) {
+                src = this.props.article.content.image;
+            }
+
+            // use default image if meta:og is missing
+            if (!src && this.props.article.image) {
+                src = this.props.article.image;
+            }
+
+            var id = this.props.article.id;
+
+            var host = "https://img.comentarismo.com/r";
+            // console.log("IMGRESIZER ",src)
+            //do img resize
+            var request = $.ajax({
+                url: host + '/img/',
+                type: 'post',
+                data: {
+                    url: src,
+                    width: width,
+                    height: height,
+                    quality: quality
+                },
+                mimeType: "text/plain; charset=x-user-defined"
+            });
+            request.done(function (binaryData) {
+                if (binaryData && binaryData !== "") {
+                    //console.log("imgresizer DONE OK");
+                    var base64Data = base64Encode(binaryData);
+                    src = "data:image/jpeg;base64," + base64Data;
+                    $("#" + id).attr("src", "data:image/jpeg;base64," + base64Data);
+                } else {
+                    // $("#fb-"+id).show();
+                    // $("#img-"+id).hide();
+
+                    $("#" + id).attr("src", "http://via.placeholder.com/450x250");
+
+                    //
+                }
+            });
+
+            request.fail(function (e) {
+                //    console.log(e);
+                // $("#fb-"+id).show();
+                // $("#img-"+id).hide();
+                $("#" + id).attr("src", "http://via.placeholder.com/450x250");
+            });
+        }
+
+    }
+
+    goBack() {
+        window.location.href = '/today'
+    }
+
     render() {
+        let {article} = this.props
+        if (!article || !article.operator) {
+            //TODO: redirect to 404 page ? show error page ?
+        }
         return (
             <Grid style={{
                 marginTop: 20,
@@ -17,6 +108,7 @@ class FullPost extends Component {
                                 display: 'flex',
                                 justifyContent: 'flex-end',
                             }}
+                            onClick={this.goBack}
                         >
                             &larr; Back
                         </span>
@@ -30,15 +122,14 @@ class FullPost extends Component {
                                 padding: '20px 20px 0 20px',
                                 position: 'relative'
                             }}>
-                                <img
-                                    src="http://via.placeholder.com/36x36"
-                                    alt=""
-                                    style={{
+                                <div id={"img-" + this.props.article.id} className="">
+                                    <img src="http://via.placeholder.com/450x250" id={this.props.article.id} style={{
                                         width: '100%',
                                         height: 300,
                                         borderRadius: 5,
-                                    }}
-                                />
+                                    }}/>
+                                    {this.getImageElement()}
+                                </div>
                                 <div style={{
                                     display: 'flex',
                                     paddingLeft: 20,
@@ -48,21 +139,19 @@ class FullPost extends Component {
                                     justifyContent: 'space-between'
                                 }}>
                                     <div style={{display: 'flex'}}>
-                                        <img
-                                            src="http://via.placeholder.com/48x48"
-                                            alt=""
-                                            style={{
-                                                borderRadius: '50%',
-                                                border: '2px solid white'
-                                            }}
-                                        />
+                                        <Avatar src={this.props.article.author_avatarurl} size={48} style={{
+                                            borderRadius: '50%',
+                                            border: '2px solid white'
+                                        }}/>
                                         <div
                                             style={{
                                                 paddingLeft: 10,
                                                 paddingTop: 25
                                             }}
                                         >
-                                            Written by: <span style={{fontWeight: 'bolder'}}>Jack Jackson</span>
+                                            Written by: <span
+                                            dangerouslySetInnerHTML={{__html: article && article.author}}
+                                            style={{fontWeight: 'bolder'}}/>
                                         </div>
                                     </div>
                                     <div
@@ -71,52 +160,17 @@ class FullPost extends Component {
                                             paddingRight: 40
                                         }}
                                     >
-                                        Posted: <span style={{fontWeight: 'bolder'}}>8 hours ago</span>
+                                        Posted: <span style={{fontWeight: 'bolder'}}><Date
+                                        date={this.props.article.date}/></span>
                                     </div>
                                 </div>
                             </div>
                             <div style={{
                                 padding: 20,
                             }}>
-                                <h2>News name</h2>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Aperiam obcaecati recusandae unde veritatis voluptatibus.
-                                    Dolorum ea, eum excepturi facere fugit inventore ipsum
-                                    nihil nobis optio porro possimus quod, quos voluptatem.
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Aperiam obcaecati recusandae unde veritatis voluptatibus.
-                                    Dolorum ea, eum excepturi facere fugit inventore ipsum
-                                    nihil nobis optio porro possimus quod, quos voluptatem.
-                                    <br/>
-                                    <br/>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Aperiam obcaecati recusandae unde veritatis voluptatibus.
-                                    Dolorum ea, eum excepturi facere fugit inventore ipsum
-                                    nihil nobis optio porro possimus quod, quos voluptatem.                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Aperiam obcaecati recusandae unde veritatis voluptatibus.
-                                    Dolorum ea, eum excepturi facere fugit inventore ipsum
-                                    nihil nobis optio porro possimus quod, quos voluptatem.
-                                    <br/>
-                                    <br/>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Aperiam obcaecati recusandae unde veritatis voluptatibus.
-                                    Dolorum ea, eum excepturi facere fugit inventore ipsum
-                                    nihil nobis optio porro possimus quod, quos voluptatem.
-                                    <br/>
-                                    <br/>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Aperiam obcaecati recusandae unde veritatis voluptatibus.
-                                    Dolorum ea, eum excepturi facere fugit inventore ipsum
-                                    nihil nobis optio porro possimus quod, quos voluptatem.                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Aperiam obcaecati recusandae unde veritatis voluptatibus.
-                                    Dolorum ea, eum excepturi facere fugit inventore ipsum
-                                    nihil nobis optio porro possimus quod, quos voluptatem.                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Aperiam obcaecati recusandae unde veritatis voluptatibus.
-                                    Dolorum ea, eum excepturi facere fugit inventore ipsum
-                                    nihil nobis optio porro possimus quod, quos voluptatem.
-                                    <br/>
-                                </p>
+                                <h2 dangerouslySetInnerHTML={{__html: article && article.title}}/>
+                                <div id='content'
+                                     dangerouslySetInnerHTML={{__html: article && article.resume}}/>
                             </div>
                             <div style={{
                                 display: 'flex',
@@ -187,4 +241,12 @@ class FullPost extends Component {
     }
 }
 
-export default connect()(FullPost);
+function mapStateToProps(state) {
+    return {article: state.articles}
+}
+
+FullPost.propTypes = {
+    article: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps, {loadArticleDetail})(FullPost)

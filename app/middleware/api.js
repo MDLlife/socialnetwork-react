@@ -2,6 +2,7 @@ import superAgent from 'superagent'
 import Promise, { using } from 'bluebird'
 import _ from 'lodash'
 import StackTrace from 'stacktrace-js'
+import config from 'config';
 
 
 export const CALL_API = Symbol('CALL_API')
@@ -61,9 +62,13 @@ function createRequestPromise (apiActionCreator, next, getState, dispatch) {
         
         return new Promise(function (resolve, reject) {
             
-            superAgent[params.method](params.url).
-                withCredentials().
-                end((err, res) => {
+            var sa = superAgent[params.method](params.url);
+                if(params.method.indexOf("api.comentarismo.com")){
+                    sa = sa.set('COMENTARISMO-KEY', config.COMENTARISMO_KEY)
+                }
+
+                sa.withCredentials()
+                .end((err, res) => {
                         
                         if (err) {
                             

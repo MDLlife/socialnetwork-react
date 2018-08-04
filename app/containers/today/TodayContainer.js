@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {Grid, Row, Col} from 'react-bootstrap';
+import {Col, Grid, Row} from 'react-bootstrap';
 import NewsFeed from './NewsFeed';
 import ProfileContainer from './profile/ProfileContainer';
 
@@ -8,7 +7,7 @@ class TodayContainer extends Component {
     constructor(props) {
         super(props);
 
-        this.state ={
+        this.state = {
             head: 1,
             menu: 1,
         }
@@ -16,12 +15,18 @@ class TodayContainer extends Component {
 
 
     selectingMenu = event => {
-        this.setState({
-            menu: event.target.value
-        })
+        if (event.target.value === 2) {
+            window.location.href = '/today/me/profile'
+        } else {
+            window.location.href = '/today'
+        }
     };
 
     render() {
+        let index = this.props.params && this.props.params.index ? this.props.params.index : '';
+        let value = this.props.params && this.props.params.value ? this.props.params.value : '';
+        // console.log("index,",index," value,",value);
+
         return (
             <Grid style={{
                 marginTop: 20
@@ -36,14 +41,14 @@ class TodayContainer extends Component {
                             }}
                         >
                             <li
-                                className={`${this.state.menu === 1 ? 'selected-menu-item-today' : 'menu-item'}`}
+                                className={`${index === '' || index === 'genre' ? 'selected-menu-item-today' : 'menu-item'}`}
                                 onClick={this.selectingMenu}
                                 value='1'
                             >
                                 Today
                             </li>
                             <li
-                                className={`${this.state.menu === 2 ? 'selected-menu-item-today' : 'menu-item'}`}
+                                className={`${index === 'profile' ? 'selected-menu-item-today' : 'menu-item'}`}
                                 onClick={this.selectingMenu}
                                 value='2'
                             >
@@ -52,7 +57,8 @@ class TodayContainer extends Component {
                         </ul>
                     </Col>
                     {
-                        this.state.menu === 1 ? <NewsFeed/> : <ProfileContainer/>
+                        index === '' || index === 'genre'  ? <NewsFeed index={index} value={value}/> :
+                            <ProfileContainer index={index} value={value}/>
                     }
                 </Row>
             </Grid>

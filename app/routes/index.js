@@ -26,8 +26,6 @@ import TodayContainer from 'containers/today/TodayContainer';
 import FullPost from 'containers/today/FullPost';
 
 import Notfound from 'containers/Notfound';
-// Needed for onTouchTap
-// http://stackoverflow.com/a/34015469/988941
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import LoginStore from 'store/LoginStore';
@@ -78,7 +76,7 @@ export default function (history) {
                     <IndexRoute component={login}/>
 
                     <Route path="activate-account" component={ActivateAccount}/>
-                    <Route path="email-confirmation" component={EmailConfirmation} />
+                    <Route path="email-confirmation" component={EmailConfirmation}/>
                     <Route path="select-role" component={SelectRole} onEnter={checkAuth}/>
                     <Route path="booker-role" component={BookerRole} onEnter={checkAuth}/>
                     <Route path="talent-role" component={TalentRole} onEnter={checkAuth}/>
@@ -98,9 +96,14 @@ export default function (history) {
                     <Route path="*" component={Notfound}/>
                 </Route>
 
-                <Route path='/today' component={TodayLayout} onEnter={checkAuth}>
-                    <IndexRoute component={TodayContainer}/>
-                    <Route path='fullpost' component={FullPost}/>
+                <Route path='/today' component={TodayLayout} >
+                    <IndexRoute component={TodayContainer} />
+                    <Route path="me/:index" component={TodayContainer} onEnter={checkAuth}/>
+
+                    <Route path="news/:id" component={FullPost}/>
+                    <Route path="news/:index/:value" component={TodayContainer}/>
+
+                    <Route path="*" component={Notfound}/>
                 </Route>
 
                 <Route path="*" component={Notfound}/>
