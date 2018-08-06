@@ -153,4 +153,4 @@ gulp.task('fonts', function () {
 
 gulp.task('default', ['css','fonts', 'images', 'minify-js', 'vendor', 'css:watch']);
 
-gulp.task('prod', ['css', 'fonts', 'images', 'minify-js', 'vendor']);
+gulp.task('prod', ['css', 'fonts', 'images', 'minify-js', 'vendor', 'vendor-images']);
