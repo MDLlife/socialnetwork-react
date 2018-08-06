@@ -11,6 +11,8 @@ var width = "450";
 var height = "250";
 var quality = "50";
 
+import PageViews from 'components/PageViews'
+import Like from 'components/Like'
 
 class Post extends Component {
 
@@ -176,35 +178,8 @@ class Post extends Component {
                         className='post-action-icons'
                         style={{display: 'flex', alignItems: 'center'}}
                     >
-                        <div style={{
-                            marginRight: 20
-                        }}>
-                            <img
-                                src="/static/img/outline-visibility-24px.svg"
-                                alt=""
-                                style={{
-                                    marginRight: 5,
-                                    width: 24
-                                }}
-                            />
-                            <span>
-                                13
-                            </span>
-                        </div>
-                        <div>
-                            <img
-                                src="/static/img/favorite.svg"
-                                alt=""
-                                style={{
-                                    marginRight: 5,
-                                    width: 21,
-                                    borderRadius: 0
-                                }}
-                            />
-                            <span>
-                                12
-                            </span>
-                        </div>
+                        <PageViews id={this.props.article.id}/>
+                        <Like id={this.props.article.id} likes={this.props.article ? this.props.article.likes : []}/>
                     </div>
                 </div>
             </div>

@@ -6,6 +6,10 @@ import PropTypes from 'prop-types';
 import Date from "components/Date"
 
 import Avatar from 'material-ui/Avatar';
+import {XScript} from 'components/XScript'
+import Helmet from 'react-helmet'
+import PageViews from 'components/PageViews'
+import Like from 'components/Like'
 
 var $ = require('jquery');
 var md5 = require('md5');
@@ -71,7 +75,7 @@ class FullPost extends Component {
                     // $("#fb-"+id).show();
                     // $("#img-"+id).hide();
 
-                    $("#" + id).attr("src", "http://via.placeholder.com/450x250");
+                    $("#" + id).attr("src", "//via.placeholder.com/450x250");
 
                     //
                 }
@@ -81,7 +85,7 @@ class FullPost extends Component {
                 //    console.log(e);
                 // $("#fb-"+id).show();
                 // $("#img-"+id).hide();
-                $("#" + id).attr("src", "http://via.placeholder.com/450x250");
+                $("#" + id).attr("src", "//via.placeholder.com/450x250");
             });
         }
 
@@ -93,6 +97,7 @@ class FullPost extends Component {
 
     render() {
         let {article} = this.props
+        let {id} = this.props.params
         if (!article || !article.operator) {
             //TODO: redirect to 404 page ? show error page ?
         }
@@ -101,6 +106,37 @@ class FullPost extends Component {
                 marginTop: 20,
                 marginBottom: 50
             }}>
+                <Helmet
+                    htmlAttributes={{'lang': 'en'}} // amp takes no value
+                    title={`Latest news - Source - ${article.operator
+                        ? article.operator.toUpperCase()
+                        : ''} - Genre: ${article.genre
+                        ? article.genre.toUpperCase()
+                        : ''}`}
+                    titleTemplate="Comentarismo.com - %s"
+                    meta={[
+                        {
+                            'name': 'description',
+                            'content': `Find the most active commentators of the ${this.props.params.value} in several categories like world news, sports, business, technology, analysis and reviews from the world's leading liberal comments website.`,
+                        },
+                        {
+                            'property': 'og:type',
+                            'content': 'article',
+                        },
+
+                        {
+                            'property': 'og:title',
+                            'content': `${article.title ? article.title : ''}`,
+                        },
+
+                        {
+                            'property': 'og:image',
+                            'content': `${article.image
+                                ? article.image
+                                : '//comentarismo.com/static/img/comentarismo-extra-mini-logo.png' }`,
+                        },
+                    ]}
+                />
                 <Row>
                     <Col xs={2}>
                         <span
@@ -123,7 +159,7 @@ class FullPost extends Component {
                                 position: 'relative'
                             }}>
                                 <div id={"img-" + this.props.article.id} className="">
-                                    <img src="http://via.placeholder.com/450x250" id={this.props.article.id} style={{
+                                    <img src="//via.placeholder.com/450x250" id={this.props.article.id} style={{
                                         width: '100%',
                                         height: 300,
                                         borderRadius: 5,
@@ -202,37 +238,17 @@ class FullPost extends Component {
                                     className='post-action-icons'
                                     style={{display: 'flex', alignItems: 'center'}}
                                 >
-                                    <div style={{
-                                        marginRight: 20
-                                    }}>
-                                        <img
-                                            src="/static/img/outline-visibility-24px.svg"
-                                            alt=""
-                                            style={{
-                                                marginRight: 5,
-                                                width: 24
-                                            }}
-                                        />
-                                        <span>
-                                            13
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <img
-                                            src="/static/img/favorite.svg"
-                                            alt=""
-                                            style={{
-                                                marginRight: 5,
-                                                width: 21,
-                                                borderRadius: 0
-                                            }}
-                                        />
-                                        <span>
-                                            12
-                                        </span>
-                                    </div>
+                                    <PageViews id={id}/>
+                                    <Like id={id} likes={this.props.article ? this.props.article.likes : []}/>
+
                                 </div>
                             </div>
+                            <div >
+                                <XScript index="operator_titleurlize" page={id}/>
+                                <div id="comentarismo-container"
+                                     className="comentarismo-comment col-md-12"/>
+                            </div>
+
                         </div>
                     </Col>
                 </Row>

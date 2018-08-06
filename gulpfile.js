@@ -22,9 +22,16 @@ var buildProperties = {
         './pwa/manifest.json',
         './pwa/localforage.js',
         './pwa/ServiceWorkerWare.js',
-        
+        './vendor/comentarismo-client.js',
+        './vendor/comentarismo-client-min.map.json',
+        './vendor/comentarismo-client-min.js',
+        './vendor/comentarismo-client.css',
+
+
     ],
-    imageFiles: ['./img/**/*']
+    assetFilesImages:['./vendor/images/*'],
+
+    imageFiles:['./img/**/*'],
 };
 
 gulp.task('sourcemaps', function () {
@@ -109,6 +116,17 @@ gulp.task('minify-js', function () {
 gulp.task('vendor', function () {
     gulp.src(buildProperties.assetFiles)
         .pipe(gulp.dest(buildProperties.publicDir + '/static'))
+        .on('error', function (error) {
+            console.log(error);
+        })
+        .on('end', function () {
+            console.log('Done copying vendor dependencies.');
+        });
+});
+
+gulp.task('vendor-images', function () {
+    gulp.src(buildProperties.assetFilesImages)
+        .pipe(gulp.dest(buildProperties.publicDir + '/static/images'))
         .on('error', function (error) {
             console.log(error);
         })
