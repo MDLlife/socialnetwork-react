@@ -12,7 +12,7 @@ class SelectRole extends Component {
 
     componentDidMount() {
         const username = LoginStore.user && LoginStore.user.username ? LoginStore.user.username : '';
-        const avatarurl = LoginStore.user && LoginStore.user.avatarurl ? LoginStore.user.avatarurl : 'http://via.placeholder.com/145x145';
+        const avatarurl = LoginStore.user && LoginStore.user.avatarurl ? LoginStore.user.avatarurl : '//via.placeholder.com/145x145';
 
         this.setState({
             avatarurl: avatarurl,

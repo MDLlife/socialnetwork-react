@@ -55,7 +55,7 @@ class Post extends Component {
                 // $("#fb-"+id).show();
                 // $("#img-"+id).hide();
 
-                $("#" + id).attr("src", "http://via.placeholder.com/450x250");
+                $("#" + id).attr("src", "//via.placeholder.com/450x250");
 
                 //
             }
@@ -65,7 +65,7 @@ class Post extends Component {
             //    console.log(e);
             // $("#fb-"+id).show();
             // $("#img-"+id).hide();
-            $("#" + id).attr("src", "http://via.placeholder.com/450x250");
+            $("#" + id).attr("src", "//via.placeholder.com/450x250");
         });
 
     }
@@ -85,7 +85,7 @@ class Post extends Component {
                     position: 'relative'
                 }}>
                     <div id={"img-" + this.props.article.id} className="">
-                        <img src="http://via.placeholder.com/450x250" id={this.props.article.id} style={{
+                        <img src="//via.placeholder.com/450x250" id={this.props.article.id} style={{
                             width: '100%',
                             height: 300,
                             borderRadius: 5,

@@ -113,7 +113,7 @@ class EditProfile extends Component {
                                 }}
                             >
                                 <img
-                                    src="http://via.placeholder.com/156x156"
+                                    src="//via.placeholder.com/156x156"
                                     alt=""
                                     style={{
                                         borderRadius: '50%',
