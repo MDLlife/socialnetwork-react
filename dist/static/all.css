@@ -356,6 +356,57 @@ label {
   .stepper-main {
     display: none; } }
 
+.list-item-preview {
+  padding: 7px 13px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  margin-bottom: 5px;
+  font-family: 'Gilroy Medium'; }
+
+.measurements-table,
+.appearance-table {
+  display: grid;
+  grid-template-columns: 50%;
+  margin-top: 10px; }
+
+.measurements-table div,
+.appearance-table div {
+  padding: 10px 0; }
+
+.height,
+.body-type {
+  grid-column: 1;
+  grid-row: 1; }
+
+.height,
+.bust,
+.waist,
+.hips,
+.shoe-size,
+.body-type,
+.eye-color,
+.hair-color,
+.hair-length {
+  color: #999999; }
+
+.height-value,
+.bust-value,
+.waist-value,
+.hips-value,
+.shoe-size-value,
+.body-type-value,
+.eye-color-value,
+.hair-color-value,
+.hair-length-value {
+  color: #660066; }
+
+.height-value,
+.body-type-value {
+  grid-row: 1;
+  grid-column: 2; }
+
 .list-item {
   margin-top: 10px;
   padding: 5px;

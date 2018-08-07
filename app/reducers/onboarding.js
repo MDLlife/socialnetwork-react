@@ -15,7 +15,7 @@ export default function (state = {language_spoken: [], work_areas: [], style: []
         case 'SEARCH_LANGUAGE':
             return {...state, search_language: [...state.search_language, {key: action.payload, label: action.payload}]};
         case 'REMOVE_SEARCH_LANGUAGE':
-            return {...state, search_language: state.search_language.filter(elem => elem !== action.payload)};
+            return {...state, search_language: state.search_language.filter(elem => elem.label !== action.payload)};
         case 'REMOVE_LANGUAGE':
             return {...state, language_spoken: state.language_spoken.filter(elem => elem !== action.payload)};
         case 'SELECT_WORK_AREAS':
@@ -54,6 +54,10 @@ export default function (state = {language_spoken: [], work_areas: [], style: []
             return {...state, hair_length: action.payload};
         case 'GET_USER_DATA':
             return {...state, user_data: action.payload};
+        case 'SUCCESS_UPDATE_USER_DATA':
+            return {...state, success: action.payload};
+        case 'ERROR_UPDATE_USER_DATA':
+            return {...state, error: action.payload};
         default:
             return state;
     }

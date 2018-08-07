@@ -79,11 +79,11 @@ class StepOne extends Component {
         if (elem.classList.contains('selected')) {
             elem.classList.remove('selected');
             elem.classList.add('hover-chip');
-            this.props.REMOVE_WORK_AREAS(e.target.innerHTML)
+            this.props.REMOVE_WORK_AREAS(e.target.innerHTML.toLowerCase())
         } else {
             elem.classList.remove('hover-chip');
             elem.classList.add('selected');
-            this.props.SELECT_WORK_AREAS(e.target.innerHTML)
+            this.props.SELECT_WORK_AREAS(e.target.innerHTML.toLowerCase())
         }
     };
 
@@ -92,11 +92,11 @@ class StepOne extends Component {
         if (elem.classList.contains('selected')) {
             elem.classList.remove('selected');
             elem.classList.add('hover-chip');
-            this.props.REMOVE_WORK_NICHES(e.target.innerHTML)
+            this.props.REMOVE_WORK_NICHES(e.target.innerHTML.toLowerCase())
         } else {
             elem.classList.remove('hover-chip');
             elem.classList.add('selected');
-            this.props.SELECT_WORK_NICHES(e.target.innerHTML)
+            this.props.SELECT_WORK_NICHES(e.target.innerHTML.toLowerCase())
         }
     };
 
@@ -105,11 +105,11 @@ class StepOne extends Component {
         if (elem.classList.contains('selected')) {
             elem.classList.remove('selected');
             elem.classList.add('hover-chip');
-            this.props.REMOVE_TATTOO(e.target.innerHTML)
+            this.props.REMOVE_TATTOO(e.target.innerHTML.toLowerCase())
         } else {
             elem.classList.remove('hover-chip');
             elem.classList.add('selected');
-            this.props.SELECT_TATTOO(e.target.innerHTML)
+            this.props.SELECT_TATTOO(e.target.innerHTML.toLowerCase())
         }
     };
 
@@ -124,7 +124,7 @@ class StepOne extends Component {
     renderChipWorkAreas = data => {
         return (
             <Chip
-                className={`hover-chip ${this.props.profile.work_areas.find(e => e === data.label) ? 'selected' : ''}`}
+                className={`hover-chip ${this.props.profile.work_areas.find(e => e === data.label.toLowerCase()) ? 'selected' : ''}`}
                 key={data.key}
                 style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
                 onClick={this.selectedChipWorkAreas}
@@ -140,7 +140,7 @@ class StepOne extends Component {
     renderChipStyle = data => {
         return (
             <Chip
-                className={`hover-chip ${this.props.profile.style.find(e => e === data.label) ? 'selected' : ''}`}
+                className={`hover-chip ${this.props.profile.style.find(e => e === data.label.toLowerCase()) ? 'selected' : ''}`}
                 key={data.key}
                 style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
                 onClick={this.selectedChipStyle}
@@ -156,7 +156,7 @@ class StepOne extends Component {
     renderChipTattoo = data => {
         return (
             <Chip
-                className={`hover-chip ${this.props.profile.tattoo_where.find(e => e === data.label) ? 'selected' : ''}`}
+                className={`hover-chip ${this.props.profile.tattoo_where.find(e => e === data.label.toLowerCase()) ? 'selected' : ''}`}
                 key={data.key}
                 style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
                 onClick={this.selectedChipTattoo}
@@ -203,7 +203,7 @@ class StepOne extends Component {
                             thumbSwitchedStyle={styles.thumbSwitched}
                             trackSwitchedStyle={styles.trackSwitched}
                             onToggle={this.selectedPiercing}
-                            toggled={this.props.profile.piercing ? true : false}
+                            toggled={!!this.props.profile.piercing}
                         />
                     </div>
                 </Col>
@@ -219,7 +219,7 @@ class StepOne extends Component {
                             thumbSwitchedStyle={styles.thumbSwitched}
                             trackSwitchedStyle={styles.trackSwitched}
                             onToggle={this.selectedTattoo}
-                            toggled={this.props.profile.tattoo ? true : false}
+                            toggled={!!this.props.profile.tattoo}
                         />
                     </div>
                 </Col>

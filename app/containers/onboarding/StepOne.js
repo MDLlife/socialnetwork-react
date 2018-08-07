@@ -30,9 +30,7 @@ class StepOne extends Component {
         super(props);
 
         this.state = {
-            //year: null,
             search: '',
-            //ethnic: null,
             selectedLangs: [],
             language: [
                 {key: 0, label: 'Chinese'},
@@ -62,10 +60,10 @@ class StepOne extends Component {
         let elem = e.target.parentNode;
         if (elem.classList.contains('selected')) {
             elem.classList.remove('selected');
-            this.props.REMOVE_LANGUAGE(e.target.innerHTML)
+            this.props.REMOVE_LANGUAGE(e.target.innerHTML.toLowerCase())
         } else {
             elem.classList.add('selected');
-            this.props.SELECT_LANGUAGE(e.target.innerHTML)
+            this.props.SELECT_LANGUAGE(e.target.innerHTML.toLowerCase())
         }
     };
 
@@ -91,9 +89,10 @@ class StepOne extends Component {
     };
 
     handleRequestDelete = (key) => {
-        this.selectedLangs = this.state.selectedLangs;
-        const labelToDelete = this.state.selectedLangs.map((chip) => chip.key);
+        this.selectedLangs = this.props.profile.search_language;
+        const labelToDelete = this.selectedLangs.map((chip) => chip.key);
         const chipToDelete = this.selectedLangs.map((chip) => chip.key).indexOf(key);
+        console.log(labelToDelete[0])
         this.props.REMOVE_LANGUAGE(labelToDelete[0]);
         this.props.REMOVE_SEARCH_LANGUAGE(labelToDelete[0]);
         this.selectedLangs.splice(chipToDelete, 1);
@@ -107,7 +106,7 @@ class StepOne extends Component {
         return (
             <Chip
                 key={data.key}
-                className={`chip ${this.props.profile.language_spoken.find(e => e === data.label) ? 'selected' : ''}`}
+                className={`chip ${this.props.profile.language_spoken.find(e => e === data.label.toLowerCase()) ? 'selected' : ''}`}
                 style={{marginRight: 10, fontFamily: 'inherit'}}
                 onClick={this.selectedChip}
             >
@@ -123,7 +122,6 @@ class StepOne extends Component {
                 key={data.key}
                 className='selected'
                 style={{marginRight: 10, fontFamily: 'inherit'}}
-                // onClick={this.selectedChip}
                 onRequestDelete={() => this.handleRequestDelete(data.key)}
                 deleteIconStyle={{
                     fill: 'rgb(255,255,255)'

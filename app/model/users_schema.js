@@ -33,6 +33,7 @@ const users_schema = Joi.object().keys({
     style: Joi.array().items(Joi.string().valid("cute", "babyface", "underground", "sport", "bodybuilding", "mother").default([])),
     tattoo: Joi.boolean().default(false),
     tattoo_where: Joi.array().items(Joi.string().valid('arm', 'leg', "face", "neck", "back").default([])),
+    piercing: Joi.boolean().default(false),
 
     // 3. Measurements
     body_type: Joi.string().valid("skinny", "fit", "average", "curvy"),

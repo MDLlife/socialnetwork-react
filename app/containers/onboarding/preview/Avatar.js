@@ -1,33 +1,80 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import LoginStore from 'store/LoginStore';
+import EditIcon from 'material-ui/svg-icons/content/create';
+import AvatarProfile from 'material-ui/Avatar';
 
-const Avatar = props => {
-    return (
-        <div style={{
-            backgroundColor: 'darkgray',
-            borderTopLeftRadius: '5px',
-            borderTopRightRadius: '5px'
-        }}>
-            <label>Model</label>
-            <div>
-                <img
-                    src="http://via.placeholder.com/150x150"
-                    alt=""
+class Avatar extends Component {
+    render() {
+        const username = LoginStore.user && LoginStore.user.username ? LoginStore.user.username : '';
+        const avatarurl = LoginStore.user && LoginStore.user.avatarurl ? LoginStore.user.avatarurl : '';
+        return (
+            <div
+                style={{
+                    background: "url(/static/img/IntroLoginBG.jpg) left center",
+                    width: "100%",
+                    height: 285,
+                    marginRight: 10,
+                    borderTopLeftRadius: 5,
+                    borderTopRightRadius: 5,
+                }}
+            >
+                <div
                     style={{
-                        width: 150,
-                        borderRadius: '50%'
+                        display: "flex",
+                        justifyContent: "flex-start",
+                        padding: 10,
+                        color: 'white',
                     }}
-                />
-                <span></span>
+                >
+                    Model
+                </div>
+                <div>
+                    <div
+                        style={{
+                            backgroundColor: "#00C245",
+                            height: 20,
+                            width: 20,
+                            borderRadius: "50%",
+                            position: "absolute",
+                            left: 75,
+                            top: 54,
+                            border: "1px solid white"
+                        }}
+                    />
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "center"
+                    }}
+                >
+                    <AvatarProfile
+                        src={avatarurl}
+                        alt=""
+                        style={{
+                            borderRadius: "50%",
+                            border: "1px solid blue",
+                            height: 156,
+                            width: 156
+                        }}
+                    />
+                </div>
             </div>
-
-            <div>
-                <span>Kristina</span>
-                <span>New York, USA</span>
-                <span>Mature</span>
+                <div
+                    style={{
+                        display: "grid",
+                        justifyContent: "center",
+                        color: "white",
+                        justifyItems: "center"
+                    }}
+                >
+                    <div style={{ fontSize: 24 }}>{username}</div>
+                    <div>New York, USA</div>
+                    <div>Mature</div>
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default Avatar;

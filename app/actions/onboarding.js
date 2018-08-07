@@ -132,15 +132,24 @@ export const GET_USER_DATA = data => ({
     payload: data
 });
 
+export const ERROR_UPDATE_USER_DATA = error => ({
+    type: 'ERROR_GET_USER_DATA',
+    payload: error,
+});
+
+export const SUCCESS_UPDATE_USER_DATA = success => ({
+    type: 'SUCCESS_UPDATE_USER_DATA',
+    payload: success
+});
+
 export const FETCH_GET_USER_DATA = id => {
     return (dispatch) => {
         return superagent
             .get(url + `/read/users/${id}`)
-            // .set('Content-Type', 'application/json')
-            .end((err, res) => {
-                if (err)
-                    return err;
-                dispatch(GET_USER_DATA(res.body.data))
+            .withCredentials()
+            .then(res => {
+                console.log(JSON.parse(res.text))
+                dispatch(GET_USER_DATA(JSON.parse(res.text)))
             })
     }
 };
@@ -150,8 +159,9 @@ export const FETCH_UPDATE_USER_DATA = data => {
     console.log("RESULT validate -> ", result);
     if (result.error) {
         console.log("NOT VALID, ", result);
-        //TODO:  dispatch ERROR
-      return (dispatch) => {};
+        return (dispatch) => {
+            dispatch(ERROR_UPDATE_USER_DATA(true))
+        };
     } else {
         return dispatch => {
             return superagent
@@ -162,7 +172,9 @@ export const FETCH_UPDATE_USER_DATA = data => {
                     console.log('Success', res);
 
                     //TODO:  dispatch success
+                    dispatch(SUCCESS_UPDATE_USER_DATA(true))
                 })
         }
     }
 };
+

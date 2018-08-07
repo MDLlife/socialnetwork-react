@@ -9,7 +9,12 @@ import StepTwo from './StepTwo';
 import StepThree from './StepThree';
 import StepFour from './StepFour';
 
-import {FETCH_GET_USER_DATA, FETCH_UPDATE_USER_DATA} from "../../actions/onboarding";
+import {
+    FETCH_GET_USER_DATA,
+    FETCH_UPDATE_USER_DATA,
+    ERROR_UPDATE_USER_DATA,
+    SUCCESS_UPDATE_USER_DATA
+} from "../../actions/onboarding";
 
 const styles = {
     stepBorder: {
@@ -59,14 +64,13 @@ class OnboardingSteps extends Component {
             gender: this.props.profile.gender,
             date_of_birth: this.props.profile.dateOfBirth,
             ethnicity: this.props.profile.ethnic ? this.props.profile.ethnic.toLowerCase() : this.props.profile.ethnic,
-            languages_spoken: this.props.profile.language_spoken.forEach(el => el.toLowerCase()),
-            work_areas: this.props.profile.work_areas.forEach(el => el.toLowerCase()),
-            style: this.props.profile.style.forEach(el => el.toLowerCase()),
-            //piercing: this.props.profile.piercing,
+            languages_spoken: this.props.profile.language_spoken,
+            work_areas: this.props.profile.work_areas,
+            style: this.props.profile.style,
+            piercing: this.props.profile.piercing,
             tattoo: this.props.profile.tattoo,
-            tattoo_where: this.props.profile.tattoo_where.forEach(el => el.toLowerCase()),
+            tattoo_where: this.props.profile.tattoo_where,
             body_type: this.props.profile.body_type ? this.props.profile.body_type.toLowerCase() : this.props.profile.body_type,
-
             height: +(this.props.profile.height ? this.props.profile.height : 0),
             bust: +(this.props.profile.bust ? this.props.profile.bust : 0),
             waist: +(this.props.profile.waist ? this.props.profile.waist : 0),
@@ -95,9 +99,8 @@ class OnboardingSteps extends Component {
             if (typeof window !== 'undefined') {
 
                 //TODO: later redirect to preview when preview is completed
-                // window.location.href = '/onboarding/profile-preview?profile=talent'
 
-                window.location.href = '/today'
+                //window.location.href = '/today'
             }
         }, 1000)
 
@@ -163,6 +166,9 @@ class OnboardingSteps extends Component {
 
     render() {
         let {step} = this.state;
+        if(this.props.profile.success) {
+            window.location.href = `/onboarding/profile-preview?profile=talent&id=${LoginStore.user._key}`
+        }
 
         return (
             <Grid className='main-content-container onboarding white-back' style={{marginBottom: 50}}>
@@ -240,6 +246,8 @@ export default connect(
     mapStateToProps,
     {
         FETCH_GET_USER_DATA,
-        FETCH_UPDATE_USER_DATA
+        FETCH_UPDATE_USER_DATA,
+        ERROR_UPDATE_USER_DATA,
+        SUCCESS_UPDATE_USER_DATA
     }
 )(OnboardingSteps);
