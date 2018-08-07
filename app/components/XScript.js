@@ -75,6 +75,7 @@ class XScript extends React.Component {
         let key = this.props.key;
         let image = this.props.image;
         let title = this.props.title;
+        var alertmodalwith = 400;
 
         let replybtn = "<img src='/static/img/comentarismo_reply.jpg' style='width:10px; height:10px;'/>";
 
@@ -111,6 +112,7 @@ class XScript extends React.Component {
             'titleurlize: \''+page+'\',' +
             'operator: \''+operator+'\',' +
             "index:'"+this.props.index+"',"+
+            "alertmodalwith:'"+alertmodalwith+"',"+
             '}); ' +
             '});' +
             '</script>';

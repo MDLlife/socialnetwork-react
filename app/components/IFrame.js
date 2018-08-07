@@ -28,11 +28,11 @@ class IFrame extends React.Component {
         this.renderFrameContents()
     }
 
-    componentWillUpdate(){
-        console.log(parent.location.href, location.href, location.href.indexOf("?session=") !== -1,this._isMounted,this._setInitialContent)
+    componentWillUpdate() {
+        console.log(parent.location.href, location.href, location.href.indexOf("?session=") !== -1, this._isMounted, this._setInitialContent)
 
         if (location.href && location.href.indexOf("?session=") !== -1) {
-            alert("IFrame same parent window :O :O ")
+            console.log("IFrame same parent window :O :O, will refresh parent")
             parent.window.location.reload()
         }
     }
@@ -66,7 +66,12 @@ class IFrame extends React.Component {
                 doc.close()
                 this._setInitialContent = true
                 setTimeout(function () {
-                    iframeResizer({log: false, checkOrigin: false}, "#comentarismo-iframe")
+                    iframeResizer({
+                        minHeight: '600',
+                        minWidth: '400',
+                        // log: true,
+                        checkOrigin: false,
+                    }, "#comentarismo-iframe")
                 }, 1000)
             }
 

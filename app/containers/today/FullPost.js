@@ -108,17 +108,8 @@ class FullPost extends Component {
             }}>
                 <Helmet
                     htmlAttributes={{'lang': 'en'}} // amp takes no value
-                    title={`Latest news - Source - ${article.operator
-                        ? article.operator.toUpperCase()
-                        : ''} - Genre: ${article.genre
-                        ? article.genre.toUpperCase()
-                        : ''}`}
-                    titleTemplate="Comentarismo.com - %s"
+                    title={`MDL.live Latest news - Genre: ${article.genre ? article.genre.toUpperCase() : ''}`}
                     meta={[
-                        {
-                            'name': 'description',
-                            'content': `Find the most active commentators of the ${this.props.params.value} in several categories like world news, sports, business, technology, analysis and reviews from the world's leading liberal comments website.`,
-                        },
                         {
                             'property': 'og:type',
                             'content': 'article',
@@ -131,8 +122,7 @@ class FullPost extends Component {
 
                         {
                             'property': 'og:image',
-                            'content': `${article.image
-                                ? article.image
+                            'content': `${article.image ? article.image
                                 : '//comentarismo.com/static/img/comentarismo-extra-mini-logo.png' }`,
                         },
                     ]}

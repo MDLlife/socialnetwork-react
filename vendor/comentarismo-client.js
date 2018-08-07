@@ -858,7 +858,7 @@ var deleteComment = function (param) {
             if(that.mobile) {
                 alertMsg = $.i18n._('seemslikeyounotlogged')+' <br> '+$.i18n._('pleaselog')+'<br><a href="#" class="log-in">LOG IN</a>'
             } else {
-                alertMsg = $.i18n._('seemslikeyounotlogged')+" <br> "+$.i18n._('pleaselog')+"<br><a href='" + that.host + "/login'>Login</a>'"
+                alertMsg = "<a href='" + that.host + "/login'>"+$.i18n._('seemslikeyounotlogged')+" <br> "+$.i18n._('pleaselog')+"<br>Login</a>'"
             }
             that.showAlertMessage(alertMsg, $(".error"));
             return;
@@ -868,7 +868,7 @@ var deleteComment = function (param) {
         if(that.mobile) {
             alertMsg = $.i18n._('seemslikeyounotlogged')+' <br> '+$.i18n._('pleaselog')+'<br><a href="#" class="log-in">LOG IN</a>'
         } else {
-            alertMsg = $.i18n._('seemslikeyounotlogged')+" <br> "+$.i18n._('pleaselog')+"<br><a href='" + that.host + "/login'>Login</a>'"
+            alertMsg = "<a href='" + that.host + "/login'>"+$.i18n._('seemslikeyounotlogged')+" <br> "+$.i18n._('pleaselog')+"<br>Login</a>'"
         }
         that.showAlertMessage(alertMsg, $(".error"));
     });
@@ -1156,7 +1156,7 @@ var dislikeComment = function (evt) {
         if (that.mobile) {
             alertMsg = $.i18n._('seemslikeyounotlogged') + ' <br> ' + $.i18n._('pleaselog') + '<br><a href="#" class="log-in">LOG IN</a>'
         } else {
-            alertMsg = $.i18n._('seemslikeyounotlogged') + " <br> " + $.i18n._('pleaselog') + "<br><a href='" + that.host + "/login'>Login</a>'"
+            alertMsg = "<a href='" + that.host + "/login'>"+$.i18n._('seemslikeyounotlogged') + " <br> " + $.i18n._('pleaselog') + "<br>Login</a>'"
         }
         that.showAlertMessage(alertMsg, $(".error"));
     });
@@ -1236,7 +1236,7 @@ var onClickShowCommentForm = function (evt,that) {
         if(that.mobile) {
         alertMsg = $.i18n._('seemslikeyounotlogged')+' <br> '+$.i18n._('pleaselog')+'<br><a href="#" class="log-in">LOG IN</a>'
          } else {
-        alertMsg = $.i18n._('seemslikeyounotlogged')+" <br> "+$.i18n._('pleaselog')+"<br><a href='" + that.host + "/login'>Login</a>'"
+        alertMsg = "<a href='" + that.host + "/login'>"+$.i18n._('seemslikeyounotlogged')+" <br> "+$.i18n._('pleaselog')+"<br>Login</a>'"
          }
         that.showAlertMessage(alertMsg, $(".error"));
         return;
@@ -1434,7 +1434,7 @@ var likeComment = function (evt) {
         if(that.mobile) {
             alertMsg = $.i18n._('seemslikeyounotlogged')+' <br> '+$.i18n._('pleaselog')+'<br><a href="#" class="log-in">LOG IN</a>'
         } else {
-            alertMsg = $.i18n._('seemslikeyounotlogged')+" <br> "+$.i18n._('pleaselog')+"<br><a href='" + that.host + "/login'>Login</a>'"
+            alertMsg = "<a href='" + that.host + "/login'>"+$.i18n._('seemslikeyounotlogged')+" <br> "+$.i18n._('pleaselog')+"<br>Login</a>'"
         }
         that.showAlertMessage(alertMsg, $(".error"));
         //setTimeout(function () {
@@ -2281,6 +2281,7 @@ var skip = 0;
 var sel;
 var table;
 var forum;
+var alertmodalwith = 400;
 
 Comentarismo = function (options) {
     var that = this;
@@ -2322,6 +2323,7 @@ Comentarismo = function (options) {
         }
     }
 
+    this.alertmodalwith = alertmodalwith = options.alertmodalwith;
     //initialize comentarismo icons
     if (options && options.icons) {
 
@@ -3028,7 +3030,7 @@ Comentarismo.prototype.showAlertMessage = function (msg, element) {
             effect: "explode",
             duration: 100
         },
-        width: 600,
+        width: alertmodalwith || 400,
         title: "",
         buttons: {}
     })).html(msg, function () {
