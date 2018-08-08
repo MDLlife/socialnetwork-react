@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import {Row, Col, Grid} from 'react-bootstrap';
 import Chip from 'material-ui/Chip';
 import LoginStore from 'store/LoginStore';
+import Delete from 'material-ui/svg-icons/action/highlight-off';
+
 import {
     SELECT_WORK_AREAS_ACTOR,
     SELECT_WORK_AREAS_DANCER,
@@ -19,10 +21,16 @@ class OnboardingBooker extends Component {
         super(props);
 
         this.state = {
-            actorSelect: false,
-            modelSelect: false,
-            dancerSelect: false,
-            actorAreas: [
+            'actorSelect': false,
+            'modelSelect': false,
+            'dancerSelect': false,
+            'Singer': false,
+            'Musician': false,
+            'Animator & Entertainer': false,
+            'DJ': false,
+            'Host & MC': false,
+            'Other': false,
+            'actorAreas': [
                 {key: 0, label: 'Extras'},
                 {key: 1, label: 'Stunt'},
                 {key: 2, label: 'Stage'},
@@ -31,7 +39,7 @@ class OnboardingBooker extends Component {
                 {key: 5, label: 'Puppet show'},
                 {key: 6, label: 'Stand up'},
             ],
-            modelAreas: [
+            'modelAreas': [
                 {key: 0, label: 'Fashion show'},
                 {key: 1, label: 'Fitting'},
                 {key: 2, label: 'Hostess'},
@@ -45,7 +53,7 @@ class OnboardingBooker extends Component {
                 {key: 10, label: 'Hairdress show'},
                 {key: 11, label: 'Body art'}
             ],
-            dancerAreas: {
+            'dancerAreas': {
                 video: [
                     {key: 0, label: 'TV commercial'},
                     {key: 1, label: 'Movie'},
@@ -158,7 +166,6 @@ class OnboardingBooker extends Component {
     };
 
     selectedBlock = e => {
-        console.log(e.target.getAttribute('name'))
         this.setState({
             [e.target.getAttribute('name')]: !this.state[e.target.getAttribute('name')]
         }, () => console.log(this.state))
@@ -195,7 +202,7 @@ class OnboardingBooker extends Component {
             profiles: ['booker'],
             booker_work_areas: selectTalentsWorkAreas,
             registration_booker_complete: true
-        })
+        });
 
         //TODO: this should be conditional trigger based on dispatch success action
         if (typeof window !== 'undefined') {
@@ -204,6 +211,12 @@ class OnboardingBooker extends Component {
 
             window.location.href = '/today'
         }
+    };
+
+    deleteOtherTalents = e => {
+        this.setState({
+            [e.target.getAttribute('name')]: !this.state[e.target.getAttribute('name')]
+        }, () => console.log(this.state))
     };
 
     render() {
@@ -221,7 +234,7 @@ class OnboardingBooker extends Component {
                         <h1>MDL Talent Hub is for everyone</h1>
                     </Col>
                 </Row>
-                <Row style={{marginBottom: 45}}>
+                <Row style={{marginBottom: 20}}>
                     <Col xs={12}>
                         {
                             this.state.actorSelect && this.state.modelSelect && this.state.dancerSelect ? null
@@ -287,9 +300,76 @@ class OnboardingBooker extends Component {
                         </div>
                     </Col>
                 </Row>
+                <Row style={{marginBottom: 40}}>
+                    <Col xs={12}>
+                        <div style={{display: 'flex'}}>
+                            {
+                                !this.state['Singer'] ?
+                                    <TalentsCards
+                                        name='Singer'
+                                        onSelect={this.selectedBlock}
+                                    /> : null
+                            }
+                            {
+                                !this.state['Musician'] ?
+                                    <TalentsCards
+                                        name='Musician'
+                                        onSelect={this.selectedBlock}
+                                    /> : null
+                            }
+                            {
+                                !this.state['Animator & Entertainer'] ?
+                                    <TalentsCards
+                                        name='Animator & Entertainer'
+                                        onSelect={this.selectedBlock}
+                                        style={{paddingLeft: 8}}
+                                    /> : null
+                            }
+                            {
+                                !this.state['DJ'] ?
+                                    <TalentsCards
+                                        name='DJ'
+                                        onSelect={this.selectedBlock}
+                                    /> : null
+                            }
+                            {
+                                !this.state['Host & MC'] ?
+                                    <TalentsCards
+                                        name='Host & MC'
+                                        onSelect={this.selectedBlock}
+                                    /> : null
+                            }
+                            {
+                                !this.state['Other'] ?
+                                    <TalentsCards
+                                        name='Other'
+                                        onSelect={this.selectedBlock}
+                                    /> : null
+                            }
+                        </div>
+                    </Col>
+                </Row>
                 <Row
-                    id={`${this.state.actorSelect && this.state.modelSelect && this.state.dancerSelect ? 'selected-talents-cards-id' : ''}`}
-                    className={`${this.state.actorSelect || this.state.modelSelect || this.state.dancerSelect ? 'selected-talents-cards' : ''}`}
+                    id={`${
+                        this.state.actorSelect &&
+                        this.state.modelSelect &&
+                        this.state.dancerSelect
+                            ? 'selected-talents-cards-id'
+                            : ''}
+                    `}
+                    className={`${
+                        this.state.actorSelect ||
+                        this.state.modelSelect ||
+                        this.state.dancerSelect ||
+                        this.state['Singer'] ||
+                        this.state['Musician'] ||
+                        this.state['Animator & Entertainer'] ||
+                        this.state['DJ'] ||
+                        this.state['Host & MC'] ||
+                        this.state['Other']
+                            ? 'selected-talents-cards'
+                            : ''}
+                    `}
                 >
                     <Col xs={12}>
                         {
@@ -430,9 +510,64 @@ class OnboardingBooker extends Component {
                             ] : null
                         }
 
+                        <div style={{display: 'flex', marginTop: 20}}>
+                            {
+                                this.state['Singer'] ?
+                                    <TalentsCards
+                                        name='Singer'
+                                        onDelete={this.deleteOtherTalents}
+                                    /> : null
+                            }
+                            {
+                                this.state['Musician'] ?
+                                    <TalentsCards
+                                        name='Musician'
+                                        onDelete={this.deleteOtherTalents}
+                                    /> : null
+                            }
+                            {
+                                this.state['Animator & Entertainer'] ?
+                                    <TalentsCards
+                                        name='Animator & Entertainer'
+                                        onDelete={this.deleteOtherTalents}
+                                        style={{paddingLeft: 8}}
+                                    /> : null
+                            }
+                            {
+                                this.state['DJ'] ?
+                                    <TalentsCards
+                                        name='DJ'
+                                        onDelete={this.deleteOtherTalents}
+                                    /> : null
+                            }
+                            {
+                                this.state['Host & MC'] ?
+                                    <TalentsCards
+                                        name='Host & MC'
+                                        onDelete={this.deleteOtherTalents}
+                                    /> : null
+                            }
+                            {
+                                this.state['Other'] ?
+                                    <TalentsCards
+                                        name='Other'
+                                        onDelete={this.deleteOtherTalents}
+                                    /> : null
+                            }
+
+                        </div>
+
                         {
-                            this.state.actorSelect || this.state.modelSelect || this.state.dancerSelect ?
-                                <div style={{
+                            this.state.actorSelect ||
+                            this.state.modelSelect ||
+                            this.state.dancerSelect ||
+                            this.state['Singer'] ||
+                            this.state['Musician'] ||
+                            this.state['Animator & Entertainer'] ||
+                            this.state['DJ'] ||
+                            this.state['Host & MC'] ||
+                            this.state['Other']
+                                ? <div style={{
                                     display: 'flex',
                                     justifyContent: 'flex-end'
                                 }}>
@@ -448,6 +583,39 @@ class OnboardingBooker extends Component {
         )
     }
 }
+
+const TalentsCards = props => {
+    return (
+        <div
+            className='other-talents'
+            style={props.style}
+            onClick={props.onSelect}
+            name={props.name}
+        >
+            <span
+                name={props.name}
+                style={{
+                    display: 'flex',
+                    position: 'absolute',
+                    right: 0,
+                    top: 0
+                }}
+            >
+                {
+                    props.onDelete
+                        ? <Delete
+                            color='white'
+                            onClick={props.onDelete}
+                            name={props.name}
+                        />
+                        : null
+                }
+
+            </span>
+            {props.name}
+        </div>
+    )
+};
 
 function mapStateToProps(state) {
     return {

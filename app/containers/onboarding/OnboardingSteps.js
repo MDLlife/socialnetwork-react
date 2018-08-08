@@ -92,12 +92,12 @@ class OnboardingSteps extends Component {
             data.hair_color = this.props.profile.hair_color.toLowerCase()
         }
 
-        this.props.FETCH_UPDATE_USER_DATA(data);
+        let res = this.props.FETCH_UPDATE_USER_DATA(data);
 
         //TODO: this should be conditional trigger based on dispatch success action
         setTimeout(function () {
             if (typeof window !== 'undefined') {
-
+                console.log(res.status, res.body)
                 //TODO: later redirect to preview when preview is completed
 
                 //window.location.href = '/today'
