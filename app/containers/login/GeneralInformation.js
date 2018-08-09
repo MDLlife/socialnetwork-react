@@ -7,6 +7,10 @@ import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
 import LoginStore from 'store/LoginStore';
 import Avatar from 'material-ui/Avatar';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+
+import superagent from 'superagent';
+import config from 'config';
 
 const styles = {
     block: {
@@ -30,13 +34,15 @@ class GeneralInformation extends Component {
             image: null,
             dataSource: [],
             name: '',
+            agency: '',
+            status: '',
             role: '1' // user role: 1 - talent or booker, 2 - fan
         }
     }
 
     handleChange = event => {
         this.setState({
-            name: event.target.value
+            [event.target.name]: event.target.value
         })
     };
 
@@ -51,15 +57,27 @@ class GeneralInformation extends Component {
     }
 
     handleUpdateInput = value => {
-        this.setState({
-            dataSource: [
-                value,
-                value + value,
-                value + value + value,
-                value + value + value + value,
-                value + value + value + value + value
-            ],
-        });
+        let newArr = [];
+        if(!value) {
+            this.setState({
+                dataSource: []
+            });
+
+            return false
+        }
+
+        superagent.get(`https://apis.mdl.live/_cts_/1.0/cities?q=${value}`).withCredentials().then(res => {
+            JSON.parse(res.text).data.map(elem => {
+                newArr.push(elem.attributes.name)
+            });
+            this.setState({
+                dataSource: newArr
+            });
+        })
+    };
+
+    switchStatus = (event, value) => {
+        this.setState({status: value})
     };
 
     toOnboarding = () => {
@@ -92,10 +110,47 @@ class GeneralInformation extends Component {
                     <TextField
                         value={this.state.username}
                         floatingLabelText='Name'
+                        name='name'
                         onChange={this.handleChange}
                     />
                 </Col>
             </Row>,
+            this.state.role === '1' ? (
+                <Row>
+                    <Col xs={12} style={{display: 'flex', justifyContent: 'center', marginTop: 28}}>
+                        <div>
+                            <RadioButtonGroup
+                                name='booker-status'
+                                style={{display: 'flex'}}
+                                defaultSelected='individual'
+                                onChange={this.switchStatus}
+                            >
+                                <RadioButton
+                                    value='individual'
+                                    label='Individual'
+                                    style={{marginRight: 75}}
+                                />
+                                <RadioButton
+                                    value='agency'
+                                    label='Agency'
+                                />
+                            </RadioButtonGroup>
+                        </div>
+                    </Col>
+                </Row>
+            ) : <div></div>,
+            this.state.status === 'agency' ? (
+                <Row>
+                    <Col xs={12} className='center'>
+                        <TextField
+                            value={this.state.agency}
+                            floatingLabelText='Agency name'
+                            onChange={this.handleChange}
+                            name='agency'
+                        />
+                    </Col>
+                </Row>
+            ) : <div></div>,
             <Row>
                 <Col xs={12} className='center'>
                     <AutoComplete
@@ -103,6 +158,8 @@ class GeneralInformation extends Component {
                         dataSource={this.state.dataSource}
                         onUpdateInput={this.handleUpdateInput}
                         maxSearchResults={5}
+                        filter={AutoComplete.noFilter}
+                        //openOnFocus={true}
                     />
                 </Col>
             </Row>,
