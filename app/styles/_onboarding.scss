@@ -144,6 +144,25 @@
   margin-bottom: 35px;
 }
 
+.other-talents {
+  background-color: #9acfea;
+  height: 100px;
+  width: 16.67%;
+  border-radius: 10px;
+  margin-right: 14px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: "Gilroy Medium";
+  font-size: 18px;
+  cursor: pointer
+}
+
+.other-talents:last-child {
+  margin: 0px;
+}
+
 @media (min-width: 1201px) {
   .onboarding {
     width: 750px;

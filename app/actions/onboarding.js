@@ -176,5 +176,5 @@ export const FETCH_UPDATE_USER_DATA = data => {
                 })
         }
     }
-};
+}
 
