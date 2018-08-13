@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {Row, Col} from 'react-bootstrap';
 import Chip from 'material-ui/Chip';
 import Toggle from 'material-ui/Toggle';
+import categories from './categoriesStyle';
 
 import {
     SELECT_WORK_AREAS,
@@ -37,40 +38,10 @@ class StepOne extends Component {
         this.state = {
             pierce: false,
             showTattoo: false,
-            areas: [
-                {key: 0, label: 'Fashion show'},
-                {key: 1, label: 'Fitting'},
-                {key: 2, label: 'Hostess'},
-                {key: 3, label: 'TVC'},
-                {key: 4, label: 'Movie'},
-                {key: 5, label: 'Original catalog'},
-                {key: 6, label: 'Unerwear Catalog'},
-                {key: 7, label: 'Exhibition'},
-                {key: 8, label: 'Promo event'},
-                {key: 9, label: 'Makeup show'},
-                {key: 10, label: 'Hairdress show'},
-                {key: 11, label: 'Body art'}
-            ],
-            styles: [
-                {key: 0, label: 'Cute'},
-                {key: 1, label: 'Babyface'},
-                {key: 2, label: 'Underground'},
-                {key: 3, label: 'Bodybuilding'},
-                {key: 4, label: 'Sport'},
-                {key: 5, label: 'Sexy'},
-                {key: 6, label: 'Mother'}
-            ],
-            features: [
-                {key: 0, label: 'Tattoo'},
-                {key: 1, label: 'Bold'},
-            ],
-            tattoo: [
-                {key: 0, label: 'Arm'},
-                {key: 1, label: 'Leg'},
-                {key: 2, label: 'Face'},
-                {key: 3, label: 'Neck'},
-                {key: 4, label: 'Back'}
-            ]
+            features: this.props.profile.year > 10
+                        && this.props.profile.gender === 'male' ? categories.FEATURES : null,
+            tattoo: this.props.profile.year > 10,
+            piercing: this.props.profile.year > 10
         }
     }
 
@@ -114,11 +85,17 @@ class StepOne extends Component {
     };
 
     selectedTattoo = () => {
-        this.props.TOGGLE_TATTOO(!this.state.showTattoo)
+        this.props.TOGGLE_TATTOO(!this.state.showTattoo);
+        this.setState({
+            showTattoo: !this.state.showTattoo
+        })
     };
 
     selectedPiercing = () => {
-        this.props.TOGGLE_PIERCING(!this.state.pierce)
+        this.props.TOGGLE_PIERCING(!this.state.pierce);
+        this.setState({
+            pierce: !this.state.pierce
+        })
     };
 
     renderChipWorkAreas = data => {
@@ -177,7 +154,7 @@ class StepOne extends Component {
                     <h2>Work areas</h2>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
-                            this.state.areas.map(this.renderChipWorkAreas, this)
+                            categories.AREAS.map(this.renderChipWorkAreas, this)
                         }
                     </div>
                 </Col>
@@ -187,7 +164,7 @@ class StepOne extends Component {
                     <h2>Niches</h2>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
-                            this.state.styles.map(this.renderChipStyle, this)
+                            categories.KIDS.girls.map(this.renderChipStyle, this)
                         }
                     </div>
                 </Col>
@@ -229,7 +206,7 @@ class StepOne extends Component {
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
                             this.props.profile.tattoo &&
-                                this.state.tattoo.map(this.renderChipTattoo, this)
+                                categories.TATTOO.map(this.renderChipTattoo, this)
                         }
                     </div>
                 </Col>
