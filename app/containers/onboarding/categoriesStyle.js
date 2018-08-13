@@ -6,12 +6,20 @@ const KIDS = {
         {key: 3, label: 'Funny'},
         {key: 4, label: 'Sport'},
     ],
-    boys : [
+    boys: [
         {key: 0, label: 'Cool'},
         {key: 1, label: 'Sport'},
         {key: 2, label: 'Gentleman'},
         {key: 3, label: 'Babyface'},
         {key: 4, label: 'Funny'},
+    ],
+    other: [
+        {key: 0, label: 'Cool'},
+        {key: 1, label: 'Sport'},
+        {key: 2, label: 'Gentleman'},
+        {key: 3, label: 'Babyface'},
+        {key: 4, label: 'Funny'},
+        {key: 5, label: 'Princess'},
     ]
 };
 

@@ -41,7 +41,8 @@ class StepOne extends Component {
             features: this.props.profile.year > 10
                         && this.props.profile.gender === 'male' ? categories.FEATURES : null,
             tattoo: this.props.profile.year > 10,
-            piercing: this.props.profile.year > 10
+            piercing: this.props.profile.year > 10,
+            styles: this.switchStyles(this.props.profile.year, this.props.profile.gender)
         }
     }
 
@@ -146,8 +147,39 @@ class StepOne extends Component {
         )
     };
 
+    switchStyles = (year, gender) => {
+        if (year < 10) {
+            if (gender === 'male') {
+                return categories.KIDS.boys
+            } else if(gender === 'female') {
+                return categories.KIDS.girls
+            } else {
+                return categories.KIDS.other
+            }
+        } else if (year >= 11 && year <= 17) {
+            if (gender === 'male') {
+                return categories.TEEN.guys
+            } else if (gender === 'female') {
+                return categories.TEEN.girls
+            } else {
+                return categories.TEEN.other
+            }
+        } else if (year >= 18 && year <= 25 || year >= 26 && year <= 45 || year >= 46) {
+            if (gender === 'male') {
+                return categories.ADULT.men
+            } else if (gender === 'female') {
+                return categories.ADULT.women
+            } else {
+                return categories.ADULT.other
+            }
+        } else {
+            return [];
+        }
+    };
+
 
     render() {
+        console.log(this.state.styles)
         return [
             <Row>
                 <Col xs={12}>
@@ -164,11 +196,25 @@ class StepOne extends Component {
                     <h2>Niches</h2>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
-                            categories.KIDS.girls.map(this.renderChipStyle, this)
+                            this.state.styles.map(this.renderChipStyle, this)
                         }
                     </div>
                 </Col>
             </Row>,
+            this.props.profile.gender === 'male' && this.props.profile.year > 10 ?
+            <Row>
+                <Col xs={12}>
+                    <div>
+                        <h2>Features</h2>
+                    </div>
+                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                        {
+                            this.state.features.map(this.renderChipTattoo, this)
+                        }
+                    </div>
+                </Col>
+            </Row> : null,
+            this.props.profile.year > 10 ?
             <Row>
                 <Col xs={12} style={{display: 'inline-flex', justifyContent: 'space-between'}}>
                     <div>
@@ -184,34 +230,35 @@ class StepOne extends Component {
                         />
                     </div>
                 </Col>
-            </Row>,
-            <Row>
-                <Col xs={12} style={{display: 'inline-flex', justifyContent: 'space-between'}}>
-                    <div>
-                        <h2>Tattoo</h2>
-                    </div>
-                    <div>
-                        <Toggle
-                            style={{marginTop: 24}}
-                            thumbSwitchedStyle={styles.thumbSwitched}
-                            trackSwitchedStyle={styles.trackSwitched}
-                            onToggle={this.selectedTattoo}
-                            toggled={!!this.props.profile.tattoo}
-                        />
-                    </div>
-                </Col>
-            </Row>,
-            <Row>
-                <Col xs={12}>
-                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                        {
-                            this.props.profile.tattoo &&
-                                categories.TATTOO.map(this.renderChipTattoo, this)
-                        }
-                    </div>
-                </Col>
-            </Row>,
-
+            </Row> : null,
+            this.props.profile.year > 10 ? ([
+                <Row>
+                    <Col xs={12} style={{display: 'inline-flex', justifyContent: 'space-between'}}>
+                        <div>
+                            <h2>Tattoo</h2>
+                        </div>
+                        <div>
+                            <Toggle
+                                style={{marginTop: 24}}
+                                thumbSwitchedStyle={styles.thumbSwitched}
+                                trackSwitchedStyle={styles.trackSwitched}
+                                onToggle={this.selectedTattoo}
+                                toggled={!!this.props.profile.tattoo}
+                            />
+                        </div>
+                    </Col>
+                </Row>,
+                <Row>
+                    <Col xs={12}>
+                        <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                            {
+                                this.props.profile.tattoo &&
+                                    categories.TATTOO.map(this.renderChipTattoo, this)
+                            }
+                        </div>
+                    </Col>
+                </Row>
+            ]) : null,
         ]
     }
 }
