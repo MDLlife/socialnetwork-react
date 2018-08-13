@@ -6,6 +6,7 @@ import onboardingBooker from 'reducers/onboradingBooker';
 import onboardingFan from 'reducers/onboardingFan';
 import articles from 'reducers/articles';
 import analytics from 'reducers/analytics';
+import loadSearchResults from 'reducers/loadSearchResults'
 
 const rootReducer = combineReducers({
     introDetail,
@@ -14,6 +15,8 @@ const rootReducer = combineReducers({
     onboardingFan,
     articles,
     analytics,
+    loadSearchResults,
+
 });
 
 export default rootReducer;

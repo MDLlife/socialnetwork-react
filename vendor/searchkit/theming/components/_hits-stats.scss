@@ -1,0 +1,14 @@
+@import "../vars.scss";
+
+.sk-hits-stats {
+  &__info {
+    display: inline;
+    padding: 3px;
+    background: $comentarismo-secondary-text;
+    font-size: 12px;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: $comentarismo-font-family;
+  }
+}
+

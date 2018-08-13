@@ -1,0 +1,28 @@
+@import "filter-item.scss";
+@import "../vars.scss";
+
+.sk-refinement-list {
+
+  &__header {
+    margin-bottom:5px;
+    font-weight:$sk-bold-weight;
+    font-size: $sk-heading-font-size;
+  }
+
+  &.is-disabled  {
+    display:none;
+  }
+
+  &__view-more-action {
+    font-size:$sk-list-secondary-font-size;
+    color:$comentarismo-green;
+    cursor:pointer;
+    margin: 5px 0 5px 0;
+    font-family: $sk-font-family;
+  }
+
+  &-option {
+    @include filter-option;
+  }
+
+}

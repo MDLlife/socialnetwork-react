@@ -16,6 +16,9 @@ var buildProperties = {
     GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID || 'DEVELOP',
     cssFiles: [
         './dist/static/styles/main.css',
+        './vendor/searchkit/dist/theming/components.css',
+        './vendor/searchkit/dist/theming/theme.css',
+        './vendor/searchkit/dist/theming/vars.css',
     ],
     assetFiles: [
         './vendor/app.js',
@@ -66,6 +69,14 @@ gulp.task('css:watch', function () {
     gulp.watch('./app/styles/*', ['css']);
     gulp.watch('./vendor/searchkit/theming/*', ['css']);
     gulp.watch('./vendor/searchkit/theming/components/*', ['css']);
+});
+
+gulp.task('searchkit', function () {
+ return gulp.src(['./vendor/searchkit/**/*.scss'])
+  .pipe(sourcemaps.init())
+  .pipe(sass().on('error', sass.logError))
+  .pipe(sourcemaps.write('./maps'))
+  .pipe(gulp.dest('./vendor/searchkit/dist'));
 });
 
 gulp.task('sass', function () {

@@ -1,0 +1,60 @@
+@import "../vars.scss";
+
+.sk-toggle {
+  display: flex;
+  align-content:center;
+  text-align: center;
+  border-radius: $sk-border-radius;
+  max-height:30px;
+
+  &.is-disabled {
+    display:none;
+  }
+
+  &-option {
+    flex:1;
+    background-color: $sk-selector-background;
+    cursor:pointer;
+    font-weight: $sk-medium-weight;
+    font-family: $comentarismo-font-family;
+    font-size: $sk-list-font-size;
+    color: $sk-selector-text-color;
+    padding: 4px 8px;
+    border-right:none;
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:first-child {
+      border-radius: $sk-border-radius 0 0 $sk-border-radius;
+    }
+
+    &:last-child {
+      border-radius: 0 $sk-border-radius $sk-border-radius 0;
+    }
+
+    &.is-active {
+      background-color:$comentarismo-green;
+      color: white;
+      border-color: $comentarismo-green;
+    }
+
+    &.is-disabled {
+      cursor: initial;
+      color: $sk-disabled-text-color;
+    }
+
+    &__text, &__count {
+      display: inline;
+    }
+
+    &__count {
+      &:before {
+        content: " ("
+      }
+
+      &:after {
+        content: ")"
+      }
+    }
+  }
+}

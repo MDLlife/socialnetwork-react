@@ -32,6 +32,9 @@ import LoginStore from 'store/LoginStore';
 import login from 'components/login/LoginLayout'
 import logout from 'components/login/LogoutLayout'
 
+import Search from 'containers/search/SearchComponent';
+
+
 injectTapEventPlugin();
 
 export default function (history) {
@@ -72,6 +75,10 @@ export default function (history) {
                     <Route path="*" component={Notfound}/>
                 </Route>
 
+                <Route path="/search" component={TodayLayout}>
+                    <IndexRoute component={Search}/>
+                </Route>
+
                 <Route path="/login" component={LoginLayout}>
                     <IndexRoute component={login}/>
 
@@ -96,8 +103,8 @@ export default function (history) {
                     <Route path="*" component={Notfound}/>
                 </Route>
 
-                <Route path='/today' component={TodayLayout} >
-                    <IndexRoute component={TodayContainer} />
+                <Route path='/today' component={TodayLayout}>
+                    <IndexRoute component={TodayContainer}/>
                     <Route path="me/:index" component={TodayContainer} onEnter={checkAuth}/>
 
                     <Route path="news/:id" component={FullPost}/>
