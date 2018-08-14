@@ -13,6 +13,7 @@ import {
 
 import { Search } from './Search'
 import { getSearchHost, gup } from 'util/searchutils'
+import config from 'config';
 
 const index = 'news'
 
@@ -52,7 +53,7 @@ class SearchComponent extends Component {
             searchOnLoad: searchOnLoad,
             useHistory: !isServer,
             httpHeaders: {
-                // "COMENTARISMO-KEY": "HL3Q87OdXRXiun8LSyAy5vmCDJJCfyVrX97aIk_Ll2JcC0IG2yUpRoBOB7O6qRkDUAd6yQbD4gY="
+                "COMENTARISMO-KEY": config.COMENTARISMO_KEY
             },
         }, {
             results: results,
