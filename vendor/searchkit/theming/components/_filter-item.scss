@@ -1,0 +1,41 @@
+@import "../vars.scss";
+
+.filter-item {
+
+}
+
+@mixin filter-option {
+  position:relative;
+  cursor:pointer;
+  padding: 4px 0;
+  display:flex;
+
+  input#{&}__checkbox {
+    margin: 2px 8px 4px 0px;
+    flex: 0 0 15px;
+  }
+
+  &.is-active &__text {
+    font-weight:$sk-bold-weight;
+    color: $sk-action-active-color;
+  }
+
+  &.is-selected &__text {
+    font-weight:$sk-bold-weight;
+    color: $sk-action-active-color;
+  }
+
+  &__text {
+    flex:auto;
+    font-size:$sk-list-font-size;
+    color:$comentarismo-secondary-text;
+    font-family: $sk-font-family;
+  }
+
+  &__count {
+    font-size: $sk-list-secondary-font-size;
+    text-align: right;
+    color: $sk-list-secondary-text-color;
+    font-family: $sk-font-family;
+  }
+}

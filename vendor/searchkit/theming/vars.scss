@@ -1,0 +1,50 @@
+@import url('//fonts.googleapis.com/css?family=Open+Sans');
+$comentarismo-font-family: 'Open Sans', sans-serif;
+$sk-font-family: -apple-system, BlinkMacSystemFont,
+"Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+"Fira Sans", "Droid Sans", "Helvetica Neue",
+sans-serif !default;
+
+$sk-bold-weight: 600 !default;
+$sk-medium-weight: 400 !default;
+$sk-light-weight: 300 !default;
+
+$sk-heading-font-size: 15px !default;
+$sk-text-font-size: 1rem !default;
+$sk-list-font-size: 14px !default;
+$sk-action-font-size: 14px !default;
+$sk-list-secondary-font-size: 12px !default;
+$comentarismo-label-size: 14px default;
+
+$comentarismo-black-text: rgba(0, 0, 0, 0.87);
+$comentarismo-secondary-text: #656972;
+$comentarismo-green: #99C3AD;
+
+$sk-layout-background: #f4f4f4 !default;
+$sk-layout-panel-background: white !default;
+$sk-primary-theme-color: #2a4466 !default;
+$sk-active-bg-color: #08c !default;
+$sk-border-color: #ccc !default;
+$sk-title-color: black !default;
+$sk-text-color: #444 !default;
+$sk-text-secondary-color: #777 !default;
+$sk-list-text-color: #666 !default;
+$sk-list-secondary-text-color: #ccc !default;
+$sk-action-text-color: #08c !default;
+$sk-action-active-color: #000 !default;
+$sk-disabled-text-color: #ddd !default;
+$sk-remove-action-color: #EB605F !default;
+
+$sk-selector-background: white !default; 
+$sk-selector-active-background: #08c !default; 
+$sk-selector-border-color: #ccc !default; 
+$sk-selector-text-color: black !default; 
+$sk-selector-active-text-color: white !default; 
+
+$sk-selected-filters-background: #f4f4f4 !default;
+
+$sk-border-radius: 2px !default;
+
+$comentarismo-input-box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px !default;
+$comentarismo-margin-medium: 1rem;
+$comentarismo-padding-medium: 1rem;

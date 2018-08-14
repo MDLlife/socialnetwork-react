@@ -1,0 +1,100 @@
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.sk-table {
+    /* Remove spacing between table cells (from Normalize.css) */
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+
+  caption {
+      color: #000;
+      padding: 0.5em 0;
+      text-align: center;
+  }
+
+  td,
+  th {
+    position: relative;
+      border-width: 0 0 0 1px;
+      font-size: inherit;
+      margin: 0;
+      padding: 0.5em; /* cell padding */
+  }
+
+  /* Consider removing this next declaration block, as it causes problems when
+  there's a rowspan on the first cell. Case added to the tests. issue#432 */
+  td:first-child,
+  th:first-child {
+      border-left-width: 0;
+  }
+
+
+  thead {
+    color: $comentarismo-black-text;
+    text-align: left;
+    vertical-align: bottom;
+    font-weight: $sk-bold-weight;
+    font-family: $comentarismo-font-family;
+    font-size: $sk-heading-font-size;
+  }
+
+  th {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.0980392);
+    color: $comentarismo-black-text;
+    font-weight: $sk-bold-weight !important;
+    font-family: $comentarismo-font-family;
+    font-size: $sk-heading-font-size;
+    &:hover {
+      background-color: white;
+    }
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.0980392);
+    color: $comentarismo-black-text;
+    font-family: $sk-font-family;
+    font-size: $sk-list-font-size;
+    font-weight: $sk-medium-weight;
+    &:last-child {
+      border-bottom: none;
+    }
+    &:hover {
+      background-color: #d4d4d447;
+    }
+  }
+
+   td a {
+     font-size: $sk-list-font-size;
+     color: $comentarismo-black-text;
+}
+
+  /* HORIZONTAL BORDERED TABLES */
+
+  &-horizontal td,
+  &-horizontal th {
+      border-width: 0 0 1px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.0980392);
+  }
+  &-horizontal tbody > tr:last-child > td {
+      border-bottom-width: 0;
+  }
+}
+
+.comment {
+  font-style: italic;
+}
+
+.news {
+  font-weight: $sk-bold-weight;
+}
