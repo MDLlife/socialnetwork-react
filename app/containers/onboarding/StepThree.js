@@ -77,18 +77,33 @@ class StepOne extends Component {
 
 
     changeInputHeight = (event) => {
+        if(isNaN(+event.target.value) || +event.target.value > 999) {
+            return false;
+        }
         this.props.TYPE_HEIGHT(event.target.value)
     };
     changeInputBust = (event) => {
+        if(isNaN(+event.target.value) || +event.target.value > 999) {
+            return false;
+        }
         this.props.TYPE_BUST(event.target.value)
     };
     changeInputWaist = (event) => {
+        if(isNaN(+event.target.value) || +event.target.value > 999) {
+            return false;
+        }
         this.props.TYPE_WAIST(event.target.value)
     };
     changeInputHips = (event) => {
+        if(isNaN(+event.target.value) || +event.target.value > 999) {
+            return false;
+        }
         this.props.TYPE_HIPS(event.target.value)
     };
     changeInputShoe = (event) => {
+        if(isNaN(+event.target.value) || +event.target.value > 99) {
+            return false;
+        }
         this.props.TYPE_SHOE_SIZE(event.target.value)
     };
 

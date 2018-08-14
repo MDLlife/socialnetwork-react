@@ -24,7 +24,7 @@ const styles = {
     trackSwitched: {
         backgroundColor: '#F599C2',
     },
-}
+};
 
 class GeneralInformation extends Component {
     constructor(props) {
@@ -66,7 +66,7 @@ class GeneralInformation extends Component {
             return false
         }
 
-        superagent.get(`https://apis.mdl.live/_cts_/1.0/cities?q=${value}`).withCredentials().then(res => {
+        superagent.get(`${config.APIS_URL}/_cts_/1.0/cities?q=${value}`).withCredentials().then(res => {
             JSON.parse(res.text).data.map(elem => {
                 newArr.push(elem.attributes.name)
             });
@@ -76,18 +76,38 @@ class GeneralInformation extends Component {
         })
     };
 
+    saveCity = value => {
+        superagent.get(`${config.APIS_URL}/_cts_/1.0/cities?q=${value}`).withCredentials().then(res => {
+            this.setState({
+                city: JSON.parse(res.text).data[0]
+            });
+        })
+    };
+
     switchStatus = (event, value) => {
         this.setState({status: value})
     };
 
     toOnboarding = () => {
+        let location = Object.assign({id: this.state.city.id}, this.state.city.attributes);
+        console.log(location)
         //TODO: SAVE
-        if (typeof window !== 'undefined') {
-            window.location.href = "/login/select-role";
-        }
+        superagent
+            .post(`${config.API_URL}/v1/update/users`)
+            .send({
+                _key: LoginStore.user._key,
+                location_mdl: location
+            })
+            .withCredentials()
+            .then(res => {
+                if (res.error === false) {
+                    window.location.href = "/login/select-role";
+                }
+            });
     };
 
     render() {
+        console.log(this.state)
         return [
             <Row>
                 <Col xs={12}>
@@ -159,6 +179,7 @@ class GeneralInformation extends Component {
                         onUpdateInput={this.handleUpdateInput}
                         maxSearchResults={5}
                         filter={AutoComplete.noFilter}
+                        onNewRequest={this.saveCity}
                         //openOnFocus={true}
                     />
                 </Col>

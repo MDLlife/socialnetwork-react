@@ -219,7 +219,7 @@ class StepOne extends Component {
             </Row>,
             <Row style={{paddingTop: 20, borderTop: '1px solid lightgrey'}}>
                 <Col xs={12}>
-                    <h2>Languages spoken</h2>
+                    <h2>Languages spoken <span style={{color: '#ea2f85'}}>*</span></h2>
                     <AutoComplete
                         filter={AutoComplete.fuzzyFilter}
                         dataSource={searchLanguages}

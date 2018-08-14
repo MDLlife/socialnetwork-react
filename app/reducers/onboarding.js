@@ -26,6 +26,10 @@ export default function (state = {language_spoken: [], work_areas: [], style: []
             return {...state, style: [...state.style, action.payload]};
         case 'REMOVE_WORK_NICHES':
             return {...state, style: state.style.filter(elem => elem !== action.payload)};
+        case 'SELECT_FEATURES':
+            return {...state, features: [...state.features, action.payload]};
+        case 'REMOVE_FEATURES':
+            return {...state, features: state.features.filter(elem => elem !== action.payload)};
         case 'TOGGLE_PIERCING':
             return {...state, piercing: action.payload};
         case 'TOGGLE_TATTOO':
