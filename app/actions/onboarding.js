@@ -50,6 +50,16 @@ export const REMOVE_WORK_NICHES = style => ({
     payload: style
 });
 
+export const SELECT_FEATURES = feature => ({
+    type: 'SELECT_FEATURES',
+    payload: feature
+});
+
+export const REMOVE_FEATURES = feature => ({
+    type: 'REMOVE_FEATURES',
+    payload: feature
+});
+
 export const TOGGLE_PIERCING = toggle => ({
     type: 'TOGGLE_PIERCING',
     payload: toggle

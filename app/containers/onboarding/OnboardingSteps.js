@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Step, StepLabel, Stepper} from 'material-ui/Stepper';
 import {Col, Grid, Row} from 'react-bootstrap';
 import LoginStore from 'store/LoginStore';
+import SnackBar from 'material-ui/Snackbar'
 
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
@@ -38,13 +39,60 @@ class OnboardingSteps extends Component {
         this.state = {
             step: 0, // first step in onboarding
             finished: false,
+            check: false
         }
     }
 
     handleNext = () => {
+        if(this.state.step === 0) {
+            if( typeof this.props.profile.gender === 'undefined' ||
+                typeof this.props.profile.year === 'undefined' ||
+                typeof this.props.profile.ethnic === 'undefined' ||
+                this.props.profile.language_spoken.length < 1) {
+                this.setState({
+                    check: true
+                });
+                return false;
+            };
+        }
+
+        if(this.state.step === 1) {
+            if( this.props.profile.work_areas.length < 1 ||
+                this.props.profile.style.length < 1 ) {
+                this.setState({
+                    check: true
+                });
+                return false;
+            };
+        }
+
+
+        if(this.state.step === 2 ){
+            if( typeof this.props.profile.body_type === 'undefined' ||
+                (typeof this.props.profile.height === 'undefined' || this.props.profile.height === '') ||
+                (typeof this.props.profile.bust === 'undefined' || this.props.profile.bust === '') ||
+                (typeof this.props.profile.waist === 'undefined' || this.props.profile.waist === '') ||
+                (typeof this.props.profile.hips === 'undefined' || this.props.profile.hips === '') ||
+                (typeof this.props.profile.shoe_size === 'undefined' || this.props.profile.shoe_size === '') ||
+                typeof this.props.profile.eye_color === 'undefined' ||
+                typeof this.props.profile.hair_length === 'undefined' ||
+                typeof this.props.profile.hair_color === 'undefined') {
+                this.setState({
+                    check: true
+                });
+                return false;
+            };
+        };
+
         this.setState({
             step: this.state.step + 1,
             finished: this.state.step >= 2,
+        });
+    };
+
+    handleRequestClose = () => {
+        this.setState({
+            check: false,
         });
     };
 
@@ -55,9 +103,6 @@ class OnboardingSteps extends Component {
     };
 
     previewProfile = () => {
-
-        //this.props.FETCH_GET_USER_DATA(LoginStore.user._key)
-
         const data = {
             _key: LoginStore.user._key,
             profiles: ['talent'],
@@ -109,7 +154,7 @@ class OnboardingSteps extends Component {
     switchSteps = (step) => {
         switch (step) {
             case 0:
-                return <StepOne/>;
+                return <StepOne />;
             case 1:
                 return <StepTwo/>;
             case 2:
@@ -224,11 +269,17 @@ class OnboardingSteps extends Component {
                         <button className='back-btn' onClick={this.handlePrev}>Back</button>
                         <button
                             className='next-btn tooltip-main'
-                            onClick={step === 3 ? () => this.previewProfile() : () => this.handleNext()
-                            }>
+                            onClick={step === 3 ? this.previewProfile : this.handleNext}
+                        >
                             {step === 3 ? 'Preview profile' : 'Next'}
                             {/*{step === 2 ? <span className='tooltip-text'>ToolTip</span> : null}*/}
                         </button>
+                        <SnackBar
+                            open={this.state.check}
+                            message="Please fill all fields"
+                            autoHideDuration={1500}
+                            onRequestClose={this.handleRequestClose}
+                        />
                     </Col>
                 </Row>
             </Grid>

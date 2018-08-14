@@ -11,6 +11,8 @@ import {
     REMOVE_WORK_AREAS,
     SELECT_WORK_NICHES,
     REMOVE_WORK_NICHES,
+    SELECT_FEATURES,
+    REMOVE_FEATURES,
     SELECT_TATTOO,
     REMOVE_TATTOO,
     TOGGLE_PIERCING,
@@ -85,6 +87,19 @@ class StepOne extends Component {
         }
     };
 
+    selectedChipFeatures = e => {
+        let elem = e.target.parentNode;
+        if (elem.classList.contains('selected')) {
+            elem.classList.remove('selected');
+            elem.classList.add('hover-chip');
+            this.props.REMOVE_FEATURES(e.target.innerHTML.toLowerCase())
+        } else {
+            elem.classList.remove('hover-chip');
+            elem.classList.add('selected');
+            this.props.SELECT_FEATURES(e.target.innerHTML.toLowerCase())
+        }
+    };
+
     selectedTattoo = () => {
         this.props.TOGGLE_TATTOO(!this.state.showTattoo);
         this.setState({
@@ -138,6 +153,22 @@ class StepOne extends Component {
                 key={data.key}
                 style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
                 onClick={this.selectedChipTattoo}
+            >
+                {data.label}
+                {/*{*/}
+                {/*data.key % 2 !== 0 ? <img src="/static/img/fire.svg" alt="" style={{width: 16}}/> : null*/}
+                {/*}*/}
+            </Chip>
+        )
+    };
+
+    renderChipFeatures = data => {
+        return (
+            <Chip
+                className={`hover-chip ${this.props.profile.features.find(e => e === data.label.toLowerCase()) ? 'selected' : ''}`}
+                key={data.key}
+                style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
+                onClick={this.selectedChipFeatures}
             >
                 {data.label}
                 {/*{*/}
@@ -209,7 +240,7 @@ class StepOne extends Component {
                     </div>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
-                            this.state.features.map(this.renderChipTattoo, this)
+                            this.state.features.map(this.renderChipFeatures, this)
                         }
                     </div>
                 </Col>
@@ -276,6 +307,8 @@ export default connect(
         REMOVE_WORK_AREAS,
         SELECT_WORK_NICHES,
         REMOVE_WORK_NICHES,
+        SELECT_FEATURES,
+        REMOVE_FEATURES,
         SELECT_TATTOO,
         REMOVE_TATTOO,
         TOGGLE_PIERCING,
