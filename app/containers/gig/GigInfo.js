@@ -4,12 +4,16 @@ import {connect} from 'react-redux';
 import {Row, Col} from 'react-bootstrap';
 import AutoComplete from 'material-ui/AutoComplete';
 import Chip from 'material-ui/Chip';
+import TextField from 'material-ui/TextField';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import DatePicker from 'material-ui/DatePicker';
 
 class GigInfo extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            duration: 'one',
             search: '',
             selectedLangs: [],
             language: [
@@ -100,13 +104,129 @@ class GigInfo extends Component {
         )
     };
 
+    changeDuration = (event, value) => {
+        this.setState({
+            duration: value
+        })
+    };
+
     render() {
         let {searchLanguages} = this.state;
         console.log(this.props.profile);
         return [
+            <Row>
+                <Col xs={12} style={{ marginBottom: 45}}>
+                    <h3>Basic info</h3>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                        <div>
+                            <TextField
+                                floatingLabelText="Gig type"
+                            />
+                        </div>
+                        <div>
+                            <TextField
+                                floatingLabelText="Gig location"
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <TextField
+                            floatingLabelText="Gig address"
+                            fullWidth={true}
+                        />
+                    </div>
+                </Col>
+            </Row>,
+            <Row>
+                <Col xs={12} style={{paddingTop: 20, borderTop: '1px solid lightgrey', marginBottom: 45}}>
+                    <div>
+                        <h3>Duration</h3>
+                        <div style={{display: 'flex'}}>
+                            <div
+                                style={{width: '50%', margin: 'auto 0'}}
+                            >
+                                <RadioButtonGroup
+                                    style={{display: 'flex'}}
+                                    valueSelected={this.state.duration}
+                                    onChange={this.changeDuration}
+                                    name='duration'
+                                >
+                                    <RadioButton
+                                        value='one'
+                                        label='One day gig'
+                                    />
+                                    <RadioButton
+                                        value='multi'
+                                        label='More than one day'
+                                    />
+                                </RadioButtonGroup>
+                            </div>
+                            <div
+                                style={{width: '50%'}}
+                            >
+                                {
+                                    this.state.duration === 'one' ? (
+                                        <div style={{position: 'relative'}}>
+                                            <DatePicker
+                                                textFieldStyle={{width: '100%'}}
+                                            />
+                                            <img
+                                                src="/static/img/calendar.svg"
+                                                alt=""
+                                                style={{
+                                                    width: 24,
+                                                    position: 'absolute',
+                                                    top: 12,
+                                                    right: 0,
+                                                }}
+                                            />
+                                        </div>
+
+                                    ) : (
+                                        <div style={{display: 'flex'}}>
+                                            <div style={{position: 'relative'}}>
+                                                <DatePicker
+                                                    textFieldStyle={{width: '100%'}}
+                                                />
+                                                <img
+                                                    src="/static/img/calendar.svg"
+                                                    alt=""
+                                                    style={{
+                                                        width: 24,
+                                                        position: 'absolute',
+                                                        top: 12,
+                                                        right: 0,
+                                                    }}
+                                                />
+                                            </div>
+                                            <div style={{position: 'relative'}}>
+                                                <DatePicker
+                                                    textFieldStyle={{width: '100%'}}
+                                                    style={{marginLeft: 20}}
+                                                />
+                                                <img
+                                                    src="/static/img/calendar.svg"
+                                                    alt=""
+                                                    style={{
+                                                        width: 24,
+                                                        position: 'absolute',
+                                                        top: 12,
+                                                        right: 0,
+                                                    }}
+                                                />
+                                            </div>
+
+                                        </div>
+                                    )
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </Col>
+            </Row>,
             <Row style={{paddingTop: 20, borderTop: '1px solid lightgrey'}}>
                 <Col xs={12}>
-                    <h2>Languages spoken <span style={{color: '#ea2f85'}}>*</span></h2>
+                    <h3>Languages spoken <span style={{color: '#ea2f85'}}>*</span></h3>
                     <AutoComplete
                         filter={AutoComplete.fuzzyFilter}
                         dataSource={searchLanguages}
@@ -121,7 +241,7 @@ class GigInfo extends Component {
                             {/*this.props.profile.search_language.length > 0 && this.props.profile.search_language.map(this.renderSearchChip, this)*/}
                         {/*}*/}
                     </div>
-                    <h4 style={{color: '#ea2f85', marginTop: 30}}>TOP MOST POPULAR LANGUAGES</h4>
+                    <h4 style={{marginTop: 30}}>TOP MOST POPULAR LANGUAGES</h4>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
                             this.state.language.map(this.renderChip, this)

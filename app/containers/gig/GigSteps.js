@@ -6,6 +6,7 @@ import LoginStore from 'store/LoginStore';
 import SnackBar from 'material-ui/Snackbar';
 
 import GigInfo from './GigInfo';
+import TalentsNeeded from './TalentsNeeded';
 
 const styles = {
     stepBorder: {
@@ -57,7 +58,7 @@ class GigSteps extends Component {
             case 0:
                 return <GigInfo />;
             case 1:
-                return <div />;
+                return <TalentsNeeded />;
             default:
                 return <div>Error</div>;
         }

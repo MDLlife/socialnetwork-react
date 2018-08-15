@@ -332,6 +332,21 @@ label {
 .other-talents:last-child {
   margin: 0px; }
 
+.gig-talents {
+  background-color: #fafafa;
+  height: 100px;
+  width: 16.67%;
+  border-radius: 10px;
+  margin: 10px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: "Gilroy Medium";
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 0 5px 1px lightgrey; }
+
 @media (min-width: 1201px) {
   .onboarding {
     width: 750px; } }
