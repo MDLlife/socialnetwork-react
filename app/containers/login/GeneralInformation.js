@@ -66,7 +66,7 @@ class GeneralInformation extends Component {
             return false
         }
 
-        superagent.get(`https://api.mdl.live/v1/cities?q=${value}`).withCredentials().then(res => {
+        superagent.get(`${config.APIS_URL}/_cts_/1.0/cities?q=${value}`).withCredentials().then(res => {
             JSON.parse(res.text).data.map(elem => {
                 newArr.push(elem.attributes.name)
             });
@@ -77,7 +77,7 @@ class GeneralInformation extends Component {
     };
 
     saveCity = value => {
-        superagent.get(`https://api.mdl.live/v1/cities?q=${value}`).withCredentials().then(res => {
+        superagent.get(`${config.APIS_URL}/_cts_/1.0/cities?q=${value}`).withCredentials().then(res => {
             this.setState({
                 city: JSON.parse(res.text).data[0]
             });
@@ -93,7 +93,7 @@ class GeneralInformation extends Component {
         console.log(location)
         //TODO: SAVE
         superagent
-            .post(`https://api.mdl.live/v1/update/users`)
+            .post(`${config.API_URL}/v1/update/users`)
             .send({
                 _key: LoginStore.user._key,
                 location_mdl: location
