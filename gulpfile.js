@@ -16,9 +16,9 @@ var buildProperties = {
     GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID || 'DEVELOP',
     cssFiles: [
         './dist/static/styles/main.css',
-        './vendor/searchkit/dist/theming/components.css',
-        './vendor/searchkit/dist/theming/theme.css',
-        './vendor/searchkit/dist/theming/vars.css',
+        // './vendor/searchkit/dist/theming/components.css',
+        // './vendor/searchkit/dist/theming/theme.css',
+        // './vendor/searchkit/dist/theming/vars.css',
     ],
     assetFiles: [
         './vendor/app.js',
