@@ -5,16 +5,7 @@ import {Row, Col, Grid} from 'react-bootstrap';
 import Chip from 'material-ui/Chip';
 import LoginStore from 'store/LoginStore';
 import Delete from 'material-ui/svg-icons/action/highlight-off';
-
-import {
-    SELECT_WORK_AREAS_ACTOR,
-    SELECT_WORK_AREAS_DANCER,
-    SELECT_WORK_AREAS_MODEL,
-    UNSELECT_WORK_AREAS_ACTOR,
-    UNSELECT_WORK_AREAS_DANCER,
-    UNSELECT_WORK_AREAS_MODEL,
-    FETCH_BOOKER_DATA
-} from "../../actions/onboardingBooker";
+import TalentBoard from './TalentBoard';
 
 class TalentsNeeded extends Component {
     constructor(props) {
@@ -30,96 +21,9 @@ class TalentsNeeded extends Component {
             'DJ': false,
             'Host & MC': false,
             'Other': false,
+            'menuItem': 1,
         }
     }
-
-    renderChipActorWorkAreas = data => {
-        return (
-            <Chip
-                className={`hover-chip`}
-                key={data.key}
-                style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
-                onClick={this.selectedChipActorWorkAreas}
-            >
-                {data.label}
-                {/*{*/}
-                {/*data.key % 2 !== 0 ? <img src="/static/img/fire.svg" alt="" style={{width: 16}}/> : null*/}
-                {/*}*/}
-            </Chip>
-        )
-    };
-
-    selectedChipActorWorkAreas = e => {
-        let elem = e.target.parentNode;
-        if (elem.classList.contains('selected')) {
-            elem.classList.remove('selected');
-            elem.classList.add('hover-chip');
-            this.props.UNSELECT_WORK_AREAS_ACTOR(e.target.innerHTML)
-        } else {
-            elem.classList.remove('hover-chip');
-            elem.classList.add('selected');
-            this.props.SELECT_WORK_AREAS_ACTOR(e.target.innerHTML)
-        }
-    };
-
-    renderChipModelWorkAreas = data => {
-        return (
-            <Chip
-                className={`hover-chip`}
-                key={data.key}
-                style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
-                onClick={this.selectedChipModelWorkAreas}
-            >
-                {data.label}
-                {/*{*/}
-                {/*data.key % 2 !== 0 ? <img src="/static/img/fire.svg" alt="" style={{width: 16}}/> : null*/}
-                {/*}*/}
-            </Chip>
-        )
-    };
-
-    selectedChipModelWorkAreas = e => {
-        let elem = e.target.parentNode;
-        if (elem.classList.contains('selected')) {
-            elem.classList.remove('selected');
-            elem.classList.add('hover-chip');
-            this.props.UNSELECT_WORK_AREAS_MODEL(e.target.innerHTML)
-
-        } else {
-            elem.classList.remove('hover-chip');
-            elem.classList.add('selected');
-            this.props.SELECT_WORK_AREAS_MODEL(e.target.innerHTML)
-        }
-    };
-
-    renderChipDancerWorkAreas = data => {
-        return (
-            <Chip
-                className={`hover-chip`}
-                key={data.key}
-                style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
-                onClick={this.selectedChipDancerWorkAreas}
-            >
-                {data.label}
-                {/*{*/}
-                {/*data.key % 2 !== 0 ? <img src="/static/img/fire.svg" alt="" style={{width: 16}}/> : null*/}
-                {/*}*/}
-            </Chip>
-        )
-    };
-
-    selectedChipDancerWorkAreas = e => {
-        let elem = e.target.parentNode;
-        if (elem.classList.contains('selected')) {
-            elem.classList.remove('selected');
-            elem.classList.add('hover-chip');
-            this.props.UNSELECT_WORK_AREAS_DANCER(e.target.innerHTML)
-        } else {
-            elem.classList.remove('hover-chip');
-            elem.classList.add('selected');
-            this.props.SELECT_WORK_AREAS_DANCER(e.target.innerHTML)
-        }
-    };
 
     selectedBlock = e => {
         this.setState({
@@ -127,52 +31,33 @@ class TalentsNeeded extends Component {
         }, () => console.log(this.state))
     };
 
-    saveBooker = () => {
-        console.log(this.props.booker);
-        let selectTalentsWorkAreas = [];
-
-        if(this.state.actorSelect) {
-            selectTalentsWorkAreas
-                .push({
-                    role: 'actor',
-                    work_areas: this.props.booker.actorAreas
-                })
-        }
-
-        if(this.state.modelSelect) {
-            selectTalentsWorkAreas.push({
-                role: 'model',
-                work_areas: this.props.booker.modelAreas
-            })
-        }
-
-        if(this.state.dancerSelect) {
-            selectTalentsWorkAreas.push({
-                role: 'dancer',
-                work_areas: this.props.booker.dancerAreas
-            })
-        }
-
-        this.props.FETCH_BOOKER_DATA({
-            _key: LoginStore.user._key,
-            profiles: ['booker'],
-            booker_work_areas: selectTalentsWorkAreas,
-            registration_booker_complete: true
-        });
-
-        //TODO: this should be conditional trigger based on dispatch success action
-        if (typeof window !== 'undefined') {
-            //TODO: later redirect to preview when preview is completed
-            // window.location.href = '/onboarding/profile-preview?profile=booker'
-
-            window.location.href = '/today'
-        }
-    };
-
     deleteOtherTalents = e => {
         this.setState({
             [e.target.getAttribute('name')]: !this.state[e.target.getAttribute('name')]
         }, () => console.log(this.state))
+    };
+
+    selectTalent = (event) => {
+        let x = Array.from(document.getElementsByClassName('selecting-talents'));
+        for (let i = 0; i < x.length; i = i + 1) {
+            if (x[i].getAttribute('name') !== event.target.textContent) {
+                x[i].classList.remove('selected-talents')
+            } else {
+                x[i].classList.add('selected-talents')
+            }
+        }
+    };
+
+    selectingMenu = (event) => {
+        if (+event.target.value === 2) {
+            this.setState({
+                menuItem: 2
+            })
+        } else {
+            this.setState({
+                menuItem: 1
+            })
+        }
     };
 
     render() {
@@ -190,6 +75,7 @@ class TalentsNeeded extends Component {
                             {
                                 !this.state['Actor'] ?
                                     <TalentsCards
+                                        classes='gig-talents'
                                         name='Actor'
                                         onSelect={this.selectedBlock}
                                     /> : null
@@ -197,6 +83,7 @@ class TalentsNeeded extends Component {
                             {
                                 !this.state['Model'] ?
                                     <TalentsCards
+                                        classes='gig-talents'
                                         name='Model'
                                         onSelect={this.selectedBlock}
                                     /> : null
@@ -204,6 +91,7 @@ class TalentsNeeded extends Component {
                             {
                                 !this.state['Dancer'] ?
                                     <TalentsCards
+                                        classes='gig-talents'
                                         name='Dancer'
                                         onSelect={this.selectedBlock}
                                         style={{paddingLeft: 8}}
@@ -212,6 +100,7 @@ class TalentsNeeded extends Component {
                             {
                                 !this.state['Singer'] ?
                                     <TalentsCards
+                                        classes='gig-talents'
                                         name='Singer'
                                         onSelect={this.selectedBlock}
                                     /> : null
@@ -219,6 +108,7 @@ class TalentsNeeded extends Component {
                             {
                                 !this.state['Musician'] ?
                                     <TalentsCards
+                                        classes='gig-talents'
                                         name='Musician'
                                         onSelect={this.selectedBlock}
                                     /> : null
@@ -226,6 +116,7 @@ class TalentsNeeded extends Component {
                             {
                                 !this.state['Animator & Entertainer'] ?
                                     <TalentsCards
+                                        classes='gig-talents'
                                         name='Animator & Entertainer'
                                         onSelect={this.selectedBlock}
                                         style={{paddingLeft: 8}}
@@ -234,6 +125,7 @@ class TalentsNeeded extends Component {
                             {
                                 !this.state['DJ'] ?
                                     <TalentsCards
+                                        classes='gig-talents'
                                         name='DJ'
                                         onSelect={this.selectedBlock}
                                     /> : null
@@ -241,6 +133,7 @@ class TalentsNeeded extends Component {
                             {
                                 !this.state['Host & MC'] ?
                                     <TalentsCards
+                                        classes='gig-talents'
                                         name='Host & MC'
                                         onSelect={this.selectedBlock}
                                     /> : null
@@ -248,6 +141,7 @@ class TalentsNeeded extends Component {
                             {
                                 !this.state['Other'] ?
                                     <TalentsCards
+                                        classes='gig-talents'
                                         name='Other'
                                         onSelect={this.selectedBlock}
                                     /> : null
@@ -284,42 +178,54 @@ class TalentsNeeded extends Component {
                                 this.state['Model'] ?
                                     <TalentsCards
                                         name='Model'
+                                        classes='selecting-talents gig-talents'
                                         onDelete={this.deleteOtherTalents}
+                                        onSelect={this.selectTalent}
                                     /> : null
                             }
                             {
                                 this.state['Actor'] ?
                                     <TalentsCards
                                         name='Actor'
+                                        classes='selecting-talents gig-talents'
                                         onDelete={this.deleteOtherTalents}
+                                        onSelect={this.selectTalent}
                                     /> : null
                             }
                             {
                                 this.state['Dancer'] ?
                                     <TalentsCards
                                         name='Dancer'
+                                        classes='selecting-talents gig-talents'
                                         onDelete={this.deleteOtherTalents}
+                                        onSelect={this.selectTalent}
                                     /> : null
                             }
                             {
                                 this.state['Singer'] ?
                                     <TalentsCards
                                         name='Singer'
+                                        classes='selecting-talents gig-talents'
                                         onDelete={this.deleteOtherTalents}
+                                        onSelect={this.selectTalent}
                                     /> : null
                             }
                             {
                                 this.state['Musician'] ?
                                     <TalentsCards
                                         name='Musician'
+                                        classes='selecting-talents gig-talents'
                                         onDelete={this.deleteOtherTalents}
+                                        onSelect={this.selectTalent}
                                     /> : null
                             }
                             {
                                 this.state['Animator & Entertainer'] ?
                                     <TalentsCards
                                         name='Animator & Entertainer'
+                                        classes='selecting-talents gig-talents'
                                         onDelete={this.deleteOtherTalents}
+                                        onSelect={this.selectTalent}
                                         style={{paddingLeft: 8}}
                                     /> : null
                             }
@@ -327,24 +233,70 @@ class TalentsNeeded extends Component {
                                 this.state['DJ'] ?
                                     <TalentsCards
                                         name='DJ'
+                                        classes='selecting-talents gig-talents'
                                         onDelete={this.deleteOtherTalents}
+                                        onSelect={this.selectTalent}
                                     /> : null
                             }
                             {
                                 this.state['Host & MC'] ?
                                     <TalentsCards
                                         name='Host & MC'
+                                        classes='selecting-talents gig-talents'
                                         onDelete={this.deleteOtherTalents}
+                                        onSelect={this.selectTalent}
                                     /> : null
                             }
                             {
                                 this.state['Other'] ?
                                     <TalentsCards
                                         name='Other'
+                                        classes='selecting-talents gig-talents'
                                         onDelete={this.deleteOtherTalents}
+                                        onSelect={this.selectTalent}
                                     /> : null
                             }
                         </div>
+                    </Col>
+                </Row>,
+                <Row>
+                    <Col xs={3}>
+                        <ul
+                            className='menu-today'
+                            style={{
+                                listStyle: 'none',
+                                padding: 0
+                            }}
+                        >
+                            <li
+                                className={`list-item ${this.state.menuItem === 1 ? 'selected-item' : null}`}
+                                style={{margin: 0}}
+                                onClick={this.selectingMenu}
+                                value='1'
+                            >
+                                Personal
+                            </li>
+                            <li
+                                className={`list-item ${this.state.menuItem === 2 ? 'selected-item' : null}`}
+                                style={{margin: 0}}
+                                onClick={this.selectingMenu}
+                                value='2'
+                            >
+                                Budget
+                            </li>
+                        </ul>
+                    </Col>
+                    <Col xs={9}>
+                        {
+                            this.state.menuItem === 1 ? (
+                                <TalentBoard/>
+                            ) : (
+                                <div>
+                                    "Budget"
+                                </div>
+                            )
+                        }
+
                     </Col>
                 </Row>
         ]
@@ -354,7 +306,7 @@ class TalentsNeeded extends Component {
 const TalentsCards = props => {
     return (
         <div
-            className='gig-talents'
+            className={props.classes}
             style={props.style}
             onClick={props.onSelect}
             name={props.name}
