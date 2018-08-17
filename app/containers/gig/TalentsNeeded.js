@@ -33,7 +33,8 @@ class TalentsNeeded extends Component {
 
     deleteOtherTalents = e => {
         this.setState({
-            [e.target.getAttribute('name')]: !this.state[e.target.getAttribute('name')]
+            [e.target.getAttribute('name')]: !this.state[e.target.getAttribute('name')],
+            selectedBoard: null
         }, () => console.log(this.state))
     };
 
@@ -46,6 +47,10 @@ class TalentsNeeded extends Component {
                 x[i].classList.add('selected-talents')
             }
         }
+
+        this.setState({
+            selectedBoard: document.getElementsByClassName('selected-talents')[0].getAttribute('name')
+        })
     };
 
     selectingMenu = (event) => {
@@ -57,6 +62,31 @@ class TalentsNeeded extends Component {
             this.setState({
                 menuItem: 1
             })
+        }
+    };
+
+    switchBoard = (role) => {
+        switch(role) {
+            case "Actor":
+                return <TalentBoard role={role}/>;
+            case "Model":
+                return <TalentBoard role={role}/>;
+            case "Dancer":
+                return <TalentBoard role={role}/>;
+            case "Singer":
+                return <TalentBoard role={role}/>;
+            case "Musician":
+                return <TalentBoard role={role}/>;
+            case "Animator & Entertainer":
+                return <TalentBoard role={role}/>;
+            case "DJ":
+                return <TalentBoard role={role}/>;
+            case "Host & MC":
+                return <TalentBoard role={role}/>;
+            case "Other":
+                return <TalentBoard role={role}/>;
+            default:
+                return <div>Error</div>
         }
     };
 
@@ -259,6 +289,7 @@ class TalentsNeeded extends Component {
                         </div>
                     </Col>
                 </Row>,
+                this.state.selectedBoard &&
                 <Row>
                     <Col xs={3}>
                         <ul
@@ -289,7 +320,7 @@ class TalentsNeeded extends Component {
                     <Col xs={9}>
                         {
                             this.state.menuItem === 1 ? (
-                                <TalentBoard/>
+                                this.switchBoard(this.state.selectedBoard)
                             ) : (
                                 <div>
                                     "Budget"
@@ -319,16 +350,17 @@ const TalentsCards = props => {
                     right: 0,
                     top: 0
                 }}
+                onClick={props.onDelete}
             >
-                {
-                    props.onDelete
-                        ? <Delete
-                            color={'#cccccc'}
-                            onClick={props.onDelete}
-                            name={props.name}
-                        />
-                        : null
-                }
+            {
+                props.onDelete
+                    ? <Delete
+                        color={'#cccccc'}
+                        onClick={props.onDelete}
+                        name={props.name}
+                    />
+                    : null
+            }
 
             </span>
             {props.name}
