@@ -157,6 +157,6 @@ gulp.task('fonts', function () {
         });
 });
 
-gulp.task('default', ['css','fonts', 'images', 'minify-js', 'vendor', 'css:watch']);
+gulp.task('default', ['css','fonts', 'images', 'minify-js', 'vendor', 'css:watch', 'searchkit']);
 
-gulp.task('prod', ['css', 'fonts', 'images', 'minify-js', 'vendor', 'vendor-images']);
+gulp.task('prod', ['css', 'fonts', 'images', 'minify-js', 'vendor', 'vendor-images', 'searchkit']);
