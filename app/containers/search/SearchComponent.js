@@ -80,7 +80,7 @@ class SearchComponent extends Component {
                 <Helmet
                     htmlAttributes={{'lang': 'en'}} // amp takes no value
                     title="MDL Search Engine - Search for any talent"
-                    titleTemplate="Search Comentarismo.com - %s"
+                    titleTemplate="Search - %s"
                     meta={[
                         {
                             'name': 'description',

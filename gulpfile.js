@@ -16,9 +16,6 @@ var buildProperties = {
     GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID || 'DEVELOP',
     cssFiles: [
         './dist/static/styles/main.css',
-        './vendor/searchkit/dist/theming/components.css',
-        './vendor/searchkit/dist/theming/theme.css',
-        './vendor/searchkit/dist/theming/vars.css',
     ],
     assetFiles: [
         './vendor/app.js',
@@ -29,8 +26,6 @@ var buildProperties = {
         './vendor/comentarismo-client-min.map.json',
         './vendor/comentarismo-client-min.js',
         './vendor/comentarismo-client.css',
-
-
     ],
     assetFilesImages:['./vendor/images/*'],
 
@@ -76,7 +71,7 @@ gulp.task('searchkit', function () {
   .pipe(sourcemaps.init())
   .pipe(sass().on('error', sass.logError))
   .pipe(sourcemaps.write('./maps'))
-  .pipe(gulp.dest('./vendor/searchkit/dist'));
+  .pipe(gulp.dest('./dist/static/searchkit/dist'));
 });
 
 gulp.task('sass', function () {
