@@ -47,8 +47,7 @@ class OnboardingSteps extends Component {
         if(this.state.step === 0) {
             if( typeof this.props.profile.gender === 'undefined' ||
                 typeof this.props.profile.year === 'undefined' ||
-                typeof this.props.profile.ethnic === 'undefined' ||
-                this.props.profile.language_spoken.length < 1) {
+                typeof this.props.profile.ethnic === 'undefined') {
                 this.setState({
                     check: true
                 });
@@ -56,33 +55,33 @@ class OnboardingSteps extends Component {
             };
         }
 
-        if(this.state.step === 1) {
-            if( this.props.profile.work_areas.length < 1 ||
-                this.props.profile.style.length < 1 ) {
-                this.setState({
-                    check: true
-                });
-                return false;
-            };
-        }
+        // if(this.state.step === 1) {
+        //     if( this.props.profile.work_areas.length < 1 ||
+        //         this.props.profile.style.length < 1 ) {
+        //         this.setState({
+        //             check: true
+        //         });
+        //         return false;
+        //     };
+        // }
 
 
-        if(this.state.step === 2 ){
-            if( typeof this.props.profile.body_type === 'undefined' ||
-                (typeof this.props.profile.height === 'undefined' || this.props.profile.height === '') ||
-                (typeof this.props.profile.bust === 'undefined' || this.props.profile.bust === '') ||
-                (typeof this.props.profile.waist === 'undefined' || this.props.profile.waist === '') ||
-                (typeof this.props.profile.hips === 'undefined' || this.props.profile.hips === '') ||
-                (typeof this.props.profile.shoe_size === 'undefined' || this.props.profile.shoe_size === '') ||
-                typeof this.props.profile.eye_color === 'undefined' ||
-                typeof this.props.profile.hair_length === 'undefined' ||
-                typeof this.props.profile.hair_color === 'undefined') {
-                this.setState({
-                    check: true
-                });
-                return false;
-            };
-        };
+        // if(this.state.step === 2 ){
+        //     if( typeof this.props.profile.body_type === 'undefined' ||
+        //         (typeof this.props.profile.height === 'undefined' || this.props.profile.height === '') ||
+        //         (typeof this.props.profile.bust === 'undefined' || this.props.profile.bust === '') ||
+        //         (typeof this.props.profile.waist === 'undefined' || this.props.profile.waist === '') ||
+        //         (typeof this.props.profile.hips === 'undefined' || this.props.profile.hips === '') ||
+        //         (typeof this.props.profile.shoe_size === 'undefined' || this.props.profile.shoe_size === '') ||
+        //         typeof this.props.profile.eye_color === 'undefined' ||
+        //         typeof this.props.profile.hair_length === 'undefined' ||
+        //         typeof this.props.profile.hair_color === 'undefined') {
+        //         this.setState({
+        //             check: true
+        //         });
+        //         return false;
+        //     };
+        // };
 
         this.setState({
             step: this.state.step + 1,
@@ -125,7 +124,7 @@ class OnboardingSteps extends Component {
             comp_card: [],
             video: [],
             registration_talent_complete: true
-        }
+        };
 
         if (this.props.profile.eye_color) {
             data.eye_color = this.props.profile.eye_color.toLowerCase()
@@ -276,7 +275,7 @@ class OnboardingSteps extends Component {
                         </button>
                         <SnackBar
                             open={this.state.check}
-                            message="Please fill all fields"
+                            message="Please fill all required fields"
                             autoHideDuration={1500}
                             onRequestClose={this.handleRequestClose}
                         />

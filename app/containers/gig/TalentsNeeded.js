@@ -291,43 +291,36 @@ class TalentsNeeded extends Component {
                 </Row>,
                 this.state.selectedBoard &&
                 <Row>
-                    <Col xs={3}>
-                        <ul
-                            className='menu-today'
-                            style={{
-                                listStyle: 'none',
-                                padding: 0
-                            }}
-                        >
-                            <li
-                                className={`list-item ${this.state.menuItem === 1 ? 'selected-item' : null}`}
-                                style={{margin: 0}}
-                                onClick={this.selectingMenu}
-                                value='1'
-                            >
-                                Personal
-                            </li>
-                            <li
-                                className={`list-item ${this.state.menuItem === 2 ? 'selected-item' : null}`}
-                                style={{margin: 0}}
-                                onClick={this.selectingMenu}
-                                value='2'
-                            >
-                                Budget
-                            </li>
-                        </ul>
-                    </Col>
-                    <Col xs={9}>
+                    {/*<Col xs={3}>*/}
+                        {/*<ul*/}
+                            {/*className='menu-today'*/}
+                            {/*style={{*/}
+                                {/*listStyle: 'none',*/}
+                                {/*padding: 0*/}
+                            {/*}}*/}
+                        {/*>*/}
+                            {/*<li*/}
+                                {/*className={`list-item ${this.state.menuItem === 1 ? 'selected-item' : null}`}*/}
+                                {/*style={{margin: 0}}*/}
+                                {/*onClick={this.selectingMenu}*/}
+                                {/*value='1'*/}
+                            {/*>*/}
+                                {/*Personal*/}
+                            {/*</li>*/}
+                            {/*<li*/}
+                                {/*className={`list-item ${this.state.menuItem === 2 ? 'selected-item' : null}`}*/}
+                                {/*style={{margin: 0}}*/}
+                                {/*onClick={this.selectingMenu}*/}
+                                {/*value='2'*/}
+                            {/*>*/}
+                                {/*Budget*/}
+                            {/*</li>*/}
+                        {/*</ul>*/}
+                    {/*</Col>*/}
+                    <Col xs={12}>
                         {
-                            this.state.menuItem === 1 ? (
-                                this.switchBoard(this.state.selectedBoard)
-                            ) : (
-                                <div>
-                                    "Budget"
-                                </div>
-                            )
+                            this.switchBoard(this.state.selectedBoard)
                         }
-
                     </Col>
                 </Row>
         ]

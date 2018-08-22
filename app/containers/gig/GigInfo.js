@@ -8,6 +8,30 @@ import TextField from 'material-ui/TextField';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import DatePicker from 'material-ui/DatePicker';
 
+import MenuItem from "material-ui/MenuItem";
+import DropDownMenu from "material-ui/DropDownMenu";
+
+import {
+    SELECT_TYPE_GIG,
+    SELECT_ADDRESS,
+    SELECT_LANGUAGE,
+    REMOVE_LANGUAGE,
+    SEARCH_LANGUAGE,
+    REMOVE_SEARCH_LANGUAGE,
+    ONE_DAY_DURATION,
+    FROM_DURATION,
+    TO_DURATION
+} from "actions/gigCreation";
+
+import config from "config";
+import superagent from "superagent";
+
+const list = [];
+['TV Commercial', 'Movie', 'Promo video', 'TV show', 'Editorail', 'Catalog', 'Underwear catalog', 'Fashion show',
+    'Showroom', 'Makeup show', 'Hairdress show', 'Bodyart', 'Hostess', 'Fitting', 'Promo event'].forEach((el) => {
+    list.push(<MenuItem value={el} key={el} primaryText={el} />)
+});
+
 class GigInfo extends Component {
     constructor(props) {
         super(props);
@@ -16,6 +40,7 @@ class GigInfo extends Component {
             duration: 'one',
             search: '',
             selectedLangs: [],
+            dataSource: [],
             language: [
                 {key: 0, label: 'Chinese'},
                 {key: 1, label: 'English'},
@@ -24,9 +49,56 @@ class GigInfo extends Component {
             searchLanguages: [
                 'Spanish','French', 'German','Japanese','Danish','Belorussian'
             ],
-            //languages_spoken: []
         }
     }
+
+    selectGigType = (event, index, value) => {
+        this.props.SELECT_TYPE_GIG(value)
+    };
+
+    saveCity = value => {
+        superagent.get(`${config.APIS_URL}/_cts_/1.0/cities?q=${value}`).withCredentials().then(res => {
+            this.setState({
+                city: JSON.parse(res.text).data[0]
+            });
+        })
+    };
+
+    handleGigAddress = (event, value) => {
+        this.props.SELECT_ADDRESS(value)
+    };
+
+    selectDay = (event, date) => {
+        this.props.ONE_DAY_DURATION(date);
+    };
+
+    selectFrom = (event, date) => {
+        this.props.FROM_DURATION(date);
+    };
+
+    selectTo = (event, date) => {
+        this.props.TO_DURATION(date);
+    };
+
+    handleUpdateInput = value => {
+        let newArr = [];
+        if(!value) {
+            this.setState({
+                dataSource: []
+            });
+
+            return false
+        }
+
+        superagent.get(`${config.APIS_URL}/_cts_/1.0/cities?q=${value}`).withCredentials().then(res => {
+            JSON.parse(res.text).data.map(elem => {
+                newArr.push(elem.attributes.name)
+            });
+            this.setState({
+                dataSource: newArr
+            });
+        })
+    };
 
     selectedChip = e => {
         let elem = e.target.parentNode;
@@ -61,7 +133,7 @@ class GigInfo extends Component {
     };
 
     handleRequestDelete = (key) => {
-        this.selectedLangs = this.props.profile.search_language;
+        this.selectedLangs = this.props.gig.search_language;
         const labelToDelete = this.selectedLangs.map((chip) => chip.key);
         const chipToDelete = this.selectedLangs.map((chip) => chip.key).indexOf(key);
         console.log(labelToDelete[0])
@@ -78,7 +150,7 @@ class GigInfo extends Component {
         return (
             <Chip
                 key={data.key}
-                //className={`chip ${this.props.profile.language_spoken.find(e => e === data.label.toLowerCase()) ? 'selected' : ''}`}
+                className={`chip ${this.props.gig.language_spoken.find(e => e === data.label.toLowerCase()) ? 'selected' : ''}`}
                 style={{marginRight: 10, fontFamily: 'inherit'}}
                 onClick={this.selectedChip}
             >
@@ -111,21 +183,31 @@ class GigInfo extends Component {
     };
 
     render() {
-        let {searchLanguages} = this.state;
-        console.log(this.props.profile);
+        let {searchLanguages, dataSource} = this.state;
+        console.log(this.props.gig);
         return [
             <Row>
                 <Col xs={12} style={{ marginBottom: 45}}>
                     <h3>Basic info</h3>
                     <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                        <div>
-                            <TextField
-                                floatingLabelText="Gig type"
-                            />
+                        <div style={{marginTop: 16}}>
+                            <DropDownMenu
+                                value={this.props.gig.type || ''}
+                                onChange={this.selectGigType}
+                                style={{width: 280}}
+                                underlineStyle={{ marginLeft: 0}}
+                            >
+                                {list}
+                            </DropDownMenu>
                         </div>
                         <div>
-                            <TextField
-                                floatingLabelText="Gig location"
+                            <AutoComplete
+                                floatingLabelText="Location"
+                                dataSource={dataSource}
+                                onUpdateInput={this.handleUpdateInput}
+                                maxSearchResults={5}
+                                filter={AutoComplete.noFilter}
+                                onNewRequest={this.saveCity}
                             />
                         </div>
                     </div>
@@ -133,6 +215,8 @@ class GigInfo extends Component {
                         <TextField
                             floatingLabelText="Gig address"
                             fullWidth={true}
+                            onChange={this.handleGigAddress}
+                            value={this.props.gig.address || ''}
                         />
                     </div>
                 </Col>
@@ -168,7 +252,10 @@ class GigInfo extends Component {
                                     this.state.duration === 'one' ? (
                                         <div style={{position: 'relative'}}>
                                             <DatePicker
+                                                hintText='Gig Day'
                                                 textFieldStyle={{width: '100%'}}
+                                                value={this.props.gig.day || null}
+                                                onChange={this.selectDay}
                                             />
                                             <img
                                                 src="/static/img/calendar.svg"
@@ -186,7 +273,10 @@ class GigInfo extends Component {
                                         <div style={{display: 'flex'}}>
                                             <div style={{position: 'relative'}}>
                                                 <DatePicker
+                                                    hintText='From'
                                                     textFieldStyle={{width: '100%'}}
+                                                    onChange={this.selectFrom}
+                                                    value={this.props.gig.from || null}
                                                 />
                                                 <img
                                                     src="/static/img/calendar.svg"
@@ -201,7 +291,10 @@ class GigInfo extends Component {
                                             </div>
                                             <div style={{position: 'relative'}}>
                                                 <DatePicker
+                                                    hintText='To'
                                                     textFieldStyle={{width: '100%'}}
+                                                    onChange={this.selectTo}
+                                                    value={this.props.gig.to || null}
                                                     style={{marginLeft: 20}}
                                                 />
                                                 <img
@@ -237,9 +330,9 @@ class GigInfo extends Component {
                         id='language'
                     />
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                        {/*{*/}
-                            {/*this.props.profile.search_language.length > 0 && this.props.profile.search_language.map(this.renderSearchChip, this)*/}
-                        {/*}*/}
+                        {
+                            this.props.gig.search_language.length > 0 && this.props.gig.search_language.map(this.renderSearchChip, this)
+                        }
                     </div>
                     <h4 style={{marginTop: 30}}>TOP MOST POPULAR LANGUAGES</h4>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
@@ -253,4 +346,23 @@ class GigInfo extends Component {
     }
 }
 
-export default connect()(GigInfo);
+function mapStateToProps(state) {
+    return {
+        gig: state.gigCreation
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    {
+        SELECT_TYPE_GIG,
+        SELECT_ADDRESS,
+        SELECT_LANGUAGE,
+        REMOVE_LANGUAGE,
+        SEARCH_LANGUAGE,
+        REMOVE_SEARCH_LANGUAGE,
+        ONE_DAY_DURATION,
+        FROM_DURATION,
+        TO_DURATION
+    }
+)(GigInfo);
