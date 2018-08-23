@@ -13,11 +13,7 @@ const ProfileMenu = props => {
             anchorOrigin={{horizontal: 'right', vertical: 'top'}}
             targetOrigin={{horizontal: 'right', vertical: 'top'}}
         >
-            <MenuItem primaryText="Refresh" />
-            <MenuItem primaryText="Send feedback" />
-            <MenuItem primaryText="Settings" />
-            <MenuItem primaryText="Help" />
-            <MenuItem primaryText="Sign out" />
+            <MenuItem primaryText="Log out" onClick={() => {window.location.href = '/logout' }}/>
         </IconMenu>
     )
 }
