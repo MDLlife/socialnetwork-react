@@ -4,7 +4,12 @@ import {connect} from 'react-redux';
 import {Panel, PanelGroup, Accordion} from 'react-bootstrap';
 import {Row, Col, Grid} from 'react-bootstrap';
 import TextField from "material-ui/TextField";
-import {SET_TYPE, DELETE_TYPE} from "actions/gigCreation";
+import {
+    SET_TYPE,
+    DELETE_TYPE,
+    SET_PERSON_COUNT,
+    SET_ETHNICITY_TYPE
+} from "actions/gigCreation";
 import {DropDownMenu, MenuItem, RadioButton, RadioButtonGroup} from "material-ui";
 
 const list = [];
@@ -22,12 +27,6 @@ class gigBoard extends Component {
         }
     }
 
-    handleChange = event => {
-        this.setState({
-            person: event.target.value
-        })
-    };
-
     handleSelect = (activeKey) => {
         this.setState({ activeKey: +activeKey });
     };
@@ -38,12 +37,16 @@ class gigBoard extends Component {
         })
     };
 
-    addType = (index) => {
-        this.props.SET_TYPE(index, this.props.role, ++this.props.gig[this.props.role].count)
+    selectEthnic = (event, index, value) => {
+        this.props.SET_ETHNICITY_TYPE(value)
+    };
+
+    addType = () => {
+        this.props.SET_TYPE(++Object.keys(this.props.gig[this.props.role].types).length, this.props.role)
     };
 
     deleteType = (index) => {
-        this.props.DELETE_TYPE(index, --this.props.gig[this.props.role].count)
+        this.props.DELETE_TYPE(index, this.props.role)
     };
 
     renderAccordion = (count) => {
@@ -67,7 +70,9 @@ class gigBoard extends Component {
                             <div style={{width: '66%', display: 'flex', alignItems: 'center'}}>
                                 <div style={{width: '50%', position: 'relative'}}>
                                     <TextField
-                                        onChange={this.handleChange}
+                                        onChange={(event) => {
+                                            this.props.SET_PERSON_COUNT(event.target.value, i, this.props.role)
+                                        }}
                                         style={{width: '100%'}}
                                         inputStyle={{paddingRight: 56}}
                                     />
@@ -85,8 +90,8 @@ class gigBoard extends Component {
                                     {
                                         i > 1 && <button onClick={() => this.deleteType(i)}>Delete</button>
                                     }
-                                    <button onClick={this.copyType}>Copy</button>
-                                    <button onClick={() => this.addType(i)}>Add</button>
+                                    {/*<button onClick={this.copyType}>Copy</button>*/}
+                                    <button onClick={this.addType}>Add</button>
                                 </div>
                             </div>
                         </Panel.Heading>
@@ -128,8 +133,8 @@ class gigBoard extends Component {
                                     <Col xs={12}>
                                         <h2>Ethnicity <span style={{color: '#ea2f85'}}>*</span></h2>
                                         <DropDownMenu
-                                            //value={this.props.profile.ethnic || ''}
-                                            //onChange={this.selectEthnic}
+                                            value={this.props.gig[this.props.role].types[i].ethnicity || ''}
+                                            onChange={this.selectEthnic}
                                             style={{width: 280}}
                                             underlineStyle={{ marginLeft: 0}}
                                         >
@@ -198,8 +203,6 @@ class gigBoard extends Component {
     };
 
     render() {
-        console.log(this.props.gig);
-        console.log(this.state)
         return (
             <div>
                 <PanelGroup
@@ -209,7 +212,7 @@ class gigBoard extends Component {
                     id="accordion-controlled-example"
                 >
                 {
-                    this.renderAccordion(this.props.gig[this.props.role].count)
+                    this.renderAccordion(Object.keys(this.props.gig[this.props.role].types).length)
                 }
                 </PanelGroup>
             </div>
@@ -227,6 +230,8 @@ export default connect(
     mapStateToProps,
     {
         SET_TYPE,
-        DELETE_TYPE
+        DELETE_TYPE,
+        SET_PERSON_COUNT,
+        SET_ETHNICITY_TYPE
     }
 )(gigBoard);

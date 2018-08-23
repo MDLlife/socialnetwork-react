@@ -17,7 +17,7 @@ import {
     REMOVE_TATTOO,
     TOGGLE_PIERCING,
     TOGGLE_TATTOO
-} from "../../actions/onboarding";
+} from "actions/onboarding";
 
 const styles = {
     block: {

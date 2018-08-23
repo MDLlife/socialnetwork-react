@@ -1,26 +1,61 @@
 export default function(state = {
-    'Actor': {count: 1, types: []},
-    'Model': {count: 1, types: []},
-    'Dancer': {count: 1, types: []},
-    'Singer': {count: 1, types: []},
-    'Musician': {count: 1, types: []},
-    'Animator & Entertainer': {count: 1, types: []},
-    'DJ': {count: 1, types: []},
-    'Host & MC': {count: 1, types: []},
-    'Other': {count: 1, types: []},
+    'Actor': {types: {
+         1: {}
+    }},
+    'Model': {types: {
+         1: {}
+    }},
+    'Dancer': {types: {
+        1: {}
+    }},
+    'Singer': {types: {
+        1: {}
+    }},
+    'Musician': {types: {
+        1: {}
+    }},
+    'Animator & Entertainer': {types: {
+        1: {}
+    }},
+    'DJ': {types: {
+        1: {}
+    }},
+    'Host & MC': {types: {
+        1: {}
+    }},
+    'Other': {types: {
+        1: {}
+    }},
     'search_language': [],
     'language_spoken': []
 }, action) {
     switch(action.type) {
         case "SET_TYPE":
-            return {...state, [action.role]: {
-                    count: action.count,
-                    types: [...state[action.role].types, action.payload]
-            }};
+            return {...state,
+                [action.role]: {
+                    ...state[action.role],
+                    types: {
+                        ...state[action.role].types,
+                        [action.index]: {}
+                    }
+                }
+            };
         case "DELETE_TYPE":
-            return {...state, [action.role]: {
-                count: action.count
-            }};
+            const removeProperty = (obj, property) => {
+                return  Object.keys(obj).reduce((acc, key) => {
+                    if (key !== property) {
+                        return {...acc, [key]: obj[key]}
+                    }
+                    return acc;
+                }, {})
+            };
+
+            return {...state,
+                [action.role]: {
+                    ...state[action.role],
+                    types: removeProperty(state[action.role].types, action.index)
+                }
+            };
         case "SELECT_TYPE_GIG":
             return {...state, type: action.payload};
         case "SELECT_ADDRESS":
@@ -39,6 +74,22 @@ export default function(state = {
             return {...state, from: action.from};
         case 'TO_DURATION':
             return {...state, to: action.to};
+        case 'SET_PERSON_COUNT':
+            return {...state,
+                [action.role]: {
+                    types: {
+                        ...state[action.role].types,
+                        [action.index]: { ...state[action.role].types[action.index], person: action.person}
+                    }
+                }};
+        case 'SET_ETHNICITY_TYPE':
+            return {...state,
+                [action.role]: {
+                    types: {
+                        ...state[action.role].types,
+                        [action.index]: {...state[action.role].types[action.index], ethnicity: action.ethnicity}
+                    }
+                }};
         default:
             return state
     }

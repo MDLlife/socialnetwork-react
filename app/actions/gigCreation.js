@@ -1,15 +1,12 @@
-export const SET_TYPE = (data, role, count) => ({
+export const SET_TYPE = (data, role) => ({
     type: 'SET_TYPE',
-    payload: {
-        index: data
-    }, // contain index, person, gender, age, ethnicity
+    index: data, // contain index, person, gender, age, ethnicity
     role: role, // talent type
-    count: count // type count
 });
 
 export const DELETE_TYPE = (index, role) => ({
     type: 'DELETE_TYPE',
-    payload: index,
+    index: index.toString(),
     role: role
 });
 
@@ -56,4 +53,18 @@ export const FROM_DURATION = from => ({
 export const TO_DURATION = to => ({
     type: 'TO_DURATION',
     to: to
-})
+});
+
+export const SET_PERSON_COUNT = (person, index, role) => ({
+    type: 'SET_PERSON_COUNT',
+    person: person,
+    index: index,
+    role: role
+});
+
+export const SET_ETHNICITY_TYPE = (ethnic, index, role) => ({
+    type: 'SET_ETHNICITY_TYPE',
+    ethnicity: ethnic,
+    index: index,
+    role: role
+});
