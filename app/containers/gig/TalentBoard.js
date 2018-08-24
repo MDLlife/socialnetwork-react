@@ -8,9 +8,14 @@ import {
     SET_TYPE,
     DELETE_TYPE,
     SET_PERSON_COUNT,
-    SET_ETHNICITY_TYPE
+    SET_ETHNICITY_TYPE,
+    SET_GENDER_TYPE,
+    SET_AGE_TYPE,
+    SET_OVERTIME_TYPE,
+    SET_PAYMENT_TYPE,
+    SET_RATE_TYPE
 } from "actions/gigCreation";
-import {DropDownMenu, MenuItem, RadioButton, RadioButtonGroup} from "material-ui";
+import {Chip, DropDownMenu, MenuItem, RadioButton, RadioButtonGroup} from "material-ui";
 
 const list = [];
 ['Asian', 'Eurasian', 'Caucasian', 'Black', 'Hispanic', 'Middle Eastern', 'Indian'].forEach((el) => {
@@ -23,7 +28,15 @@ class gigBoard extends Component {
 
         this.state = {
             activeKey: 1,
-            payment: 'gig'
+            payment: 'gig',
+            ages: [
+                {key: 0, label: 'Kid', addLabel: '0 - 10'},
+                {key: 1, label: 'Teen', addLabel: '11 - 17'},
+                {key: 2, label: 'Young', addLabel: '18 - 25'},
+                {key: 3, label: 'Mature', addLabel: '26 - 45'},
+                {key: 4, label: 'Senior', addLabel: '45+'},
+                {key: 5, label: 'Custom'},
+            ],
         }
     }
 
@@ -31,32 +44,39 @@ class gigBoard extends Component {
         this.setState({ activeKey: +activeKey });
     };
 
-    selectPayment = (event, value) => {
-        this.setState({
-            payment: value
-        })
-    };
-
-    selectEthnic = (event, index, value) => {
-        this.props.SET_ETHNICITY_TYPE(value)
-    };
-
-    addType = () => {
-        this.props.SET_TYPE(++Object.keys(this.props.gig[this.props.role].types).length, this.props.role)
+    addType = (count) => {
+        this.props.SET_TYPE(++count, this.props.role)
     };
 
     deleteType = (index) => {
         this.props.DELETE_TYPE(index, this.props.role)
     };
+    //
+    // renderChip = data => {
+    //     return (
+    //         <Chip
+    //             key={data.key}
+    //             className={`chip ${this.props.gig[this.props.role].types.age === data.label ? 'selected' : ''}`}
+    //             style={{marginRight: 10, fontFamily: 'inherit'}}
+    //             onClick={this.selectedChip}
+    //         >
+    //             {data.label}
+    //             {/*<Plus style={{verticalAlign: 'middle', marginLeft: 5, paddingBottom: 4}} />*/}
+    //         </Chip>
+    //     )
+    // };
 
-    renderAccordion = (count) => {
+    renderAccordion = () => {
         let arrayAccordion = [];
-        for (let i = 1; i <= count; i++) {
+        let count = 0;
+        let types = this.props.gig[this.props.role].types;
+        for (let x in types) {
+            ++count;
             arrayAccordion.push(
                     <Panel
-                        key={i}
-                        eventKey={`${i}`}
-                        expanded={this.state.activeKey === i}
+                        key={count}
+                        eventKey={`${count}`}
+                        expanded={this.state.activeKey === count}
                     >
                         <Panel.Heading
                             style={{
@@ -65,14 +85,15 @@ class gigBoard extends Component {
                             }}
                         >
                             <Panel.Title toggle style={{width: '33%'}}>
-                                {this.props.role} Type №{i}
+                                {this.props.role} Type №{count}
                             </Panel.Title>
                             <div style={{width: '66%', display: 'flex', alignItems: 'center'}}>
                                 <div style={{width: '50%', position: 'relative'}}>
                                     <TextField
                                         onChange={(event) => {
-                                            this.props.SET_PERSON_COUNT(event.target.value, i, this.props.role)
+                                            this.props.SET_PERSON_COUNT(event.target.value, x, this.props.role)
                                         }}
+                                        value={types[x].person || ''}
                                         style={{width: '100%'}}
                                         inputStyle={{paddingRight: 56}}
                                     />
@@ -88,10 +109,16 @@ class gigBoard extends Component {
                                 </div>
                                 <div style={{width: '50%', textAlign: 'center'}}>
                                     {
-                                        i > 1 && <button onClick={() => this.deleteType(i)}>Delete</button>
+                                        count > 1 && <button onClick={() => {
+                                            --count;
+                                            console.log('-', count)
+                                            this.deleteType(x);
+                                        }}>Delete</button>
                                     }
                                     {/*<button onClick={this.copyType}>Copy</button>*/}
-                                    <button onClick={this.addType}>Add</button>
+                                    {
+                                        count == Object.keys(this.props.gig[this.props.role].types).length && <button onClick={() => this.addType(x)}>Add</button>
+                                    }
                                 </div>
                             </div>
                         </Panel.Heading>
@@ -102,8 +129,10 @@ class gigBoard extends Component {
                                         <p>If you don't indentify yourself as female or male then please select 'Other'</p>
                                         <RadioButtonGroup
                                             name="gender"
-                                            //onChange={this.selectGender}
-                                            //valueSelected={this.props.profile.gender || null}
+                                            onChange={(event, value) => {
+                                                this.props.SET_GENDER_TYPE(value, x, this.props.role)
+                                            }}
+                                            valueSelected={types[x].gender || null}
                                         >
                                             <RadioButton
                                                 value="female"
@@ -125,16 +154,35 @@ class gigBoard extends Component {
                                     <Col xs={12}>
                                         <h2>Age <span style={{color: '#ea2f85'}}>*</span></h2>
                                         <div style={{position: 'relative', display: 'flex'}}>
-
+                                            {
+                                                this.state.ages.map((data) => {
+                                                    return (
+                                                            <Chip
+                                                                key={data.key}
+                                                                className={`chip ${types[x].age === data.label ? 'selected' : ''}`}
+                                                                style={{marginRight: 10, fontFamily: 'inherit', width: '100%'}}
+                                                                labelStyle={{width: '100%', textAlign: 'center'}}
+                                                                onClick={(event) => {
+                                                                    this.props.SET_AGE_TYPE(event.target.innerHTML, x, this.props.role)
+                                                                }}
+                                                            >
+                                                                {data.label}
+                                                                {/*<Plus style={{verticalAlign: 'middle', marginLeft: 5, paddingBottom: 4}} />*/}
+                                                            </Chip>
+                                                    )
+                                                }, this)
+                                            }
                                         </div>
                                     </Col>
                                 </Row>
-                                <Row style={{paddingBottom: 35}}>
+                                <Row>
                                     <Col xs={12}>
                                         <h2>Ethnicity <span style={{color: '#ea2f85'}}>*</span></h2>
                                         <DropDownMenu
-                                            value={this.props.gig[this.props.role].types[i].ethnicity || ''}
-                                            onChange={this.selectEthnic}
+                                            value={types[x].ethnicity || ''}
+                                            onChange={(event, index, value) => {
+                                                this.props.SET_ETHNICITY_TYPE(value, x, this.props.role)
+                                            }}
                                             style={{width: 280}}
                                             underlineStyle={{ marginLeft: 0}}
                                         >
@@ -151,8 +199,10 @@ class gigBoard extends Component {
                                             <RadioButtonGroup
                                                 name="payment"
                                                 defaultSelected='gig'
-                                                onChange={this.selectPayment}
-                                                //valueSelected={this.props.profile.gender || null}
+                                                onChange={(event, value) => {
+                                                    this.props.SET_PAYMENT_TYPE(value, x, this.props.role)
+                                                }}
+                                                valueSelected={types[x].payment || null}
                                             >
                                                 <RadioButton
                                                     value="gig"
@@ -172,12 +222,20 @@ class gigBoard extends Component {
                                                 this.state.payment === 'gig' &&
                                                 <TextField
                                                     hintText='Gig rate'
+                                                    onChange={(event) => {
+                                                        this.props.SET_RATE_TYPE(event.target.value, x, this.props.role)
+                                                    }}
+                                                    value={types[x].rate || ''}
                                                 />
                                             }
                                             {
                                                 this.state.payment === 'hour' &&
                                                 <TextField
                                                     hintText='Hour rate'
+                                                    onChange={(event) => {
+                                                        this.props.SET_RATE_TYPE(event.target.value, x, this.props.role)
+                                                    }}
+                                                    value={types[x].rate || ''}
                                                 />
                                             }
                                         </div>
@@ -186,11 +244,20 @@ class gigBoard extends Component {
                                 <Row>
                                     <Col xs={12}>
                                         <h2>Overtime payment</h2>
-                                        <div>
+                                        <div style={{position: 'relative'}}>
                                             <TextField
                                                 hintText='Rate'
+                                                onChange={(event) => {
+                                                    this.props.SET_OVERTIME_TYPE(event.target.value, x, this.props.role)
+                                                }}
                                             />
-                                            <label>$/hour</label>
+                                            <label
+                                                style={{
+                                                    position: 'absolute',
+                                                    top: 14,
+                                                    left: 213,
+                                                }}
+                                            >$/hour</label>
                                         </div>
                                     </Col>
                                 </Row>
@@ -203,6 +270,7 @@ class gigBoard extends Component {
     };
 
     render() {
+        console.log(this.props.gig[this.props.role])
         return (
             <div>
                 <PanelGroup
@@ -212,7 +280,7 @@ class gigBoard extends Component {
                     id="accordion-controlled-example"
                 >
                 {
-                    this.renderAccordion(Object.keys(this.props.gig[this.props.role].types).length)
+                    this.renderAccordion()
                 }
                 </PanelGroup>
             </div>
@@ -232,6 +300,11 @@ export default connect(
         SET_TYPE,
         DELETE_TYPE,
         SET_PERSON_COUNT,
-        SET_ETHNICITY_TYPE
+        SET_ETHNICITY_TYPE,
+        SET_GENDER_TYPE,
+        SET_AGE_TYPE,
+        SET_OVERTIME_TYPE,
+        SET_PAYMENT_TYPE,
+        SET_RATE_TYPE
     }
 )(gigBoard);

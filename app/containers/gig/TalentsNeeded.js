@@ -53,17 +53,17 @@ class TalentsNeeded extends Component {
         })
     };
 
-    selectingMenu = (event) => {
-        if (+event.target.value === 2) {
-            this.setState({
-                menuItem: 2
-            })
-        } else {
-            this.setState({
-                menuItem: 1
-            })
-        }
-    };
+    // selectingMenu = (event) => {
+    //     if (+event.target.value === 2) {
+    //         this.setState({
+    //             menuItem: 2
+    //         })
+    //     } else {
+    //         this.setState({
+    //             menuItem: 1
+    //         })
+    //     }
+    // };
 
     switchBoard = (role) => {
         switch(role) {

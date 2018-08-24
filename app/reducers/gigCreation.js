@@ -90,6 +90,46 @@ export default function(state = {
                         [action.index]: {...state[action.role].types[action.index], ethnicity: action.ethnicity}
                     }
                 }};
+        case 'SET_GENDER_TYPE':
+            return {...state,
+                [action.role]: {
+                    types: {
+                        ...state[action.role].types,
+                        [action.index]: {...state[action.role].types[action.index], gender: action.gender}
+                    }
+                }};
+        case 'SET_AGE_TYPE':
+            return {...state,
+                [action.role]: {
+                    types: {
+                        ...state[action.role].types,
+                        [action.index]: {...state[action.role].types[action.index], age: action.age}
+                    }
+                }};
+        case 'SET_OVERTIME_TYPE':
+            return {...state,
+                [action.role]: {
+                    types: {
+                        ...state[action.role].types,
+                        [action.index]: {...state[action.role].types[action.index], overtime: action.overtime}
+                    }
+                }};
+        case 'SET_PAYMENT_TYPE':
+            return {...state,
+                [action.role]: {
+                    types: {
+                        ...state[action.role].types,
+                        [action.index]: {...state[action.role].types[action.index], payment: action.payment}
+                    }
+                }};
+        case 'SET_RATE_TYPE':
+            return {...state,
+                [action.role]: {
+                    types: {
+                        ...state[action.role].types,
+                        [action.index]: {...state[action.role].types[action.index], rate: action.rate}
+                    }
+                }};
         default:
             return state
     }

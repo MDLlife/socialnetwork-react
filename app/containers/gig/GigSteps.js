@@ -107,9 +107,9 @@ class GigSteps extends Component {
                     }}>
                         <button
                             className='next-btn tooltip-main'
-                            onClick={step === 3 ? this.previewProfile : this.handleNext}
+                            onClick={step === 1 ? this.handlePrev : this.handleNext}
                         >
-                            {step === 3 ? 'Preview profile' : 'Next'}
+                            {step === 1 ? 'Back' : 'Next'}
                             {/*{step === 2 ? <span className='tooltip-text'>ToolTip</span> : null}*/}
                         </button>
                         <SnackBar
