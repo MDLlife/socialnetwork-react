@@ -58,6 +58,11 @@ module.exports = function (app, REDIS_CONNECTION, limiter) {
                     var q = req.query.q
                     // console.log("SERVER QUERY -> ", q)
                     renderProps.query = q
+                    searchCss = [
+                        '/static/searchkit/dist/theming/components.css',
+                        '/static/searchkit/dist/theming/theme.css',
+                        '/static/searchkit/dist/theming/vars.css'
+                    ];
                 }
 
                 getReduxPromise().then(() => {

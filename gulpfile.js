@@ -29,8 +29,6 @@ var buildProperties = {
         './vendor/comentarismo-client-min.map.json',
         './vendor/comentarismo-client-min.js',
         './vendor/comentarismo-client.css',
-
-
     ],
     assetFilesImages:['./vendor/images/*'],
 
@@ -76,7 +74,7 @@ gulp.task('searchkit', function () {
   .pipe(sourcemaps.init())
   .pipe(sass().on('error', sass.logError))
   .pipe(sourcemaps.write('./maps'))
-  .pipe(gulp.dest('./vendor/searchkit/dist'));
+  .pipe(gulp.dest('./dist/static/searchkit/dist'));
 });
 
 gulp.task('sass', function () {
@@ -162,6 +160,6 @@ gulp.task('fonts', function () {
         });
 });
 
-gulp.task('default', ['css','fonts', 'images', 'minify-js', 'vendor', 'css:watch']);
+gulp.task('default', ['css','fonts', 'images', 'minify-js', 'vendor', 'css:watch', 'searchkit']);
 
-gulp.task('prod', ['css', 'fonts', 'images', 'minify-js', 'vendor', 'vendor-images']);
+gulp.task('prod', ['css', 'fonts', 'images', 'minify-js', 'vendor', 'vendor-images', 'searchkit']);
