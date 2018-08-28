@@ -94,6 +94,7 @@ class TalentsNeeded extends Component {
         return [
                 <Row style={{marginBottom: 40}}>
                     <Col xs={12}>
+                        <h2>Select talents for gig</h2>
                         <div
                             style={{
                                 display: 'flex',
@@ -195,6 +196,17 @@ class TalentsNeeded extends Component {
                     `}
                 >
                     <Col xs={12}>
+                        {
+                            this.state['Actor'] ||
+                            this.state['Model'] ||
+                            this.state['Dancer'] ||
+                            this.state['Singer'] ||
+                            this.state['Musician'] ||
+                            this.state['Animator & Entertainer'] ||
+                            this.state['DJ'] ||
+                            this.state['Host & MC'] ||
+                            this.state['Other'] ? <h2>Talents selected</h2> : null
+                        }
                         <div
                             style={{
                                 display: 'flex',
