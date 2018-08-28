@@ -64,6 +64,10 @@ class GigSteps extends Component {
         }
     };
 
+    saveGig = () => {
+        console.log(this.props.gig)
+    };
+
     render() {
         let {step} = this.state;
 
@@ -83,7 +87,7 @@ class GigSteps extends Component {
                         </div>
                         <div className='gig-btn-group'>
                             <button className='publish-btn'>Publish gig</button>
-                            <button>Save</button>
+                            <button onClick={this.saveGig}>Save</button>
                             <button>Delete</button>
                             <button>Close</button>
                         </div>
@@ -133,4 +137,10 @@ class GigSteps extends Component {
     }
 }
 
-export default connect()(GigSteps);
+function mapStateToProps(state) {
+    return {
+        gig: state.gigCreation
+    }
+}
+
+export default connect(mapStateToProps, {})(GigSteps);

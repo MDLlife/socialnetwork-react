@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Panel, PanelGroup, Accordion} from 'react-bootstrap';
-import {Row, Col, Grid} from 'react-bootstrap';
+import {Panel, PanelGroup} from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
 import TextField from "material-ui/TextField";
 import {
     SET_TYPE,
@@ -51,20 +50,6 @@ class gigBoard extends Component {
     deleteType = (index) => {
         this.props.DELETE_TYPE(index, this.props.role)
     };
-    //
-    // renderChip = data => {
-    //     return (
-    //         <Chip
-    //             key={data.key}
-    //             className={`chip ${this.props.gig[this.props.role].types.age === data.label ? 'selected' : ''}`}
-    //             style={{marginRight: 10, fontFamily: 'inherit'}}
-    //             onClick={this.selectedChip}
-    //         >
-    //             {data.label}
-    //             {/*<Plus style={{verticalAlign: 'middle', marginLeft: 5, paddingBottom: 4}} />*/}
-    //         </Chip>
-    //     )
-    // };
 
     renderAccordion = () => {
         let arrayAccordion = [];
@@ -250,6 +235,7 @@ class gigBoard extends Component {
                                                 onChange={(event) => {
                                                     this.props.SET_OVERTIME_TYPE(event.target.value, x, this.props.role)
                                                 }}
+                                                value={types[x].overtime || ''}
                                             />
                                             <label
                                                 style={{
@@ -270,7 +256,6 @@ class gigBoard extends Component {
     };
 
     render() {
-        console.log(this.props.gig[this.props.role])
         return (
             <div>
                 <PanelGroup

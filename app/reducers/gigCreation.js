@@ -69,11 +69,13 @@ export default function(state = {
         case 'REMOVE_SEARCH_LANGUAGE':
             return {...state, search_language: state.search_language.filter(elem => elem.label !== action.payload)};
         case 'ONE_DAY_DURATION':
-            return {...state, day: action.payload};
+            return {...state, from: action.payload, to: action.payload};
         case 'FROM_DURATION':
             return {...state, from: action.from};
         case 'TO_DURATION':
             return {...state, to: action.to};
+        case 'SET_LOCATION_GIG':
+            return {...state, city: action.city};
         case 'SET_PERSON_COUNT':
             return {...state,
                 [action.role]: {

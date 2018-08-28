@@ -103,3 +103,8 @@ export const SET_RATE_TYPE = (rate, index, role) => ({
     index: index,
     role: role
 });
+
+export const SET_LOCATION_GIG = city => ({
+    type: 'SET_LOCATION_GIG',
+    city: city
+});

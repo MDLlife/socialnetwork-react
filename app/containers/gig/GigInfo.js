@@ -20,7 +20,8 @@ import {
     REMOVE_SEARCH_LANGUAGE,
     ONE_DAY_DURATION,
     FROM_DURATION,
-    TO_DURATION
+    TO_DURATION,
+    SET_LOCATION_GIG
 } from "actions/gigCreation";
 
 import config from "config";
@@ -28,7 +29,7 @@ import superagent from "superagent";
 
 const list = [];
 ['TV Commercial', 'Movie', 'Promo video', 'TV show', 'Editorail', 'Catalog', 'Underwear catalog', 'Fashion show',
-    'Showroom', 'Makeup show', 'Hairdress show', 'Bodyart', 'Hostess', 'Fitting', 'Promo event'].forEach((el) => {
+    'Showroom', 'Makeup show', 'Hairdress show', 'Body art', 'Hostess', 'Fitting', 'Promo event'].forEach((el) => {
     list.push(<MenuItem value={el} key={el} primaryText={el} />)
 });
 
@@ -59,8 +60,8 @@ class GigInfo extends Component {
     saveCity = value => {
         superagent.get(`${config.APIS_URL}/_cts_/1.0/cities?q=${value}`).withCredentials().then(res => {
             this.setState({
-                city: JSON.parse(res.text).data[0]
-            });
+                city: Object.assign({}, JSON.parse(res.text).data[0].attributes, {id: JSON.parse(res.text).data[0].id})
+            }, () => this.props.SET_LOCATION_GIG(this.state.city));
         })
     };
 
@@ -184,7 +185,8 @@ class GigInfo extends Component {
 
     render() {
         let {searchLanguages, dataSource} = this.state;
-        console.log(this.props.gig);
+        console.log('state', this.state);
+        console.log('props', this.props.gig);
         return [
             <Row>
                 <Col xs={12} style={{ marginBottom: 45}}>
@@ -254,7 +256,7 @@ class GigInfo extends Component {
                                             <DatePicker
                                                 hintText='Gig Day'
                                                 textFieldStyle={{width: '100%'}}
-                                                value={this.props.gig.day || null}
+                                                value={this.props.gig.from || null}
                                                 onChange={this.selectDay}
                                             />
                                             <img
@@ -363,6 +365,7 @@ export default connect(
         REMOVE_SEARCH_LANGUAGE,
         ONE_DAY_DURATION,
         FROM_DURATION,
-        TO_DURATION
+        TO_DURATION,
+        SET_LOCATION_GIG
     }
 )(GigInfo);
