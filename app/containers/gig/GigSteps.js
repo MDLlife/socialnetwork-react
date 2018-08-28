@@ -72,13 +72,21 @@ class GigSteps extends Component {
                 <Row>
                     <Col
                         xs={12}
-                        className='onboarding-header'
+                        className='gig-header'
                         style={{
                             background: `url('/static/img/IntroLoginBG.jpg') center center no-repeat`,
-                            backgroundSize: 'cover'
+                            backgroundSize: 'cover',
                         }}
                     >
-                        <h1>Gig Creation</h1>
+                        <div>
+                            <h1>Gig Creation</h1>
+                        </div>
+                        <div className='gig-btn-group'>
+                            <button className='publish-btn'>Publish gig</button>
+                            <button>Save</button>
+                            <button>Delete</button>
+                            <button>Close</button>
+                        </div>
                     </Col>
                 </Row>
                 <Row className='stepper-main'>

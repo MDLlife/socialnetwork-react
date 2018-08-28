@@ -541,4 +541,30 @@ label {
   top: 30px;
   transform: rotate(-45deg); }
 
+.gig-header {
+  background-size: cover !important;
+  background: url(/static/img/Onboarding.png);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-family: Gilroy Medium;
+  padding: 0px 20px; }
+
+.gig-btn-group > button {
+  margin-right: 10px;
+  color: black; }
+
+.gig-btn-group > button:last-child {
+  margin: 0; }
+
+.publish-btn {
+  border-radius: 15px;
+  border: 2px solid white;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 10px 30px;
+  color: white !important; }
+
 /*# sourceMappingURL=../maps/styles/main.css.map */
