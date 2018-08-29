@@ -65,7 +65,19 @@ class GigSteps extends Component {
     };
 
     saveGig = () => {
-        console.log(this.props.gig)
+        let arr = [];
+        for (var x in this.props.gig.talents) {
+            for (var y in this.props.gig.talents[x]) {
+                for (var z in this.props.gig.talents[x][y]) {
+                    if(Object.keys(this.props.gig.talents[x][y][z]).length === 0) {
+                        continue;
+                    }
+                    arr.push(Object.assign({role: x}, this.props.gig.talents[x][y][z]));
+                }
+            }
+        }
+        //console.log(this.props.gig.talents)
+        console.log(arr)
     };
 
     render() {

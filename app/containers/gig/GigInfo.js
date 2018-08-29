@@ -40,6 +40,7 @@ class GigInfo extends Component {
         this.state = {
             duration: 'one',
             search: '',
+            searchLocation: '',
             selectedLangs: [],
             dataSource: [],
             language: [
@@ -60,6 +61,7 @@ class GigInfo extends Component {
     saveCity = value => {
         superagent.get(`${config.APIS_URL}/_cts_/1.0/cities?q=${value}`).withCredentials().then(res => {
             this.setState({
+                searchLocation: JSON.parse(res.text).data[0].attributes.name,
                 city: Object.assign({}, JSON.parse(res.text).data[0].attributes, {id: JSON.parse(res.text).data[0].id})
             }, () => this.props.SET_LOCATION_GIG(this.state.city));
         })
@@ -91,14 +93,21 @@ class GigInfo extends Component {
             return false
         }
 
-        superagent.get(`${config.APIS_URL}/_cts_/1.0/cities?q=${value}`).withCredentials().then(res => {
-            JSON.parse(res.text).data.map(elem => {
-                newArr.push(elem.attributes.name)
-            });
-            this.setState({
-                dataSource: newArr
-            });
+        this.setState({
+            searchLocation: value,
+
+        }, () => {
+            superagent.get(`${config.APIS_URL}/_cts_/1.0/cities?q=${value}`).withCredentials().then(res => {
+                JSON.parse(res.text).data.map(elem => {
+                    newArr.push(elem.attributes.name)
+                });
+                this.setState({
+                    dataSource: newArr
+                });
+            })
         })
+
+
     };
 
     selectedChip = e => {
@@ -210,6 +219,7 @@ class GigInfo extends Component {
                                 maxSearchResults={5}
                                 filter={AutoComplete.noFilter}
                                 onNewRequest={this.saveCity}
+                                searchText={this.props.gig.city ? this.props.gig.city.name : this.state.searchLocation}
                             />
                         </div>
                     </div>

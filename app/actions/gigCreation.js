@@ -85,21 +85,28 @@ export const SET_AGE_TYPE = (age, index, role) => ({
 
 export const SET_OVERTIME_TYPE = (overtime, index, role) => ({
     type: 'SET_OVERTIME_TYPE',
-    overtime: overtime,
+    overtime: +overtime,
     index: index,
     role: role
 });
 
-export const SET_PAYMENT_TYPE = (payment, index, role) => ({
-    type: 'SET_PAYMENT_TYPE',
-    payment: payment,
+// export const SET_PAYMENT_TYPE = (payment, index, role) => ({
+//     type: 'SET_PAYMENT_TYPE',
+//     payment: payment,
+//     index: index,
+//     role: role
+// });
+
+export const SET_GIG_RATE_TYPE = (gigRate, index, role) => ({
+    type: 'SET_GIG_RATE_TYPE',
+    gigRate: +gigRate,
     index: index,
     role: role
 });
 
-export const SET_RATE_TYPE = (rate, index, role) => ({
-    type: 'SET_RATE_TYPE',
-    rate: rate,
+export const SET_HOUR_RATE_TYPE = (hourRate, index, role) => ({
+    type: 'SET_HOUR_RATE_TYPE',
+    hourRate: +hourRate,
     index: index,
     role: role
 });
@@ -108,3 +115,19 @@ export const SET_LOCATION_GIG = city => ({
     type: 'SET_LOCATION_GIG',
     city: city
 });
+
+export const SET_PAYMENT_VISIBLE = (paymentVisible, index, role) => ({
+    type: 'SET_PAYMENT_VISIBLE',
+    paymentVisible: !paymentVisible,
+    index: index,
+    role: role
+});
+
+
+export const SET_OVERTIME_VISIBLE = (overtimeVisible, index, role) => ({
+    type: 'SET_OVERTIME_VISIBLE',
+    overtimeVisible: !overtimeVisible,
+    index: index,
+    role: role
+});
+

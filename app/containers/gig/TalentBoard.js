@@ -12,7 +12,10 @@ import {
     SET_AGE_TYPE,
     SET_OVERTIME_TYPE,
     SET_PAYMENT_TYPE,
-    SET_RATE_TYPE
+    SET_GIG_RATE_TYPE,
+    SET_HOUR_RATE_TYPE,
+    SET_PAYMENT_VISIBLE,
+    SET_OVERTIME_VISIBLE
 } from "actions/gigCreation";
 import {Chip, DropDownMenu, MenuItem, RadioButton, RadioButtonGroup} from "material-ui";
 
@@ -27,7 +30,6 @@ class gigBoard extends Component {
 
         this.state = {
             activeKey: 1,
-            payment: 'gig',
             ages: [
                 {key: 0, label: 'Kid', addLabel: '0 - 10'},
                 {key: 1, label: 'Teen', addLabel: '11 - 17'},
@@ -54,7 +56,7 @@ class gigBoard extends Component {
     renderAccordion = () => {
         let arrayAccordion = [];
         let count = 0;
-        let types = this.props.gig[this.props.role].types;
+        let types = this.props.gig.talents[this.props.role].types;
         for (let x in types) {
             ++count;
             arrayAccordion.push(
@@ -78,7 +80,7 @@ class gigBoard extends Component {
                                         onChange={(event) => {
                                             this.props.SET_PERSON_COUNT(event.target.value, x, this.props.role)
                                         }}
-                                        value={types[x].person || ''}
+                                        value={types[x].quantity || ''}
                                         style={{width: '100%'}}
                                         inputStyle={{paddingRight: 56}}
                                     />
@@ -102,7 +104,7 @@ class gigBoard extends Component {
                                     }
                                     {/*<button onClick={this.copyType}>Copy</button>*/}
                                     {
-                                        count == Object.keys(this.props.gig[this.props.role].types).length && <button onClick={() => this.addType(x)}>Add</button>
+                                        count == Object.keys(this.props.gig.talents[this.props.role].types).length && <button onClick={() => this.addType(x)}>Add</button>
                                     }
                                 </div>
                             </div>
@@ -183,11 +185,14 @@ class gigBoard extends Component {
                                         <div>
                                             <RadioButtonGroup
                                                 name="payment"
-                                                defaultSelected='gig'
                                                 onChange={(event, value) => {
-                                                    this.props.SET_PAYMENT_TYPE(value, x, this.props.role)
+                                                    this.props.SET_GIG_RATE_TYPE(0, x, this.props.role);
+                                                    this.props.SET_HOUR_RATE_TYPE(0, x, this.props.role)
+                                                    this.setState({
+                                                        payment: value
+                                                    })
                                                 }}
-                                                valueSelected={types[x].payment || null}
+                                                valueSelected={this.state.payment}
                                             >
                                                 <RadioButton
                                                     value="gig"
@@ -205,23 +210,37 @@ class gigBoard extends Component {
                                         <div>
                                             {
                                                 this.state.payment === 'gig' &&
-                                                <TextField
+                                                [<TextField
                                                     hintText='Gig rate'
                                                     onChange={(event) => {
-                                                        this.props.SET_RATE_TYPE(event.target.value, x, this.props.role)
+                                                        this.props.SET_GIG_RATE_TYPE(event.target.value, x, this.props.role)
                                                     }}
-                                                    value={types[x].rate || ''}
-                                                />
+                                                    value={types[x].payment_gig || ''}
+                                                />,
+                                                <button
+                                                    onClick={(event) =>
+                                                        this.props.SET_PAYMENT_VISIBLE(types[x].payment_visible, x, this.props.role)
+                                                    }
+                                                >
+                                                    {types[x].payment_visible ? 'Off' : 'On'}
+                                                </button>]
                                             }
                                             {
                                                 this.state.payment === 'hour' &&
-                                                <TextField
+                                                [<TextField
                                                     hintText='Hour rate'
                                                     onChange={(event) => {
-                                                        this.props.SET_RATE_TYPE(event.target.value, x, this.props.role)
+                                                        this.props.SET_HOUR_RATE_TYPE(event.target.value, x, this.props.role)
                                                     }}
-                                                    value={types[x].rate || ''}
-                                                />
+                                                    value={types[x].payment_hour || ''}
+                                                />,
+                                                <button
+                                                    onClick={(event) =>
+                                                        this.props.SET_PAYMENT_VISIBLE(types[x].payment_visible, x, this.props.role)
+                                                    }
+                                                >
+                                                    {types[x].payment_visible ? 'Off' : 'On'}
+                                                </button>]
                                             }
                                         </div>
                                     </Col>
@@ -235,7 +254,7 @@ class gigBoard extends Component {
                                                 onChange={(event) => {
                                                     this.props.SET_OVERTIME_TYPE(event.target.value, x, this.props.role)
                                                 }}
-                                                value={types[x].overtime || ''}
+                                                value={types[x].overtime_payment || ''}
                                             />
                                             <label
                                                 style={{
@@ -244,6 +263,13 @@ class gigBoard extends Component {
                                                     left: 213,
                                                 }}
                                             >$/hour</label>
+                                            <button
+                                                onClick={(event) =>
+                                                    this.props.SET_OVERTIME_VISIBLE(!!types[x].overtime_payment_visible, x, this.props.role)
+                                                }
+                                            >
+                                                {types[x].overtime_payment_visible ? 'Off' : 'On'}
+                                            </button>
                                         </div>
                                     </Col>
                                 </Row>
@@ -290,6 +316,9 @@ export default connect(
         SET_AGE_TYPE,
         SET_OVERTIME_TYPE,
         SET_PAYMENT_TYPE,
-        SET_RATE_TYPE
+        SET_GIG_RATE_TYPE,
+        SET_HOUR_RATE_TYPE,
+        SET_PAYMENT_VISIBLE,
+        SET_OVERTIME_VISIBLE
     }
 )(gigBoard);
