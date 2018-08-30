@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Row, Col} from 'react-bootstrap';
+import {Col, Row} from 'react-bootstrap';
 import AutoComplete from 'material-ui/AutoComplete';
 import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
 import LoginStore from 'store/LoginStore';
 import Avatar from 'material-ui/Avatar';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import SnackBar from 'material-ui/Snackbar'
 
 import superagent from 'superagent';
 import config from 'config';
@@ -29,7 +30,8 @@ class GeneralInformation extends Component {
     constructor(props) {
         super(props);
 
-        this.state ={
+        this.state = {
+            check: false,
             image: null,
             dataSource: [],
             name: '',
@@ -40,6 +42,7 @@ class GeneralInformation extends Component {
     }
 
     handleChange = event => {
+        // console.log("handleChange, ", event.target.name, event.target.value)
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -57,7 +60,7 @@ class GeneralInformation extends Component {
 
     handleUpdateInput = value => {
         let newArr = [];
-        if(!value) {
+        if (!value) {
             this.setState({
                 dataSource: []
             });
@@ -88,9 +91,15 @@ class GeneralInformation extends Component {
     };
 
     toOnboarding = () => {
+        if (!this.state.city || !this.state.city.id) {
+            this.setState({check: true});
+            return;
+        }
+
         let location = Object.assign({id: this.state.city.id}, this.state.city.attributes);
         console.log(location)
-        //TODO: SAVE
+
+        //TODO: SAVE with action
         superagent
             .post(`${config.API_URL}/v1/update/users`)
             .send({
@@ -101,8 +110,17 @@ class GeneralInformation extends Component {
             .then(res => {
                 if (res.error === false) {
                     window.location.href = "/login/select-role";
+                } else {
+                    console.log("Could not save the user !!!!!!!! ", res.error)
+                    this.setState({check: true});
                 }
             });
+    };
+
+    handleRequestClose = () => {
+        this.setState({
+            check: false,
+        });
     };
 
     render() {
@@ -116,12 +134,14 @@ class GeneralInformation extends Component {
             </Row>,
             <Row>
                 <Col xs={12} className='center avatar-container'>
-                    <Avatar src={this.state.avatarurl} size={145} style={{float: 'right'}} />
+                    <Avatar src={this.state.avatarurl} size={145} style={{float: 'right'}}/>
                 </Col>
             </Row>,
             <Row>
                 <Col xs={12} className='center'>
-                    <button className='email-confirmation-actions-buttons clear-button' style={{ marginTop: 30, backgroundColor: 'transparent' }}>Change photo</button>
+                    <button className='email-confirmation-actions-buttons clear-button'
+                            style={{marginTop: 30, backgroundColor: 'transparent'}}>Change photo
+                    </button>
                 </Col>
             </Row>,
             <Row>
@@ -129,7 +149,7 @@ class GeneralInformation extends Component {
                     <TextField
                         value={this.state.username}
                         floatingLabelText='Name'
-                        name='name'
+                        name='username'
                         onChange={this.handleChange}
                     />
                 </Col>
@@ -205,6 +225,12 @@ class GeneralInformation extends Component {
                         Save
                     </button>
                 </Col>
+                <SnackBar
+                    open={this.state.check}
+                    message="Please fill in all fields"
+                    autoHideDuration={10000}
+                    onRequestClose={this.handleRequestClose}
+                />
             </Row>
         ]
     }

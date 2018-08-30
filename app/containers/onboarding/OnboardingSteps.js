@@ -268,8 +268,8 @@ class OnboardingSteps extends Component {
                         </button>
                         <SnackBar
                             open={this.state.check}
-                            message="Please fill all fields"
-                            autoHideDuration={1500}
+                            message="Please fill in all fields"
+                            autoHideDuration={10000}
                             onRequestClose={this.handleRequestClose}
                         />
                     </Col>
