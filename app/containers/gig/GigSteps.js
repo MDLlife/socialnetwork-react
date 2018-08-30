@@ -4,9 +4,12 @@ import {Step, StepLabel, Stepper} from 'material-ui/Stepper';
 import {Col, Grid, Row} from 'react-bootstrap';
 import LoginStore from 'store/LoginStore';
 import SnackBar from 'material-ui/Snackbar';
+import superagent from 'superagent';
+import config from 'config';
 
 import GigInfo from './GigInfo';
 import TalentsNeeded from './TalentsNeeded';
+import {SUCCESS_UPDATE_USER_DATA} from "../../actions/onboarding";
 
 const styles = {
     stepBorder: {
@@ -72,12 +75,27 @@ class GigSteps extends Component {
                     if(Object.keys(this.props.gig.talents[x][y][z]).length === 0) {
                         continue;
                     }
-                    arr.push(Object.assign({role: x}, this.props.gig.talents[x][y][z]));
+                    arr.push(Object.assign({role: x.toLowerCase()}, this.props.gig.talents[x][y][z]));
                 }
             }
         }
-        //console.log(this.props.gig.talents)
-        console.log(arr)
+
+        superagent
+            .post(config.API_URL + '/v1/create/gigs')
+            .send({
+                'type': this.props.gig.type,
+                'location': this.props.gig.city,
+                'address': this.props.gig.address,
+                'duration': 1,
+                'start_date': this.props.gig.from,
+                'end_date': this.props.gig.to,
+                'contact_language': 'english',
+                'talents': arr
+            })
+            .withCredentials()
+            .then(res => {
+                console.log('Success', res);
+            })
     };
 
     render() {

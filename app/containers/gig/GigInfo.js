@@ -87,6 +87,7 @@ class GigInfo extends Component {
         let newArr = [];
         if(!value) {
             this.setState({
+                searchLocation: '',
                 dataSource: []
             });
 
@@ -95,7 +96,6 @@ class GigInfo extends Component {
 
         this.setState({
             searchLocation: value,
-
         }, () => {
             superagent.get(`${config.APIS_URL}/_cts_/1.0/cities?q=${value}`).withCredentials().then(res => {
                 JSON.parse(res.text).data.map(elem => {

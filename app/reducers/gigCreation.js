@@ -159,6 +159,7 @@ export default function(state = {
                             [action.index]: {
                                 ...state.talents[action.role].types[action.index],
                                 overtime_payment: action.overtime,
+                                overtime_payment_visible: false,
                             }
                         }
                     }
