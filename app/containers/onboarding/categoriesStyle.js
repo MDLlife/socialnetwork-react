@@ -89,7 +89,7 @@ const AREAS = [
     {key: 1, label: 'Movie'},
     {key: 2, label: 'Promo video'},
     {key: 3, label: 'TV show'},
-    {key: 4, label: 'Editorail'},
+    {key: 4, label: 'Editorial'},
     {key: 5, label: 'Catalog'},
     {key: 6, label: 'Underwear catalog'},
     {key: 7, label: 'Fashion show'},

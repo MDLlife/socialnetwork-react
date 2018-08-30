@@ -11,7 +11,7 @@ export default function (state = {language_spoken: [], work_areas: [], style: []
         case 'SELECT_ETHNICITY':
             return {...state, ethnic: action.payload};
         case 'SELECT_LANGUAGE':
-            return {...state, language_spoken: [...state.language_spoken, action.payload]};
+            return {...state, language_spoken: [...state.language_spoken, action.payload ? action.payload.toLowerCase() : '']};
         case 'SEARCH_LANGUAGE':
             return {...state, search_language: [...state.search_language, {key: action.payload, label: action.payload}]};
         case 'REMOVE_SEARCH_LANGUAGE':
