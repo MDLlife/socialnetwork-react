@@ -37,7 +37,7 @@ const listLenght = [];
     list.push(<MenuItem value={el} key={el} primaryText={el}/>)
 });
 
-['Blue', 'Green', 'Black ', 'Brown', 'Hazel', 'Other'].forEach((el) => {
+['Blue', 'Green', 'Black', 'Brown', 'Hazel', 'Other'].forEach((el) => {
     listEyes.push(<MenuItem value={el} key={el} primaryText={el}/>)
 });
 
@@ -407,7 +407,7 @@ class StepOne extends Component {
                                     <label>Hair color</label>
                                 </div>
                                 <DropDownMenu
-                                    disabled={this.props.profile.hair_length === 'Bold' ? true : false}
+                                    disabled={this.props.profile && this.props.profile.hair_length === 'Bold' ? true : false}
                                     hintText='Hair color'
                                     value={this.props.profile.hair_color}
                                     onChange={this.selectHair}

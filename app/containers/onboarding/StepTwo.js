@@ -89,6 +89,9 @@ class StepOne extends Component {
 
     selectedChipFeatures = e => {
         let elem = e.target.parentNode;
+        if(!e.target.innerHTML){
+            return;
+        }
         if (elem.classList.contains('selected')) {
             elem.classList.remove('selected');
             elem.classList.add('hover-chip');
@@ -117,7 +120,7 @@ class StepOne extends Component {
     renderChipWorkAreas = data => {
         return (
             <Chip
-                className={`hover-chip ${this.props.profile.work_areas.find(e => e === data.label.toLowerCase()) ? 'selected' : ''}`}
+                className={`hover-chip ${this.props.profile && this.props.profile.work_areas && this.props.profile.work_areas.find(e => e === data.label.toLowerCase()) ? 'selected' : ''}`}
                 key={data.key}
                 style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
                 onClick={this.selectedChipWorkAreas}
@@ -133,7 +136,7 @@ class StepOne extends Component {
     renderChipStyle = data => {
         return (
             <Chip
-                className={`hover-chip ${this.props.profile.style.find(e => e === data.label.toLowerCase()) ? 'selected' : ''}`}
+                className={`hover-chip ${this.props.profile && this.props.profile.style && this.props.profile.style.find(e => e === data.label.toLowerCase()) ? 'selected' : ''}`}
                 key={data.key}
                 style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
                 onClick={this.selectedChipStyle}
@@ -149,7 +152,7 @@ class StepOne extends Component {
     renderChipTattoo = data => {
         return (
             <Chip
-                className={`hover-chip ${this.props.profile.tattoo_where.find(e => e === data.label.toLowerCase()) ? 'selected' : ''}`}
+                className={`hover-chip ${this.props.profile && this.props.profile.tattoo_where && this.props.profile.tattoo_where.find(e => e === data.label.toLowerCase()) ? 'selected' : ''}`}
                 key={data.key}
                 style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
                 onClick={this.selectedChipTattoo}
@@ -165,7 +168,7 @@ class StepOne extends Component {
     renderChipFeatures = data => {
         return (
             <Chip
-                className={`hover-chip ${this.props.profile.features.find(e => e === data.label.toLowerCase()) ? 'selected' : ''}`}
+                className={`hover-chip ${this.props.profile && this.props.profile.features && this.props.profile.features.find(e => e === data.label.toLowerCase()) ? 'selected' : ''}`}
                 key={data.key}
                 style={{width: 'auto', marginLeft: 10, marginTop: 10, fontFamily: 'inherit'}}
                 onClick={this.selectedChipFeatures}
@@ -240,7 +243,7 @@ class StepOne extends Component {
                     </div>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
-                            this.state.features.map(this.renderChipFeatures, this)
+                            this.state.features && this.state.features.map(this.renderChipFeatures, this)
                         }
                     </div>
                 </Col>
