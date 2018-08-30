@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
@@ -17,5 +16,8 @@ const ProfileMenu = props => {
         </IconMenu>
     )
 }
+ProfileMenu.propTypes = {
+};
 
-export default ProfileMenu;
+
+export default ProfileMenu

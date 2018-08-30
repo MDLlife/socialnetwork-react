@@ -1,28 +1,26 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Row, Col} from 'react-bootstrap';
+import {Col, Row} from 'react-bootstrap';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import DatePicker from 'material-ui/DatePicker';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import AutoComplete from 'material-ui/AutoComplete';
 import Chip from 'material-ui/Chip';
-import Plus from 'material-ui/svg-icons/content/add';
 
 import {
-    SELECT_GENDER,
-    SELECT_ETHNICITY,
     DATE_OF_BIRTH,
-    SELECT_LANGUAGE,
     REMOVE_LANGUAGE,
+    REMOVE_SEARCH_LANGUAGE,
     SEARCH_LANGUAGE,
-    REMOVE_SEARCH_LANGUAGE
+    SELECT_ETHNICITY,
+    SELECT_GENDER,
+    SELECT_LANGUAGE
 } from 'actions/onboarding';
 
 const list = [];
 ['Asian', 'Eurasian', 'Caucasian', 'Black', 'Hispanic', 'Middle Eastern', 'Indian'].forEach((el) => {
-    list.push(<MenuItem value={el} key={el} primaryText={el} />)
+    list.push(<MenuItem value={el} key={el} primaryText={el}/>)
 });
 
 class StepOne extends Component {
@@ -35,10 +33,9 @@ class StepOne extends Component {
             language: [
                 {key: 0, label: 'Chinese'},
                 {key: 1, label: 'English'},
-                {key: 2, label: 'Russian'},
             ],
             searchLanguages: [
-                'Spanish','French', 'German','Japanese','Danish','Belorussian'
+                'Spanish', 'French', 'Russian', 'German', 'Japanese', 'Danish', 'Belorussian'
             ],
             //languages_spoken: []
         }
@@ -80,7 +77,7 @@ class StepOne extends Component {
             selectedLangs: [...this.state.selectedLangs, {key: this.state.search, label: this.state.search}],
         }, () => {
             this.setState({
-                searchLanguages: this.state.searchLanguages.filter(function(x){
+                searchLanguages: this.state.searchLanguages.filter(function (x) {
                     return this.indexOf(x) < 0
                 }, this.state.selectedLangs.map(x => x.label)),
                 search: ''
@@ -106,7 +103,7 @@ class StepOne extends Component {
         return (
             <Chip
                 key={data.key}
-                className={`chip ${this.props.profile.language_spoken.find(e => e === data.label.toLowerCase()) ? 'selected' : ''}`}
+                className={`chip ${this.props.profile.language_spoken && this.props.profile.language_spoken.find(e => e === data.label.toLowerCase()) ? 'selected' : ''}`}
                 style={{marginRight: 10, fontFamily: 'inherit'}}
                 onClick={this.selectedChip}
             >
@@ -211,7 +208,7 @@ class StepOne extends Component {
                         value={this.props.profile.ethnic || ''}
                         onChange={this.selectEthnic}
                         style={{width: 280}}
-                        underlineStyle={{ marginLeft: 0}}
+                        underlineStyle={{marginLeft: 0}}
                     >
                         {list}
                     </DropDownMenu>

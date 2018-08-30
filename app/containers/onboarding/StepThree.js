@@ -1,21 +1,20 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Row, Col} from 'react-bootstrap';
+import {Col, Row} from 'react-bootstrap';
 import MenuItem from 'material-ui/MenuItem';
 import {DropDownMenu} from "material-ui/DropDownMenu";
 import TextField from "material-ui/TextField";
 
 import {
     SELECT_BODY_TYPE,
-    TYPE_HEIGHT,
-    TYPE_BUST,
-    TYPE_WAIST,
-    TYPE_HIPS,
-    TYPE_SHOE_SIZE,
     SELECT_EYE_COLOR,
     SELECT_HAIR_COLOR,
-    SELECT_HAIR_LENGTH
+    SELECT_HAIR_LENGTH,
+    TYPE_BUST,
+    TYPE_HEIGHT,
+    TYPE_HIPS,
+    TYPE_SHOE_SIZE,
+    TYPE_WAIST
 } from "../../actions/onboarding";
 
 
@@ -35,11 +34,11 @@ const listLenght = [];
 
 
 ['Skinny', 'Fit', 'Average', 'Curvy'].forEach((el) => {
-    list.push(<MenuItem value={el} key={el} primaryText={el} />)
+    list.push(<MenuItem value={el} key={el} primaryText={el}/>)
 });
 
-['Blue', 'Green', 'Black ', 'Brown', 'Hazel', 'Other'].forEach((el) => {
-    listEyes.push(<MenuItem value={el} key={el} primaryText={el} />)
+['Blue', 'Green', 'Black', 'Brown', 'Hazel', 'Other'].forEach((el) => {
+    listEyes.push(<MenuItem value={el} key={el} primaryText={el}/>)
 });
 
 ['Black', 'Dark brown', 'Light brown', 'Blond', 'Platinum', 'Auburn', 'Red', 'Gray and white', 'Other'].forEach((el) => {
@@ -47,7 +46,7 @@ const listLenght = [];
 });
 
 ['Short', 'Mid', 'Long', 'Bold'].forEach((el) => {
-    listLenght.push(<MenuItem value={el} key={el} primaryText={el} />)
+    listLenght.push(<MenuItem value={el} key={el} primaryText={el}/>)
 });
 
 class StepOne extends Component {
@@ -77,31 +76,31 @@ class StepOne extends Component {
 
 
     changeInputHeight = (event) => {
-        if(isNaN(+event.target.value) || +event.target.value > 999) {
+        if (isNaN(+event.target.value) || +event.target.value > 999) {
             return false;
         }
         this.props.TYPE_HEIGHT(event.target.value)
     };
     changeInputBust = (event) => {
-        if(isNaN(+event.target.value) || +event.target.value > 999) {
+        if (isNaN(+event.target.value) || +event.target.value > 999) {
             return false;
         }
         this.props.TYPE_BUST(event.target.value)
     };
     changeInputWaist = (event) => {
-        if(isNaN(+event.target.value) || +event.target.value > 999) {
+        if (isNaN(+event.target.value) || +event.target.value > 999) {
             return false;
         }
         this.props.TYPE_WAIST(event.target.value)
     };
     changeInputHips = (event) => {
-        if(isNaN(+event.target.value) || +event.target.value > 999) {
+        if (isNaN(+event.target.value) || +event.target.value > 999) {
             return false;
         }
         this.props.TYPE_HIPS(event.target.value)
     };
     changeInputShoe = (event) => {
-        if(isNaN(+event.target.value) || +event.target.value > 99) {
+        if (isNaN(+event.target.value) || +event.target.value > 99) {
             return false;
         }
         this.props.TYPE_SHOE_SIZE(event.target.value)
@@ -114,21 +113,40 @@ class StepOne extends Component {
             <Row>
                 <Col xs={12}>
                     <h2 style={{color: '#ea2f85'}}>
-                        Please input all parameters carefully and truly. After you save changes, it will be possible to change them only via the admin.
+                        Please input all parameters carefully and truly. After you save changes, it will be possible to
+                        change them only via the admin.
                     </h2>
                     <h2>Body</h2>
-                    <h4>Body type</h4>
-                    <DropDownMenu
-                        value={this.props.profile.body_type || null}
-                        onChange={this.selectType}
-                        style={{width: 280}}
-                        underlineStyle={{ marginLeft: 0}}
-                    >
-                        {list}
-                    </DropDownMenu>
                 </Col>
             </Row>,
+
             <Row>
+                <Col xs={12} style={{display: 'flex', flexDirection: 'column'}}>
+                    <div className='cards'>
+                        <div
+                            className='inputs'
+                            style={{
+                                width: '50%',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                marginLeft: 40,
+                                marginBottom: 10,
+                            }}>
+                            <h4>Body type</h4>
+                            <DropDownMenu
+                                value={this.props.profile.body_type || null}
+                                onChange={this.selectType}
+                                style={{width: 280}}
+                                underlineStyle={{marginLeft: 0}}
+                            >
+                                {list}
+                            </DropDownMenu>
+                        </div>
+                    </div>
+                </Col>
+            </Row>,
+
+            <Row style={{marginTop: 30}}>
                 <Col xs={12} style={{display: 'flex', flexDirection: 'column'}}>
                     <div className='cards'>
                         <div className='card-avatar' style={{backgroundColor: '#fafafa', width: '56%'}}>
@@ -306,7 +324,8 @@ class StepOne extends Component {
                 <Col xs={12}>
                     <div className='cards'>
                         <div className='card-avatar' style={{backgroundColor: '#fafafa', width: '50%'}}>
-                            <img src="/static/img/appearence.png" alt="" style={{width: '60%', margin: '20px auto', display: 'block'}}/>
+                            <img src="/static/img/appearence.png" alt=""
+                                 style={{width: '60%', margin: '20px auto', display: 'block'}}/>
                         </div>
                         <div className='inputs' style={{
                             display: 'grid',
@@ -327,7 +346,7 @@ class StepOne extends Component {
                                     hintText='Eye color'
                                     value={this.props.profile.eye_color || null}
                                     onChange={this.selectEyes}
-                                    underlineStyle={{ marginLeft: 0}}
+                                    underlineStyle={{marginLeft: 0}}
                                     style={{width: '100%'}}
                                     labelStyle={{paddingLeft: 30}}
                                 >
@@ -359,7 +378,7 @@ class StepOne extends Component {
                                     hintText='Hair length'
                                     value={this.props.profile.hair_length || ''}
                                     onChange={this.selectLength}
-                                    underlineStyle={{ marginLeft: 0}}
+                                    underlineStyle={{marginLeft: 0}}
                                     style={{width: '100%'}}
                                     labelStyle={{paddingLeft: 30}}
                                 >
@@ -388,11 +407,11 @@ class StepOne extends Component {
                                     <label>Hair color</label>
                                 </div>
                                 <DropDownMenu
-                                    disabled={this.props.profile.hair_length === 'Bold' ? true : false}
+                                    disabled={this.props.profile && this.props.profile.hair_length === 'Bold' ? true : false}
                                     hintText='Hair color'
                                     value={this.props.profile.hair_color}
                                     onChange={this.selectHair}
-                                    underlineStyle={{ marginLeft: 0}}
+                                    underlineStyle={{marginLeft: 0}}
                                     style={{width: '100%'}}
                                     labelStyle={{paddingLeft: 30}}
                                 >

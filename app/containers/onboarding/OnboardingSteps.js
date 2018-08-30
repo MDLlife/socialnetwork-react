@@ -136,17 +136,9 @@ class OnboardingSteps extends Component {
             data.hair_color = this.props.profile.hair_color.toLowerCase()
         }
 
-        let res = this.props.FETCH_UPDATE_USER_DATA(data);
+        this.props.FETCH_UPDATE_USER_DATA(data);
 
-        //TODO: this should be conditional trigger based on dispatch success action
-        setTimeout(function () {
-            if (typeof window !== 'undefined') {
-                console.log(res.status, res.body)
-                //TODO: later redirect to preview when preview is completed
 
-                //window.location.href = '/today'
-            }
-        }, 1000)
 
     };
 
@@ -203,8 +195,8 @@ class OnboardingSteps extends Component {
                 return <div style={styles.altStepper}>Categories</div>;
             case 2:
                 return <div style={styles.altStepper}>Measurements</div>;
-            case 3:
-                return <div style={styles.altStepper}>Media</div>
+            // case 3:
+            //     return <div style={styles.altStepper}>Media</div>
         }
     };
 
@@ -244,9 +236,9 @@ class OnboardingSteps extends Component {
                             <Step className='stepper-step' style={step === 2 ? styles.stepBorder : null}>
                                 <StepLabel className='stepper' style={{margin: 'auto'}}>Measurements</StepLabel>
                             </Step>
-                            <Step className='stepper-step' style={step === 3 ? styles.stepBorder : null}>
-                                <StepLabel className='stepper' style={{margin: 'auto'}}>Media</StepLabel>
-                            </Step>
+                            {/*<Step className='stepper-step' style={step === 3 ? styles.stepBorder : null}>*/}
+                                {/*<StepLabel className='stepper' style={{margin: 'auto'}}>Media</StepLabel>*/}
+                            {/*</Step>*/}
                         </Stepper>
                     </Col>
                 </Row>
@@ -268,15 +260,15 @@ class OnboardingSteps extends Component {
                         <button className='back-btn' onClick={this.handlePrev}>Back</button>
                         <button
                             className='next-btn tooltip-main'
-                            onClick={step === 3 ? this.previewProfile : this.handleNext}
+                            onClick={step >= 2 ? this.previewProfile : this.handleNext}
                         >
-                            {step === 3 ? 'Preview profile' : 'Next'}
+                            {step  >= 2 ? 'Preview profile' : 'Next'}
                             {/*{step === 2 ? <span className='tooltip-text'>ToolTip</span> : null}*/}
                         </button>
                         <SnackBar
                             open={this.state.check}
-                            message="Please fill all required fields"
-                            autoHideDuration={1500}
+                            message="Please fill in all fields"
+                            autoHideDuration={10000}
                             onRequestClose={this.handleRequestClose}
                         />
                     </Col>

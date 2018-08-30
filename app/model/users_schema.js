@@ -26,11 +26,21 @@ const users_schema = Joi.object().keys({
     gender: Joi.string().valid('male', 'female', "other"),
     date_of_birth: Joi.date().iso(),
     ethnicity: Joi.string().valid("asian", "eurasian", "caucasian", "black", "hispanic", "middle eastern", "indian"),
-    languages_spoken: Joi.array().items(Joi.string().valid("chinese", "english", "russian", "portuguese").default([])),
+    languages_spoken: Joi.array().items(Joi.string().valid("chinese", "english", "spanish", "french", "german", "japanese", "danish", "belorussian", "russian", "portuguese").default([])),
 
     // 2. Categories
-    work_areas: Joi.array().items(Joi.string().valid('tvc', 'movie', "ordinal catalog", "underwear catalog", "fashion show", "exhibition", "promo event", "makeup show", "hairdress show", "fitting", "hostess", "body art").default([])),
-    style: Joi.array().items(Joi.string().valid("cute", "babyface", "underground", "sport", "bodybuilding", "mother").default([])),
+    work_areas: Joi.array().items(Joi.string().valid(
+        'tv commercial',
+        'promo video','tv show','editorial','catalog','showroom','','','',
+        'tvc', 'movie', "ordinal catalog", "underwear catalog", "fashion show", "exhibition", "promo event",
+        "makeup show", "hairdress show", "fitting", "hostess", "bodyart"
+    ).default([])),
+    style: Joi.array().items(Joi.string().valid(
+        "cool","funny","gentleman","princess",
+        "cute", "babyface", "underground", "sport",
+        "bodybuilding", "mother","fashion","street","student","smart","business","father","beauty","bodybuilding",
+        "mother","business"
+    ).default([])),
     tattoo: Joi.boolean().default(false),
     tattoo_where: Joi.array().items(Joi.string().valid('arm', 'leg', "face", "neck", "back").default([])),
     piercing: Joi.boolean().default(false),
@@ -44,9 +54,9 @@ const users_schema = Joi.object().keys({
     shoe_size: Joi.number().integer().min(0).max(99),
 
     // 4. Appearance
-    eye_color: Joi.string().valid("blue", "green", "black", "brown", "hazel"),
+    eye_color: Joi.string().valid("blue", "green", "black", "brown", "hazel", "other"),
     hair_length: Joi.string().valid("short", "mid", "long", "bold"),
-    hair_color: Joi.string().valid("black", "dark brown", "light brown", "blond", "platinum", "auburn", "red", "grey and white"),
+    hair_color: Joi.string().valid("black", "dark brown", "light brown", "blond", "platinum", "auburn", "red", "gray", "white", "other"),
 
     // 5. Media
     comp_card: Joi.array().default([]),

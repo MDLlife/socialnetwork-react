@@ -166,9 +166,9 @@ export const FETCH_GET_USER_DATA = id => {
 
 export const FETCH_UPDATE_USER_DATA = data => {
     const result = validate_schema.validate(data, users_schema);
-    console.log("RESULT validate -> ", result);
+    // console.log("RESULT validate -> ", result);
     if (result.error) {
-        console.log("NOT VALID, ", result);
+        console.log("ERROR: NOT VALID, ", result, data);
         return (dispatch) => {
             dispatch(ERROR_UPDATE_USER_DATA(true))
         };
