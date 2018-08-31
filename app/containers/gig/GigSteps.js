@@ -89,7 +89,7 @@ class GigSteps extends Component {
                 'duration': 1,
                 'start_date': this.props.gig.from,
                 'end_date': this.props.gig.to,
-                'contact_language': 'english',
+                'contact_language': this.props.gig.languages_spoken,
                 'talents': arr
             })
             .withCredentials()
