@@ -4,8 +4,15 @@ import {Col, Grid, Row} from 'react-bootstrap';
 import {RadioButton, RadioButtonGroup} from "material-ui/RadioButton";
 import DatePicker from 'material-ui/DatePicker';
 import LoginStore from 'store/LoginStore';
+import SnackBar from 'material-ui/Snackbar';
 
-import {DATE_OF_BIRTH, FETCH_FAN_DATA, SELECT_GENDER} from "../../actions/onboardingFan"
+import {
+    DATE_OF_BIRTH,
+    ERROR_UPDATE_FAN_DATA,
+    FETCH_UPDATE_FAN_DATA,
+    SELECT_GENDER,
+    SUCCESS_UPDATE_FAN_DATA
+} from "../../actions/onboardingFan"
 
 class OnboardingFan extends Component {
     constructor(props) {
@@ -41,23 +48,36 @@ class OnboardingFan extends Component {
     };
 
     onClickToday = event => {
-        this.props.FETCH_FAN_DATA({
+        this.props.FETCH_UPDATE_FAN_DATA({
             _key: LoginStore.user._key,
             profiles: ['fan'],
             gender: this.props.fan.gender,
             date_of_birth: this.props.fan.dateOfBirth,
-            registration_fan_complete:true,
+            registration_fan_complete: true,
         });
 
-        //TODO: this should be conditional trigger based on dispatch success action
-        setTimeout(function () {
-            if (typeof window !== 'undefined') {
-                //TODO: later redirect to preview when preview is completed
-                // window.location.href = '/onboarding/profile-preview?profile=fan'
-                window.location.href = '/today'
-            }
-        }, 1000)
     };
+
+    handleRequestClose = () => {
+        this.setState({
+            check: false,
+        });
+    };
+
+    componentWillReceiveProps(props) {
+        if (props.fan.success) {
+            console.log("Saved success")
+            window.location.href = '/today'
+        }
+
+        if (props.fan.error) {
+            console.log("ERROR when saving, not ok!")
+            this.setState({
+                check: true
+            });
+        }
+    }
+
 
     render() {
         return (
@@ -132,6 +152,12 @@ class OnboardingFan extends Component {
                         </div>
                     </Col>
                 </Row>
+                <SnackBar
+                    open={this.state.check}
+                    message={this.props.fan.error ? this.props.fan.error.message : "Please fill in all fields"}
+                    autoHideDuration={10000}
+                    onRequestClose={this.handleRequestClose}
+                />
             </Grid>
         )
     }
@@ -166,6 +192,8 @@ export default connect(
     {
         SELECT_GENDER,
         DATE_OF_BIRTH,
-        FETCH_FAN_DATA
+        FETCH_UPDATE_FAN_DATA,
+        SUCCESS_UPDATE_FAN_DATA,
+        ERROR_UPDATE_FAN_DATA
     }
 )(OnboardingFan)

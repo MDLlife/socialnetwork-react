@@ -7,6 +7,7 @@ import LoginLayout from 'containers/login/Master';
 import TodayLayout from 'containers/today/Master';
 
 import OnboardingLayout from 'containers/onboarding/Master';
+import GigLayout from 'containers/gig/Master';
 
 import Main from 'containers/main/Main';
 import ActivateAccount from 'containers/login/ActivateAccount';
@@ -19,6 +20,7 @@ import GeneralInformation from 'containers/login/GeneralInformation';
 import Onboarding from 'containers/onboarding/OnboardingSteps';
 import OnboardingFan from 'containers/onboarding/OnboardingFan';
 import OnboardingBooker from 'containers/onboarding/OnboardingBooker';
+import GigSteps from 'containers/gig/GigSteps';
 
 import ProfilePreview from 'containers/onboarding/ProfilePreview';
 
@@ -110,6 +112,11 @@ export default function (history) {
                     <Route path="news/:id" component={FullPost}/>
                     <Route path="news/:index/:value" component={TodayContainer}/>
 
+                    <Route path="*" component={Notfound}/>
+                </Route>
+
+                <Route path='/gig-creation' component={GigLayout}>
+                    <IndexRoute component={GigSteps}/>
                     <Route path="*" component={Notfound}/>
                 </Route>
 

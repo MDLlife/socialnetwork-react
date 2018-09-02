@@ -8,6 +8,10 @@ export default function(state = {}, action){
                 dateOfBirth: action.payload,
                 year: new Date().getUTCFullYear() - action.payload.getUTCFullYear()
             };
+        case 'SUCCESS_UPDATE_FAN_DATA':
+            return {...state, success: action.payload};
+        case 'ERROR_UPDATE_FAN_DATA':
+            return {...state, error: action.payload};
         default:
             return state;
     }

@@ -2,8 +2,8 @@ import superagent from 'superagent';
 import users_schema from 'model/users_schema';
 import validate_schema from 'model/validate_schema';
 
-//TODO: This should be taken from config file
-const url = 'https://api.mdl.live/v1';
+import config from 'config';
+const url = config.API_URL;
 
 export const SELECT_WORK_AREAS_ACTOR = area => ({
     type: 'SELECT_WORK_AREAS_ACTOR',
@@ -35,22 +35,39 @@ export const UNSELECT_WORK_AREAS_DANCER = area => ({
     payload: area
 });
 
-export const FETCH_BOOKER_DATA = data => {
+export const ERROR_UPDATE_BOOKER_DATA = error => ({
+    type: 'ERROR_UPDATE_BOOKER_DATA',
+    payload: error,
+});
+
+export const SUCCESS_UPDATE_BOOKER_DATA = success => ({
+    type: 'SUCCESS_UPDATE_BOOKER_DATA',
+    payload: success
+});
+
+
+export const FETCH_UPDATE_BOOKER_DATA = data => {
     const result = validate_schema.validate(data, users_schema);
     console.log("RESULT validate -> ", result);
     if (result.error) {
-        console.log("NOT VALID, ", result);
-        //TODO:  dispatch ERROR
-        return (dispatch) => {};
+        console.log("ERROR: NOT VALID, ", result, data);
+        return (dispatch) => {
+            dispatch(ERROR_UPDATE_BOOKER_DATA(result.error))
+        };
     } else {
         return dispatch => {
             return superagent
-                .post(url + '/update/users')
+                .post(url + '/v1/update/users')
                 .send(data)
                 .withCredentials()
                 .then(res => {
                     console.log('Success', res);
                     //TODO:  dispatch success
+                     //TODO:  dispatch success
+                    dispatch(SUCCESS_UPDATE_BOOKER_DATA(true))
+                })
+                .catch(err =>{
+                    dispatch(ERROR_UPDATE_BOOKER_DATA(err))
                 })
         }
     }

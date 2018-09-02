@@ -7,6 +7,7 @@ import onboardingFan from 'reducers/onboardingFan';
 import articles from 'reducers/articles';
 import analytics from 'reducers/analytics';
 import loadSearchResults from 'reducers/loadSearchResults'
+import gigCreation from 'reducers/gigCreation';
 
 const rootReducer = combineReducers({
     introDetail,
@@ -16,7 +17,7 @@ const rootReducer = combineReducers({
     articles,
     analytics,
     loadSearchResults,
-
+    gigCreation
 });
 
 export default rootReducer;

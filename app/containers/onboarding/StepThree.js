@@ -41,8 +41,8 @@ const listLenght = [];
     listEyes.push(<MenuItem value={el} key={el} primaryText={el}/>)
 });
 
-['Black', 'Dark brown', 'Light brown', 'Blond', 'Platinum', 'Auburn', 'Red', 'Gray', 'White', 'Other'].forEach((el) => {
-    listHair.push(<MenuItem value={el} key={el} primaryText={el}/>)
+['Black', 'Dark brown', 'Light brown', 'Blond', 'Platinum', 'Auburn', 'Red', 'Gray and white', 'Other'].forEach((el) => {
+    listHair.push(<MenuItem value={el} key={el} primaryText={el} />)
 });
 
 ['Short', 'Mid', 'Long', 'Bold'].forEach((el) => {
