@@ -1,26 +1,30 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Row, Col, Grid} from 'react-bootstrap';
+import {Col, Grid, Row} from 'react-bootstrap';
 import Chip from 'material-ui/Chip';
 import LoginStore from 'store/LoginStore';
 import Delete from 'material-ui/svg-icons/action/highlight-off';
+import SnackBar from 'material-ui/Snackbar';
 
 import {
+    ERROR_UPDATE_BOOKER_DATA,
+    FETCH_UPDATE_BOOKER_DATA,
     SELECT_WORK_AREAS_ACTOR,
     SELECT_WORK_AREAS_DANCER,
     SELECT_WORK_AREAS_MODEL,
+    SUCCESS_UPDATE_BOOKER_DATA,
     UNSELECT_WORK_AREAS_ACTOR,
     UNSELECT_WORK_AREAS_DANCER,
     UNSELECT_WORK_AREAS_MODEL,
-    FETCH_BOOKER_DATA
 } from "../../actions/onboardingBooker";
+
 
 class OnboardingBooker extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            check: false,
             'actorSelect': false,
             'modelSelect': false,
             'dancerSelect': false,
@@ -175,7 +179,7 @@ class OnboardingBooker extends Component {
         console.log(this.props.booker);
         let selectTalentsWorkAreas = [];
 
-        if(this.state.actorSelect) {
+        if (this.state.actorSelect) {
             selectTalentsWorkAreas
                 .push({
                     role: 'actor',
@@ -183,35 +187,55 @@ class OnboardingBooker extends Component {
                 })
         }
 
-        if(this.state.modelSelect) {
+        if (this.state.modelSelect) {
             selectTalentsWorkAreas.push({
                 role: 'model',
                 work_areas: this.props.booker.modelAreas
             })
         }
 
-        if(this.state.dancerSelect) {
+        if (this.state.dancerSelect) {
             selectTalentsWorkAreas.push({
                 role: 'dancer',
                 work_areas: this.props.booker.dancerAreas
             })
         }
 
-        this.props.FETCH_BOOKER_DATA({
+        this.props.FETCH_UPDATE_BOOKER_DATA({
             _key: LoginStore.user._key,
             profiles: ['booker'],
             booker_work_areas: selectTalentsWorkAreas,
             registration_booker_complete: true
         });
 
-        //TODO: this should be conditional trigger based on dispatch success action
-        if (typeof window !== 'undefined') {
-            //TODO: later redirect to preview when preview is completed
-            // window.location.href = '/onboarding/profile-preview?profile=booker'
+        // //TODO: this should be conditional trigger based on dispatch success action
+        // if (typeof window !== 'undefined') {
+        //     //TODO: later redirect to preview when preview is completed
+        //     // window.location.href = '/onboarding/profile-preview?profile=booker'
+        //
+        //
+        // }
+    };
 
+    handleRequestClose = () => {
+        this.setState({
+            check: false,
+        });
+    };
+
+    componentWillReceiveProps(props) {
+        if (props.booker.success) {
+            console.log("Saved success")
             window.location.href = '/today'
         }
-    };
+
+        if (props.booker.error) {
+            console.log("ERROR when saving, not ok!")
+            this.setState({
+                check: true
+            });
+        }
+    }
 
     deleteOtherTalents = e => {
         this.setState({
@@ -238,7 +262,8 @@ class OnboardingBooker extends Component {
                     <Col xs={12}>
                         {
                             this.state.actorSelect && this.state.modelSelect && this.state.dancerSelect ? null
-                                : <h4 style={{margin: '36px 0', fontFamily: 'Gilroy Medium'}}>Select talents your work with</h4>
+                                : <h4 style={{margin: '36px 0', fontFamily: 'Gilroy Medium'}}>Select talents your work
+                                    with</h4>
                         }
                         <div style={{display: 'flex'}}>
                             {
@@ -474,7 +499,7 @@ class OnboardingBooker extends Component {
                                                 <div style={{width: '25%'}}>
                                                     <h5>Video shooting</h5>
                                                 </div>
-                                                <div style={{display: 'flex', flexWrap: 'wrap', width: '75%' }}>
+                                                <div style={{display: 'flex', flexWrap: 'wrap', width: '75%'}}>
                                                     {
                                                         this.state.dancerAreas.video.map(this.renderChipDancerWorkAreas, this)
                                                     }
@@ -574,11 +599,20 @@ class OnboardingBooker extends Component {
                                     <button
                                         className='onboarding-booker-button'
                                         onClick={this.saveBooker}
-                                    >Save</button>
+                                    >Save
+                                    </button>
                                 </div> : null
                         }
+
+
                     </Col>
                 </Row>
+                <SnackBar
+                    open={this.state.check}
+                    message={this.props.booker.error ? this.props.booker.error.message : "Please fill in all fields"}
+                    autoHideDuration={10000}
+                    onRequestClose={this.handleRequestClose}
+                />
             </Grid>
         )
     }
@@ -632,6 +666,8 @@ export default connect(
         UNSELECT_WORK_AREAS_ACTOR,
         UNSELECT_WORK_AREAS_DANCER,
         UNSELECT_WORK_AREAS_MODEL,
-        FETCH_BOOKER_DATA
+        FETCH_UPDATE_BOOKER_DATA,
+        ERROR_UPDATE_BOOKER_DATA,
+        SUCCESS_UPDATE_BOOKER_DATA
     }
 )(OnboardingBooker);

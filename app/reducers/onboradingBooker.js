@@ -12,6 +12,10 @@ export default function(state = {actorAreas: [], modelAreas: [], dancerAreas: []
             return {...state, dancerAreas: state.dancerAreas.filter(elem => elem !== action.payload.toLowerCase())};
         case 'UNSELECT_WORK_AREAS_MODEL':
             return {...state, modelAreas: state.modelAreas.filter(elem => elem !== action.payload.toLowerCase())};
+        case 'SUCCESS_UPDATE_BOOKER_DATA':
+            return {...state, success: action.payload};
+        case 'ERROR_UPDATE_BOOKER_DATA':
+            return {...state, error: action.payload};
         default:
             return state
     }

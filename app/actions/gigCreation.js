@@ -1,3 +1,12 @@
+import superagent from 'superagent';
+import gigs_schema from 'model/gigs_schema';
+import validate_schema from 'model/validate_schema';
+
+
+import config from 'config';
+
+const url = config.API_URL;
+
 export const SET_TYPE = (data, role) => ({
     type: 'SET_TYPE',
     index: data, // contain index, person, gender, age, ethnicity
@@ -130,4 +139,36 @@ export const SET_OVERTIME_VISIBLE = (overtimeVisible, index, role) => ({
     index: index,
     role: role
 });
+
+export const ERROR_UPDATE_GIG_DATA = error => ({
+    type: 'ERROR_UPDATE_GIG_DATA',
+    payload: error,
+});
+
+export const SUCCESS_UPDATE_GIG_DATA = success => ({
+    type: 'SUCCESS_UPDATE_GIG_DATA',
+    payload: success
+});
+
+export const FETCH_UPDATE_GIG_DATA = data => {
+    const result = validate_schema.validate(data, gigs_schema);
+    // console.log("RESULT validate -> ", result);
+    if (result.error) {
+        console.log("ERROR: NOT VALID, ", result, data);
+        return (dispatch) => {
+            dispatch(ERROR_UPDATE_GIG_DATA(result.error))
+        };
+    } else {
+        return dispatch => {
+            return superagent
+                .post(url + '/v1/create/gigs')
+                .send(data)
+                .withCredentials()
+                .then(res => {
+                    console.log('Success', res);
+                    dispatch(SUCCESS_UPDATE_GIG_DATA(true))
+                })
+        }
+    }
+}
 

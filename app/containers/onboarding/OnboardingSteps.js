@@ -11,9 +11,9 @@ import StepThree from './StepThree';
 import StepFour from './StepFour';
 
 import {
+    ERROR_UPDATE_USER_DATA,
     FETCH_GET_USER_DATA,
     FETCH_UPDATE_USER_DATA,
-    ERROR_UPDATE_USER_DATA,
     SUCCESS_UPDATE_USER_DATA
 } from "../../actions/onboarding";
 
@@ -44,15 +44,16 @@ class OnboardingSteps extends Component {
     }
 
     handleNext = () => {
-        if(this.state.step === 0) {
-            if( typeof this.props.profile.gender === 'undefined' ||
+        if (this.state.step === 0) {
+            if (typeof this.props.profile.gender === 'undefined' ||
                 typeof this.props.profile.year === 'undefined' ||
                 typeof this.props.profile.ethnic === 'undefined') {
                 this.setState({
                     check: true
                 });
                 return false;
-            };
+            }
+            ;
         }
 
         // if(this.state.step === 1) {
@@ -139,13 +140,12 @@ class OnboardingSteps extends Component {
         this.props.FETCH_UPDATE_USER_DATA(data);
 
 
-
     };
 
     switchSteps = (step) => {
         switch (step) {
             case 0:
-                return <StepOne />;
+                return <StepOne/>;
             case 1:
                 return <StepTwo/>;
             case 2:
@@ -200,11 +200,22 @@ class OnboardingSteps extends Component {
         }
     };
 
-    render() {
-        let {step} = this.state;
-        if(this.props.profile.success) {
+    componentWillReceiveProps(props) {
+        if (props.profile.success) {
+            console.log("Saved success")
             window.location.href = `/onboarding/profile-preview?profile=talent&id=${LoginStore.user._key}`
         }
+
+        if (props.profile.error) {
+            console.log("ERROR when saving, not ok!")
+            this.setState({
+                check: true
+            });
+        }
+    }
+
+    render() {
+        let {step} = this.state;
 
         return (
             <Grid className='main-content-container onboarding white-back' style={{marginBottom: 50}}>
@@ -237,7 +248,7 @@ class OnboardingSteps extends Component {
                                 <StepLabel className='stepper' style={{margin: 'auto'}}>Measurements</StepLabel>
                             </Step>
                             {/*<Step className='stepper-step' style={step === 3 ? styles.stepBorder : null}>*/}
-                                {/*<StepLabel className='stepper' style={{margin: 'auto'}}>Media</StepLabel>*/}
+                            {/*<StepLabel className='stepper' style={{margin: 'auto'}}>Media</StepLabel>*/}
                             {/*</Step>*/}
                         </Stepper>
                     </Col>
@@ -262,12 +273,12 @@ class OnboardingSteps extends Component {
                             className='next-btn tooltip-main'
                             onClick={step >= 2 ? this.previewProfile : this.handleNext}
                         >
-                            {step  >= 2 ? 'Preview profile' : 'Next'}
+                            {step >= 2 ? 'Preview profile' : 'Next'}
                             {/*{step === 2 ? <span className='tooltip-text'>ToolTip</span> : null}*/}
                         </button>
                         <SnackBar
                             open={this.state.check}
-                            message="Please fill in all fields"
+                            message={this.props.gig.error ? this.props.gig.error.message: "Please fill in all fields"}
                             autoHideDuration={10000}
                             onRequestClose={this.handleRequestClose}
                         />

@@ -2,8 +2,9 @@ import superagent from 'superagent';
 import users_schema from 'model/users_schema';
 import validate_schema from 'model/validate_schema';
 
-//TODO: This should be taken from config file
-const url = 'https://api.mdl.live/v1';
+import config from 'config';
+
+const url = config.API_URL;
 
 export const SELECT_GENDER = gender => ({
     type: 'SELECT_GENDER',
@@ -170,19 +171,21 @@ export const FETCH_UPDATE_USER_DATA = data => {
     if (result.error) {
         console.log("ERROR: NOT VALID, ", result, data);
         return (dispatch) => {
-            dispatch(ERROR_UPDATE_USER_DATA(true))
+            dispatch(ERROR_UPDATE_USER_DATA(result.error))
         };
     } else {
         return dispatch => {
             return superagent
-                .post(url + '/update/users')
+                .post(url + '/v1/update/users')
                 .send(data)
                 .withCredentials()
                 .then(res => {
                     console.log('Success', res);
 
-                    //TODO:  dispatch success
                     dispatch(SUCCESS_UPDATE_USER_DATA(true))
+                })
+                .catch(err => {
+                    dispatch(ERROR_UPDATE_USER_DATA(err))
                 })
         }
     }

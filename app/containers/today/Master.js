@@ -16,6 +16,9 @@ const muiTheme = getMuiTheme({
 });
 
 class Master extends Component {
+    onClickMenu(){
+        window.location.href = '/today';
+    }
     render() {
         const username = LoginStore.user && LoginStore.user.username ? LoginStore.user.username : '';
         const avatarurl = LoginStore.user && LoginStore.user.avatarurl ? LoginStore.user.avatarurl : '';
@@ -65,6 +68,7 @@ class Master extends Component {
                         titleStyle={{
                             color: 'black'
                         }}
+                        onClick={this.onClickMenu}
                     />
                     {children}
                     {/*<div className='menu-footer-container'>*/}

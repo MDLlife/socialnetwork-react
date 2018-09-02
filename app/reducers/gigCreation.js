@@ -249,6 +249,10 @@ export default function(state = {
                     }
                 }
             };
+        case 'SUCCESS_UPDATE_GIG_DATA':
+            return {...state, success: action.payload};
+        case 'ERROR_UPDATE_GIG_DATA':
+            return {...state, error: action.payload};
         default:
             return state
     }

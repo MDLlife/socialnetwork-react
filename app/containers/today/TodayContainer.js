@@ -41,7 +41,10 @@ class TodayContainer extends Component {
             } else {
                 window.location.href = '/today/me/fan';
             }
-
+        } else if (event.target.value === 3) {
+            window.location.href = '/gig-creation';
+        } else if (event.target.value === 4) {
+            window.location.href = '/search';
         } else {
             window.location.href = '/today';
         }
@@ -78,6 +81,20 @@ class TodayContainer extends Component {
                                 value='2'
                             >
                                 Profile
+                            </li>
+                            <li
+                                className={`${index === 'gig-creation' ? 'selected-menu-item-today' : 'menu-item'}`}
+                                onClick={this.selectingMenu}
+                                value='3'
+                            >
+                                Create Gig
+                            </li>
+                            <li
+                                className={'menu-item'}
+                                onClick={this.selectingMenu}
+                                value='4'
+                            >
+                                Search Talents
                             </li>
                         </ul>
                     </Col>

@@ -2,14 +2,12 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Step, StepLabel, Stepper} from 'material-ui/Stepper';
 import {Col, Grid, Row} from 'react-bootstrap';
-import LoginStore from 'store/LoginStore';
 import SnackBar from 'material-ui/Snackbar';
-import superagent from 'superagent';
-import config from 'config';
 
 import GigInfo from './GigInfo';
 import TalentsNeeded from './TalentsNeeded';
-import {SUCCESS_UPDATE_USER_DATA} from "../../actions/onboarding";
+
+import {ERROR_UPDATE_GIG_DATA, FETCH_UPDATE_GIG_DATA, SUCCESS_UPDATE_GIG_DATA} from "../../actions/gigCreation";
 
 const styles = {
     stepBorder: {
@@ -59,44 +57,64 @@ class GigSteps extends Component {
     switchSteps = (step) => {
         switch (step) {
             case 0:
-                return <GigInfo />;
+                return <GigInfo/>;
             case 1:
-                return <TalentsNeeded />;
+                return <TalentsNeeded/>;
             default:
                 return <div>Error</div>;
         }
     };
 
+    handleRequestClose = () => {
+        this.setState({
+            check: false,
+        });
+    };
+
     saveGig = () => {
-        let arr = [];
+        let talents = [];
         for (var x in this.props.gig.talents) {
             for (var y in this.props.gig.talents[x]) {
                 for (var z in this.props.gig.talents[x][y]) {
-                    if(Object.keys(this.props.gig.talents[x][y][z]).length === 0) {
+                    if (Object.keys(this.props.gig.talents[x][y][z]).length === 0) {
                         continue;
                     }
-                    arr.push(Object.assign({role: x.toLowerCase()}, this.props.gig.talents[x][y][z]));
+                    talents.push(Object.assign({role: x.toLowerCase()}, this.props.gig.talents[x][y][z]));
                 }
             }
         }
 
-        superagent
-            .post(config.API_URL + '/v1/create/gigs')
-            .send({
-                'type': this.props.gig.type,
-                'location': this.props.gig.city,
-                'address': this.props.gig.address,
-                'duration': 1,
-                'start_date': this.props.gig.from,
-                'end_date': this.props.gig.to,
-                'contact_language': this.props.gig.languages_spoken,
-                'talents': arr
-            })
-            .withCredentials()
-            .then(res => {
-                console.log('Success', res);
-            })
+        const gig = this.props.gig;
+
+        const data = {
+            // _key: LoginStore.user._key,
+            type: gig.type,
+            location: gig.location,
+            address: gig.address,
+            duration: gig.duration,
+            start_date: gig.start_date,
+            end_date: gig.end_date,
+            contact_language: gig.contact_language,
+            talents: talents,
+        };
+
+        console.log("FETCH_UPDATE_GIG_DATA-> ", data);
+
+        this.props.FETCH_UPDATE_GIG_DATA(data);
     };
+
+    componentWillReceiveProps(props) {
+        if (props.gig.success) {
+            console.log("Saved success")
+        }
+
+        if (props.gig.error) {
+            console.log("ERROR when saving, not ok!")
+            this.setState({
+                check: true
+            });
+        }
+    }
 
     render() {
         let {step} = this.state;
@@ -156,12 +174,13 @@ class GigSteps extends Component {
                         </button>
                         <SnackBar
                             open={this.state.check}
-                            message="Please fill all fields"
-                            autoHideDuration={1500}
+                            message={this.props.gig.error ? this.props.gig.error.message: "Please fill in all fields"}
+                            autoHideDuration={10000}
                             onRequestClose={this.handleRequestClose}
                         />
                     </Col>
                 </Row>
+
             </Grid>
         )
     }
@@ -173,4 +192,8 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {})(GigSteps);
+export default connect(mapStateToProps, {
+    FETCH_UPDATE_GIG_DATA,
+    ERROR_UPDATE_GIG_DATA,
+    SUCCESS_UPDATE_GIG_DATA
+})(GigSteps);
