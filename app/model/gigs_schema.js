@@ -33,7 +33,7 @@ const gigs_schema = Joi.object().keys({
             gender: Joi.string().valid('male', 'female', "other"),
             ethnicity: Joi.string().valid("asian", "eurasian", "caucasian",
                 "black", "hispanic", "middle eastern", "indian"),
-            age: Joi.number().valid("kid", "teen", "young",
+            age: Joi.string().valid("kid", "teen", "young",
                 "mature", "senior", "custom"),
             // payment
             payment_hour: Joi.number().integer().min(0).max(99999).default(0),

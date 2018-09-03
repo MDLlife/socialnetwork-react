@@ -53,6 +53,10 @@ class gigBoard extends Component {
         this.props.DELETE_TYPE(index, this.props.role)
     };
 
+    capitalize = (s) => {
+        return s.charAt(0).toUpperCase() + s.slice(1);
+    };
+
     renderAccordion = () => {
         let arrayAccordion = [];
         let count = 0;
@@ -146,7 +150,7 @@ class gigBoard extends Component {
                                                     return (
                                                             <Chip
                                                                 key={data.key}
-                                                                className={`chip ${types[x].age === data.label ? 'selected' : ''}`}
+                                                                className={`chip ${types[x].age === data.label.toLowerCase() ? 'selected' : ''}`}
                                                                 style={{marginRight: 10, fontFamily: 'inherit', width: '100%'}}
                                                                 labelStyle={{width: '100%', textAlign: 'center'}}
                                                                 onClick={(event) => {
@@ -166,7 +170,7 @@ class gigBoard extends Component {
                                     <Col xs={12}>
                                         <h2>Ethnicity <span style={{color: '#ea2f85'}}>*</span></h2>
                                         <DropDownMenu
-                                            value={types[x].ethnicity || ''}
+                                            value={this.capitalize(types[x].ethnicity || '')}
                                             onChange={(event, index, value) => {
                                                 this.props.SET_ETHNICITY_TYPE(value, x, this.props.role)
                                             }}

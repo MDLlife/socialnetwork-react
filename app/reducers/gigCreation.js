@@ -65,7 +65,7 @@ export default function(state = {
                 }
             };
         case "SELECT_TYPE_GIG":
-            return {...state, type: action.payload};
+            return {...state, type: action.payload.toLowerCase()};
         case "SELECT_ADDRESS":
             return {...state, address: action.payload};
         case 'SELECT_LANGUAGE':
@@ -110,7 +110,7 @@ export default function(state = {
                             ...state.talents[action.role].types,
                             [action.index]: {
                                 ...state.talents[action.role].types[action.index],
-                                ethnicity: action.ethnicity
+                                ethnicity: action.ethnicity.toLowerCase()
                             }
                         }
                     }
@@ -142,7 +142,7 @@ export default function(state = {
                             ...state.talents[action.role].types,
                             [action.index]: {
                                 ...state.talents[action.role].types[action.index],
-                                age: action.age
+                                age: action.age.toLowerCase()
                             }
                         }
                     }

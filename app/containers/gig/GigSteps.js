@@ -89,12 +89,12 @@ class GigSteps extends Component {
         const data = {
             // _key: LoginStore.user._key,
             type: gig.type,
-            location: gig.location,
+            location: gig.city,
             address: gig.address,
             duration: gig.duration,
-            start_date: gig.start_date,
-            end_date: gig.end_date,
-            contact_language: gig.contact_language,
+            start_date: gig.from,
+            end_date: gig.to,
+            contact_language: gig.languages_spoken,
             talents: talents,
         };
 

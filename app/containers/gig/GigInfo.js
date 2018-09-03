@@ -28,7 +28,7 @@ import config from "config";
 import superagent from "superagent";
 
 const list = [];
-['TV Commercial', 'Movie', 'Promo video', 'TV show', 'Editorail', 'Catalog', 'Underwear catalog', 'Fashion show',
+['Tv commercial', 'Movie', 'Promo video', 'Tv show', 'Editorail', 'Catalog', 'Underwear catalog', 'Fashion show',
     'Showroom', 'Makeup show', 'Hairdress show', 'Body art', 'Hostess', 'Fitting', 'Promo event'].forEach((el) => {
     list.push(<MenuItem value={el} key={el} primaryText={el} />)
 });
@@ -192,6 +192,10 @@ class GigInfo extends Component {
         })
     };
 
+    capitalize = (s) => {
+        return s.charAt(0).toUpperCase() + s.slice(1);
+    };
+
     render() {
         let {searchLanguages, dataSource} = this.state;
         console.log('state', this.state);
@@ -203,7 +207,7 @@ class GigInfo extends Component {
                     <div style={{display: 'flex', justifyContent: 'space-between'}}>
                         <div style={{marginTop: 16}}>
                             <DropDownMenu
-                                value={this.props.gig.type || ''}
+                                value={this.capitalize(this.props.gig.type ? this.props.gig.type : '')}
                                 onChange={this.selectGigType}
                                 style={{width: 280}}
                                 underlineStyle={{ marginLeft: 0}}

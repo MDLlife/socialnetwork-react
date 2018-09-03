@@ -66,7 +66,7 @@ export const TO_DURATION = to => ({
 
 export const SET_PERSON_COUNT = (person, index, role) => ({
     type: 'SET_PERSON_COUNT',
-    person: person,
+    person: +person,
     index: index,
     role: role
 });
