@@ -29,7 +29,9 @@ export default function(state = {
             }}
     },
     'search_language': [],
-    'language_spoken': []
+    'language_spoken': [],
+    'search_payment': [],
+    'payment_method': []
 }, action) {
     switch(action.type) {
         case "SET_TYPE":
@@ -77,7 +79,7 @@ export default function(state = {
         case 'REMOVE_SEARCH_LANGUAGE':
             return {...state, search_language: state.search_language.filter(elem => elem.label !== action.payload)};
         case 'ONE_DAY_DURATION':
-            return {...state, from: action.payload, to: action.payload};
+            return {...state, from: action.payload.toISOString(), to: action.payload.toISOString()};
         case 'FROM_DURATION':
             return {...state, from: action.from};
         case 'TO_DURATION':
@@ -253,6 +255,14 @@ export default function(state = {
             return {...state, success: action.payload};
         case 'ERROR_UPDATE_GIG_DATA':
             return {...state, error: action.payload};
+        case 'SELECT_PAYMENT':
+            return {...state, payment_method: [...state.payment_method, action.payload]};
+        case 'REMOVE_PAYMENT':
+            return {...state, payment_method: state.payment_method.filter(elem => elem !== action.payload)};
+        case 'SEARCH_PAYMENT':
+            return {...state, search_payment: [...state.search_payment, {key: action.payload, label: action.payload}]};
+        case 'REMOVE_SEARCH_PAYMENT':
+            return {...state, search_payment: state.search_payment.filter(elem => elem.label !== action.payload)};
         default:
             return state
     }

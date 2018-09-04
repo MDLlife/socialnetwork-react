@@ -6,7 +6,9 @@ import AutoComplete from 'material-ui/AutoComplete';
 import Chip from 'material-ui/Chip';
 import TextField from 'material-ui/TextField';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import DatePicker from 'material-ui/DatePicker';
+import DatePicker from 'material-ui/DatePicker/DatePickerDialog';
+import TimePicker from 'material-ui/TimePicker/TimePickerDialog';
+import DateTimePicker from 'material-ui-datetimepicker';
 
 import MenuItem from "material-ui/MenuItem";
 import DropDownMenu from "material-ui/DropDownMenu";
@@ -21,7 +23,11 @@ import {
     ONE_DAY_DURATION,
     FROM_DURATION,
     TO_DURATION,
-    SET_LOCATION_GIG
+    SET_LOCATION_GIG,
+    SELECT_PAYMENT,
+    SEARCH_PAYMENT,
+    REMOVE_PAYMENT,
+    REMOVE_SEARCH_PAYMENT
 } from "actions/gigCreation";
 
 import config from "config";
@@ -40,8 +46,10 @@ class GigInfo extends Component {
         this.state = {
             duration: 'one',
             search: '',
+            searchPaymentText: '',
             searchLocation: '',
             selectedLangs: [],
+            selectedPayments: [],
             dataSource: [],
             language: [
                 {key: 0, label: 'Chinese'},
@@ -49,8 +57,16 @@ class GigInfo extends Component {
                 {key: 2, label: 'Russian'},
             ],
             searchLanguages: [
-                'Spanish','French', 'German','Japanese','Danish','Belorussian'
+                'Spanish', 'French', 'German', 'Japanese', 'Danish', 'Belorussian'
             ],
+            paymentMethod: [
+                {key: 0, label: 'MDL'},
+                {key: 1, label: 'Skycoin'},
+                {key: 2, label: 'Cash'},
+            ],
+            searchPayment: [
+                'Bitcoin', 'Waves', 'Ethereum'
+            ]
         }
     }
 
@@ -71,15 +87,15 @@ class GigInfo extends Component {
         this.props.SELECT_ADDRESS(value)
     };
 
-    selectDay = (event, date) => {
+    selectDay = (date) => {
         this.props.ONE_DAY_DURATION(date);
     };
 
-    selectFrom = (event, date) => {
+    selectFrom = (date) => {
         this.props.FROM_DURATION(date);
     };
 
-    selectTo = (event, date) => {
+    selectTo = (date) => {
         this.props.TO_DURATION(date);
     };
 
@@ -121,9 +137,41 @@ class GigInfo extends Component {
         }
     };
 
+    selectedPaymentChip = e => {
+        let elem = e.target.parentNode;
+        if (elem.classList.contains('selected')) {
+            elem.classList.remove('selected');
+            this.props.REMOVE_PAYMENT(e.target.innerHTML.toLowerCase())
+        } else {
+            elem.classList.add('selected');
+            this.props.SELECT_PAYMENT(e.target.innerHTML.toLowerCase())
+        }
+    };
+
     updateLanguageInput = searchText => {
         this.setState({
             search: searchText
+        })
+    };
+
+    updatePaymentInput = text => {
+        this.setState({
+            searchPaymentText: text
+        })
+    };
+
+    handleNewPaymentRequest = () => {
+        this.props.SELECT_PAYMENT(this.state.searchPaymentText);
+        this.props.SEARCH_PAYMENT(this.state.searchPaymentText);
+        this.setState({
+            selectedPayments: [...this.state.selectedPayments, {key: this.state.searchPaymentText, label: this.state.searchPaymentText}],
+        }, () => {
+            this.setState({
+                selectedPayments: this.state.selectedPayments.filter(function(x){
+                    return this.indexOf(x) < 0
+                }, this.state.selectedPayments.map(x => x.label)),
+                searchPaymentText: ''
+            })
         })
     };
 
@@ -153,6 +201,20 @@ class GigInfo extends Component {
         this.setState({
             selectedLangs: this.selectedLangs,
             searchLanguages: [...this.state.searchLanguages, labelToDelete[0]]
+        });
+    };
+
+    handlePaymentRequestDelete = (key) => {
+        this.search_payment = this.props.gig.search_payment;
+        const labelToDelete = this.search_payment.map((chip) => chip.key);
+        const chipToDelete = this.search_payment.map((chip) => chip.key).indexOf(key);
+        console.log(labelToDelete[0])
+        this.props.REMOVE_PAYMENT(labelToDelete[0]);
+        this.props.REMOVE_SEARCH_PAYMENT(labelToDelete[0]);
+        this.search_payment.splice(chipToDelete, 1);
+        this.setState({
+            selectedPayments: this.search_payment,
+            searchPayment: [...this.state.searchPayment, labelToDelete[0]]
         });
     };
 
@@ -186,6 +248,36 @@ class GigInfo extends Component {
         )
     };
 
+    renderPaymentChip = data => {
+        return (
+            <Chip
+                key={data.key}
+                className={`chip ${this.props.gig.language_spoken.find(e => e === data.label.toLowerCase()) ? 'selected' : ''}`}
+                style={{marginRight: 10, fontFamily: 'inherit'}}
+                onClick={this.selectedPaymentChip}
+            >
+                {data.label}
+            </Chip>
+        )
+    };
+
+    renderPaymentSearchChip = data => {
+        return (
+            <Chip
+                key={data.key}
+                className='selected'
+                style={{marginRight: 10, fontFamily: 'inherit'}}
+                onRequestDelete={() => this.handlePaymentRequestDelete(data.key)}
+                deleteIconStyle={{
+                    fill: 'rgb(255,255,255)'
+                }}
+            >
+                {data.label}
+                {/*<Plus style={{verticalAlign: 'middle', marginLeft: 5, paddingBottom: 4}} />*/}
+            </Chip>
+        )
+    };
+
     changeDuration = (event, value) => {
         this.setState({
             duration: value
@@ -197,7 +289,7 @@ class GigInfo extends Component {
     };
 
     render() {
-        let {searchLanguages, dataSource} = this.state;
+        let {searchLanguages, dataSource, searchPayment} = this.state;
         console.log('state', this.state);
         console.log('props', this.props.gig);
         return [
@@ -267,11 +359,15 @@ class GigInfo extends Component {
                                 {
                                     this.state.duration === 'one' ? (
                                         <div style={{position: 'relative'}}>
-                                            <DatePicker
+                                            <DateTimePicker
                                                 hintText='Gig Day'
                                                 textFieldStyle={{width: '100%'}}
                                                 value={this.props.gig.from || null}
                                                 onChange={this.selectDay}
+                                                DatePicker={DatePicker}
+                                                TimePicker={TimePicker}
+                                                clearIcon={null}
+                                                format='MMM DD, YYYY hh:mm'
                                             />
                                             <img
                                                 src="/static/img/calendar.svg"
@@ -288,11 +384,15 @@ class GigInfo extends Component {
                                     ) : (
                                         <div style={{display: 'flex'}}>
                                             <div style={{position: 'relative'}}>
-                                                <DatePicker
+                                                <DateTimePicker
                                                     hintText='From'
                                                     textFieldStyle={{width: '100%'}}
                                                     onChange={this.selectFrom}
                                                     value={this.props.gig.from || null}
+                                                    DatePicker={DatePicker}
+                                                    TimePicker={TimePicker}
+                                                    clearIcon={null}
+                                                    format='MMM DD, YYYY hh:mm'
                                                 />
                                                 <img
                                                     src="/static/img/calendar.svg"
@@ -305,13 +405,16 @@ class GigInfo extends Component {
                                                     }}
                                                 />
                                             </div>
-                                            <div style={{position: 'relative'}}>
-                                                <DatePicker
+                                            <div style={{position: 'relative', marginLeft: 20}}>
+                                                <DateTimePicker
                                                     hintText='To'
                                                     textFieldStyle={{width: '100%'}}
                                                     onChange={this.selectTo}
                                                     value={this.props.gig.to || null}
-                                                    style={{marginLeft: 20}}
+                                                    DatePicker={DatePicker}
+                                                    TimePicker={TimePicker}
+                                                    clearIcon={null}
+                                                    format='MMM DD, YYYY hh:mm'
                                                 />
                                                 <img
                                                     src="/static/img/calendar.svg"
@@ -333,7 +436,7 @@ class GigInfo extends Component {
                     </div>
                 </Col>
             </Row>,
-            <Row style={{paddingTop: 20, borderTop: '1px solid lightgrey'}}>
+            <Row style={{ borderTop: '1px solid lightgrey'}}>
                 <Col xs={12}>
                     <h3>Languages spoken <span style={{color: '#ea2f85'}}>*</span></h3>
                     <AutoComplete
@@ -354,6 +457,31 @@ class GigInfo extends Component {
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
                             this.state.language.map(this.renderChip, this)
+                        }
+                    </div>
+                </Col>
+            </Row>,
+            <Row style={{marginTop: 20, borderTop: '1px solid lightgrey'}}>
+                <Col xs={12}>
+                    <h3>Payment method <span style={{color: '#ea2f85'}}>*</span></h3>
+                    <AutoComplete
+                        filter={AutoComplete.fuzzyFilter}
+                        dataSource={searchPayment}
+                        maxSearchResults={5}
+                        searchText={this.state.searchPaymentText}
+                        onUpdateInput={this.updatePaymentInput}
+                        onNewRequest={this.handleNewPaymentRequest}
+                        id='language'
+                    />
+                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                        {
+                            this.props.gig.search_payment.length > 0 && this.props.gig.search_payment.map(this.renderPaymentSearchChip, this)
+                        }
+                    </div>
+                    <h4 style={{marginTop: 30}}>TOP MOST POPULAR PAYMENTS METHOD</h4>
+                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                        {
+                            this.state.paymentMethod.map(this.renderPaymentChip, this)
                         }
                     </div>
                 </Col>
@@ -380,6 +508,10 @@ export default connect(
         ONE_DAY_DURATION,
         FROM_DURATION,
         TO_DURATION,
-        SET_LOCATION_GIG
+        SET_LOCATION_GIG,
+        SELECT_PAYMENT,
+        SEARCH_PAYMENT,
+        REMOVE_PAYMENT,
+        REMOVE_SEARCH_PAYMENT
     }
 )(GigInfo);
