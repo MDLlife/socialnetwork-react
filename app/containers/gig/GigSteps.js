@@ -96,6 +96,7 @@ class GigSteps extends Component {
             end_date: gig.to,
             contact_language: gig.languages_spoken,
             talents: talents,
+            payment_methods: gig.payment_methods
         };
 
         console.log("FETCH_UPDATE_GIG_DATA-> ", data);

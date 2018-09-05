@@ -256,9 +256,9 @@ export default function(state = {
         case 'ERROR_UPDATE_GIG_DATA':
             return {...state, error: action.payload};
         case 'SELECT_PAYMENT':
-            return {...state, payment_method: [...state.payment_method, action.payload]};
+            return {...state, payment_methods: [...state.payment_method, action.payload]};
         case 'REMOVE_PAYMENT':
-            return {...state, payment_method: state.payment_method.filter(elem => elem !== action.payload)};
+            return {...state, payment_methods: state.payment_method.filter(elem => elem !== action.payload)};
         case 'SEARCH_PAYMENT':
             return {...state, search_payment: [...state.search_payment, {key: action.payload, label: action.payload}]};
         case 'REMOVE_SEARCH_PAYMENT':

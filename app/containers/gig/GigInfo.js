@@ -141,10 +141,10 @@ class GigInfo extends Component {
         let elem = e.target.parentNode;
         if (elem.classList.contains('selected')) {
             elem.classList.remove('selected');
-            this.props.REMOVE_PAYMENT(e.target.innerHTML.toLowerCase())
+            this.props.REMOVE_PAYMENT(e.target.innerHTML)
         } else {
             elem.classList.add('selected');
-            this.props.SELECT_PAYMENT(e.target.innerHTML.toLowerCase())
+            this.props.SELECT_PAYMENT(e.target.innerHTML)
         }
     };
 
@@ -197,7 +197,6 @@ class GigInfo extends Component {
         this.selectedLangs = this.props.gig.search_language;
         const labelToDelete = this.selectedLangs.map((chip) => chip.key);
         const chipToDelete = this.selectedLangs.map((chip) => chip.key).indexOf(key);
-        console.log(labelToDelete[0])
         this.props.REMOVE_LANGUAGE(labelToDelete[0]);
         this.props.REMOVE_SEARCH_LANGUAGE(labelToDelete[0]);
         this.selectedLangs.splice(chipToDelete, 1);
@@ -211,7 +210,6 @@ class GigInfo extends Component {
         this.search_payment = this.props.gig.search_payment;
         const labelToDelete = this.search_payment.map((chip) => chip.key);
         const chipToDelete = this.search_payment.map((chip) => chip.key).indexOf(key);
-        console.log(labelToDelete[0])
         this.props.REMOVE_PAYMENT(labelToDelete[0]);
         this.props.REMOVE_SEARCH_PAYMENT(labelToDelete[0]);
         this.search_payment.splice(chipToDelete, 1);
