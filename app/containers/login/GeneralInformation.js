@@ -154,46 +154,46 @@ class GeneralInformation extends Component {
                     />
                 </Col>
             </Row>,
-            this.state.role === '1' ? (
-                <Row>
-                    <Col xs={12} style={{display: 'flex', justifyContent: 'center', marginTop: 28}}>
-                        <div>
-                            <RadioButtonGroup
-                                name='booker-status'
-                                style={{display: 'flex'}}
-                                defaultSelected='individual'
-                                onChange={this.switchStatus}
-                            >
-                                <RadioButton
-                                    value='individual'
-                                    label='Individual'
-                                    style={{marginRight: 75}}
-                                />
-                                <RadioButton
-                                    value='agency'
-                                    label='Agency'
-                                />
-                            </RadioButtonGroup>
-                        </div>
-                    </Col>
-                </Row>
-            ) : <div></div>,
-            this.state.status === 'agency' ? (
-                <Row>
-                    <Col xs={12} className='center'>
-                        <TextField
-                            value={this.state.agency}
-                            floatingLabelText='Agency name'
-                            onChange={this.handleChange}
-                            name='agency'
-                        />
-                    </Col>
-                </Row>
-            ) : <div></div>,
+            // this.state.role === '1' ? (
+            //     <Row>
+            //         <Col xs={12} style={{display: 'flex', justifyContent: 'center', marginTop: 28}}>
+            //             <div>
+            //                 <RadioButtonGroup
+            //                     name='booker-status'
+            //                     style={{display: 'flex'}}
+            //                     defaultSelected='individual'
+            //                     onChange={this.switchStatus}
+            //                 >
+            //                     <RadioButton
+            //                         value='individual'
+            //                         label='Individual'
+            //                         style={{marginRight: 75}}
+            //                     />
+            //                     <RadioButton
+            //                         value='agency'
+            //                         label='Agency'
+            //                     />
+            //                 </RadioButtonGroup>
+            //             </div>
+            //         </Col>
+            //     </Row>
+            // ) : <div></div>,
+            // this.state.status === 'agency' ? (
+            //     <Row>
+            //         <Col xs={12} className='center'>
+            //             <TextField
+            //                 value={this.state.agency}
+            //                 floatingLabelText='Agency name'
+            //                 onChange={this.handleChange}
+            //                 name='agency'
+            //             />
+            //         </Col>
+            //     </Row>
+            // ) : <div></div>,
             <Row>
                 <Col xs={12} className='center'>
                     <AutoComplete
-                        floatingLabelText="Location"
+                        floatingLabelText="City"
                         dataSource={this.state.dataSource}
                         onUpdateInput={this.handleUpdateInput}
                         maxSearchResults={5}
@@ -203,19 +203,19 @@ class GeneralInformation extends Component {
                     />
                 </Col>
             </Row>,
-            this.state.role === '1' ? (
-                <Row>
-                    <Col xs={12} className='center'>
-                        <div style={styles.block}>
-                            <Toggle
-                                label="Open for business trips"
-                                thumbSwitchedStyle={styles.thumbSwitched}
-                                trackSwitchedStyle={styles.trackSwitched}
-                            />
-                        </div>
-                    </Col>
-                </Row>
-            ) : <div></div>,
+            // this.state.role === '1' ? (
+            //     <Row>
+            //         <Col xs={12} className='center'>
+            //             <div style={styles.block}>
+            //                 <Toggle
+            //                     label="Open for business trips"
+            //                     thumbSwitchedStyle={styles.thumbSwitched}
+            //                     trackSwitchedStyle={styles.trackSwitched}
+            //                 />
+            //             </div>
+            //         </Col>
+            //     </Row>
+            // ) : <div></div>,
             <Row>
                 <Col xs={12} style={{display: 'flex', justifyContent: 'center'}}>
                     <button

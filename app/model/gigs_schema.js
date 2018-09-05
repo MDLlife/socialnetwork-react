@@ -23,8 +23,14 @@ const gigs_schema = Joi.object().keys({
     start_date: Joi.date().iso().default(new Date()),
     end_date: Joi.date().iso().required().default(moment().add(1, 'days')),
     contact_language: Joi.array().items(Joi.string()
-        .valid("chinese", "english", "russian", "portuguese")
-        .default("spanish", "portuguese", "english")),
+        .valid(
+        "chinese", "english", "spanish", "french", "german",
+        "japanese", "danish", "belorussian", "russian", "portuguese"
+        )),
+    payment_methods: Joi.array().items(Joi.string().valid(
+        'SKY', 'MDL', 'USD', 'RMB', 'BTC', 'ETH', 'WAVES', 'XRM',
+        'CLOAK', 'XVG', 'LTC', 'DASH', 'EOS', 'BCH', 'ETC', 'ZCASH'
+    )),
 
     talents: Joi.array().items(
         Joi.object().keys({
