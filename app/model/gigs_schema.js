@@ -4,6 +4,7 @@ const moment = require('moment');
 
 const gigs_schema = Joi.object().keys({
 
+    user_key: Joi.string().required(),
     type: Joi.string().valid(
         "tv commercial", "movie", "promo video", "tv show",
         "editorial", "catalog", "underwear catalog", "fashion show", "showroom",

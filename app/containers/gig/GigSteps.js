@@ -4,6 +4,8 @@ import {Step, StepLabel, Stepper} from 'material-ui/Stepper';
 import {Col, Grid, Row} from 'react-bootstrap';
 import SnackBar from 'material-ui/Snackbar';
 
+import LoginStore from 'store/LoginStore';
+
 import GigInfo from './GigInfo';
 import TalentsNeeded from './TalentsNeeded';
 
@@ -87,7 +89,7 @@ class GigSteps extends Component {
         const gig = this.props.gig;
 
         const data = {
-            // _key: LoginStore.user._key,
+            user_key: LoginStore.user._key,
             type: gig.type,
             location: gig.city,
             address: gig.address,
@@ -135,10 +137,10 @@ class GigSteps extends Component {
                             <h1>Gig Creation</h1>
                         </div>
                         <div className='gig-btn-group'>
-                            <button className='publish-btn'>Publish gig</button>
-                            <button onClick={this.saveGig}>Save</button>
-                            <button>Delete</button>
-                            <button>Close</button>
+                            <button className='publish-btn' onClick={this.saveGig}>Publish gig</button>
+                            {/*<button onClick={this.saveGig}>Save</button>*/}
+                            {/*<button>Delete</button>*/}
+                            {/*<button>Close</button>*/}
                         </div>
                     </Col>
                 </Row>
