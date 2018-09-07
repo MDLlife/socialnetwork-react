@@ -11,7 +11,6 @@ import {
     SET_GENDER_TYPE,
     SET_AGE_TYPE,
     SET_OVERTIME_TYPE,
-    SET_PAYMENT_TYPE,
     SET_GIG_RATE_TYPE,
     SET_HOUR_RATE_TYPE,
     SET_PAYMENT_VISIBLE,
@@ -51,6 +50,10 @@ class gigBoard extends Component {
 
     deleteType = (index) => {
         this.props.DELETE_TYPE(index, this.props.role)
+    };
+
+    capitalize = (s) => {
+        return s.charAt(0).toUpperCase() + s.slice(1);
     };
 
     renderAccordion = () => {
@@ -146,7 +149,7 @@ class gigBoard extends Component {
                                                     return (
                                                             <Chip
                                                                 key={data.key}
-                                                                className={`chip ${types[x].age === data.label ? 'selected' : ''}`}
+                                                                className={`chip ${types[x].age === data.label.toLowerCase() ? 'selected' : ''}`}
                                                                 style={{marginRight: 10, fontFamily: 'inherit', width: '100%'}}
                                                                 labelStyle={{width: '100%', textAlign: 'center'}}
                                                                 onClick={(event) => {
@@ -166,7 +169,7 @@ class gigBoard extends Component {
                                     <Col xs={12}>
                                         <h2>Ethnicity <span style={{color: '#ea2f85'}}>*</span></h2>
                                         <DropDownMenu
-                                            value={types[x].ethnicity || ''}
+                                            value={this.capitalize(types[x].ethnicity || '')}
                                             onChange={(event, index, value) => {
                                                 this.props.SET_ETHNICITY_TYPE(value, x, this.props.role)
                                             }}
@@ -315,7 +318,6 @@ export default connect(
         SET_GENDER_TYPE,
         SET_AGE_TYPE,
         SET_OVERTIME_TYPE,
-        SET_PAYMENT_TYPE,
         SET_GIG_RATE_TYPE,
         SET_HOUR_RATE_TYPE,
         SET_PAYMENT_VISIBLE,

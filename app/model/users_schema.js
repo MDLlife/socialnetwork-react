@@ -26,7 +26,10 @@ const users_schema = Joi.object().keys({
     gender: Joi.string().valid('male', 'female', "other"),
     date_of_birth: Joi.date().iso(),
     ethnicity: Joi.string().valid("asian", "eurasian", "caucasian", "black", "hispanic", "middle eastern", "indian"),
-    languages_spoken: Joi.array().items(Joi.string().valid("chinese", "english", "spanish", "french", "german", "japanese", "danish", "belorussian", "russian", "portuguese").default([])),
+    languages_spoken: Joi.array().items(Joi.string().valid(
+        "chinese", "english", "spanish", "french", "german",
+        "japanese", "danish", "belorussian", "russian", "portuguese"
+    ).default([])),
 
     // 2. Categories
     work_areas: Joi.array().items(Joi.string().valid(

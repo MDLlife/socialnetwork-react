@@ -4,6 +4,7 @@ const moment = require('moment');
 
 const gigs_schema = Joi.object().keys({
 
+    user_key: Joi.string().required(),
     type: Joi.string().valid(
         "tv commercial", "movie", "promo video", "tv show",
         "editorial", "catalog", "underwear catalog", "fashion show", "showroom",
@@ -23,8 +24,14 @@ const gigs_schema = Joi.object().keys({
     start_date: Joi.date().iso().default(new Date()),
     end_date: Joi.date().iso().required().default(moment().add(1, 'days')),
     contact_language: Joi.array().items(Joi.string()
-        .valid("chinese", "english", "russian", "portuguese")
-        .default("spanish", "portuguese", "english")),
+        .valid(
+        "chinese", "english", "spanish", "french", "german",
+        "japanese", "danish", "belorussian", "russian", "portuguese"
+        )),
+    payment_methods: Joi.array().items(Joi.string().valid(
+        'SKY', 'MDL', 'USD', 'RMB', 'BTC', 'ETH', 'WAVES', 'XRM',
+        'CLOAK', 'XVG', 'LTC', 'DASH', 'EOS', 'BCH', 'ETC', 'ZCASH'
+    )),
 
     talents: Joi.array().items(
         Joi.object().keys({
@@ -33,7 +40,7 @@ const gigs_schema = Joi.object().keys({
             gender: Joi.string().valid('male', 'female', "other"),
             ethnicity: Joi.string().valid("asian", "eurasian", "caucasian",
                 "black", "hispanic", "middle eastern", "indian"),
-            age: Joi.number().valid("kid", "teen", "young",
+            age: Joi.string().valid("kid", "teen", "young",
                 "mature", "senior", "custom"),
             // payment
             payment_hour: Joi.number().integer().min(0).max(99999).default(0),

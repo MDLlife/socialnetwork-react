@@ -66,7 +66,7 @@ export const TO_DURATION = to => ({
 
 export const SET_PERSON_COUNT = (person, index, role) => ({
     type: 'SET_PERSON_COUNT',
-    person: person,
+    person: +person,
     index: index,
     role: role
 });
@@ -170,5 +170,25 @@ export const FETCH_UPDATE_GIG_DATA = data => {
                 })
         }
     }
-}
+};
+
+export const SELECT_PAYMENT = payment => ({
+    type: 'SELECT_PAYMENT',
+    payload: payment
+});
+
+export const REMOVE_PAYMENT = payment => ({
+    type: 'REMOVE_PAYMENT',
+    payload: payment
+});
+
+export const SEARCH_PAYMENT= payment => ({
+    type: 'SEARCH_PAYMENT',
+    payload: payment
+});
+
+export const REMOVE_SEARCH_PAYMENT = payment => ({
+    type: 'REMOVE_SEARCH_PAYMENT',
+    payload: payment
+});
 

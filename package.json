@@ -70,6 +70,7 @@
     "jwt-decode": "^2.0.1",
     "lodash": "^3.10.1",
     "material-ui": "^0.20.0",
+    "material-ui-datetimepicker": "^1.0.7",
     "md5": "^2.1.0",
     "moment": "^2.13.0",
     "normalizr": "^1.0.0",

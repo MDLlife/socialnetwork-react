@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Row, Col, Grid} from 'react-bootstrap';
-import Chip from 'material-ui/Chip';
-import LoginStore from 'store/LoginStore';
+import {Row, Col} from 'react-bootstrap';
 import Delete from 'material-ui/svg-icons/action/highlight-off';
 import TalentBoard from './TalentBoard';
 
