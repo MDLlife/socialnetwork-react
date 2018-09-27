@@ -1,6 +1,6 @@
 {
   "name": "socialnetwork-react",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "MDL ReactJS",
   "scripts": {
     "dev": "cross-env REDIS_HOST=localhost DISABLE_CACHE=true DEBUG=true WEBPACK_PORT=3004 NODE_PATH=./app concurrent --kill-others \"nodemon app/server\" \"node webpack.server.js\" \"gulp css:watch\"",

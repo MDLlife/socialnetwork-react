@@ -42,11 +42,25 @@ class LoginLayout extends Component {
                     // double check with the API results
                     // console.log(user)
 
+                    if(!user._key){
+                        console.log("ERROR: COULD NOT GET USER _KEY FROM USER!! WILL RETRY USING ID");
+                        if(!user.id){
+                            console.log("ERROR: COULD NOT GET USER ID FROM USER!! DOES THIS USER EXISTS ?? WILL REDIRECT TO LOGIN AGAIN");
+                        } else {
+                            var _key = user.id.replaceAll("users/","");
+                            if(!_key){
+                                console.log("ERROR: COULD NOT GET _key FROM ID FIELD!! DOES THIS USER EXISTS ?? WILL REDIRECT TO LOGIN AGAIN")
+                            } else {
+                                user._key = _key;
+                            }
+                        }
+                    }
+
                     getUser(user._key, function (err, res) {
 
                         if (err || !res || res.body.length === 0) {
                             // err
-                            console.log("ERROR: COULD NOT GET USER FROM API, DOES THIS USER EXISTS ?? WILL REDIRECT TO LOGIN");
+                            console.log("ERROR: COULD NOT GET USER FROM API, DOES THIS USER EXISTS ?? WILL REDIRECT TO LOGIN AGAIN");
                             setTimeout(function () {
                                 window.location.href = config.API_URL + "/login";
                             }, 1000);
