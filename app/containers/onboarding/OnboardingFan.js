@@ -154,7 +154,7 @@ class OnboardingFan extends Component {
                 </Row>
                 <SnackBar
                     open={this.state.check}
-                    message={this.props.fan.error ? this.props.fan.error.message : "Please fill in all fields"}
+                    message={this.props.fan && this.props.fan.error ? this.props.fan.error.message : "Please fill in all fields"}
                     autoHideDuration={10000}
                     onRequestClose={this.handleRequestClose}
                 />

@@ -154,7 +154,7 @@ export const FETCH_UPDATE_GIG_DATA = data => {
     const result = validate_schema.validate(data, gigs_schema);
     // console.log("RESULT validate -> ", result);
     if (result.error) {
-        console.log("ERROR: NOT VALID, ", result, data);
+        console.log("ERROR: FETCH_UPDATE_GIG_DATA, NOT VALID, ", result, data);
         return (dispatch) => {
             dispatch(ERROR_UPDATE_GIG_DATA(result.error))
         };
@@ -165,8 +165,10 @@ export const FETCH_UPDATE_GIG_DATA = data => {
                 .send(data)
                 .withCredentials()
                 .then(res => {
-                    console.log('Success', res);
                     dispatch(SUCCESS_UPDATE_GIG_DATA(true))
+                }).catch(err => {
+                    console.log("ERROR: FETCH_UPDATE_GIG_DATA, ", err);
+                    dispatch(ERROR_UPDATE_GIG_DATA(err))
                 })
         }
     }
@@ -182,7 +184,7 @@ export const REMOVE_PAYMENT = payment => ({
     payload: payment
 });
 
-export const SEARCH_PAYMENT= payment => ({
+export const SEARCH_PAYMENT = payment => ({
     type: 'SEARCH_PAYMENT',
     payload: payment
 });

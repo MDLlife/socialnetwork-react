@@ -609,7 +609,7 @@ class OnboardingBooker extends Component {
                 </Row>
                 <SnackBar
                     open={this.state.check}
-                    message={this.props.booker.error ? this.props.booker.error.message : "Please fill in all fields"}
+                    message={this.props.booker && this.props.booker.error ? this.props.booker.error.message : "Please fill in all fields"}
                     autoHideDuration={10000}
                     onRequestClose={this.handleRequestClose}
                 />

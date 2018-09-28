@@ -278,7 +278,7 @@ class OnboardingSteps extends Component {
                         </button>
                         <SnackBar
                             open={this.state.check}
-                            message={this.props.gig.error ? this.props.gig.error.message: "Please fill in all fields"}
+                            message={this.props.gig && this.props.gig.error ? this.props.gig.error.message : "Please fill in all fields"}
                             autoHideDuration={10000}
                             onRequestClose={this.handleRequestClose}
                         />

@@ -3,6 +3,7 @@ import fans_schema from 'model/fans_schema';
 import validate_schema from 'model/validate_schema';
 
 import config from 'config';
+
 const url = config.API_URL;
 export const SELECT_GENDER = gender => ({
     type: 'SELECT_GENDER',
@@ -28,7 +29,7 @@ export const FETCH_UPDATE_FAN_DATA = data => {
     const result = validate_schema.validate(data, fans_schema);
     console.log("RESULT validate -> ", result);
     if (result.error) {
-        console.log("ERROR: NOT VALID, ", result, data);
+        console.log("ERROR: FETCH_UPDATE_FAN_DATA, NOT VALID, ", result, data);
         return (dispatch) => {
             dispatch(ERROR_UPDATE_FAN_DATA(result.error))
         };
@@ -39,12 +40,10 @@ export const FETCH_UPDATE_FAN_DATA = data => {
                 .send(data)
                 .withCredentials()
                 .then(res => {
-                    console.log('Success', res);
-
-                    //TODO:  dispatch success
                     dispatch(SUCCESS_UPDATE_FAN_DATA(true))
                 })
-            .catch(err =>{
+                .catch(err => {
+                    console.log("ERROR: FETCH_UPDATE_FAN_DATA, ", err);
                     dispatch(ERROR_UPDATE_FAN_DATA(err))
                 })
         }

@@ -50,7 +50,7 @@ export const FETCH_UPDATE_BOOKER_DATA = data => {
     const result = validate_schema.validate(data, users_schema);
     console.log("RESULT validate -> ", result);
     if (result.error) {
-        console.log("ERROR: NOT VALID, ", result, data);
+        console.log("ERROR: FETCH_UPDATE_BOOKER_DATA, NOT VALID, ", result, data);
         return (dispatch) => {
             dispatch(ERROR_UPDATE_BOOKER_DATA(result.error))
         };
@@ -67,6 +67,7 @@ export const FETCH_UPDATE_BOOKER_DATA = data => {
                     dispatch(SUCCESS_UPDATE_BOOKER_DATA(true))
                 })
                 .catch(err =>{
+                    console.log("ERROR: FETCH_UPDATE_BOOKER_DATA, ", err);
                     dispatch(ERROR_UPDATE_BOOKER_DATA(err))
                 })
         }

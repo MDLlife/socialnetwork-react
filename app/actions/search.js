@@ -23,7 +23,7 @@ export const loadSearchResults = ({index, query}) => {
             return searchResults
         }, err => {
             var errmsg = `loadSearchResults, error while fetching regions : ${err.message}`
-            console.log('ERROR: ', errmsg)
+            console.log('ERROR: loadSearchResults, ', errmsg);
             dispatch(setHttpError(errmsg))
         })
     }

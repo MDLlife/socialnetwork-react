@@ -159,8 +159,10 @@ export const FETCH_GET_USER_DATA = id => {
             .get(url + `/read/users/${id}`)
             .withCredentials()
             .then(res => {
-                console.log(JSON.parse(res.text))
                 dispatch(GET_USER_DATA(JSON.parse(res.text)))
+            }).catch(err => {
+                console.log("ERROR: FETCH_GET_USER_DATA, ", err);
+                dispatch(ERROR_UPDATE_USER_DATA(err))
             })
     }
 };
@@ -169,7 +171,7 @@ export const FETCH_UPDATE_USER_DATA = data => {
     const result = validate_schema.validate(data, users_schema);
     // console.log("RESULT validate -> ", result);
     if (result.error) {
-        console.log("ERROR: NOT VALID, ", result, data);
+        console.log("ERROR: FETCH_UPDATE_USER_DATA, NOT VALID, ", result, data);
         return (dispatch) => {
             dispatch(ERROR_UPDATE_USER_DATA(result.error))
         };
@@ -180,11 +182,10 @@ export const FETCH_UPDATE_USER_DATA = data => {
                 .send(data)
                 .withCredentials()
                 .then(res => {
-                    console.log('Success', res);
-
                     dispatch(SUCCESS_UPDATE_USER_DATA(true))
                 })
                 .catch(err => {
+                    console.log("ERROR: FETCH_UPDATE_USER_DATA, ", err);
                     dispatch(ERROR_UPDATE_USER_DATA(err))
                 })
         }
