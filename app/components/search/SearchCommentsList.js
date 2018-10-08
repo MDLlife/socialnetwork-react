@@ -11,7 +11,7 @@ class SearchCommentsList extends React.Component {
 		if (!hits || hits.length === 0) {
 			return ("")
 		}
-		let counter = 0
+		let counter = 0;
 		return (
 			<div>
 				<table className="sk-table sk-table-striped" style={{width: '100%', boxSizing: 'border-box'}}>
@@ -27,7 +27,7 @@ class SearchCommentsList extends React.Component {
 					{_.map(hits, hit => {
 						const _hit = _.extend({}, hit._source, hit.highlight)
                         return (
-							<tr key={(counter++) + _hit.id}>
+							<tr key={(counter++) /*+ _hit._id*/}>
 								<td><img style={{height: '24px', width: '24px'}}
 								         src={_.get(_hit, "highlight.avatarurl", _hit.avatarurl)}/></td>
 								<td>

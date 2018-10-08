@@ -5,6 +5,14 @@ import EditIcon from 'material-ui/svg-icons/content/create';
 import LoginStore from "store/LoginStore";
 import Avatar from 'material-ui/Avatar';
 
+import Medals from '../../onboarding/preview/Medals';
+import Video from "../../onboarding/preview/Video";
+import Categories from "../../onboarding/preview/Categories";
+import AdditionalInfo from "../../onboarding/preview/AdditionalInfo";
+import Gigs from "../../onboarding/preview/Gigs";
+import InfoPanel from "../../onboarding/preview/InfoPanel";
+import CompCard from "../../onboarding/preview/CompCard";
+
 class Profile extends Component {
 
     constructor(props) {
@@ -25,127 +33,138 @@ class Profile extends Component {
     render() {
 
         return (
-            <Col xs={8}>
-                <div
-                    style={{
-                        display: 'flex'
-                    }}
-                >
-                    <div
+            <Col xs={9}>
+                <div className={"profile-talent-container"}>
+                    <div className={"profile-talent-row"} style={{width: "23.1rem"}}>
+                        <div
                         style={{
                             background: 'url(/static/img/IntroLoginBG.jpg) left center',
-                            width: '33%',
                             height: 285,
-                            marginRight: 10,
-                            borderRadius: 5
+                            width: "23.1rem",
+                            borderRadius: "5px 5px 0 0",
                         }}
-                    >
-                        <div
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                padding: 10
-                            }}
                         >
-                            <div style={{color: 'white'}}>
-                                Model
+                            <div
+                                style={{
+                                   display: 'flex',
+                                   justifyContent: 'space-between',
+                                   padding: 10
+                            }}
+                            >
+                                    <div style={{color: 'white'}}>
+                                        Model
+                                    </div>
+                                    <EditIcon
+                                        color='white'
+                                        style={{
+                                            height: 18,
+                                            cursor: 'pointer',
+                                        }}
+                                    />
                             </div>
-                            <EditIcon
-                                color='white'
-                                style={{
-                                    height: 18,
-                                    cursor: 'pointer',
-                                }}
-                            />
+                            <div>
+                                    <div
+                                        style={{
+                                            backgroundColor: '#00C245',
+                                            height: 14,
+                                            width: 14,
+                                            borderRadius: '50%',
+                                            position: 'absolute',
+                                            left: 90,
+                                            top: 54,
+                                            border: '1px solid white'
+                                        }}
+                                    />
+                                    <div
+                                        style={{
+                                            display: 'flex',
+                                            justifyContent: 'center'
+                                        }}
+                                    >
+                                        <Avatar src={this.state.avatarurl} size={154} style={{
+                                            borderRadius: '50%',
+                                            border: '1px solid blue',
+                                            height: 156
+                                        }}/>
+                                    </div>
+                            </div>
+                            <div
+                                    style={{
+                                        display: 'grid',
+                                        justifyContent: 'center',
+                                        color: 'white',
+                                        justifyItems: 'center'
+                                    }}
+                                >
+                                    <div style={{fontSize: 24}}>{this.state.username}</div>
+                                    <div>New York, USA</div>
+                                    <div>Mature</div>
+                                </div>
                         </div>
-                        <div>
+                        <Medals/>
+                        <Video/>
+                        <Categories/>
+                        <AdditionalInfo/>
+                    </div>
+                    <div className={"profile-talent-row"} style={{width: "55.1rem"}}>
+                        {/*
                             <div
                                 style={{
-                                    backgroundColor: '#00C245',
-                                    height: 20,
-                                    width: 20,
-                                    borderRadius: '50%',
-                                    position: 'absolute',
-                                    left: 68,
-                                    top: 54,
-                                    border: '1px solid white'
-                                }}
-                            />
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    justifyContent: 'center'
+                                    backgroundColor: 'white',
+                                    width: '55.1rem',
+                                    height: 285,
+                                    marginRight: 10,
+                                    borderRadius: 5,
+                                    position: 'relative',
                                 }}
                             >
-                                <Avatar src={this.state.avatarurl} size={156} style={{
-                                    borderRadius: '50%',
-                                    border: '1px solid blue',
-                                    height: 156
-                                }}/>
+                                <div
+                                    className='ribbon ribbon-top-left'
+                                >
+                                    <span>In development</span>
+                                </div>
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        marginTop: 65,
+                                        fontFamily: 'Gilroy Medium'
+                                    }}
+                                >
+                                    <h3>All your data is saved</h3>
+                                </div>
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        marginTop: 10,
+                                        fontFamily: 'Gilroy Medium'
+                                    }}
+                                >
+                                    <h4>Your data will be shown here with a new update</h4>
+                                </div>
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        textAlign: 'center',
+                                        padding: '0px 40px'
+                                    }}
+                                >
+                                    <h5>Please check out our <a href="/today"
+                                                                style={{color: '#FF3399'}}>Today</a> section and
+                                        follow
+                                        the latest platform and market news</h5>
+                                </div>
                             </div>
-                        </div>
-                        <div
-                            style={{
-                                display: 'grid',
-                                justifyContent: 'center',
-                                color: 'white',
-                                justifyItems: 'center'
-                            }}
-                        >
-                            <div style={{fontSize: 24}}>{this.state.username}</div>
-                            <div>New York, USA</div>
-                            <div>Mature</div>
-                        </div>
+                            */
+                        }
+                        <Gigs/>
+                        <InfoPanel/>
+                        <CompCard/>
                     </div>
-                    <div
-                        style={{
-                            backgroundColor: 'white',
-                            width: '64%',
-                            height: 285,
-                            marginRight: 10,
-                            borderRadius: 5,
-                            position: 'relative',
-                        }}
-                    >
-                        <div
-                            className='ribbon ribbon-top-left'
-                        >
-                            <span>In development</span>
-                        </div>
-                        <div
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                marginTop: 65,
-                                fontFamily: 'Gilroy Medium'
-                            }}
-                        >
-                            <h3>All your data is saved</h3>
-                        </div>
-                        <div
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                marginTop: 10,
-                                fontFamily: 'Gilroy Medium'
-                            }}
-                        >
-                            <h4>Your data will be shown here with a new update</h4>
-                        </div>
-                        <div
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                textAlign: 'center',
-                                padding: '0px 40px'
-                            }}
-                        >
-                            <h5>Please check out our <a href="/today" style={{color: '#FF3399'}}>Today</a> section and
-                                follow
-                                the latest platform and market news</h5>
-                        </div>
-                    </div>
-                </div>
+            </div>
+                {/*
                 <div
                     style={{
                         width: '100%',
@@ -183,7 +202,7 @@ class Profile extends Component {
                         </div>
                     </div>
 
-                </div>
+                </div>*/}
             </Col>
         )
     }

@@ -1,0 +1,14 @@
+.profile-talent-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+
+  .profile-talent-row{
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 6px 0 6px;
+    align-items: flex-start;
+  }
+}

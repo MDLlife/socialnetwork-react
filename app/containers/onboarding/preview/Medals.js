@@ -6,7 +6,6 @@ class Medals extends Component {
         return (
             <div style={{
                 height: 120,
-                backgroundColor: 'lightgrey',
                 borderBottomLeftRadius: '5px',
                 borderBottomRightRadius: '5px',
                 backgroundColor: 'white',
