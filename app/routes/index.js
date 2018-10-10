@@ -36,6 +36,7 @@ import logout from 'components/login/LogoutLayout'
 
 import Search from 'containers/search/SearchComponent';
 
+import Messager from 'containers/today/messager/Messager';
 
 injectTapEventPlugin();
 
@@ -111,6 +112,8 @@ export default function (history) {
 
                     <Route path="news/:id" component={FullPost}/>
                     <Route path="news/:index/:value" component={TodayContainer}/>
+
+                    <Route path="messager" component={TodayContainer}/>
 
                     <Route path="*" component={Notfound}/>
                 </Route>

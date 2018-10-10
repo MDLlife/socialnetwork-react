@@ -1,0 +1,127 @@
+.messager-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  border-radius: 0.4rem;
+  background-color: #fff;
+  box-shadow: 0 0 0.2rem 0 rgba(0, 0, 0, 0.12);
+}
+
+.search-dialog-field-container {
+  padding: 0 1.9rem 0 1.9rem;
+  background-color: #f4f4f4;
+  .search-dialog-svg-icon {
+    display: inline-block;
+    margin-right: 0.7rem;
+    position: relative;
+    top: 0.6rem;
+  }
+}
+
+.dialogue-list{
+  list-style: none;
+  padding: 0;
+  .selected-dialogue-list-item,.dialogue-list-item{
+    height: 8.1rem;
+    border-left: 0.4rem solid;
+    cursor: pointer;
+    h5{
+      font-size: 1.6rem;
+      text-align: left;
+      font-family: "Gilroy Medium";
+      color: #000;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0 0 0 0;
+    }
+    p{
+      font-size: 1.4rem;
+      text-align: left;
+      color: #808080;
+      font-family: "Gilroy Medium";
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0;
+    }
+    p.unread-message{
+      color: #000;
+    }
+    .last-message-time{
+      font-size: 1.2rem;
+      text-align: right;
+      color: #808080;
+      font-family: "Gilroy Medium";
+    }
+    .dialogue-list-item-avatar{
+      margin: 1.8rem 1.4rem 1.7rem 1.8rem;
+      border: 0.1rem solid #eb3386;
+    }
+    .gigs-number-messages, .number-messages{
+      display: inline-block;
+      font-size: 1.2rem;
+      line-height: 1rem;
+      text-align: center;
+      color: rgba(97,17,106,0.8);
+      font-family: "Gilroy Medium";
+      padding: 0.6rem 1.4rem 0.6rem 1.3rem;
+      border-radius: 11px;
+      box-shadow: -0.7px -0.7px 38px 0 rgba(0, 0, 0, 0.1);
+    }
+    .number-messages{
+      background-color: rgba(97,17,106,0.1);
+    }
+    .gigs-number-messages{
+      background-color: #ffc503;
+    }
+  }
+  .dialogue-list-item{
+    border-color: transparent;
+  }
+  .selected-dialogue-list-item{
+    border-image:  linear-gradient(to top, #fd2ac5, #3b096e) 4;
+    background-color: #f4f4f4;
+  }
+}
+
+.dialogue-header-container{
+  display: flex;
+  flex-direction: column;
+  height: 6.4rem;
+  h5{
+    font-size: 1.6rem;
+    text-align: left;
+    color: #000;
+    font-family: "Gilroy Medium";
+    margin: 1.5rem 0 0.5rem 0;
+  }
+  .dialogue-header-item{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1.8rem 0 2.1rem;
+    p{
+      font-size: 1.2rem;
+      color: #808080;
+      font-family: "Gilroy Medium";
+      margin: 0;
+    }
+    .status-pill{
+      font-size: 1.2rem;
+      background-color: #d1d1d1;
+      padding: 0.4rem 1rem 0.7rem 1.2rem;
+      border-radius: 1.1rem;
+      color: #000;
+      margin-left: 0.4rem;
+    }
+    .status-pills-container{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      margin-bottom: 0.6rem;
+    }
+  }
+}
+
