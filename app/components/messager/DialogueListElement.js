@@ -51,8 +51,8 @@ const DialogueListElement = (props) => {
 
 DialogueListElement.propTypes={
     handler: PropTypes.func,
-    index: PropTypes.string || PropTypes.number,
-    activeIndex: PropTypes.string || PropTypes.number,
+    index: PropTypes.number,
+    activeIndex: PropTypes.number,
     src: PropTypes.string,
     online: PropTypes.bool,
     name: PropTypes.string,

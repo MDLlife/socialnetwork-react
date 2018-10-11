@@ -6,6 +6,8 @@ import Divider from 'material-ui/Divider';
 import SearchDialogField from 'components/messager/SearchDialogField';
 import DialogueList from "../../../components/messager/DialogueList";
 import DialogueHeader from "components/messager/DialogueHeader";
+import ChatField from 'components/messager/ChatField';
+import ChatInputField from 'components/messager/ChatInputField';
 
 const TabStyle = {
     textTransform: "none",
@@ -75,6 +77,8 @@ class Messager extends React.Component{
     }
 
     render(){
+        const time = (new Date()).toISOString();
+        const lessTime = (new Date()).setDate((new Date(time)).getDate()-1);
         return(
             <Col xs={9}>
                 <div className={'messager-container'}>
@@ -117,12 +121,14 @@ class Messager extends React.Component{
                             </Tab>
                         </Tabs>
                     </div>
-                    <div style={{width: "100%",borderLeft: "0.1rem solid #e4e4e4"}}>
+                    <div style={{width: "100%", height: "100%",borderLeft: "0.1rem solid #e4e4e4"}}>
                         <DialogueHeader
                             name={"Model Name"}
                             onlineStatus={"Last seen 20 minutes ago"}
                             roles={["Dancer", "Actor", "Model"]}
                         />
+                        <ChatField messages={[{owner: "me", text: "I just wanna let you know you a stupid fucking cunt", time: lessTime}, {owner: "notMe", text: "Get the fuck up of dick, get the fuck up of dick", name: "Model Name", time: time}]}/>
+                        <ChatInputField/>
                     </div>
                 </div>
             </Col>
