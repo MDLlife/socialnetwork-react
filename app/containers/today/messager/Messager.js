@@ -8,6 +8,8 @@ import DialogueList from "../../../components/messager/DialogueList";
 import DialogueHeader from "components/messager/DialogueHeader";
 import ChatField from 'components/messager/ChatField';
 import ChatInputField from 'components/messager/ChatInputField';
+import OfferGigModal from 'components/messager/OfferGigModal';
+import Dialog from 'material-ui/Dialog';
 
 const TabStyle = {
     textTransform: "none",
@@ -53,7 +55,8 @@ class Messager extends React.Component{
             {name: "User6", index: 13, src: "", lastMessage: "I just came to say Hello", lastMessageTime: "just now", gigs: false, numMessages: 30, online: false},
             {name: "User7", index: 14, src: "", lastMessage: "I just came to say Hello", lastMessageTime: "just now", gigs: false, numMessages: 3, online: true},
             {name: "User8", index: 15, src: "", lastMessage: "I just came to say Hello", lastMessageTime: "just now", gigs: false, numMessages: 3, online: true},
-        ]
+        ],
+        openDialog: false,
     };
 
     constructor(props){
@@ -62,6 +65,7 @@ class Messager extends React.Component{
         this.handleTabClick = this.handleTabClick.bind(this);
         this.handleSearchChange = this.handleSearchChange.bind(this);
         this.handleDialogueClick = this.handleDialogueClick.bind(this);
+        this.handleDialog = this.handleDialog.bind(this);
     }
 
     handleTabClick(e){
@@ -74,6 +78,10 @@ class Messager extends React.Component{
 
     handleDialogueClick(e){
         this.setState({activeDialogueIndex: e})
+    }
+
+    handleDialog(){
+        this.setState({openDialog: !this.state.openDialog});
     }
 
     render(){
@@ -134,7 +142,17 @@ class Messager extends React.Component{
                                 "magna aliqua. ", name: "Model Name", time: time, type: "message"},
                             {owner: "notMe", type: "gig", gigName: "TV Commercial", date: time, talent: "Model", pay: "125$", tags: ["Male", "Senior", "Eurasian"], place: "Longnan, China"}
                         ]}/>
-                        <ChatInputField/>
+                        <ChatInputField handler={this.handleDialog}/>
+                        <Dialog
+                            open={this.state.openDialog}
+                            handler={this.handleDialog}
+                            modal={false}
+                            onRequestClose={this.handleDialog}
+                        >
+                            <OfferGigModal
+                            handler={this.handleDialog}
+                            />
+                        </Dialog>
                     </div>
                 </div>
             </Col>

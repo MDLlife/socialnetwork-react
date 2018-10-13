@@ -19,9 +19,9 @@ const ChatField = (props) => {
                 }
                 if (item.owner === "me"){
                 return (
-                    <div>
+                    <div key={"message"+index}>
                         {dividerDate}
-                        <div key={"message"+index} className={"chat-field-my-message"}>
+                        <div  className={"chat-field-my-message"}>
                             <div style={{display: "flex", flexDirection: "column"}}>
                                 <span style={{margin: "0 2rem 0 auto"}}>{getTime(item.time)}</span>
                                 <div className={"message"}>
@@ -33,9 +33,9 @@ const ChatField = (props) => {
                 )
                 } else if (item.type === "message"){
                 return(
-                    <div>
+                    <div  key={"message"+index}>
                         {dividerDate}
-                        <div key={"message"+index} className={"chat-field-other-message"}>
+                        <div className={"chat-field-other-message"}>
                             <Avatar
                                 size={46}
                                 className={"chat-field-message-avatar"}
@@ -55,7 +55,7 @@ const ChatField = (props) => {
                 } else if (item.type === "gig"){
 
                     return(
-                        <div className={"chat-field-other-gig chat-field-other-gig-margin"}>
+                        <div key={"gig"+index} className={"chat-field-other-gig chat-field-other-gig-margin"}>
                             <div className={"chat-field-other-gig-item"}>
                                 <h4>{item.gigName}</h4>
                                 <span>{item.talent}</span>
