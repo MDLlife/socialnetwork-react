@@ -23,6 +23,9 @@
 .dialogue-list{
   list-style: none;
   padding: 0;
+  overflow: auto;
+  height: calc(100vh - 21.9rem);
+  margin: 0;
   .selected-dialogue-list-item,.dialogue-list-item{
     height: 8.1rem;
     border-left: 0.4rem solid;
@@ -127,14 +130,25 @@
 }
 
 .chat-field-container{
-
+  height: calc(100vh - 33.4rem);;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   .chat-field-messages{
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: calc(100vh - 36rem);
     p{
       color: #808080;
       font-size: 1.2rem;
       text-align: center;
-      margin-bottom: -1rem;
+      display: inline-block;
+      margin: 1rem auto -0.8rem auto;
+      padding: 0 0.9rem 0 1rem;
+      background-color: #fff;
+      z-index: 2;
     }
     span{
       font-size: 1.2rem;
@@ -143,13 +157,86 @@
       padding-top: 0.2rem;
       text-align: right;
     }
-
-    .chat-field-my-message{
+    .chat-field-other-gig{
       display: flex;
       flex-direction: column;
+      background-color: #f4f4f4;
+      border-radius: 0 1rem 1rem 1rem;
+      width: calc(100% - 14.6rem);
+      margin-right: 6.8rem;
+      .chat-field-other-gig-item{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 1.5rem;
+        svg{
+          margin-left: 1.7rem;
+          position: relative;
+          top: .3rem;
+        }
+        p{
+          margin: 0;
+          background-color: transparent;
+          color: #000;
+          font-size: 1.4rem;
+          font-family: "Gilroy Medium";
+        }
+        h4{
+          font-family: "Gilroy ExtraBold";
+          font-size: 1.8rem;
+          color: #000;
+          margin: 0 0 0 1.7rem;
+        }
+        span{
+          color: #fff;
+          font-size: 1.2rem;
+          font-family: "Gilroy ExtraBold";
+          padding: 0.3rem 1.2rem 0.3rem 1.2rem;
+          background-color: #61116a;
+          border-radius: 1.1rem;
+          margin-right: 1.7rem;
+        }
+        h4:before{
+          content: "";
+          display: inline-block;
+          width: 0.9rem;
+          height: 0.9rem;
+          background-color: #ffc809;
+          border-radius: 50%;
+          margin-right: 0.9rem;
+          position: relative;
+          bottom: 0.2rem;
+        }
+      }
+      .violet{
+        background-color: #61116a;
+        border-radius: 0 0 1rem 1rem;
+        padding: 1.0rem .6rem 1.4rem 1.7rem;
+        p, span {
+          color: #fff;
+          margin: 0;
+        }
+        span{
+          border-right: 1px solid rgba(255,255,255, 0.3);
+          border-radius: 0;
+          padding: 0 1.4rem 0 1.4rem;
+          font-family: "Gilroy Medium";
+          font-size: 1.4rem;
+        }
+        span:last-child{
+          border-right: none;
+        }
+      }
+    }
+    .chat-field-other-gig-margin{
+      margin-left: 7.8rem;
+    }
+    .chat-field-my-message{
+      display: flex;
       justify-content: flex-end;
       flex-wrap: nowrap;
       margin-top: 1.8rem;
+      margin-left: 6.8rem;
       .message{
         font-family: "Gilroy Medium";
         font-size: 1.4rem;
@@ -157,7 +244,7 @@
         padding: 1.9rem 2.8rem 1.6rem 2.1rem;
         background-color: #f4f4f4;
         border-radius: 1rem 1rem 0 1rem;
-        margin: 0.9rem 1.8rem 0.9rem 6.8rem;
+        margin: 0.9rem 1.8rem 0.9rem 0;
       }
     }
 

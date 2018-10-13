@@ -121,13 +121,19 @@ class Messager extends React.Component{
                             </Tab>
                         </Tabs>
                     </div>
-                    <div style={{width: "100%", height: "100%",borderLeft: "0.1rem solid #e4e4e4"}}>
+                    <div style={{width: "100%",borderLeft: "0.1rem solid #e4e4e4"}}>
                         <DialogueHeader
                             name={"Model Name"}
                             onlineStatus={"Last seen 20 minutes ago"}
                             roles={["Dancer", "Actor", "Model"]}
                         />
-                        <ChatField messages={[{owner: "me", text: "I just wanna let you know you a stupid fucking cunt", time: lessTime}, {owner: "notMe", text: "Get the fuck up of dick, get the fuck up of dick", name: "Model Name", time: time}]}/>
+                        <ChatField messages={[
+                            {owner: "me", text: "Lorem ipsum dolor sit amet", time: lessTime, type: "message"},
+                            {owner: "notMe", text: "Lorem ipsum dolor sit amet, consectetur adipis " +
+                                "sed do eiusmod tempor incididunt ut labore " +
+                                "magna aliqua. ", name: "Model Name", time: time, type: "message"},
+                            {owner: "notMe", type: "gig", gigName: "TV Commercial", date: time, talent: "Model", pay: "125$", tags: ["Male", "Senior", "Eurasian"], place: "Longnan, China"}
+                        ]}/>
                         <ChatInputField/>
                     </div>
                 </div>

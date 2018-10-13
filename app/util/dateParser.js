@@ -19,3 +19,7 @@ export function getDate(time) {
     };
     return monthes[(new Date(time)).toString().split(" ")[1]] + " " + (new Date(time)).getDate()
 }
+
+export function getDateGig(time) {
+    return (new Date(time)).toString().split(" ")[1] +" "+ (new Date(time)).toString().split(" ")[2] + ", " + (new Date(time)).toString().split(" ")[3];
+}
