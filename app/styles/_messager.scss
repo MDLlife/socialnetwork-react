@@ -341,3 +341,53 @@
   }
 }
 
+.offer-gig-modal-paper {
+  width: 32.4rem;
+  margin: 0 auto 0 auto;
+  border-radius: .4rem;
+  box-shadow: -0.7px -0.7px 1px 0 rgba(0, 0, 0, 0.1), -0.7px -0.7px 18px 0 rgba(0, 0, 0, 0.1);
+  .offer-gig-modal-container{
+    margin-bottom: 1.8rem;
+    .offer-gig-modal-header{
+      margin: 1.3rem 2.6rem .9rem 1.6rem;
+      display: flex;
+      flex-direction: row;
+      p{
+        font-family: "Gilroy Medium";
+        font-size: 1.2rem;
+        color: #000;
+        display: inline-block;
+        margin: 0;
+        position: relative;
+        bottom: .5rem;
+      }
+
+      h5{
+        font-size: 1.4rem;
+        font-family: "Gilroy Medium";
+        color: #000;
+        margin: .3rem 0 1rem .3rem;
+      }
+    }
+    .offer-gig-modal-item{
+      margin: 1.9rem 1.6rem 1.8rem 1.6rem;
+
+      h4{
+        font-family: "Gilroy Medium";
+        font-size: 1.8rem;
+        color: #000;
+      }
+    }
+    span{
+      background-color: #61116a;
+      border-radius: 1.2rem;
+      padding: .8rem 5.4rem .9rem 5.3rem;
+      color: #fff;
+      font-size: 1.6rem;
+      font-family: "Gilroy ExtraBold";
+      margin: 0 1.6rem 0 auto;
+      cursor: pointer;
+    }
+  }
+}
+

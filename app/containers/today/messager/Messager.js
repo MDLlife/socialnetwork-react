@@ -147,7 +147,8 @@ class Messager extends React.Component{
                             open={this.state.openDialog}
                             handler={this.handleDialog}
                             modal={false}
-                            onRequestClose={this.handleDialog}
+                            paperClassName={"offer-gig-modal-paper"}
+                            bodyStyle={{padding: 0}}
                         >
                             <OfferGigModal
                             handler={this.handleDialog}
