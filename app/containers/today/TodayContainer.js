@@ -3,6 +3,7 @@ import {Col, Grid, Row} from 'react-bootstrap';
 import NewsFeed from './NewsFeed';
 import ProfileContainer from './profile/ProfileContainer';
 import LoginStore from "store/LoginStore";
+import Messager from './messager/Messager';
 
 class TodayContainer extends Component {
 
@@ -45,6 +46,8 @@ class TodayContainer extends Component {
             window.location.href = '/gig-creation';
         } else if (event.target.value === 4) {
             window.location.href = '/search';
+        } else if (event.target.value === 5) {
+            window.location.href = '/today/messager';
         } else {
             window.location.href = '/today';
         }
@@ -54,6 +57,15 @@ class TodayContainer extends Component {
         let index = this.props.params && this.props.params.index ? this.props.params.index : '';
         let value = this.props.params && this.props.params.value ? this.props.params.value : '';
         // console.log("index,",index," value,",value);
+
+        let block;
+
+        if (this.props.location.pathname.indexOf("/today/messager")){
+            block = index === '' || index === 'genre' ? <NewsFeed index={index} value={value}/> :
+                <ProfileContainer index={index} value={value}/>
+        } else {
+            block = <Messager/>
+        }
 
         return (
             <Grid style={{
@@ -96,11 +108,15 @@ class TodayContainer extends Component {
                             >
                                 Search Talents
                             </li>
+                            <li className={'menu-item'}
+                                onClick={this.selectingMenu}
+                                value='5'>
+                                Messenger
+                            </li>
                         </ul>
                     </Col>
                     {
-                        index === '' || index === 'genre' ? <NewsFeed index={index} value={value}/> :
-                            <ProfileContainer index={index} value={value}/>
+                      block
                     }
                 </Row>
             </Grid>
