@@ -656,4 +656,328 @@ label {
     margin: 0 6px 0 6px;
     align-items: flex-start; }
 
+.messager-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  border-radius: 0.4rem;
+  background-color: #fff;
+  box-shadow: 0 0 0.2rem 0 rgba(0, 0, 0, 0.12); }
+
+.search-dialog-field-container {
+  padding: 0 1.9rem 0 1.9rem;
+  background-color: #f4f4f4; }
+  .search-dialog-field-container .search-dialog-svg-icon {
+    display: inline-block;
+    margin-right: 0.7rem;
+    position: relative;
+    top: 0.6rem; }
+
+.dialogue-list {
+  list-style: none;
+  padding: 0;
+  overflow: auto;
+  height: calc(100vh - 21.9rem);
+  margin: 0; }
+  .dialogue-list .selected-dialogue-list-item, .dialogue-list .dialogue-list-item {
+    height: 8.1rem;
+    border-left: 0.4rem solid;
+    cursor: pointer; }
+    .dialogue-list .selected-dialogue-list-item h5, .dialogue-list .dialogue-list-item h5 {
+      font-size: 1.6rem;
+      text-align: left;
+      font-family: "Gilroy Medium";
+      color: #000;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0 0 0 0; }
+    .dialogue-list .selected-dialogue-list-item p, .dialogue-list .dialogue-list-item p {
+      font-size: 1.4rem;
+      text-align: left;
+      color: #808080;
+      font-family: "Gilroy Medium";
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0; }
+    .dialogue-list .selected-dialogue-list-item p.unread-message, .dialogue-list .dialogue-list-item p.unread-message {
+      color: #000; }
+    .dialogue-list .selected-dialogue-list-item .last-message-time, .dialogue-list .dialogue-list-item .last-message-time {
+      font-size: 1.2rem;
+      text-align: right;
+      color: #808080;
+      font-family: "Gilroy Medium"; }
+    .dialogue-list .selected-dialogue-list-item .dialogue-list-item-avatar, .dialogue-list .dialogue-list-item .dialogue-list-item-avatar {
+      margin: 1.8rem 1.4rem 1.7rem 1.8rem;
+      border: 0.1rem solid #eb3386; }
+    .dialogue-list .selected-dialogue-list-item .gigs-number-messages, .dialogue-list .selected-dialogue-list-item .number-messages, .dialogue-list .dialogue-list-item .gigs-number-messages, .dialogue-list .dialogue-list-item .number-messages {
+      display: inline-block;
+      font-size: 1.2rem;
+      line-height: 1rem;
+      text-align: center;
+      color: rgba(97, 17, 106, 0.8);
+      font-family: "Gilroy Medium";
+      padding: 0.6rem 1.4rem 0.6rem 1.3rem;
+      border-radius: 11px;
+      box-shadow: -0.7px -0.7px 38px 0 rgba(0, 0, 0, 0.1); }
+    .dialogue-list .selected-dialogue-list-item .number-messages, .dialogue-list .dialogue-list-item .number-messages {
+      background-color: rgba(97, 17, 106, 0.1); }
+    .dialogue-list .selected-dialogue-list-item .gigs-number-messages, .dialogue-list .dialogue-list-item .gigs-number-messages {
+      background-color: #ffc503; }
+  .dialogue-list .dialogue-list-item {
+    border-color: transparent; }
+  .dialogue-list .selected-dialogue-list-item {
+    border-image: linear-gradient(to top, #fd2ac5, #3b096e) 4;
+    background-color: #f4f4f4; }
+
+.dialogue-header-container {
+  display: flex;
+  flex-direction: column;
+  height: 6.4rem; }
+  .dialogue-header-container h5 {
+    font-size: 1.6rem;
+    text-align: left;
+    color: #000;
+    font-family: "Gilroy Medium";
+    margin: 1.5rem 0 0.5rem 0;
+    cursor: pointer; }
+  .dialogue-header-container .dialogue-header-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1.8rem 0 2.1rem; }
+    .dialogue-header-container .dialogue-header-item p {
+      font-size: 1.2rem;
+      color: #808080;
+      font-family: "Gilroy Medium";
+      margin: 0; }
+    .dialogue-header-container .dialogue-header-item .status-pill {
+      font-size: 1.2rem;
+      background-color: #d1d1d1;
+      padding: 0.4rem 1rem 0.7rem 1.2rem;
+      border-radius: 1.1rem;
+      color: #000;
+      margin-left: 0.4rem; }
+    .dialogue-header-container .dialogue-header-item .status-pills-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      margin-bottom: 0.6rem; }
+
+.chat-field-container {
+  height: calc(100vh - 33.4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; }
+  .chat-field-container .chat-field-messages {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: calc(100vh - 36rem); }
+    .chat-field-container .chat-field-messages p {
+      color: #808080;
+      font-size: 1.2rem;
+      text-align: center;
+      display: inline-block;
+      margin: 1rem auto -0.8rem auto;
+      padding: 0 0.9rem 0 1rem;
+      background-color: #fff;
+      z-index: 2; }
+    .chat-field-container .chat-field-messages span {
+      font-size: 1.2rem;
+      font-family: "Gilroy Medium";
+      color: #808080;
+      padding-top: 0.2rem;
+      text-align: right; }
+    .chat-field-container .chat-field-messages .chat-field-other-gig {
+      display: flex;
+      flex-direction: column;
+      background-color: #f4f4f4;
+      border-radius: 0 1rem 1rem 1rem;
+      width: calc(100% - 14.6rem);
+      margin-right: 6.8rem; }
+      .chat-field-container .chat-field-messages .chat-field-other-gig .chat-field-other-gig-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 1.5rem; }
+        .chat-field-container .chat-field-messages .chat-field-other-gig .chat-field-other-gig-item svg {
+          margin-left: 1.7rem;
+          position: relative;
+          top: .3rem; }
+        .chat-field-container .chat-field-messages .chat-field-other-gig .chat-field-other-gig-item p {
+          margin: 0;
+          background-color: transparent;
+          color: #000;
+          font-size: 1.4rem;
+          font-family: "Gilroy Medium"; }
+        .chat-field-container .chat-field-messages .chat-field-other-gig .chat-field-other-gig-item h4 {
+          font-family: "Gilroy ExtraBold";
+          font-size: 1.8rem;
+          color: #000;
+          margin: 0 0 0 1.7rem; }
+        .chat-field-container .chat-field-messages .chat-field-other-gig .chat-field-other-gig-item span {
+          color: #fff;
+          font-size: 1.2rem;
+          font-family: "Gilroy ExtraBold";
+          padding: 0.3rem 1.2rem 0.3rem 1.2rem;
+          background-color: #61116a;
+          border-radius: 1.1rem;
+          margin-right: 1.7rem; }
+        .chat-field-container .chat-field-messages .chat-field-other-gig .chat-field-other-gig-item h4:before {
+          content: "";
+          display: inline-block;
+          width: 0.9rem;
+          height: 0.9rem;
+          background-color: #ffc809;
+          border-radius: 50%;
+          margin-right: 0.9rem;
+          position: relative;
+          bottom: 0.2rem; }
+      .chat-field-container .chat-field-messages .chat-field-other-gig .violet {
+        background-color: #61116a;
+        border-radius: 0 0 1rem 1rem;
+        padding: 1.0rem .6rem 1.4rem 1.7rem; }
+        .chat-field-container .chat-field-messages .chat-field-other-gig .violet p, .chat-field-container .chat-field-messages .chat-field-other-gig .violet span {
+          color: #fff;
+          margin: 0; }
+        .chat-field-container .chat-field-messages .chat-field-other-gig .violet span {
+          border-right: 1px solid rgba(255, 255, 255, 0.3);
+          border-radius: 0;
+          padding: 0 1.4rem 0 1.4rem;
+          font-family: "Gilroy Medium";
+          font-size: 1.4rem; }
+        .chat-field-container .chat-field-messages .chat-field-other-gig .violet span:last-child {
+          border-right: none; }
+    .chat-field-container .chat-field-messages .chat-field-other-gig-margin {
+      margin-left: 7.8rem; }
+    .chat-field-container .chat-field-messages .chat-field-my-message {
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: nowrap;
+      margin-top: 1.8rem;
+      margin-left: 6.8rem; }
+      .chat-field-container .chat-field-messages .chat-field-my-message .message {
+        font-family: "Gilroy Medium";
+        font-size: 1.4rem;
+        color: #000;
+        padding: 1.9rem 2.8rem 1.6rem 2.1rem;
+        background-color: #f4f4f4;
+        border-radius: 1rem 1rem 0 1rem;
+        margin: 0.9rem 1.8rem 0.9rem 0; }
+    .chat-field-container .chat-field-messages .chat-field-other-message .chat-field-message-avatar {
+      border: 0.1rem solid #eb3386;
+      display: inline-block;
+      margin: 0 1.1rem 0 2.1rem;
+      top: -2rem;
+      position: relative; }
+    .chat-field-container .chat-field-messages .chat-field-other-message .chat-field-other-message-info {
+      display: flex;
+      flex-direction: row; }
+      .chat-field-container .chat-field-messages .chat-field-other-message .chat-field-other-message-info h5 {
+        font-family: "Gilroy Medium";
+        font-size: 1.6rem;
+        color: #000;
+        margin: 0 2rem 0 0; }
+    .chat-field-container .chat-field-messages .chat-field-other-message .message {
+      font-family: "Gilroy Medium";
+      color: #000;
+      font-size: 1.4rem;
+      text-align: left;
+      background-color: #f4f4f4;
+      padding: 1.8rem 3.2rem 1.9rem 2rem;
+      border-radius: 0 1rem 1rem 1rem;
+      margin: 0.6rem 6.8rem 0.9rem 0; }
+  .chat-field-container .chat-field-bottom-info {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: 1rem 1.8rem 1.4rem 2.1rem; }
+    .chat-field-container .chat-field-bottom-info p {
+      font-size: 1.2rem;
+      text-align: left;
+      color: #808080;
+      font-family: "Gilroy Light";
+      margin: 0;
+      padding-top: 1.1rem; }
+    .chat-field-container .chat-field-bottom-info .chat-field-book-button {
+      display: inline-block;
+      padding: 0.7rem 0 0.5rem 0;
+      width: 11.6rem;
+      border-radius: 1rem;
+      border: #61116a solid 0.1rem;
+      font-family: "Gilroy Medium";
+      text-align: center;
+      cursor: pointer;
+      margin: 0 0 0 1.2rem; }
+
+.chat-input-field-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 2rem 1.8rem 2rem 2rem; }
+  .chat-input-field-bottom svg {
+    margin: 0 1.4rem 0 0;
+    cursor: pointer; }
+  .chat-input-field-bottom p {
+    color: #EB3386;
+    font-size: 1.4rem;
+    font-family: "Gilroy Medium";
+    cursor: pointer;
+    margin: 0 0 0 1rem;
+    padding-top: 1rem; }
+  .chat-input-field-bottom .chat-input-field-submit {
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.6rem;
+    text-align: center;
+    font-family: "Gilroy ExtraBold";
+    background-color: #61116a;
+    border-radius: 1.5rem;
+    padding: 1.3rem 7rem 1rem 6.9rem; }
+
+.offer-gig-modal-paper {
+  width: 32.4rem;
+  margin: 0 auto 0 auto;
+  border-radius: .4rem;
+  box-shadow: -0.7px -0.7px 1px 0 rgba(0, 0, 0, 0.1), -0.7px -0.7px 18px 0 rgba(0, 0, 0, 0.1); }
+  .offer-gig-modal-paper .offer-gig-modal-container {
+    margin-bottom: 1.8rem; }
+    .offer-gig-modal-paper .offer-gig-modal-container .offer-gig-modal-header {
+      margin: 1.3rem 2.6rem .9rem 1.6rem;
+      display: flex;
+      flex-direction: row; }
+      .offer-gig-modal-paper .offer-gig-modal-container .offer-gig-modal-header p {
+        font-family: "Gilroy Medium";
+        font-size: 1.2rem;
+        color: #000;
+        display: inline-block;
+        margin: 0;
+        position: relative;
+        bottom: .5rem; }
+      .offer-gig-modal-paper .offer-gig-modal-container .offer-gig-modal-header h5 {
+        font-size: 1.4rem;
+        font-family: "Gilroy Medium";
+        color: #000;
+        margin: .3rem 0 1rem .3rem; }
+    .offer-gig-modal-paper .offer-gig-modal-container .offer-gig-modal-item {
+      margin: 1.9rem 1.6rem 1.8rem 1.6rem; }
+      .offer-gig-modal-paper .offer-gig-modal-container .offer-gig-modal-item h4 {
+        font-family: "Gilroy Medium";
+        font-size: 1.8rem;
+        color: #000; }
+    .offer-gig-modal-paper .offer-gig-modal-container span {
+      background-color: #61116a;
+      border-radius: 1.2rem;
+      padding: .8rem 5.4rem .9rem 5.3rem;
+      color: #fff;
+      font-size: 1.6rem;
+      font-family: "Gilroy ExtraBold";
+      margin: 0 1.6rem 0 auto;
+      cursor: pointer; }
+
 /*# sourceMappingURL=../maps/styles/main.css.map */
