@@ -1,5 +1,6 @@
 import * as React from 'react';
 import SvgIcon from 'material-ui/SvgIcon';
+import {getWeekDate} from "../../util/dateParser";
 
 class Gig extends React.Component{
 
@@ -46,7 +47,7 @@ class Gig extends React.Component{
                 </div>
                 <div style={{display: "inline-block"}}>
                     <div>
-                        <p>{this.props.item.date}</p>
+                        <p>{getWeekDate(this.props.item.date)}</p>
                     </div>
                     <div>
                         <p>{this.props.item.startTime} - {this.props.item.endTime}</p>

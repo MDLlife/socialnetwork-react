@@ -206,6 +206,8 @@
         border-radius: 0.4rem;
         box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12);
         width: 23.9rem;
+        background-image: url("/static/img/card_background.png");
+        background-repeat: no-repeat;
 
         .gig-card-pills-container{
           display: flex;
@@ -234,18 +236,30 @@
           h4{
             color: #000;
             font-size: 1.8rem;
-
           }
+
+          span{
+            padding: .9rem 0 0 0;
+            text-align: center;
+            font-size: 1.2rem;
+            font-family: "Gilroy Medium";
+          }
+
           h4:before{
             position: relative;
             content: "";
             width: 0.9rem;
             height: 0.9rem;
-            background-color: #808bfe;
             display: inline-block;
             border-radius: 50%;
             margin: 0 0.6rem 0 0.3rem;
             bottom: 0.1rem;
+          }
+          h4.blue:before{
+            background-color: #808bfe;
+          }
+          h4.sky-blue:before{
+            background-color: #72d6ff;
           }
         }
         .gig-card-date,.gig-card-location{
@@ -294,8 +308,11 @@
             height: 0.6rem;
             border-radius: 50%;
             background-color: rgba(128,128,128,0.5);
-            margin: 0.5rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
             display: block;
+          }
+          .active{
+            background-color: #61116a;
           }
 
           .gig-card-tags-container {
