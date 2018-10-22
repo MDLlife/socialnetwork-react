@@ -4,6 +4,7 @@ import NewsFeed from './NewsFeed';
 import ProfileContainer from './profile/ProfileContainer';
 import LoginStore from "store/LoginStore";
 import Messager from './messager/Messager';
+import Calendar from '../calendar/Calendar';
 
 class TodayContainer extends Component {
 
@@ -48,23 +49,27 @@ class TodayContainer extends Component {
             window.location.href = '/search';
         } else if (event.target.value === 5) {
             window.location.href = '/today/messager';
+        } else if (event.target.value === 6){
+            window.location.href = '/today/calendar';
         } else {
             window.location.href = '/today';
         }
-    }
+    };
 
     render() {
         let index = this.props.params && this.props.params.index ? this.props.params.index : '';
         let value = this.props.params && this.props.params.value ? this.props.params.value : '';
-        // console.log("index,",index," value,",value);
+        //console.log("index,",index," value,",value);
 
         let block;
 
-        if (this.props.location.pathname.indexOf("/today/messager")){
+        if (!this.props.location.pathname.indexOf("/today/messager")) {
+            block = <Messager/>
+        } else if(!this.props.location.pathname.indexOf('/today/calendar')) {
+            block = <Calendar/>
+        } else {
             block = index === '' || index === 'genre' ? <NewsFeed index={index} value={value}/> :
                 <ProfileContainer index={index} value={value}/>
-        } else {
-            block = <Messager/>
         }
 
         return (
@@ -81,7 +86,7 @@ class TodayContainer extends Component {
                             }}
                         >
                             <li
-                                className={`${index === '' || index === 'genre' ? 'selected-menu-item-today' : 'menu-item'}`}
+                                className={`${(index === '' || index === 'genre') && (this.props.location.pathname.indexOf("/today/messager") && this.props.location.pathname.indexOf("/today/calendar")) ? 'selected-menu-item-today' : 'menu-item'}`}
                                 onClick={this.selectingMenu}
                                 value='1'
                             >
@@ -108,10 +113,15 @@ class TodayContainer extends Component {
                             >
                                 Search Talents
                             </li>
-                            <li className={'menu-item'}
+                            <li className={`${!this.props.location.pathname.indexOf("/today/messager") ? 'selected-menu-item-today' : 'menu-item'}`}
                                 onClick={this.selectingMenu}
                                 value='5'>
-                                Messenger
+                                Messages
+                            </li>
+                            <li className={`${!this.props.location.pathname.indexOf("/today/calendar") ? 'selected-menu-item-today' : 'menu-item'}`}
+                                onClick={this.selectingMenu}
+                                value='6'>
+                                Calendar
                             </li>
                         </ul>
                     </Col>
@@ -122,6 +132,6 @@ class TodayContainer extends Component {
             </Grid>
         )
     }
-};
+}
 
 export default TodayContainer;
