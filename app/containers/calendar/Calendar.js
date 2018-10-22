@@ -4,6 +4,7 @@ import {Col} from 'react-bootstrap';
 import Divider from 'material-ui/Divider';
 import Bar from 'components/calendar/Bar';
 import MonthTable from 'components/calendar/MonthTable';
+import AdditionalGigs from 'components/calendar/AdditionalGigs';
 
 const monthes = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 const weekDays = ["SUN","MON", "TUE", "WED", "THU", "FRI", "SAT"];
@@ -81,7 +82,7 @@ class Calendar extends React.Component{
                             {point: "blue", name: "Underwear catalog", date: "10-25-2018", startTime: "13:00", endTime: "15:00", location: "Longnan, China", payment: "125$ per gig"}]}
                     />
                 </div>
-                <div className={"calendar-gigs"}></div>
+                <AdditionalGigs containerClassName={"calendar-gigs"}/>
             </div>
         </Col>)
     }

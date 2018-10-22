@@ -1,6 +1,8 @@
 .calendar-container{
   background-color: #fff;
   border-radius: .4rem;
+  margin-bottom: 3rem;
+
   .years-container{
     display: flex;
     justify-content: flex-end;
@@ -65,6 +67,7 @@
         color: #808080;
         margin: 0.5rem 0.5rem 0.9rem 0;
       }
+
       .another-month-date{
         color: rgba(128, 128, 128, 0.5);
       }
@@ -174,6 +177,163 @@
 
     .calendar-table-cell:last-child{
       border-right: none;
+    }
+  }
+  
+  .calendar-gigs{
+    background-color: #f7f9fa;
+    .calendar-gigs-header{
+      display: flex;
+      justify-content: space-between;
+      padding: 1.9rem 2.6rem 1.2rem 2.6rem;
+      h4{
+        color: #000;
+        font-size: 1.6rem;
+        margin: 0;
+        font-family: "Gilroy Medium";
+        padding-top: .3rem;
+      }
+      svg{
+        cursor: pointer;
+      }
+    }
+    .calendar-gigs-items{
+      display: flex;
+      justify-content: space-around;
+      padding-bottom: 2.4rem;
+      .gig-card-container{
+        background-color: #fff;
+        border-radius: 0.4rem;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12);
+        width: 23.9rem;
+
+        .gig-card-pills-container{
+          display: flex;
+          justify-content: flex-end;
+          height: 2.2rem;
+          margin: 1.1rem 0.7rem 2.5rem 1.1rem;
+          overflow-y: auto;
+          span{
+            border-radius: 1.1rem;
+            font-size: 1.2rem;
+            background-color: #d1d1d1;
+            color: #000;
+            padding: 0.3rem 1.1rem 0 1.1rem;
+            margin-right: 0.4rem;
+          }
+          span:last-child{
+            background-color: #61116a;
+            color: #fff;
+            font-family: "Gilroy Medium";
+          }
+        }
+        .gig-card-name{
+          display: flex;
+          justify-content: space-between;
+          margin: 0 1.1rem 0 1.1rem;
+          h4{
+            color: #000;
+            font-size: 1.8rem;
+
+          }
+          h4:before{
+            position: relative;
+            content: "";
+            width: 0.9rem;
+            height: 0.9rem;
+            background-color: #808bfe;
+            display: inline-block;
+            border-radius: 50%;
+            margin: 0 0.6rem 0 0.3rem;
+            bottom: 0.1rem;
+          }
+        }
+        .gig-card-date,.gig-card-location{
+          color: #808080;
+          font-size: 1.4rem;
+          display: flex;
+        }
+        .gig-card-date{
+          text-transform: uppercase;
+          margin: 0 1.1rem 0 1.1rem;
+        }
+        .gig-card-location{
+          margin: 0 1.1rem 0 0.9rem;
+        }
+
+        .gig-card-types-container{
+          display: flex;
+          justify-content: space-between;
+          background-color: #f4f4f4;
+          border-top: 0.1rem solid #d9d9d9;
+          border-bottom: 0.1rem solid #d9d9d9;
+
+          .gig-card-cost{
+            display: flex;
+            justify-content: space-between;
+            margin: 1.4rem 0 1rem 0;
+            p{
+              font-size: 1.4rem;
+              text-align: center;
+              margin: 0;
+              span{
+                font-family: "Gilroy ExtraBold";
+                font-size: 1.6rem;
+              }
+            }
+            h6{
+              color: #808080;
+              font-size: 1.4rem;
+              margin: 0;
+              padding-top: 0.3rem;
+            }
+          }
+
+          .gig-card-point{
+            width: 0.6rem;
+            height: 0.6rem;
+            border-radius: 50%;
+            background-color: rgba(128,128,128,0.5);
+            margin: 0.5rem;
+            display: block;
+          }
+
+          .gig-card-tags-container {
+            display: flex;
+            margin-bottom: 0.6rem;
+            .gig-card-tags {
+              width: 100%;
+              text-align: center;
+              border-right: 0.1rem solid rgba(128, 128, 128, 0.3);
+            }
+
+            .gig-card-tags:last-child{
+              border-right: none;
+              text-align: right;
+            }
+
+            .gig-card-tags:first-child{
+              text-align: left;
+            }
+
+          }
+        }
+
+        .gig-card-button{
+          width: 50%;
+          text-align: center;
+          color: #61116a;
+          font-size: 1.6rem;
+          border-right: .1rem solid rgba(128,128,128,0.1);
+          padding: 1.5rem 0 1.4rem 0;
+          display: inline-block;
+          font-family: "Gilroy Medium";
+          cursor: pointer;
+        }
+        .gig-card-button:last-child{
+          border-right: none;
+        }
+      }
     }
   }
 }

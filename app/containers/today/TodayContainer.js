@@ -132,6 +132,6 @@ class TodayContainer extends Component {
             </Grid>
         )
     }
-};
+}
 
 export default TodayContainer;
