@@ -980,4 +980,282 @@ label {
       margin: 0 1.6rem 0 auto;
       cursor: pointer; }
 
+.calendar-container {
+  background-color: #fff;
+  border-radius: .4rem;
+  margin-bottom: 3rem; }
+  .calendar-container .years-container {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1.6rem; }
+    .calendar-container .years-container .years-item {
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #808080;
+      margin: 0 2.1rem 0 0.6rem;
+      padding-top: 1.2rem; }
+    .calendar-container .years-container .active-year {
+      font-size: 3rem;
+      font-family: "Gilroy Medium";
+      margin: 0 2.1rem 0 0.6rem; }
+  .calendar-container .monthes-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 3.4rem 0 1.6rem 0; }
+    .calendar-container .monthes-container .monthes-item {
+      font-size: 1.4rem;
+      color: #bfbfbf;
+      cursor: pointer;
+      margin: 0;
+      padding-top: 0.3rem; }
+    .calendar-container .monthes-container .active-month {
+      color: #000;
+      font-size: 1.6rem;
+      cursor: pointer;
+      margin: 0; }
+  .calendar-container .week-days-container {
+    display: flex;
+    justify-content: space-around;
+    color: #808080;
+    margin: 2.2rem 0 2rem 0; }
+    .calendar-container .week-days-container h4 {
+      margin: 0;
+      width: 4.2rem;
+      text-align: center; }
+  .calendar-container .calendar-table-row {
+    display: flex; }
+    .calendar-container .calendar-table-row .calendar-table-cell {
+      display: inline-block;
+      width: 14.2857%;
+      height: 11.3rem;
+      border-right: 0.1rem solid #e4e4e4;
+      border-bottom: 0.1rem solid #e4e4e4; }
+      .calendar-container .calendar-table-row .calendar-table-cell h6 {
+        text-align: right;
+        font-size: 1.4rem;
+        color: #808080;
+        margin: 0.5rem 0.5rem 0.9rem 0; }
+      .calendar-container .calendar-table-row .calendar-table-cell .another-month-date {
+        color: rgba(128, 128, 128, 0.5); }
+      .calendar-container .calendar-table-row .calendar-table-cell .calendar-gig-info-block {
+        z-index: 1;
+        width: max-content;
+        position: absolute;
+        background-color: #fff;
+        border-radius: 0.4rem;
+        padding: 2.5rem 1.7rem 1rem 1.7rem;
+        box-shadow: -0.7px -0.7px 1px 0 rgba(0, 0, 0, 0.1), -0.7px -0.7px 18px 0 rgba(0, 0, 0, 0.1);
+        bottom: 0;
+        margin-bottom: 3rem;
+        left: -50%; }
+        .calendar-container .calendar-table-row .calendar-table-cell .calendar-gig-info-block h5 {
+          margin: 0;
+          display: inline-block;
+          font-size: 1.8rem;
+          color: #000; }
+        .calendar-container .calendar-table-row .calendar-table-cell .calendar-gig-info-block h5:before {
+          position: relative;
+          content: "";
+          width: 0.6rem;
+          height: 0.6rem;
+          background-color: #808bfe;
+          display: inline-block;
+          border-radius: 50%;
+          margin: 0 1rem 0 0.3rem;
+          bottom: 0.2rem; }
+        .calendar-container .calendar-table-row .calendar-table-cell .calendar-gig-info-block h5.blue:before {
+          background-color: #808bfe; }
+        .calendar-container .calendar-table-row .calendar-table-cell .calendar-gig-info-block h5.sky-blue:before {
+          background-color: #72d6ff; }
+        .calendar-container .calendar-table-row .calendar-table-cell .calendar-gig-info-block p {
+          margin: 0 4rem 2rem 1.5rem;
+          color: #000;
+          font-size: 1.4rem; }
+        .calendar-container .calendar-table-row .calendar-table-cell .calendar-gig-info-block span {
+          color: #808080;
+          font-size: 1.4rem;
+          display: block;
+          margin-bottom: 2rem; }
+        .calendar-container .calendar-table-row .calendar-table-cell .calendar-gig-info-block h6 {
+          text-align: right;
+          color: #eb3386;
+          font-size: 1.2rem;
+          cursor: pointer; }
+      .calendar-container .calendar-table-row .calendar-table-cell .calendar-gig-info-block:after {
+        content: "";
+        width: 2.3rem;
+        height: 2.3rem;
+        transform: rotate(-45deg);
+        background-color: #fff;
+        position: absolute;
+        display: block;
+        bottom: -1rem;
+        left: 42%;
+        box-shadow: -1px 0.5px 0px 0 rgba(0, 0, 0, 0.1); }
+      .calendar-container .calendar-table-row .calendar-table-cell .calendar-table-cell-gig {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow-y: auto;
+        overflow-x: hidden;
+        font-size: 1.1rem;
+        color: #000;
+        margin: 0 0.3rem;
+        border-radius: 0.2rem;
+        padding-right: 0.1rem;
+        cursor: pointer; }
+        .calendar-container .calendar-table-row .calendar-table-cell .calendar-table-cell-gig span {
+          color: #808080;
+          font-size: 1.1rem;
+          margin: 0;
+          padding-right: 0.8rem; }
+        .calendar-container .calendar-table-row .calendar-table-cell .calendar-table-cell-gig span:before {
+          position: relative;
+          content: "";
+          width: 0.6rem;
+          height: 0.6rem;
+          background-color: #808bfe;
+          display: inline-block;
+          border-radius: 50%;
+          margin: 0 0.6rem 0 0.3rem;
+          bottom: 0.1rem; }
+        .calendar-container .calendar-table-row .calendar-table-cell .calendar-table-cell-gig span.blue:before {
+          background-color: #808bfe; }
+        .calendar-container .calendar-table-row .calendar-table-cell .calendar-table-cell-gig span.sky-blue:before {
+          background-color: #72d6ff; }
+      .calendar-container .calendar-table-row .calendar-table-cell .calendar-table-cell-gig:hover {
+        background-color: rgba(128, 128, 128, 0.2); }
+    .calendar-container .calendar-table-row .calendar-table-cell:last-child {
+      border-right: none; }
+  .calendar-container .calendar-gigs {
+    background-color: #f7f9fa; }
+    .calendar-container .calendar-gigs .calendar-gigs-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 1.9rem 2.6rem 1.2rem 2.6rem; }
+      .calendar-container .calendar-gigs .calendar-gigs-header h4 {
+        color: #000;
+        font-size: 1.6rem;
+        margin: 0;
+        font-family: "Gilroy Medium";
+        padding-top: .3rem; }
+      .calendar-container .calendar-gigs .calendar-gigs-header svg {
+        cursor: pointer; }
+    .calendar-container .calendar-gigs .calendar-gigs-items {
+      display: flex;
+      justify-content: space-around;
+      padding-bottom: 2.4rem; }
+      .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container {
+        background-color: #fff;
+        border-radius: 0.4rem;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12);
+        width: 23.9rem;
+        background-image: url("/static/img/card_background.png");
+        background-repeat: no-repeat; }
+        .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-pills-container {
+          display: flex;
+          justify-content: flex-end;
+          height: 2.2rem;
+          margin: 1.1rem 0.7rem 2.5rem 1.1rem;
+          overflow-y: auto; }
+          .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-pills-container span {
+            border-radius: 1.1rem;
+            font-size: 1.2rem;
+            background-color: #d1d1d1;
+            color: #000;
+            padding: 0.3rem 1.1rem 0 1.1rem;
+            margin-right: 0.4rem; }
+          .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-pills-container span:last-child {
+            background-color: #61116a;
+            color: #fff;
+            font-family: "Gilroy Medium"; }
+        .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-name {
+          display: flex;
+          justify-content: space-between;
+          margin: 0 1.1rem 0 1.1rem; }
+          .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-name h4 {
+            color: #000;
+            font-size: 1.8rem; }
+          .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-name span {
+            padding: .9rem 0 0 0;
+            text-align: center;
+            font-size: 1.2rem;
+            font-family: "Gilroy Medium"; }
+          .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-name h4:before {
+            position: relative;
+            content: "";
+            width: 0.9rem;
+            height: 0.9rem;
+            display: inline-block;
+            border-radius: 50%;
+            margin: 0 0.6rem 0 0.3rem;
+            bottom: 0.1rem; }
+          .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-name h4.blue:before {
+            background-color: #808bfe; }
+          .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-name h4.sky-blue:before {
+            background-color: #72d6ff; }
+        .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-date, .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-location {
+          color: #808080;
+          font-size: 1.4rem;
+          display: flex; }
+        .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-date {
+          text-transform: uppercase;
+          margin: 0 1.1rem 0 1.1rem; }
+        .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-location {
+          margin: 0 1.1rem 0 0.9rem; }
+        .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-types-container {
+          display: flex;
+          justify-content: space-between;
+          background-color: #f4f4f4;
+          border-top: 0.1rem solid #d9d9d9;
+          border-bottom: 0.1rem solid #d9d9d9; }
+          .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-types-container .gig-card-cost {
+            display: flex;
+            justify-content: space-between;
+            margin: 1.4rem 0 1rem 0; }
+            .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-types-container .gig-card-cost p {
+              font-size: 1.4rem;
+              text-align: center;
+              margin: 0; }
+              .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-types-container .gig-card-cost p span {
+                font-family: "Gilroy ExtraBold";
+                font-size: 1.6rem; }
+            .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-types-container .gig-card-cost h6 {
+              color: #808080;
+              font-size: 1.4rem;
+              margin: 0;
+              padding-top: 0.3rem; }
+          .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-types-container .gig-card-point {
+            width: 0.6rem;
+            height: 0.6rem;
+            border-radius: 50%;
+            background-color: rgba(128, 128, 128, 0.5);
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            display: block; }
+          .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-types-container .active {
+            background-color: #61116a; }
+          .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-types-container .gig-card-tags-container {
+            display: flex;
+            margin-bottom: 0.6rem; }
+            .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-types-container .gig-card-tags-container .gig-card-tags {
+              width: 100%;
+              text-align: center;
+              border-right: 0.1rem solid rgba(128, 128, 128, 0.3); }
+            .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-types-container .gig-card-tags-container .gig-card-tags:last-child {
+              border-right: none;
+              text-align: right; }
+            .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-types-container .gig-card-tags-container .gig-card-tags:first-child {
+              text-align: left; }
+        .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-button {
+          width: 50%;
+          text-align: center;
+          color: #61116a;
+          font-size: 1.6rem;
+          border-right: 0.1rem solid rgba(128, 128, 128, 0.1);
+          padding: 1.5rem 0 1.4rem 0;
+          display: inline-block;
+          font-family: "Gilroy Medium";
+          cursor: pointer; }
+        .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-button:last-child {
+          border-right: none; }
+
 /*# sourceMappingURL=../maps/styles/main.css.map */
