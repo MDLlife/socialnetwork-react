@@ -15,9 +15,12 @@
 }
 
 .menu-item {
-  padding: 20px 20px 20px 24px;
+  padding: 2rem 2rem 2rem 1.8rem;
   background-color: white;
-  cursor: pointer
+  border-left: 4px solid transparent;
+  cursor: pointer;
+  color: #808080;
+  font-size: 1.6rem;
 }
 
 .menu-today li:first-child {
@@ -31,9 +34,12 @@
 }
 
 .selected-menu-item-today {
-  padding: 20px;
-  border-left: 4px solid #991998;
+  padding: 2rem 2rem 2rem 1.8rem;
+  border-left: 4px solid;
+  border-image:  linear-gradient(to top, #fd2ac5, #3b096e) 4;
   background-color: white;
+  color: #000;
+  font-size: 1.6rem;
 }
 
 .future-post {
