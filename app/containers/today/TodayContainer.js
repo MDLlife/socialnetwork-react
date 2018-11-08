@@ -6,6 +6,7 @@ import LoginStore from "store/LoginStore";
 import Messager from './messager/Messager';
 import Calendar from '../calendar/Calendar';
 import SvgIcon from 'material-ui/SvgIcon';
+import Divider from 'material-ui/Divider';
 
 class TodayContainer extends Component {
 
@@ -95,13 +96,15 @@ class TodayContainer extends Component {
                                     <path fill={"rgba(129,129,129, 0.8)"} d="M34.2,54.5L65.1,20c0.4-0.4,0.5-1.1,0.3-1.6c-0.2-0.5-0.8-0.9-1.4-0.9H48.3L60.1,2.4c0.5-0.6,0.4-1.6-0.2-2.1  c-0.7-0.5-1.6-0.4-2.1,0.2L44.4,17.5H1.5c-0.6,0-1.1,0.3-1.4,0.9C-0.1,18.9,0,19.6,0.4,20l30.8,34.3v25.5c0,0,0,0,0,0H20.9  c-0.8,0-1.5,0.7-1.5,1.5s0.7,1.5,1.5,1.5h23.6c0.8,0,1.5-0.7,1.5-1.5s-0.7-1.5-1.5-1.5H34.2c0,0,0,0,0,0V54.5z M43.5,39.6L32.8,51.6  L22.1,39.6H43.5z M60.6,20.5L46.2,36.6h-13l12.7-16.2H60.6z M42.1,20.5L29.3,36.6h-9.9L4.9,20.5H42.1z"/>
                                 </SvgIcon>
                                 Today
+
                             </li>
+                            <Divider/>
                             <li
                                 className={`${index === 'fan' || index === 'booker' || index === 'talent' ? 'selected-menu-item-today' : 'menu-item'}`}
                                 onClick={this.selectingMenu}
                                 value='2'
                             >
-                                <SvgIcon xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 72.8 86.7" style={{enableBackground:"new 0 0 72.8 86.7;", width:"1.4rem", height: "1.7rem", position: "relative", top: "0.2rem", marginRight: "2.2rem"}}>
+                                <SvgIcon xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 72.8 86.7" style={{enableBackground:"new 0 0 72.8 86.7", width:"1.4rem", height: "1.7rem", position: "relative", top: "0.2rem", marginRight: "2.2rem"}}>
                                     <g>
                                         <g>
                                             <path fill={"rgba(129,129,129, 0.8)"} d="M36.4,47.4C16.3,47.4,0,64.4,0,85.2c0,0.8,0.7,1.5,1.5,1.5h69.8c0.8,0,1.5-0.7,1.5-1.5C72.8,64.4,56.4,47.4,36.4,47.4z     M3,83.7c0.8-18.5,15.4-33.2,33.3-33.2S69,65.2,69.7,83.7H3z"/>
@@ -111,6 +114,7 @@ class TodayContainer extends Component {
                                  </SvgIcon>
                                 Profile
                             </li>
+                            <Divider/>
                             <li
                                 className={`${index === 'gig-creation' ? 'selected-menu-item-today' : 'menu-item'}`}
                                 onClick={this.selectingMenu}
@@ -123,6 +127,7 @@ class TodayContainer extends Component {
                                 </SvgIcon>
                                 Gigs
                             </li>
+                            <Divider/>
                             <li
                                 className={'menu-item'}
                                 onClick={this.selectingMenu}
@@ -136,6 +141,7 @@ class TodayContainer extends Component {
                                 </SvgIcon>
                                 Talents
                             </li>
+                            <Divider/>
                             <li className={`${!this.props.location.pathname.indexOf("/today/messager") ? 'selected-menu-item-today' : 'menu-item'}`}
                                 onClick={this.selectingMenu}
                                 value='5'>
@@ -145,10 +151,11 @@ class TodayContainer extends Component {
                                 </SvgIcon>
                                 Messages
                             </li>
+                            <Divider/>
                             <li className={`${!this.props.location.pathname.indexOf("/today/calendar") ? 'selected-menu-item-today' : 'menu-item'}`}
                                 onClick={this.selectingMenu}
                                 value='6'>
-                                <SvgIcon xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 85 80" style={{enableBackground:"new 0 0 72.8 86.7;", width:"1.6rem", height: "1.6rem", position: "relative", top: "0.2rem", marginRight: "2rem"}}>
+                                <SvgIcon xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 85 80" style={{enableBackground:"new 0 0 72.8 86.7", width:"1.6rem", height: "1.6rem", position: "relative", top: "0.2rem", marginRight: "2rem"}}>
                                     <g>
                                         <path fill={"rgba(129,129,129, 0.8)"} d="M79.5,11.2H63.7V4.4c0-0.8-0.7-1.5-1.5-1.5s-1.5,0.7-1.5,1.5v6.8H22.2V4.4c0-0.8-0.7-1.5-1.5-1.5s-1.5,0.7-1.5,1.5v6.8H5.1   c-0.8,0-1.5,0.7-1.5,1.5v62.4c0,0.8,0.7,1.5,1.5,1.5h74.4c0.8,0,1.5-0.7,1.5-1.5V12.7C81,11.9,80.4,11.2,79.5,11.2z M78,73.7H6.6   V14.2h12.6v4.5c0,0.8,0.7,1.5,1.5,1.5s1.5-0.7,1.5-1.5v-4.5h38.5v4.5c0,0.8,0.7,1.5,1.5,1.5s1.5-0.7,1.5-1.5v-4.5H78V73.7z"/>
                                         <path fill={"rgba(129,129,129, 0.8)"} d="M63.2,54.1l-5.1-5.1c-0.6-0.6-1.5-0.6-2.1,0c-0.6,0.6-0.6,1.5,0,2.1l5.1,5.1L56,61.3c-0.6,0.6-0.6,1.5,0,2.1   c0.3,0.3,0.7,0.4,1.1,0.4s0.8-0.1,1.1-0.4l5.1-5.1l5.1,5.1c0.3,0.3,0.7,0.4,1.1,0.4s0.8-0.1,1.1-0.4c0.6-0.6,0.6-1.5,0-2.1   l-5.1-5.1l5.1-5.1c0.6-0.6,0.6-1.5,0-2.1c-0.6-0.6-1.5-0.6-2.1,0L63.2,54.1z"/>

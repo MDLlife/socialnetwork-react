@@ -4,6 +4,12 @@ import {Col} from 'react-bootstrap';
 import EditIcon from 'material-ui/svg-icons/content/create';
 import LoginStore from "store/LoginStore";
 import Avatar from 'material-ui/Avatar';
+import TrustScore from 'components/profile/booker/TrustScore';
+import CompletedGigs from 'components/profile/booker/CompletedGigs';
+import Carousel from 'components/profile/booker/Carousel';
+import CarouselImgItem from 'components/profile/booker/CarouselImgItem';
+import CarouselItemBlock from "../../../components/profile/booker/CarouselItemBlock";
+import MyGigs from 'components/profile/booker/MyGigs';
 
 class Profile extends Component {
 
@@ -31,20 +37,20 @@ class Profile extends Component {
                         display: 'flex'
                     }}
                 >
-                    <div
+                    <div className={"profile-booker-left-header-container"}>
+                        <div
                         style={{
                             background: 'url(/static/img/IntroLoginBG.jpg) left center',
-                            width: '33%',
-                            height: 285,
-                            marginRight: 10,
-                            borderRadius: 5
+                            width:"23.1rem",
+                            height: "28.5rem",
+                            borderRadius: ".5rem .5rem 0 0",
                         }}
                     >
                         <div
                             style={{
                                 display: 'flex',
                                 justifyContent: 'space-between',
-                                padding: 10
+                                padding: "1rem"
                             }}
                         >
                             <div style={{color: 'white'}}>
@@ -62,12 +68,12 @@ class Profile extends Component {
                             <div
                                 style={{
                                     backgroundColor: '#00C245',
-                                    height: 20,
-                                    width: 20,
+                                    height: "1.2rem",
+                                    width: "1.2rem",
                                     borderRadius: '50%',
                                     position: 'absolute',
-                                    left: 68,
-                                    top: 54,
+                                    left: "7rem",
+                                    top: "5.9rem",
                                     border: '1px solid white'
                                 }}
                             />
@@ -97,93 +103,60 @@ class Profile extends Component {
                             <div>Agency Name</div>
                         </div>
                     </div>
-                    <div
-                        style={{
-                            backgroundColor: 'white',
-                            width: '64%',
-                            height: 285,
-                            marginRight: 10,
-                            borderRadius: 5,
-                            position: 'relative',
-                        }}
-                    >
-                        <div
-                            className='ribbon ribbon-top-left'
-                        >
-                            <span>In development</span>
-                        </div>
                         <div
                             style={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                marginTop: 65,
-                                fontFamily: 'Gilroy Medium'
+                                width: '100%',
+                                backgroundColor: 'white',
+                                borderRadius: "0 0 .5rem .5rem",
+                                position: 'relative'
                             }}
                         >
-                            <h3>All your data is saved</h3>
-                        </div>
-                        <div
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                marginTop: 10,
-                                fontFamily: 'Gilroy Medium'
-                            }}
-                        >
-                            <h4>Your data will be shown here with a new update</h4>
-                        </div>
-                        <div
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                textAlign: 'center',
-                                padding: '0px 40px'
-                            }}
-                        >
-                            <h5>Please check out our <a href="/today" style={{color: '#FF3399'}}>Today</a> section and
-                                follow
-                                the latest platform and market news</h5>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    style={{
-                        width: '100%',
-                        backgroundColor: 'white',
-                        height: 250,
-                        marginTop: 10,
-                        borderRadius: 5,
-                        position: 'relative'
-                    }}
-                >
-                    <div
-                        style={{
-                            padding: 10
-                        }}
-                    >
-                        <p style={{fontSize: 18}}>Medals</p>
-                    </div>
-                    <div
-                        style={{
-                            position: 'absolute',
-                            top: '50%',
-                            left: '50%',
-                            marginRight: '-50%',
-                            transform: 'translate(-50%, -50%)',
-                            textAlign: 'center'
-                        }}
-                    >
-                        <div>
-                            <img
-                                src="/static/img/medals_s-18.png"
-                                alt=""
-                                style={{width: 110}}
-                            />
-                            <p style={{fontSize: 24}}>Congratulations! You are a part of MDL now!</p>
-                        </div>
-                    </div>
+                            <div
+                                style={{
+                                    padding: "1.8rem 0 1.4rem 1.7rem"
+                                }}
+                            >
+                                <p style={{fontSize: "1.6rem", margin: 0, lineHeight: "1.3rem"}}>Medals</p>
+                            </div>
+                            <div
+                                style={{
+                                    textAlign: 'center'
+                                }}
+                            >
+                                <div style={{display:"flex", flexWrap: "no-wrap", margin: "0 3rem 0 3rem", paddingBottom: "1.3rem"}}>
+                                    <img
+                                        src="/static/img/medals_s-18.png"
+                                        alt=""
+                                        style={{width: "6.4rem", height: "6rem"}}
+                                    />
+                                    <p style={{fontSize: "1.2rem", margin:0, paddingTop: ".5rem"}}>Congratulations! You are a part of MDL now!</p>
+                                </div>
+                            </div>
 
+                        </div>
+                    </div>
+                    <div style={{display: "flex", flexDirection:"column", width: "100%"}}>
+                        <div style={{display: "flex", width: "100%", height: "6.9rem"}}>
+                            <TrustScore
+                                score={4.5}
+                            />
+                            <CompletedGigs
+                                gigs={15}
+                            />
+                        </div>
+                        <Carousel
+                            name={"Talents I work with"}
+                            list={[{info:"Models"}, {info: "Actors"}, {info: "Dancers"}, {info: "Singers"}, {info: "Artists"}]}
+                            item={CarouselItemBlock}
+                        />
+                        <Carousel
+                            name={"My favorite talents"}
+                            list={[{name:"Kristina", image: ""}, {name:"Kristina", image: ""}, {name:"Kristina", image: ""}, {name:"Kristina", image: ""}, {name:"Sophie", image: ""}]}
+                            item={CarouselImgItem}
+                        />
+                    </div>
                 </div>
+                <MyGigs />
             </Col>
         )
     }
