@@ -457,9 +457,12 @@ label {
   color: white; }
 
 .menu-item {
-  padding: 20px 20px 20px 24px;
+  padding: 2rem 2rem 2rem 1.8rem;
   background-color: white;
-  cursor: pointer; }
+  border-left: 4px solid transparent;
+  cursor: pointer;
+  color: #808080;
+  font-size: 1.6rem; }
 
 .menu-today li:first-child {
   border-top-left-radius: 5px;
@@ -470,9 +473,12 @@ label {
   border-bottom-right-radius: 5px; }
 
 .selected-menu-item-today {
-  padding: 20px;
-  border-left: 4px solid #991998;
-  background-color: white; }
+  padding: 2rem 2rem 2rem 1.8rem;
+  border-left: 4px solid;
+  border-image: linear-gradient(to top, #fd2ac5, #3b096e) 4;
+  background-color: white;
+  color: #000;
+  font-size: 1.6rem; }
 
 .future-post {
   background-color: white;
@@ -1257,5 +1263,393 @@ label {
           cursor: pointer; }
         .calendar-container .calendar-gigs .calendar-gigs-items .gig-card-container .gig-card-button:last-child {
           border-right: none; }
+
+.profile-booker-left-header-container {
+  margin-right: 1.4rem;
+  width: 23.1rem; }
+
+.trust-score-container {
+  width: 100%;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  border-radius: .4rem;
+  background-color: #fff;
+  height: 6.9rem; }
+  .trust-score-container h6 {
+    color: #808080;
+    opacity: 0.8;
+    font-size: 1.2rem;
+    margin: 1.1rem 0 .9rem 1.3rem; }
+  .trust-score-container .trust-score-line {
+    border-radius: .6rem;
+    height: 1.2rem;
+    margin: 0 1.6rem 2.7rem 2.1rem;
+    position: relative; }
+    .trust-score-container .trust-score-line .trust-score-line-item {
+      background-color: transparent;
+      width: 20%;
+      border-right: .1rem solid #fff;
+      padding-bottom: 1.5rem;
+      display: inline-block;
+      height: 0; }
+    .trust-score-container .trust-score-line .trust-score-line-item:last-child {
+      border-right: none; }
+    .trust-score-container .trust-score-line .trust-score-star {
+      position: absolute;
+      bottom: -1.5rem; }
+      .trust-score-container .trust-score-line .trust-score-star span {
+        position: absolute;
+        font-size: 1.5rem;
+        color: #fff;
+        width: 4.7rem;
+        text-align: center;
+        top: 1.3rem; }
+
+.completed-gigs-container {
+  background: url(/static/img/IntroLoginBG.jpg) left center;
+  margin-left: .8rem;
+  border-radius: .4rem;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12); }
+  .completed-gigs-container h2 {
+    font-size: 3.6rem;
+    text-align: center;
+    color: #fff;
+    font-family: "Gilroy Medium", sans-serif;
+    margin: .6rem 0 0 0; }
+  .completed-gigs-container h6 {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    margin: 0 1.7rem 1.2rem 2.1rem;
+    white-space: nowrap; }
+
+.carousel-container {
+  background-color: #fff;
+  border-radius: .4rem;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem; }
+  .carousel-container .carousel-img-item h5 {
+    text-align: center;
+    margin: 0 0 .6rem 0;
+    font-size: 1.4rem;
+    color: #000; }
+  .carousel-container .carousel-item-block {
+    background-color: #fafafa;
+    border-radius: .8rem;
+    box-shadow: 0 0.1rem 0.46rem 0.04rem rgba(0, 0, 0, 0.15);
+    height: 8.9rem;
+    width: 100%;
+    margin: 0 1.4rem 1.8rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+    .carousel-container .carousel-item-block h3 {
+      font-size: 1.8rem;
+      color: #000;
+      text-align: center;
+      margin: 0; }
+  .carousel-container .carousel-item-block:last-child {
+    margin-right: 0; }
+  .carousel-container h4 {
+    font-size: 1.6rem;
+    margin: 1.6rem 0 1.7rem 1.6rem;
+    line-height: 1.3rem;
+    font-family: "Gilroy Medium", sans-serif; }
+  .carousel-container svg {
+    cursor: pointer; }
+
+.booker-profile-gigs-container {
+  background-color: #fff;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  border-radius: .4rem;
+  display: flex;
+  flex-direction: column;
+  margin: 1.3rem 0 1.3rem 0; }
+  .booker-profile-gigs-container .booker-profile-gigs-header {
+    display: flex;
+    justify-content: space-between;
+    margin: .6rem 1.6rem 0 1.7rem; }
+    .booker-profile-gigs-container .booker-profile-gigs-header h5 {
+      font-size: 1.6rem;
+      line-height: 1.6rem;
+      color: #000;
+      font-family: "Gilroy Medium", sans-serif; }
+    .booker-profile-gigs-container .booker-profile-gigs-header h6 {
+      cursor: pointer;
+      font-size: 1.4rem;
+      color: #EB3386;
+      line-height: 1.2rem; }
+  .booker-profile-gigs-container .booker-profile-gigs-navigation {
+    display: flex;
+    justify-content: left;
+    margin-top: 1.2rem; }
+    .booker-profile-gigs-container .booker-profile-gigs-navigation div {
+      font-size: 1.6rem;
+      line-height: 1.6rem;
+      color: #808080;
+      padding: 1.1rem .7rem 1.1rem .7rem;
+      margin: 0 0 0 1rem;
+      font-family: "Gilroy Medium", sans-serif;
+      cursor: pointer; }
+    .booker-profile-gigs-container .booker-profile-gigs-navigation .active {
+      color: #000;
+      border-bottom: .3rem solid #eb3386; }
+  .booker-profile-gigs-container .booker-profile-search {
+    background-color: #eef2f5;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12);
+    margin: 1.6rem 1.6rem 2.4rem 1.8rem; }
+  .booker-profile-gigs-container .booker-profile-gig-cards {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 2.3rem 2.8rem 2.3rem; }
+    .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container {
+      margin-right: 1.6rem;
+      background-color: #fff;
+      border-radius: 0.4rem;
+      box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12);
+      width: 23.9rem;
+      background-image: url("/static/img/card_background.png");
+      background-repeat: no-repeat; }
+      .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-header {
+        display: flex;
+        justify-content: flex-end;
+        margin: 1.4rem 1.5rem 1rem 1.5rem; }
+        .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-header svg {
+          cursor: pointer; }
+      .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-name {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 0.6rem 0 1.1rem; }
+        .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-name h4 {
+          color: #000;
+          font-size: 1.8rem; }
+        .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-name span {
+          padding: .9rem 0 0 0;
+          text-align: center;
+          font-size: 1.2rem;
+          font-family: "Gilroy Medium"; }
+        .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-name h4:before {
+          position: relative;
+          content: "";
+          width: 0.9rem;
+          height: 0.9rem;
+          display: inline-block;
+          border-radius: 50%;
+          margin: 0 1.2rem 0 0.3rem;
+          bottom: 0.1rem; }
+        .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-name h4.blue:before {
+          background-color: #808bfe; }
+        .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-name h4.sky-blue:before {
+          background-color: #72d6ff; }
+      .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-date, .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-location, .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-payment {
+        color: #808080;
+        font-size: 1.4rem;
+        display: flex; }
+      .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-date {
+        text-transform: uppercase;
+        margin: 0 1.1rem 0 1.1rem; }
+      .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-location {
+        margin: 0 1.1rem 0 0.9rem; }
+      .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-payment {
+        margin: 0 1.1rem 0 0.9rem; }
+        .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-payment span {
+          color: #000;
+          font-family: "Gilroy Medium", sans-serif; }
+      .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-talents {
+        margin: .5rem 1rem 1.1rem 1rem; }
+        .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-talents .talent-pill-container {
+          display: inline-block;
+          position: relative; }
+          .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-talents .talent-pill-container span {
+            border-radius: 1.1rem;
+            font-size: 1.2rem;
+            line-height: .9rem;
+            padding: .7rem 1.1rem .6rem 1.1rem;
+            margin: 0 0.2rem;
+            display: inline-block;
+            background-color: #d1d1d1;
+            color: #000;
+            cursor: pointer;
+            position: relative; }
+          .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-talents .talent-pill-container span.required-point:after {
+            content: "";
+            display: block;
+            position: absolute;
+            background-color: #ff5963;
+            border-radius: 50%;
+            width: .7rem;
+            height: .7rem;
+            border: .1rem solid #fff;
+            bottom: 71%;
+            right: 0; }
+          .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-talents .talent-pill-container span.active {
+            background-color: #61116a;
+            color: #fff; }
+          .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-talents .talent-pill-container span:first-letter {
+            text-transform: uppercase; }
+          .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-talents .talent-pill-container .talent-pill-hover {
+            box-shadow: -0.7px -0.7px 1px 0 rgba(0, 0, 0, 0.1), -0.7px -0.7px 18px 0 rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            position: absolute;
+            bottom: calc(100% + 1rem);
+            left: -70%;
+            padding: 1.4rem 2rem 1rem 1.5rem;
+            width: auto;
+            min-width: max-content;
+            margin: 0;
+            border-radius: .4rem;
+            color: #808080;
+            font-size: 1.4rem; }
+            .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-talents .talent-pill-container .talent-pill-hover div {
+              display: flex;
+              line-height: 3.1rem; }
+              .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-talents .talent-pill-container .talent-pill-hover div h6 {
+                color: #000;
+                font-size: 1.4rem;
+                margin: .7rem 0 1.3rem 1.9rem; }
+            .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-talents .talent-pill-container .talent-pill-hover span {
+              background-color: transparent; }
+            .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-talents .talent-pill-container .talent-pill-hover span:before {
+              content: "";
+              display: block;
+              height: .5rem;
+              width: .5rem;
+              background-color: #ff5963;
+              position: relative;
+              top: .7rem;
+              right: 1rem;
+              border-radius: 50%; }
+          .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-talents .talent-pill-container .talent-pill-hover:after {
+            content: "";
+            width: 1.4rem;
+            height: 1.4rem;
+            transform: rotate(-45deg);
+            background-color: #fff;
+            position: absolute;
+            display: block;
+            bottom: -.6rem;
+            left: 45%;
+            box-shadow: -1px 0.5px 0px 0 rgba(0, 0, 0, 0.1); }
+      .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-types-container {
+        display: flex;
+        justify-content: space-between;
+        background-color: #f4f4f4;
+        border-top: 0.1rem solid #d9d9d9; }
+        .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-types-container .gig-card-type {
+          display: flex;
+          justify-content: space-between;
+          margin: 1.4rem 0 1rem 0;
+          position: relative; }
+          .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-types-container .gig-card-type .gig-card-type-hover {
+            box-shadow: -0.7px -0.7px 1px 0 rgba(0, 0, 0, 0.1), -0.7px -0.7px 18px 0 rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            position: absolute;
+            bottom: calc(100% + 1rem);
+            left: 30%;
+            padding: 1.4rem 2rem 1.8rem 3rem;
+            width: auto;
+            min-width: max-content;
+            margin: 0;
+            border-radius: .4rem; }
+            .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-types-container .gig-card-type .gig-card-type-hover p {
+              color: #808080;
+              font-size: 1.4rem; }
+            .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-types-container .gig-card-type .gig-card-type-hover span:before {
+              top: 1.3rem; }
+          .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-types-container .gig-card-type .gig-card-type-hover:after {
+            content: "";
+            width: 1.4rem;
+            height: 1.4rem;
+            transform: rotate(-45deg);
+            background-color: #fff;
+            position: absolute;
+            display: block;
+            bottom: -.6rem;
+            left: 45%;
+            box-shadow: -1px 0.5px 0px 0 rgba(0, 0, 0, 0.1); }
+          .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-types-container .gig-card-type div {
+            display: flex;
+            justify-content: space-between;
+            max-width: 9rem;
+            width: 70%;
+            margin-left: 1rem; }
+          .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-types-container .gig-card-type h6 {
+            color: #000;
+            font-size: 1.4rem;
+            margin: 0;
+            padding-top: 0.3rem; }
+          .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-types-container .gig-card-type span {
+            font-size: 1.2rem;
+            color: #000;
+            line-height: 1rem; }
+          .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-types-container .gig-card-type span:before {
+            content: "";
+            display: block;
+            height: .5rem;
+            width: .5rem;
+            background-color: #ffc503;
+            position: relative;
+            top: .7rem;
+            right: 1rem;
+            border-radius: 50%; }
+          .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-types-container .gig-card-type span:first-child:before {
+            background-color: #66d099; }
+          .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-types-container .gig-card-type span:last-child:before {
+            background-color: #ff5963; }
+        .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-types-container .gig-card-point {
+          width: 0.6rem;
+          height: 0.6rem;
+          border-radius: 50%;
+          background-color: rgba(128, 128, 128, 0.5);
+          margin: 0.5rem 0.5rem 0.5rem 0;
+          display: block; }
+        .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-types-container .active {
+          background-color: #61116a; }
+        .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-types-container .gig-card-tags-container {
+          display: flex;
+          margin-bottom: 0.6rem; }
+          .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-types-container .gig-card-tags-container .gig-card-tags {
+            width: 100%;
+            text-align: center;
+            border-right: 0.1rem solid rgba(128, 128, 128, 0.3);
+            color: #808080; }
+          .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-types-container .gig-card-tags-container .gig-card-tags:last-child {
+            border-right: none;
+            text-align: right; }
+          .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-types-container .gig-card-tags-container .gig-card-tags:first-child {
+            text-align: left; }
+      .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-button {
+        width: 50%;
+        text-align: center;
+        color: #61116a;
+        font-size: 1.6rem;
+        border-right: 0.1rem solid rgba(128, 128, 128, 0.1);
+        padding: 1.5rem 0 1.4rem 0;
+        display: inline-block;
+        font-family: "Gilroy Medium";
+        cursor: pointer; }
+      .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-button:last-child {
+        border-right: none; }
+    .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container:last-child {
+      margin-right: 0; }
+    .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-search-button {
+      font-size: 1.6rem;
+      color: #fff;
+      text-align: center;
+      background-color: #61116a;
+      line-height: 1.3rem;
+      padding: 1.6rem 0 1.8rem 0;
+      cursor: pointer;
+      border-radius: 0 0 .4rem .4rem; }
+    .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-talents-carousel {
+      display: flex;
+      background-color: #f4f4f4;
+      padding-bottom: .7rem; }
+      .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-talents-carousel div:last-child, .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-talents-carousel div:first-child {
+        background-color: rgba(128, 128, 128, 0.1);
+        border-radius: 50%;
+        width: 3rem;
+        height: 3rem; }
 
 /*# sourceMappingURL=../maps/styles/main.css.map */
