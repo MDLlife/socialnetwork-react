@@ -78,7 +78,7 @@ class Todo extends React.Component{
                                         </div>
                                     </div>
                                     <div>
-                                        <h5>{this.props.todoList[this.state.page].gig}</h5>
+                                        <h5 className={"point " + this.props.todoList[this.state.page].point}>{this.props.todoList[this.state.page].gig}</h5>
                                         <h6>{getDateGig(this.props.todoList[this.state.page].time)}  {this.props.todoList[this.state.page].location}</h6>
                                     </div>
                                     <div>

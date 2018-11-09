@@ -59,7 +59,55 @@ class Payment extends React.Component{
                         gig: "Underwear catalog",
                     },]}/>
                 <Gigs
-
+                    gigList = {[{
+                        talents: ["Actor","Model"],
+                        point: "blue",
+                        name: "Underwear catalog",
+                        date: "8-14-2018",
+                        location: "Longnan, China",
+                        cost: 12,
+                        address: false
+                    },{
+                        talents: ["Actor","Model"],
+                        point: "blue",
+                        name: "Underwear catalog",
+                        date: "8-14-2018",
+                        location: "Longnan, China",
+                        cost: 124,
+                        address: true
+                    },{
+                        talents: ["Actor","Model","Dancer"],
+                        point: "blue",
+                        name: "Underwear catalog",
+                        date: "8-14-2018",
+                        location: "Longnan, China",
+                        cost: 1205,
+                        address: false
+                    },{
+                        talents: ["Actor","Model"],
+                        point: "sky-blue",
+                        name: "Fashion show",
+                        date: "8-14-2018",
+                        location: "Longnan, China",
+                        cost: 760,
+                        address: true
+                    },{
+                        talents: ["Actor","Model"],
+                        point: "blue",
+                        name: "Underwear catalog",
+                        date: "8-14-2018",
+                        location: "Longnan, China",
+                        cost: 125,
+                        address: false
+                    },{
+                        talents: ["Actor","Model","Dancer"],
+                        point: "sky-blue",
+                        name: "Fashion show",
+                        date: "8-14-2018",
+                        location: "Longnan, China",
+                        cost: 250,
+                        address: true
+                    },]}
                 />
             </Col>
         )
