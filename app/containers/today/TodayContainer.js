@@ -7,6 +7,7 @@ import Messager from './messager/Messager';
 import Calendar from '../calendar/Calendar';
 import SvgIcon from 'material-ui/SvgIcon';
 import Divider from 'material-ui/Divider';
+import Payment from '../payment/Payment';
 
 class TodayContainer extends Component {
 
@@ -53,6 +54,8 @@ class TodayContainer extends Component {
             window.location.href = '/today/messager';
         } else if (event.target.value === 6){
             window.location.href = '/today/calendar';
+        } else if (event.target.value === 7) {
+            window.location.href = '/today/payment';
         } else {
             window.location.href = '/today';
         }
@@ -65,10 +68,13 @@ class TodayContainer extends Component {
 
         let block;
 
+
         if (!this.props.location.pathname.indexOf("/today/messager")) {
             block = <Messager/>
         } else if(!this.props.location.pathname.indexOf('/today/calendar')) {
             block = <Calendar/>
+        } else if(!this.props.location.pathname.indexOf('/today/payment')) {
+            block = <Payment/>
         } else {
             block = index === '' || index === 'genre' ? <NewsFeed index={index} value={value}/> :
                 <ProfileContainer index={index} value={value}/>
@@ -88,7 +94,7 @@ class TodayContainer extends Component {
                             }}
                         >
                             <li
-                                className={`${(index === '' || index === 'genre') && (this.props.location.pathname.indexOf("/today/messager") && this.props.location.pathname.indexOf("/today/calendar")) ? 'selected-menu-item-today' : 'menu-item'}`}
+                                className={`${(index === '' || index === 'genre') && (this.props.location.pathname.indexOf("/today/messager") && this.props.location.pathname.indexOf("/today/calendar") && this.props.location.pathname.indexOf("/today/payment")) ? 'selected-menu-item-today' : 'menu-item'}`}
                                 onClick={this.selectingMenu}
                                 value='1'
                             >
@@ -167,6 +173,23 @@ class TodayContainer extends Component {
                                     </g>
                                 </SvgIcon>
                                 Calendar
+                            </li>
+                            <Divider/>
+                            <li className={`${!this.props.location.pathname.indexOf("/today/payment") ? 'selected-menu-item-today' : 'menu-item'}`}
+                                onClick={this.selectingMenu}
+                                value='7'>
+                                <SvgIcon xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 85 80" style={{enableBackground:"new 0 0 72.8 86.7", width:"1.6rem", height: "1.6rem", position: "relative", top: "0.2rem", marginRight: "2rem"}}>
+                                    <g>
+                                        <path fill={"rgba(129,129,129, 0.8)"} d="M79.5,11.2H63.7V4.4c0-0.8-0.7-1.5-1.5-1.5s-1.5,0.7-1.5,1.5v6.8H22.2V4.4c0-0.8-0.7-1.5-1.5-1.5s-1.5,0.7-1.5,1.5v6.8H5.1   c-0.8,0-1.5,0.7-1.5,1.5v62.4c0,0.8,0.7,1.5,1.5,1.5h74.4c0.8,0,1.5-0.7,1.5-1.5V12.7C81,11.9,80.4,11.2,79.5,11.2z M78,73.7H6.6   V14.2h12.6v4.5c0,0.8,0.7,1.5,1.5,1.5s1.5-0.7,1.5-1.5v-4.5h38.5v4.5c0,0.8,0.7,1.5,1.5,1.5s1.5-0.7,1.5-1.5v-4.5H78V73.7z"/>
+                                        <path fill={"rgba(129,129,129, 0.8)"} d="M63.2,54.1l-5.1-5.1c-0.6-0.6-1.5-0.6-2.1,0c-0.6,0.6-0.6,1.5,0,2.1l5.1,5.1L56,61.3c-0.6,0.6-0.6,1.5,0,2.1   c0.3,0.3,0.7,0.4,1.1,0.4s0.8-0.1,1.1-0.4l5.1-5.1l5.1,5.1c0.3,0.3,0.7,0.4,1.1,0.4s0.8-0.1,1.1-0.4c0.6-0.6,0.6-1.5,0-2.1   l-5.1-5.1l5.1-5.1c0.6-0.6,0.6-1.5,0-2.1c-0.6-0.6-1.5-0.6-2.1,0L63.2,54.1z"/>
+                                        <path fill={"rgba(129,129,129, 0.8)"} d="M26.3,28.4H17c-0.8,0-1.5,0.7-1.5,1.5v9.2c0,0.8,0.7,1.5,1.5,1.5h9.2c0.8,0,1.5-0.7,1.5-1.5v-9.2   C27.8,29,27.1,28.4,26.3,28.4z M24.8,37.6h-6.2v-6.2h6.2V37.6z"/>
+                                        <path fill={"rgba(129,129,129, 0.8)"} d="M47.3,28.4h-9.2c-0.8,0-1.5,0.7-1.5,1.5v9.2c0,0.8,0.7,1.5,1.5,1.5h9.2c0.8,0,1.5-0.7,1.5-1.5v-9.2   C48.8,29,48.2,28.4,47.3,28.4z M45.8,37.6h-6.2v-6.2h6.2V37.6z"/>
+                                        <path fill={"rgba(129,129,129, 0.8)"} d="M26.3,49.6H17c-0.8,0-1.5,0.7-1.5,1.5v9.2c0,0.8,0.7,1.5,1.5,1.5h9.2c0.8,0,1.5-0.7,1.5-1.5v-9.2   C27.8,50.3,27.1,49.6,26.3,49.6z M24.8,58.9h-6.2v-6.2h6.2V58.9z"/>
+                                        <path fill={"rgba(129,129,129, 0.8)"} d="M47.3,49.6h-9.2c-0.8,0-1.5,0.7-1.5,1.5v9.2c0,0.8,0.7,1.5,1.5,1.5h9.2c0.8,0,1.5-0.7,1.5-1.5v-9.2   C48.8,50.3,48.2,49.6,47.3,49.6z M45.8,58.9h-6.2v-6.2h6.2V58.9z"/>
+                                        <path fill={"rgba(129,129,129, 0.8)"} d="M58.2,28.4c-0.8,0-1.5,0.7-1.5,1.5v9.2c0,0.8,0.7,1.5,1.5,1.5h9.2c0.8,0,1.5-0.7,1.5-1.5v-9.2c0-0.8-0.7-1.5-1.5-1.5   L58.2,28.4z M65.9,37.6h-6.2v-6.2h6.2V37.6z"/>
+                                    </g>
+                                </SvgIcon>
+                                Payment management
                             </li>
                         </ul>
                     </Col>
