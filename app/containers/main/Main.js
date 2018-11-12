@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
 
 const bgUrl = "/static/img/IntroLoginBG.jpg";
 
@@ -12,6 +13,14 @@ class Login extends Component {
                 backgroundSize: 'cover',
                 height: '100vh'
             }}>
+                <Helmet
+                    htmlAttributes={{"lang": "en", "class": "change-back-color"}} // amp takes no value
+                    title="MDL website."
+                    titleTemplate="MDL.live - %s"
+                    meta={[
+                        {"http-equiv": "refresh", "content": "5;url=/login"},
+                    ]}>
+                </Helmet>
                 <div>
                     <a href="/login">
                         <img

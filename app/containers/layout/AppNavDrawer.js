@@ -59,11 +59,11 @@ class AppNavDrawer extends Component {
                 onRequestChange={onRequestChangeNavDrawer}
                 containerStyle={{zIndex: zIndex.drawer - 100}}
             >
-                <a href="/#" onClick={this.showHome}>
+
                     <div style={styles.logo}>
                         M D L
                     </div>
-                </a>
+
                 <Menu/>
             </Drawer>
         )

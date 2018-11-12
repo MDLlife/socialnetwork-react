@@ -200,7 +200,10 @@ class Master extends Component {
         if(LoginStore.isLoggedIn()){
 
             loginButton = <span style={{color: '#fff !important', visited: '#fff !important'}} > Welcome back { LoginStore.user.username}! &#160;
-                            <FlatButton href="/logout" backgroundColor='#fff' className="logout-button" label="Log out"/> </span>
+                <FlatButton href="/logout" backgroundColor='#fff' className="logout-button" label="Log out"/>
+                <button onClick={() => this.props.changeLanguage('de')}>de</button>
+                <button onClick={() => this.props.changeLanguage('en')}>en</button>
+            </span>
         }
 
         return (

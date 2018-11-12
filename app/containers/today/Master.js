@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import getMuiTheme from "material-ui/styles/getMuiTheme";
-import ProfileMenu from '../Menu';
+import Menu from '../Menu';
 import Avatar from 'material-ui/Avatar';
 import LoginStore from 'store/LoginStore';
 
@@ -23,7 +23,7 @@ class Master extends Component {
         const username = LoginStore.user && LoginStore.user.username ? LoginStore.user.username : '';
         const avatarurl = LoginStore.user && LoginStore.user.avatarurl ? LoginStore.user.avatarurl : '';
 
-        const {children} = this.props;
+        const {children, t, i18n} = this.props;
         return (
             <div style={{backgroundColor: '#EEF2F5'}}>
                 <Helmet
@@ -53,13 +53,13 @@ class Master extends Component {
                                         position: 'relative',
                                         top: -7,
                                         right: 15,
-                                    }}>{username}</span>
+                                    }}>{t('welcome_to_mdl')}, {username}</span>
                                 <Avatar src={avatarurl} size={36} style={{
                                     position: 'relative',
                                     top: -7,
                                     borderRadius: '50%'
                                 }} />
-                                <ProfileMenu/>
+                                <Menu  {...this.props}/>
                             </div>
                         }
                         style={{
@@ -68,7 +68,7 @@ class Master extends Component {
                         titleStyle={{
                             color: 'black'
                         }}
-                        onClick={this.onClickMenu}
+                        // onClick={this.onClickMenu}
                     />
                     {children}
                     {/*<div className='menu-footer-container'>*/}
