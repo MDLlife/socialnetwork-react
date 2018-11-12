@@ -126,6 +126,7 @@ class OnboardingFan extends Component {
                                 container='inline'
                                 onChange={this.selectedDateBirth}
                                 value={this.props.fan.dateOfBirth || null}
+                                autoOk={true}
                             />
                             <img
                                 src="/static/img/calendar.svg"

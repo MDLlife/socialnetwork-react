@@ -129,6 +129,7 @@ class GeneralInformation extends Component {
             <Row>
                 <Col xs={12}>
                     <h1 className='log-in-with text-center login-header-margin'>General information</h1>
+                    <p className='center'>Set up your profile name and location to get started</p>
                     <img className='center-line' src="/static/img/Line.png" alt=""/>
                 </Col>
             </Row>,
@@ -193,7 +194,7 @@ class GeneralInformation extends Component {
             <Row>
                 <Col xs={12} className='center'>
                     <AutoComplete
-                        floatingLabelText="City"
+                        floatingLabelText="City (English only)"
                         dataSource={this.state.dataSource}
                         onUpdateInput={this.handleUpdateInput}
                         maxSearchResults={5}
