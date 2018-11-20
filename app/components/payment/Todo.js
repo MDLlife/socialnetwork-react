@@ -107,7 +107,11 @@ class Todo extends React.Component{
                                 </div>
                             </div>
                             <div className={'todo-total'}>
-                                <h4>1KoX6AA5VTdbBTkw27YEqKfAtTeQo97RRt</h4>
+                                <h4>
+                                    <img src="/static/img/Logo_without_text.png"
+                                    />
+                                    1KoX6AA5VTdbBTkw27YEqKfAtTeQo97RRt
+                                </h4>
                                 <div>
                                     <h5>Total:</h5>
                                     <div>

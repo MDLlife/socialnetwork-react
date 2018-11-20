@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import GigCard from './GigCard';
+import Navigation from './Navigation';
 
 class Gigs extends React.Component{
 
@@ -78,6 +79,9 @@ class Gigs extends React.Component{
                         />
                         ))}
                 </div>
+                <Navigation
+                    classes={"payment-bottom-navigation"}
+                />
             </div>
         )
     }
