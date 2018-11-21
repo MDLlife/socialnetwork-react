@@ -8,6 +8,7 @@ import Calendar from '../calendar/Calendar';
 import SvgIcon from 'material-ui/SvgIcon';
 import Divider from 'material-ui/Divider';
 import Payment from '../payment/Payment';
+import GigPayment from '../payment/GigPayment';
 
 class TodayContainer extends Component {
 
@@ -73,6 +74,8 @@ class TodayContainer extends Component {
             block = <Messager/>
         } else if(!this.props.location.pathname.indexOf('/today/calendar')) {
             block = <Calendar/>
+        } else if(!this.props.location.pathname.indexOf('/today/payment/gig-payment')) {
+            block = <GigPayment/>
         } else if(!this.props.location.pathname.indexOf('/today/payment')) {
             block = <Payment/>
         } else {

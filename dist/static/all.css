@@ -462,7 +462,8 @@ label {
   border-left: 4px solid transparent;
   cursor: pointer;
   color: #808080;
-  font-size: 1.6rem; }
+  font-size: 1.6rem;
+  line-height: 1.3rem; }
 
 .menu-today li:first-child {
   border-top-left-radius: 5px;
@@ -1651,5 +1652,391 @@ label {
         border-radius: 50%;
         width: 3rem;
         height: 3rem; }
+
+.todo-container {
+  border-radius: .4rem;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  background-color: #fff; }
+  .todo-container .todo-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.6rem 3rem 1.5rem 3rem;
+    border-bottom: .1rem solid #e4e4e4; }
+    .todo-container .todo-header h5 {
+      font-size: 1.6rem;
+      color: #000;
+      line-height: 1.5rem;
+      font-family: "Gilroy Medium", sans-serif; }
+    .todo-container .todo-header h6 {
+      font-size: 1.2rem;
+      color: #808080;
+      line-height: 1.5rem;
+      cursor: pointer; }
+  .todo-container .todo-total {
+    background-color: #f4f4f4;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: .4rem 6.5rem .5rem 5.9rem; }
+    .todo-container .todo-total img {
+      height: 2.9rem;
+      position: relative;
+      top: -.2rem; }
+    .todo-container .todo-total h4 {
+      font-size: 1.6rem;
+      color: #808080;
+      margin: 0;
+      padding-top: .7rem; }
+    .todo-container .todo-total h5 {
+      color: #000;
+      font-size: 1.4rem;
+      margin: 0;
+      padding-top: .8rem;
+      font-family: "Gilroy Medium", sans-serif; }
+    .todo-container .todo-total span {
+      font-size: 1rem;
+      background-color: #61116a;
+      line-height: 1.1;
+      padding: .8rem 4.5rem .7rem 4.7rem;
+      border-radius: 1.2rem;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block; }
+    .todo-container .todo-total div {
+      display: flex;
+      justify-content: space-between;
+      width: 40%;
+      margin-top: .4rem;
+      margin-bottom: .4rem; }
+      .todo-container .todo-total div div {
+        display: flex;
+        margin: 0; }
+        .todo-container .todo-total div div h5 {
+          margin-right: 1.7rem;
+          display: inline-block; }
+  .todo-container .todo-model {
+    display: flex;
+    width: 100%; }
+    .todo-container .todo-model h6 {
+      font-size: 1.2rem;
+      color: #808080;
+      margin: .6rem 0 0 0; }
+    .todo-container .todo-model h5 {
+      font-size: 1.4rem;
+      color: #000;
+      font-family: "Gilroy Medium", sans-serif;
+      margin: .4rem 0 0 0; }
+    .todo-container .todo-model h5.point {
+      position: relative; }
+    .todo-container .todo-model h5.point:before {
+      position: absolute;
+      content: "";
+      width: 0.9rem;
+      height: 0.9rem;
+      display: inline-block;
+      border-radius: 50%;
+      margin: 0 0.6rem 0 0.3rem;
+      bottom: 0.4rem;
+      left: -2rem; }
+    .todo-container .todo-model h5.point.blue:before {
+      background-color: #808bfe; }
+    .todo-container .todo-model h5.point.sky-blue:before {
+      background-color: #72d6ff; }
+    .todo-container .todo-model span {
+      font-family: "Gilroy Medium", sans-serif;
+      font-size: 1.2rem;
+      color: #808080;
+      margin: 0;
+      line-height: 1.54rem; }
+
+.payment-gigs-container {
+  background-color: #fff;
+  border-radius: .4rem;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  margin-top: 1.1rem; }
+  .payment-gigs-container h5 {
+    font-size: 1.4rem;
+    color: #808080;
+    margin: 2rem 0 0 0; }
+  .payment-gigs-container .gig-cards-direction {
+    margin-top: .5rem; }
+    .payment-gigs-container .gig-cards-direction span:first-child {
+      border-radius: .4rem 0 0 .4rem; }
+    .payment-gigs-container .gig-cards-direction span:last-child {
+      border-radius: 0 .4rem .4rem 0; }
+    .payment-gigs-container .gig-cards-direction span {
+      font-size: 1.2rem;
+      line-height: 1rem;
+      padding: .4rem 1rem .4rem .9rem;
+      background-color: #e4e4e4;
+      cursor: pointer; }
+    .payment-gigs-container .gig-cards-direction span.active {
+      background-color: #541065;
+      color: #fff; }
+  .payment-gigs-container .gig-cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 2.4rem 10rem 2.4rem;
+    justify-content: space-around; }
+    .payment-gigs-container .gig-cards .gig-card-container {
+      background-color: #fff;
+      border-radius: 0.4rem;
+      box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12);
+      width: 23.9rem;
+      background-image: url("/static/img/card_background.png");
+      background-repeat: no-repeat;
+      margin-bottom: 2.5rem; }
+      .payment-gigs-container .gig-cards .gig-card-container h5 {
+        margin: 1rem 0 1rem 0; }
+      .payment-gigs-container .gig-cards .gig-card-container .gig-card-pills-container {
+        display: flex;
+        justify-content: flex-end;
+        height: 2.2rem;
+        margin: 1.1rem 0.7rem 2.5rem 1.1rem;
+        overflow-y: auto; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-pills-container span {
+          border-radius: 1.1rem;
+          font-size: 1.2rem;
+          background-color: #d1d1d1;
+          color: #000;
+          padding: 0.3rem 1.1rem 0 1.1rem;
+          margin-right: 0.4rem; }
+      .payment-gigs-container .gig-cards .gig-card-container .gig-card-name {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 1.1rem 0 1.1rem; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-name h4 {
+          color: #000;
+          font-size: 1.8rem; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-name span {
+          padding: .9rem 0 0 0;
+          text-align: center;
+          font-size: 1.2rem;
+          font-family: "Gilroy Medium"; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-name h4:before {
+          position: relative;
+          content: "";
+          width: 0.9rem;
+          height: 0.9rem;
+          display: inline-block;
+          border-radius: 50%;
+          margin: 0 0.6rem 0 0.3rem;
+          bottom: 0.1rem; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-name h4.blue:before {
+          background-color: #808bfe; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-name h4.sky-blue:before {
+          background-color: #72d6ff; }
+      .payment-gigs-container .gig-cards .gig-card-container .gig-card-date, .payment-gigs-container .gig-cards .gig-card-container .gig-card-location {
+        color: #808080;
+        font-size: 1.4rem;
+        display: flex; }
+      .payment-gigs-container .gig-cards .gig-card-container .gig-card-date {
+        text-transform: uppercase;
+        margin: 0 1.1rem 0 1.1rem; }
+      .payment-gigs-container .gig-cards .gig-card-container .gig-card-location {
+        margin: 0 1.1rem 0 0.9rem; }
+      .payment-gigs-container .gig-cards .gig-card-container .gig-card-cost {
+        font-size: 1.6rem;
+        font-family: "Gilroy Medium", sans-serif;
+        color: #000;
+        background-color: #f4f4f4;
+        border-top: .1rem solid #d4d4d4;
+        text-align: center;
+        line-height: 1.5rem;
+        padding: 1.8rem 0 1.2rem 0; }
+      .payment-gigs-container .gig-cards .gig-card-container .gig-card-requirement {
+        color: #fff;
+        text-align: center;
+        background-color: #eb3386;
+        font-size: 1.6rem;
+        padding: 1.5rem 1.4rem;
+        font-family: "Gilroy Medium", sans-serif; }
+      .payment-gigs-container .gig-cards .gig-card-container .gig-card-address-provided {
+        display: flex;
+        width: 100%;
+        height: 5rem;
+        background-color: #cde7bc; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-address-provided h4 {
+          font-size: 1.6rem;
+          text-align: center;
+          color: #808080;
+          font-family: "Gilroy Medium", sans-serif;
+          line-height: 1.6rem;
+          margin: auto; }
+      .payment-gigs-container .gig-cards .gig-card-container .gig-card-no-address {
+        display: flex;
+        width: 100%;
+        height: 5rem;
+        cursor: pointer; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-no-address h4 {
+          line-height: 1.6rem;
+          color: #61116a;
+          font-size: 1.6rem;
+          text-align: center;
+          font-family: "Gilroy Medium", sans-serif;
+          margin: auto; }
+      .payment-gigs-container .gig-cards .gig-card-container .gig-card-no-address:hover {
+        background-color: #61116a;
+        cursor: pointer;
+        border-radius: 0 0 0 .4rem; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-no-address:hover h4 {
+          color: #fefefe; }
+      .payment-gigs-container .gig-cards .gig-card-container .gig-card-pay-now {
+        width: 100%;
+        height: 5rem;
+        display: flex;
+        border-left: 0.1rem solid rgba(128, 128, 128, 0.3); }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-pay-now h4 {
+          line-height: 1.6rem;
+          font-size: 1.6rem;
+          color: #808080;
+          font-family: "Gilroy Medium", sans-serif;
+          text-align: center;
+          margin: auto; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-pay-now.active {
+          cursor: pointer; }
+          .payment-gigs-container .gig-cards .gig-card-container .gig-card-pay-now.active h4 {
+            color: #61116a; }
+  .payment-gigs-container .payment-bottom-navigation {
+    padding-top: 2rem;
+    padding-bottom: 8.3rem;
+    display: flex;
+    justify-content: center; }
+    .payment-gigs-container .payment-bottom-navigation span {
+      font-size: 1.4rem;
+      line-height: 1.1rem;
+      padding: 1.1rem 1.5rem 1rem 1.4rem;
+      border: .1rem solid #e4e4e4;
+      border-right: none;
+      cursor: pointer; }
+    .payment-gigs-container .payment-bottom-navigation span:first-child {
+      border-radius: .4rem 0 0 .4rem;
+      width: 8.6rem;
+      text-align: center; }
+    .payment-gigs-container .payment-bottom-navigation span:last-child {
+      border-radius: 0 .4rem .4rem 0;
+      width: 8.6rem;
+      text-align: center;
+      border-right: .1rem solid #e4e4e4; }
+    .payment-gigs-container .payment-bottom-navigation span.disabled {
+      color: rgba(128, 128, 128, 0.5); }
+    .payment-gigs-container .payment-bottom-navigation span.active {
+      background-color: #61116a;
+      color: #fff; }
+
+.gig-payment-container {
+  border-radius: .4rem;
+  background-color: #fff;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12); }
+  .gig-payment-container .header-back {
+    display: flex;
+    justify-content: left; }
+    .gig-payment-container .header-back h6 {
+      color: #808080;
+      font-size: 1.2rem;
+      text-align: center; }
+  .gig-payment-container .gig-info {
+    display: flex;
+    justify-content: left; }
+    .gig-payment-container .gig-info h3 {
+      font-size: 1.8rem;
+      color: #000; }
+    .gig-payment-container .gig-info h5 {
+      color: #808080;
+      font-size: 1.4rem; }
+  .gig-payment-container .gig-row {
+    display: flex; }
+    .gig-payment-container .gig-row h6 {
+      font-size: 1.4rem;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+    .gig-payment-container .gig-row p {
+      padding: 1rem;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+    .gig-payment-container .gig-row .column-1 {
+      width: 13%; }
+    .gig-payment-container .gig-row .column-2 {
+      width: 8.2%; }
+    .gig-payment-container .gig-row .column-3 {
+      width: 6.5%; }
+    .gig-payment-container .gig-row .column-4 {
+      width: 7.8%; }
+    .gig-payment-container .gig-row .column-5 {
+      width: 10.5%; }
+    .gig-payment-container .gig-row .column-6 {
+      width: 10.4%; }
+    .gig-payment-container .gig-row .column-7 {
+      width: 21.3%;
+      text-overflow: ellipsis;
+      overflow: hidden; }
+    .gig-payment-container .gig-row .column-8 {
+      width: 8.4%; }
+    .gig-payment-container .gig-row .column-9 {
+      width: 10.1%; }
+  .gig-payment-container .gig-row:first-child {
+    background-color: #f7f9fa; }
+    .gig-payment-container .gig-row:first-child h6 {
+      color: #000;
+      font-size: 1.2rem;
+      padding: 1rem;
+      font-family: "Gilroy Medium", sans-serif;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+    .gig-payment-container .gig-row:first-child .column-1 {
+      width: 13%; }
+    .gig-payment-container .gig-row:first-child .column-2 {
+      width: 8.2%;
+      justify-content: flex-end; }
+    .gig-payment-container .gig-row:first-child .column-3 {
+      width: 6.5%; }
+    .gig-payment-container .gig-row:first-child .column-4 {
+      width: 7.8%;
+      justify-content: flex-start; }
+    .gig-payment-container .gig-row:first-child .column-5 {
+      width: 10.5%; }
+    .gig-payment-container .gig-row:first-child .column-6 {
+      width: 10.4%;
+      justify-content: flex-end;
+      text-align: right; }
+    .gig-payment-container .gig-row:first-child .column-7 {
+      width: 21.3%;
+      justify-content: flex-start; }
+    .gig-payment-container .gig-row:first-child .column-8 {
+      width: 8.4%; }
+    .gig-payment-container .gig-row:first-child .column-9 {
+      width: 10.1%; }
+  .gig-payment-container .payment-bottom-navigation {
+    padding-top: 2rem;
+    padding-bottom: 8.3rem;
+    display: flex;
+    justify-content: center; }
+    .gig-payment-container .payment-bottom-navigation span {
+      font-size: 1.4rem;
+      line-height: 1.1rem;
+      padding: 1.1rem 1.5rem 1rem 1.4rem;
+      border: .1rem solid #e4e4e4;
+      border-right: none;
+      cursor: pointer; }
+    .gig-payment-container .payment-bottom-navigation span:first-child {
+      border-radius: .4rem 0 0 .4rem;
+      width: 8.6rem;
+      text-align: center; }
+    .gig-payment-container .payment-bottom-navigation span:last-child {
+      border-radius: 0 .4rem .4rem 0;
+      width: 8.6rem;
+      text-align: center;
+      border-right: .1rem solid #e4e4e4; }
+    .gig-payment-container .payment-bottom-navigation span.disabled {
+      color: rgba(128, 128, 128, 0.5); }
+    .gig-payment-container .payment-bottom-navigation span.active {
+      background-color: #61116a;
+      color: #fff; }
 
 /*# sourceMappingURL=../maps/styles/main.css.map */
