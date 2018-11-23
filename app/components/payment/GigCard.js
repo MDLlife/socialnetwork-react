@@ -4,7 +4,6 @@ import {getDateGig} from "../../util/dateParser";
 
 class GigCard extends React.Component{
 
-
     render(){
         return(
             <div className={"gig-card-container"}>
@@ -36,7 +35,7 @@ class GigCard extends React.Component{
                 <div className={"gig-card-cost"}>
                     {this.props.cost}$
                 </div>
-                <div className={"gig-card-requirement"}>
+                <div className={"gig-card-requirement"} onClick="">
                     Payment requirement
                 </div>
                 <div style={{

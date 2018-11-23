@@ -345,71 +345,175 @@
   .header-back{
     display: flex;
     justify-content: left;
+    padding: 2.3rem 0 0 2.3rem;
     h6 {
+      cursor: pointer;
       color: #808080;
       font-size: 1.2rem;
       text-align: center;
+      margin: 0;
     }
   }
   .gig-info{
     display: flex;
     justify-content: left;
+    align-items: baseline;
+    margin: 2.5rem 0 2.3rem 3.8rem;
+    position: relative;
     h3{
       font-size: 1.8rem;
       color: #000;
+      margin: 0 4.1rem 0 0;
+    }
+    h3:before{
+      position: absolute;
+      content: "";
+      width: 0.9rem;
+      height: 0.9rem;
+      display: inline-block;
+      border-radius: 50%;
+      margin: 0 0.6rem 0 0.3rem;
+      bottom: .6rem;
+      left: -2rem;
+    }
+    h3.blue:before{
+      background-color: #808bfe;
     }
     h5{
       color: #808080;
       font-size: 1.4rem;
+      margin: 0 3rem 0 0;
     }
   }
   .gig-row{
     display: flex;
-
+    color: #808080;
     h6{
       font-size: 1.4rem;
       padding: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      margin: 0;
     }
     p{
-      padding: 1rem;
+      padding: 1rem 1rem 1rem 1.8rem;
       font-size: 1rem;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-start;
+      justify-content: flex-start;
     }
 
     .column-1{
       width: 13%;
+      text-align: left;
+      padding-left: 2.3rem;
     }
     .column-2{
       width: 8.2%;
+      text-align: right;
     }
     .column-3{
-      width: 6.5%;
+      width: 9.5%;
+      white-space: nowrap;
+      text-align: left;
     }
     .column-4{
       width: 7.8%;
+      text-align: center;
+    }
+    p.column-4{
+      color: #EB3386;
+      cursor: pointer;
+      margin: 0;
+      white-space: nowrap;
     }
     .column-5{
       width: 10.5%;
+      text-align: right;
     }
     .column-6{
       width: 10.4%;
+      text-align: right;
     }
     .column-7{
       width: 21.3%;
-      text-overflow: ellipsis;
-      overflow: hidden;
+      padding: 1rem;
+      display: flex;
+      cursor: pointer;
+      p{
+        color: #808080;
+        margin: 0;
+        padding: 0 0 0 .2rem;
+        cursor: auto;
+      }
+      p.not-sent{
+        color: #eb3386;
+        cursor: pointer;
+      }
+      img{
+        position: relative;
+      }
+      h6{
+        text-overflow: ellipsis;
+        overflow: hidden;
+        vertical-align: middle;
+        text-align: left;
+        margin: 0;
+        padding: 0;
+      }
+      .copy{
+        display: none;
+        color: #0072ff;
+        font-size: 1rem;
+        font-family: "Gilroy Medium", sans-serif;
+      }
+    }
+    .column-7:hover{
+      .copy{
+        display: inline;
+      }
     }
     .column-8{
-      width: 8.4%;
+      width: 9%;
+      position: relative;
+      &.green:before{
+        background-color: #66d099;
+      }
+      &.yellow:before{
+        background-color: #ffc503;
+      }
+      &.red:before{
+        background-color: #ff5963;
+      }
+    }
+    
+    .column-8:before{
+      position: absolute;
+      content: "";
+      width: 0.5rem;
+      height: 0.5rem;
+      display: inline-block;
+      border-radius: 50%;
+      margin: 0 0.6rem 0 0.3rem;
+      bottom: 1.5rem;
+      left: .5rem;
+
     }
     .column-9{
       width: 10.1%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      span{
+        text-align: center;
+        color: #fff;
+        background-color: #61116a;
+        border-radius: 1rem;
+        font-size: 1rem;
+        line-height: .9rem;
+        padding: .8rem 1.2rem .9rem 1.4rem;
+        cursor: pointer;
+      }
     }
+
   }
   
   .gig-row:first-child{
@@ -433,7 +537,8 @@
       justify-content: flex-end;
     }
     .column-3{
-      width: 6.5%;
+      width: 9.5%;
+      white-space: normal;
     }
     .column-4{
       width: 7.8%;
@@ -452,14 +557,14 @@
       justify-content: flex-start;
     }
     .column-8{
-      width: 8.4%;
+      width: 9%;
     }
     .column-9{
       width: 10.1%;
     }
   }
   .payment-bottom-navigation{
-    padding-top: 2rem;
+    padding-top: 8rem;
     padding-bottom: 8.3rem;
     display: flex;
     justify-content: center;
