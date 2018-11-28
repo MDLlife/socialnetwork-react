@@ -61,7 +61,7 @@ class GigPayment extends React.Component{
               address: {status: "not sent"},
               status: "Unpaid",
           },
-          { talent: "Actor 4",
+          { talent: "Actor 5",
               amount: 19,
               payment: "per hour",
               overtime: 435,

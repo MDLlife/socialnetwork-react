@@ -4,6 +4,10 @@ import {getDateGig} from "../../util/dateParser";
 
 class GigCard extends React.Component{
 
+    handleClick = () => {
+        window.location.href = '/today/payment/gig-payment';
+    };
+
     render(){
         return(
             <div className={"gig-card-container"}>
@@ -35,7 +39,7 @@ class GigCard extends React.Component{
                 <div className={"gig-card-cost"}>
                     {this.props.cost}$
                 </div>
-                <div className={"gig-card-requirement"} onClick="">
+                <div className={"gig-card-requirement"} onClick={this.handleClick}>
                     Payment requirement
                 </div>
                 <div style={{
@@ -46,12 +50,12 @@ class GigCard extends React.Component{
                         <h4>Address provided</h4>
                     </div>)}
                     {!this.props.address && (
-                        <div className={"gig-card-no-address"}>
+                        <div className={"gig-card-no-address"} onClick={this.handleClick}>
                             <h4>No address!</h4>
                         </div>
                     )
                     }
-                    <div className={"gig-card-pay-now " +(this.props.address? ("active"): "") }>
+                    <div className={"gig-card-pay-now " +(this.props.address? ("active"): "") } onClick={this.props.address? this.handleClick: ()=>{}}>
                         <h4>Pay now</h4>
                     </div>
                 </div>
