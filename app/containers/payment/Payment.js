@@ -59,14 +59,17 @@ class Payment extends React.Component{
                         gig: "Underwear catalog",
                     },]}/>
                 <Gigs
-                    gigList = {[{
+                    gigUnpaidList = {[{
                         talents: ["Actor","Model"],
                         point: "blue",
                         name: "Underwear catalog",
                         date: "8-14-2018",
                         location: "Longnan, China",
                         cost: 12,
-                        address: false
+                        address: false,
+                        paid: 3,
+                        unpaid: 1,
+                        pending: 5,
                     },{
                         talents: ["Actor","Model"],
                         point: "blue",
@@ -74,7 +77,10 @@ class Payment extends React.Component{
                         date: "8-14-2018",
                         location: "Longnan, China",
                         cost: 124,
-                        address: true
+                        address: true,
+                        paid: 3,
+                        unpaid: 2,
+                        pending: 5,
                     },{
                         talents: ["Actor","Model","Dancer"],
                         point: "blue",
@@ -82,7 +88,10 @@ class Payment extends React.Component{
                         date: "8-14-2018",
                         location: "Longnan, China",
                         cost: 1205,
-                        address: false
+                        address: false,
+                        paid: 3,
+                        unpaid: 1,
+                        pending: 1,
                     },{
                         talents: ["Actor","Model"],
                         point: "sky-blue",
@@ -90,7 +99,10 @@ class Payment extends React.Component{
                         date: "8-14-2018",
                         location: "Longnan, China",
                         cost: 760,
-                        address: true
+                        address: true,
+                        paid: 3,
+                        unpaid: 6,
+                        pending: 5,
                     },{
                         talents: ["Actor","Model"],
                         point: "blue",
@@ -98,7 +110,10 @@ class Payment extends React.Component{
                         date: "8-14-2018",
                         location: "Longnan, China",
                         cost: 125,
-                        address: false
+                        address: false,
+                        paid: 0,
+                        unpaid: 1,
+                        pending: 5,
                     },{
                         talents: ["Actor","Model","Dancer"],
                         point: "sky-blue",
@@ -106,9 +121,23 @@ class Payment extends React.Component{
                         date: "8-14-2018",
                         location: "Longnan, China",
                         cost: 250,
-                        address: true
+                        address: true,
+                        paid: 3,
+                        unpaid: 1,
+                        pending: 5,
                     },]}
-                />
+                    gigPaidList ={[
+                        {
+                            talents: ["Actor"],
+                            point: "sky-blue",
+                            name: "Fashion show",
+                            date: "8-14-2018",
+                            location: "Longnan, China",
+                            cost: "1256",
+
+                        }
+                    ]}
+                />,
             </Col>
         )
     }

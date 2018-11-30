@@ -2,7 +2,23 @@ import * as React from 'react';
 import SvgIcon from 'material-ui/SvgIcon';
 import {getDateGig} from "../../util/dateParser";
 
-class GigCard extends React.Component{
+class GigCardUnpaid extends React.Component{
+
+    constructor(props){
+        super(props)
+    }
+
+    state = {
+        hover: false
+    };
+
+    handleOver = () => {
+        this.setState({hover: true});
+    };
+
+    handleOut = () => {
+        this.setState({hover: false});
+    };
 
     handleClick = () => {
         window.location.href = '/today/payment/gig-payment';
@@ -37,31 +53,31 @@ class GigCard extends React.Component{
                     </h5>
                 </div>
                 <div className={"gig-card-cost"}>
-                    {this.props.cost}$
+                    <div className={"budget"}>
+                    <h6>Total budget</h6> <span>{this.props.cost}$</span>
+                    </div>
+                    <div
+                        style={{display: this.state.hover? "block": "none"}}
+                        className={"hover-point"}>
+                        <p><span className={"green"}>{this.props.paid}</span> Paid</p>
+                        <p><span>{this.props.pending}</span> Pending (waiting for payment)</p>
+                        <p><span className={"red"}>{this.props.unpaid}</span> Unpaid (payment data not provided)</p>
+                    </div>
+                    <div>
+                        <h6>Payment status</h6>
+                        <div className={"points"} onMouseOver={this.handleOver} onMouseOut={this.handleOut}>
+                            <span>{this.props.paid}</span>
+                            <span>{this.props.pending}</span>
+                            <span>{this.props.unpaid}</span>
+                        </div>
+                    </div>
                 </div>
                 <div className={"gig-card-requirement"} onClick={this.handleClick}>
-                    Payment requirement
-                </div>
-                <div style={{
-                    display: "flex",
-                    flexWrap: "nowrap"
-                }}>
-                    {this.props.address && (<div className={"gig-card-address-provided"}>
-                        <h4>Address provided</h4>
-                    </div>)}
-                    {!this.props.address && (
-                        <div className={"gig-card-no-address"} onClick={this.handleClick}>
-                            <h4>No address!</h4>
-                        </div>
-                    )
-                    }
-                    <div className={"gig-card-pay-now " +(this.props.address? ("active"): "") } onClick={this.props.address? this.handleClick: ()=>{}}>
-                        <h4>Pay now</h4>
-                    </div>
+                    View Details
                 </div>
             </div>
         )
     }
 }
 
-export default GigCard;
+export default GigCardUnpaid;

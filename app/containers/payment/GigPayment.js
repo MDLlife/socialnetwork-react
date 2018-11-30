@@ -75,6 +75,10 @@ class GigPayment extends React.Component{
         super(props)
     }
 
+    goBack = () => {
+        window.location.href = '/today/payment';
+    }
+
     checkAmountToPayment = (payment, amount, hours, overtime, toPayment) => {
         if (payment === "per hour"){
             if (hours) {
@@ -142,7 +146,7 @@ class GigPayment extends React.Component{
             <Col xs={10}>
                 <div className={"gig-payment-container"}>
                     <div className={"header-back"}>
-                            <h6>
+                            <h6 onClick={this.goBack}>
                                 <SvgIcon xmlns="http://www.w3.org/2000/svg"
                                          style = {{
                                              width: "1.6rem",

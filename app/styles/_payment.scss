@@ -187,6 +187,7 @@
         margin: 0 1.1rem 0 1.1rem;
         h4{
           color: #000;
+          font-family: "Gilroy Medium", sans-serif;
           font-size: 1.8rem;
         }
 
@@ -214,7 +215,7 @@
           background-color: #72d6ff;
         }
       }
-      .gig-card-date,.gig-card-location{
+      .gig-card-date,.gig-card-location, .gig-card-budget{
         color: #808080;
         font-size: 1.4rem;
         display: flex;
@@ -223,26 +224,138 @@
         text-transform: uppercase;
         margin: 0 1.1rem 0 1.1rem;
       }
-      .gig-card-location{
+      .gig-card-location, .gig-card-budget{
         margin: 0 1.1rem 0 0.9rem;
       }
+
+      .gig-card-budget{
+        margin-bottom: 2rem;
+      }
+
       .gig-card-cost{
-        font-size: 1.6rem;
-        font-family: "Gilroy Medium", sans-serif;
-        color: #000;
         background-color: #f4f4f4;
         border-top: .1rem solid #d4d4d4;
-        text-align: center;
-        line-height: 1.5rem;
-        padding: 1.8rem 0 1.2rem 0;
+        border-bottom: .1rem solid #d4d4d4;
+        position: relative;
+        padding: 2rem 1.9rem 2rem 1.7rem;
+        .budget{
+          padding-bottom: 1.7rem;
+        }
+        span{
+          font-size: 1.6rem;
+          color: #000;
+          font-family: "Gilroy ExtraBold", sans-serif;
+          line-height: 1.6rem;
+        }
+        h6{
+          font-size: 1.2rem;
+          color: #808080;
+          line-height: 1.1rem;
+          margin: 0;
+          padding-top: .4rem;
+        }
+        .hover-point{
+          position: absolute;
+          background-color: #fff;
+        }
+        div{
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .hover-point{
+          box-shadow: -0.7px -0.7px 1px 0 rgba(0, 0, 0, 0.1), -0.7px -0.7px 18px 0 rgba(0, 0, 0, 0.1);
+          background-color: #fff;
+          position: absolute;
+          z-index: 1;
+          bottom: calc(100% - 4rem);
+          left: 13%;
+          padding: 1.4rem 2rem 1.3rem 3rem;
+          width: auto;
+          min-width: max-content;
+          margin: 0;
+          border-radius: .4rem;
+          span{
+            font-family: "Gilroy Medium", sans-serif;
+            color: #000;
+            font-size: 1.2rem;
+            position: relative;
+            bottom: .1rem;
+            right: .5rem;
+          }
+          span.green:before{
+            background-color: #66d099;
+          }
+          span.red:before{
+            background-color: #ff5963;
+          }
+          p {
+            color: #808080;
+            font-size: 1.4rem;
+          }
+          span:before {
+            content: "";
+            display: block;
+            height: .5rem;
+            width: .5rem;
+            background-color: #ffc503;
+            position: relative;
+            top: 1.3rem;
+            right: 1rem;
+            border-radius: 50%;
+          }
+        }
+        .hover-point:after{
+          content: "";
+          width: 1.4rem;
+          height: 1.4rem;
+          transform: rotate(-45deg);
+          background-color: #fff;
+          position: absolute;
+          display: block;
+          bottom: -.6rem;
+          left:45%;
+          box-shadow:-1px 0.5px 0px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .points{
+          span{
+            font-size: 1.2rem;
+            line-height: 1rem;
+            font-family: "Gilroy Medium", sans-serif;
+            padding-left: 3.1rem;
+          }
+          span:first-child{
+            padding-left: 0;
+          }
+          span:first-child:before{
+            background-color: #66d099;
+          }
+          span:last-child:before{
+            background-color: #ff5963;
+          }
+          span:before{
+            content: "";
+            display: block;
+            height: .5rem;
+            width: .5rem;
+            background-color: #ffc503;
+            position: relative;
+            top: .7rem;
+            right: 1rem;
+            border-radius: 50%;
+          }
+        }
+
       }
       .gig-card-requirement{
         cursor: pointer;
-        color: #fff;
+        color: #61116a;
         text-align: center;
-        background-color: #eb3386;
+        background-color: #fff;
         font-size: 1.6rem;
         padding: 1.5rem 1.4rem;
+        border-radius: 0 0 .4rem .4rem;
         font-family: "Gilroy Medium", sans-serif;
       }
       .gig-card-address-provided{

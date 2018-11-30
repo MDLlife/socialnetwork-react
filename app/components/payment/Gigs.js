@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import GigCard from './GigCard';
+import GigCardUnpaid from './GigCardUnpaid';
+import GigCardPaid from './GigCardPaid';
 import Navigation from './Navigation';
 
 class Gigs extends React.Component{
@@ -58,7 +59,7 @@ class Gigs extends React.Component{
                            }}
                            />
                        </RadioButtonGroup>
-                       <h5>{this.props.gigList.length} gigs found</h5>
+                       <h5>{this.state.gigs === "unpaid"? this.props.gigUnpaidList.length: this.props.gigPaidList.length} gigs found</h5>
                    </div>
                     <div className={'gig-cards-direction'}>
                         <span className={this.state.gigsDirection === "grid"? "active": ""}>Grid</span>
@@ -66,8 +67,9 @@ class Gigs extends React.Component{
                     </div>
                 </div>
                 <div className="gig-cards">
-                    {this.props.gigList.map((item, index)=>(
-                        <GigCard
+                    {this.state.gigs === "unpaid" &&
+                    this.props.gigUnpaidList.map((item, index)=>(
+                        <GigCardUnpaid
                         key={"gig card " + index}
                         talents={item.talents}
                         point={item.point}
@@ -76,12 +78,30 @@ class Gigs extends React.Component{
                         location={item.location}
                         cost={item.cost}
                         address={item.address}
+                        paid={item.paid}
+                        unpaid={item.unpaid}
+                        pending={item.pending}
                         />
                         ))}
+                    {this.state.gigs === "paid" &&
+                    this.props.gigPaidList.map((item, index) => (
+                        <GigCardPaid
+                            key={"gig card " + index}
+                            talents={item.talents}
+                            point={item.point}
+                            name={item.name}
+                            date={item.date}
+                            location={item.location}
+                            cost={item.cost}
+                            style = {{margin: "0 auto 10rem 0"}}
+                        />
+                    ))}
                 </div>
-                <Navigation
-                    classes={"payment-bottom-navigation"}
-                />
+                {this.state.gigs === "unpaid" &&
+                    <Navigation
+                        classes={"payment-bottom-navigation"}
+                    />
+                }
             </div>
         )
     }
