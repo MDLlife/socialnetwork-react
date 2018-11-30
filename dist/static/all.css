@@ -1628,7 +1628,7 @@ label {
         border-right: 0.1rem solid rgba(128, 128, 128, 0.1);
         padding: 1.5rem 0 1.4rem 0;
         display: inline-block;
-        font-family: "Gilroy Medium";
+        font-family: "Gilroy Medium", sans-serif;
         cursor: pointer; }
       .booker-profile-gigs-container .booker-profile-gig-cards .gig-card-container .gig-card-button:last-child {
         border-right: none; }
@@ -1807,6 +1807,7 @@ label {
         margin: 0 1.1rem 0 1.1rem; }
         .payment-gigs-container .gig-cards .gig-card-container .gig-card-name h4 {
           color: #000;
+          font-family: "Gilroy Medium", sans-serif;
           font-size: 1.8rem; }
         .payment-gigs-container .gig-cards .gig-card-container .gig-card-name span {
           padding: .9rem 0 0 0;
@@ -1826,30 +1827,118 @@ label {
           background-color: #808bfe; }
         .payment-gigs-container .gig-cards .gig-card-container .gig-card-name h4.sky-blue:before {
           background-color: #72d6ff; }
-      .payment-gigs-container .gig-cards .gig-card-container .gig-card-date, .payment-gigs-container .gig-cards .gig-card-container .gig-card-location {
+      .payment-gigs-container .gig-cards .gig-card-container .gig-card-date, .payment-gigs-container .gig-cards .gig-card-container .gig-card-location, .payment-gigs-container .gig-cards .gig-card-container .gig-card-budget {
         color: #808080;
         font-size: 1.4rem;
         display: flex; }
       .payment-gigs-container .gig-cards .gig-card-container .gig-card-date {
         text-transform: uppercase;
         margin: 0 1.1rem 0 1.1rem; }
-      .payment-gigs-container .gig-cards .gig-card-container .gig-card-location {
+      .payment-gigs-container .gig-cards .gig-card-container .gig-card-location, .payment-gigs-container .gig-cards .gig-card-container .gig-card-budget {
         margin: 0 1.1rem 0 0.9rem; }
+      .payment-gigs-container .gig-cards .gig-card-container .gig-card-budget {
+        margin-bottom: 2rem; }
       .payment-gigs-container .gig-cards .gig-card-container .gig-card-cost {
-        font-size: 1.6rem;
-        font-family: "Gilroy Medium", sans-serif;
-        color: #000;
         background-color: #f4f4f4;
         border-top: .1rem solid #d4d4d4;
-        text-align: center;
-        line-height: 1.5rem;
-        padding: 1.8rem 0 1.2rem 0; }
+        border-bottom: .1rem solid #d4d4d4;
+        position: relative;
+        padding: 2rem 1.9rem 2rem 1.7rem; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-cost .budget {
+          padding-bottom: 1.7rem; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-cost span {
+          font-size: 1.6rem;
+          color: #000;
+          font-family: "Gilroy ExtraBold", sans-serif;
+          line-height: 1.6rem; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-cost h6 {
+          font-size: 1.2rem;
+          color: #808080;
+          line-height: 1.1rem;
+          margin: 0;
+          padding-top: .4rem; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-cost .hover-point {
+          position: absolute;
+          background-color: #fff; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-cost div {
+          display: flex;
+          justify-content: space-between; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-cost .hover-point {
+          box-shadow: -0.7px -0.7px 1px 0 rgba(0, 0, 0, 0.1), -0.7px -0.7px 18px 0 rgba(0, 0, 0, 0.1);
+          background-color: #fff;
+          position: absolute;
+          z-index: 1;
+          bottom: calc(100% - 4rem);
+          left: 13%;
+          padding: 1.4rem 2rem 1.3rem 3rem;
+          width: auto;
+          min-width: max-content;
+          margin: 0;
+          border-radius: .4rem; }
+          .payment-gigs-container .gig-cards .gig-card-container .gig-card-cost .hover-point span {
+            font-family: "Gilroy Medium", sans-serif;
+            color: #000;
+            font-size: 1.2rem;
+            position: relative;
+            bottom: .1rem;
+            right: .5rem; }
+          .payment-gigs-container .gig-cards .gig-card-container .gig-card-cost .hover-point span.green:before {
+            background-color: #66d099; }
+          .payment-gigs-container .gig-cards .gig-card-container .gig-card-cost .hover-point span.red:before {
+            background-color: #ff5963; }
+          .payment-gigs-container .gig-cards .gig-card-container .gig-card-cost .hover-point p {
+            color: #808080;
+            font-size: 1.4rem; }
+          .payment-gigs-container .gig-cards .gig-card-container .gig-card-cost .hover-point span:before {
+            content: "";
+            display: block;
+            height: .5rem;
+            width: .5rem;
+            background-color: #ffc503;
+            position: relative;
+            top: 1.3rem;
+            right: 1rem;
+            border-radius: 50%; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-cost .hover-point:after {
+          content: "";
+          width: 1.4rem;
+          height: 1.4rem;
+          transform: rotate(-45deg);
+          background-color: #fff;
+          position: absolute;
+          display: block;
+          bottom: -.6rem;
+          left: 45%;
+          box-shadow: -1px 0.5px 0px 0 rgba(0, 0, 0, 0.1); }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-cost .points span {
+          font-size: 1.2rem;
+          line-height: 1rem;
+          font-family: "Gilroy Medium", sans-serif;
+          padding-left: 3.1rem; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-cost .points span:first-child {
+          padding-left: 0; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-cost .points span:first-child:before {
+          background-color: #66d099; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-cost .points span:last-child:before {
+          background-color: #ff5963; }
+        .payment-gigs-container .gig-cards .gig-card-container .gig-card-cost .points span:before {
+          content: "";
+          display: block;
+          height: .5rem;
+          width: .5rem;
+          background-color: #ffc503;
+          position: relative;
+          top: .7rem;
+          right: 1rem;
+          border-radius: 50%; }
       .payment-gigs-container .gig-cards .gig-card-container .gig-card-requirement {
-        color: #fff;
+        cursor: pointer;
+        color: #61116a;
         text-align: center;
-        background-color: #eb3386;
+        background-color: #fff;
         font-size: 1.6rem;
         padding: 1.5rem 1.4rem;
+        border-radius: 0 0 .4rem .4rem;
         font-family: "Gilroy Medium", sans-serif; }
       .payment-gigs-container .gig-cards .gig-card-container .gig-card-address-provided {
         display: flex;
@@ -1930,54 +2019,140 @@ label {
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12); }
   .gig-payment-container .header-back {
     display: flex;
-    justify-content: left; }
+    justify-content: left;
+    padding: 2.3rem 0 0 2.3rem; }
     .gig-payment-container .header-back h6 {
+      cursor: pointer;
       color: #808080;
       font-size: 1.2rem;
-      text-align: center; }
+      text-align: center;
+      margin: 0; }
   .gig-payment-container .gig-info {
     display: flex;
-    justify-content: left; }
+    justify-content: left;
+    align-items: baseline;
+    margin: 2.5rem 0 2.3rem 3.8rem;
+    position: relative; }
     .gig-payment-container .gig-info h3 {
       font-size: 1.8rem;
-      color: #000; }
+      color: #000;
+      margin: 0 4.1rem 0 0; }
+    .gig-payment-container .gig-info h3:before {
+      position: absolute;
+      content: "";
+      width: 0.9rem;
+      height: 0.9rem;
+      display: inline-block;
+      border-radius: 50%;
+      margin: 0 0.6rem 0 0.3rem;
+      bottom: .6rem;
+      left: -2rem; }
+    .gig-payment-container .gig-info h3.blue:before {
+      background-color: #808bfe; }
     .gig-payment-container .gig-info h5 {
       color: #808080;
-      font-size: 1.4rem; }
+      font-size: 1.4rem;
+      margin: 0 3rem 0 0; }
   .gig-payment-container .gig-row {
-    display: flex; }
+    display: flex;
+    color: #808080; }
     .gig-payment-container .gig-row h6 {
       font-size: 1.4rem;
       padding: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center; }
+      margin: 0; }
     .gig-payment-container .gig-row p {
-      padding: 1rem;
+      padding: 1rem 1rem 1rem 1.8rem;
       font-size: 1rem;
       display: flex;
-      align-items: center;
-      justify-content: center; }
+      align-items: flex-start;
+      justify-content: flex-start; }
     .gig-payment-container .gig-row .column-1 {
-      width: 13%; }
+      width: 13%;
+      text-align: left;
+      padding-left: 2.3rem; }
     .gig-payment-container .gig-row .column-2 {
-      width: 8.2%; }
+      width: 8.2%;
+      text-align: right; }
     .gig-payment-container .gig-row .column-3 {
-      width: 6.5%; }
+      width: 9.5%;
+      white-space: nowrap;
+      text-align: left; }
     .gig-payment-container .gig-row .column-4 {
-      width: 7.8%; }
+      width: 7.8%;
+      text-align: center; }
+    .gig-payment-container .gig-row p.column-4 {
+      color: #EB3386;
+      cursor: pointer;
+      margin: 0;
+      white-space: nowrap; }
     .gig-payment-container .gig-row .column-5 {
-      width: 10.5%; }
+      width: 10.5%;
+      text-align: right; }
     .gig-payment-container .gig-row .column-6 {
-      width: 10.4%; }
+      width: 10.4%;
+      text-align: right; }
     .gig-payment-container .gig-row .column-7 {
       width: 21.3%;
-      text-overflow: ellipsis;
-      overflow: hidden; }
+      padding: 1rem;
+      display: flex;
+      cursor: pointer; }
+      .gig-payment-container .gig-row .column-7 p {
+        color: #808080;
+        margin: 0;
+        padding: 0 0 0 .2rem;
+        cursor: auto; }
+      .gig-payment-container .gig-row .column-7 p.not-sent {
+        color: #eb3386;
+        cursor: pointer; }
+      .gig-payment-container .gig-row .column-7 img {
+        position: relative; }
+      .gig-payment-container .gig-row .column-7 h6 {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        vertical-align: middle;
+        text-align: left;
+        margin: 0;
+        padding: 0; }
+      .gig-payment-container .gig-row .column-7 .copy {
+        display: none;
+        color: #0072ff;
+        font-size: 1rem;
+        font-family: "Gilroy Medium", sans-serif; }
+    .gig-payment-container .gig-row .column-7:hover .copy {
+      display: inline; }
     .gig-payment-container .gig-row .column-8 {
-      width: 8.4%; }
+      width: 9%;
+      position: relative; }
+      .gig-payment-container .gig-row .column-8.green:before {
+        background-color: #66d099; }
+      .gig-payment-container .gig-row .column-8.yellow:before {
+        background-color: #ffc503; }
+      .gig-payment-container .gig-row .column-8.red:before {
+        background-color: #ff5963; }
+    .gig-payment-container .gig-row .column-8:before {
+      position: absolute;
+      content: "";
+      width: 0.5rem;
+      height: 0.5rem;
+      display: inline-block;
+      border-radius: 50%;
+      margin: 0 0.6rem 0 0.3rem;
+      bottom: 1.5rem;
+      left: .5rem; }
     .gig-payment-container .gig-row .column-9 {
-      width: 10.1%; }
+      width: 10.1%;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .gig-payment-container .gig-row .column-9 span {
+        text-align: center;
+        color: #fff;
+        background-color: #61116a;
+        border-radius: 1rem;
+        font-size: 1rem;
+        line-height: .9rem;
+        padding: .8rem 1.2rem .9rem 1.4rem;
+        cursor: pointer; }
   .gig-payment-container .gig-row:first-child {
     background-color: #f7f9fa; }
     .gig-payment-container .gig-row:first-child h6 {
@@ -1995,7 +2170,8 @@ label {
       width: 8.2%;
       justify-content: flex-end; }
     .gig-payment-container .gig-row:first-child .column-3 {
-      width: 6.5%; }
+      width: 9.5%;
+      white-space: normal; }
     .gig-payment-container .gig-row:first-child .column-4 {
       width: 7.8%;
       justify-content: flex-start; }
@@ -2009,11 +2185,11 @@ label {
       width: 21.3%;
       justify-content: flex-start; }
     .gig-payment-container .gig-row:first-child .column-8 {
-      width: 8.4%; }
+      width: 9%; }
     .gig-payment-container .gig-row:first-child .column-9 {
       width: 10.1%; }
   .gig-payment-container .payment-bottom-navigation {
-    padding-top: 2rem;
+    padding-top: 8rem;
     padding-bottom: 8.3rem;
     display: flex;
     justify-content: center; }
