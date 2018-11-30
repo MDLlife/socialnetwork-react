@@ -16,10 +16,6 @@ class GigCard extends React.Component{
     constructor(props){
         super(props);
 
-        this.nextPage = this.nextPage.bind(this);
-        this.prevPage = this.prevPage.bind(this);
-        this.onOver = this.onOver.bind(this);
-        this.onOut = this.onOut.bind(this);
     }
 
     componentWillMount(){

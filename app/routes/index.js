@@ -37,6 +37,7 @@ import logout from 'components/login/LogoutLayout'
 import Search from 'containers/search/SearchComponent';
 
 import Messager from 'containers/today/messager/Messager';
+import GigPayment from "../containers/payment/GigPayment";
 
 injectTapEventPlugin();
 
@@ -116,6 +117,10 @@ export default function (history) {
                     <Route path="messager" component={TodayContainer}/>
 
                     <Route path="calendar" component={TodayContainer}/>
+
+                    <Route path="payment" component={TodayContainer}/>
+
+                    <Route path="payment/gig-payment" component={TodayContainer}/>
 
                     <Route path="*" component={Notfound}/>
                 </Route>
