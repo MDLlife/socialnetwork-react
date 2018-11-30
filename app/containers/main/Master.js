@@ -2,11 +2,22 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import Helmet from 'react-helmet';
+import {withNamespaces} from 'react-i18next';
 
 class Master extends Component {
     render() {
-        const {children} = this.props;
-        return(
+        const {children, t, i18n} = this.props;
+        const changeLanguage = (lng) => {
+            i18n.changeLanguage(lng);
+        };
+
+        const translateProps = {
+            changeLanguage: changeLanguage,
+            t: t,
+            i18n: i18n,
+        }
+
+        return (
             <div>
                 <Helmet
                     htmlAttributes={{"lang": "en"}} // amp takes no value
@@ -23,7 +34,9 @@ class Master extends Component {
                      })();`
                     }}/>
                 </Helmet>
-                {children}
+
+                <div>{React.cloneElement(children, {...translateProps})}</div>
+
             </div>
         )
     }
@@ -34,4 +47,4 @@ Master.propTypes = {
     route: PropTypes.object.isRequired,
 };
 
-export default connect()(Master)
+export default connect()(withNamespaces('translation')(Master))

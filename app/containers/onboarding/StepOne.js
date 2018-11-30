@@ -184,6 +184,7 @@ class StepOne extends Component {
                             container='inline'
                             onChange={this.selectedDateBirth}
                             value={this.props.profile.dateOfBirth || null}
+                            autoOk={true}
                         />
                         <img
                             src="/static/img/calendar.svg"

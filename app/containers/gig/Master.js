@@ -60,7 +60,7 @@ class Master extends Component {
                                         top: -7,
                                         borderRadius: '50%'
                                     }} />
-                                    <ProfileMenu/>
+                                    <ProfileMenu {...this.props}/>
                                 </div>
                             }
                             style={{

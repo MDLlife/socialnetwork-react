@@ -170,6 +170,7 @@ class EditProfile extends Component {
                                 hintText="mm/dd/yyyy"
                                 container='inline'
                                 onChange={this.selectedDateBirth}
+                                autoOk={true}
                             />
                             <img
                                 src="/static/img/calendar.svg"

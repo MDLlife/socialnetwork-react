@@ -27,6 +27,7 @@ import { browserHistory } from 'react-router'
 import configureStore from 'store/configureStore'
 import createRoutes from 'routes/index'
 import { Provider } from 'react-redux'
+import './i18n';
 
 import { syncHistoryWithStore } from 'react-router-redux'
 
