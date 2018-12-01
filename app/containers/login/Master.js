@@ -3,19 +3,37 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import Helmet from 'react-helmet';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBar from 'material-ui/AppBar';
+import getMuiTheme from "material-ui/styles/getMuiTheme";
+import LoginStore from 'store/LoginStore';
+import Avatar from 'material-ui/Avatar';
+import ProfileMenu from '../Menu';
 import {Grid, Row, Col} from 'react-bootstrap';
 
 const topRight = '/static/img/TopRight.png';
 const bottomLeft = '/static/img/BottomLeft.png';
-const logo = '/static/img/LogoWithText.png';
+
+const muiTheme = getMuiTheme({
+    stepper: {
+        iconColor: 'rgb(234, 47, 133)'
+    }
+});
 
 class Master extends Component {
     render() {
-        const {children} = this.props;
-        return(
-            <div>
+        const username = LoginStore.user && LoginStore.user.username ? LoginStore.user.username : '';
+        const avatarurl = LoginStore.user && LoginStore.user.avatarurl ? LoginStore.user.avatarurl : '';
+
+        const {children, t, i18n} = this.props;
+
+         const translateProps = {
+            t: t,
+            i18n: i18n,
+        }
+        return (
+            <div >
                 <Helmet
-                    htmlAttributes={{"lang": "en"}} // amp takes no value
+                    htmlAttributes={{"lang": "en", "class": "change-back-color"}} // amp takes no value
                     title="MDL website."
                     titleTemplate="MDL.live - %s"
                     meta={[
@@ -29,44 +47,57 @@ class Master extends Component {
                      })();`
                     }}/>
                 </Helmet>
-                <MuiThemeProvider>
-                    <div
-                        className='multi-bg'
+                <MuiThemeProvider muiTheme={muiTheme}>
+                    <div  className='multi-bg'
                         style={{
                             backgroundImage: `url("${topRight}"), url("${bottomLeft}")`,
                             backgroundRepeat: 'no-repeat, no-repeat',
                             backgroundPosition: 'top right, bottom left'
-                        }}
-                    >
+                        }}>
+                        <AppBar
+                            showMenuIconButton={false}
+                            title={<img src="/static/img/logo_with_text.svg" alt="" style={{height: 60}}/>}
+                            iconElementRight={
+                                <div>
+                                    <span
+                                    className='profile-name'
+                                    style={{
+                                        position: 'relative',
+                                        top: -7,
+                                        right: 15,
+                                    }}>
+                                        {t('welcome_to_mdl')}, {username}
+                                    </span>
+                                    <Avatar src={avatarurl} size={36} style={{
+                                        position: 'relative',
+                                        top: -7,
+                                        borderRadius: '50%'
+                                    }} />
+                                    <ProfileMenu {...this.props}/>
+                                </div>
+                            }
+                            style={{
+                                backgroundColor: 'white',
+                            }}
+                            titleStyle={{
+                                color: 'black'
+                            }}
+                        />
                         <Grid className='main-content-container'>
-                            <Row>
-                                <Col xs={12}>
-                                    <img
-                                        className='logo-login'
-                                        style={{
-                                            margin: '20px 0 0 20px',
-                                        }}
-                                        src={logo}
-                                        alt="Logo"
-                                    />
-                                </Col>
-                            </Row>
-                            {children}
+                        <div>{React.cloneElement(children, {...translateProps})}</div>
                         </Grid>
-
-                        <div className='menu-footer-container'>
-                            <ul className='menu-footer'>
-                                <li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="//mdl.life">About</a></li>
-                                <li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">API</a></li>
-                                <li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Contact</a></li>
-                                <li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Terms of Use</a></li>
-                                <li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Privacy Policy</a></li>
-                            </ul>
-                        </div>
+                        {/*<div className='menu-footer-container'>*/}
+                        {/*<ul>*/}
+                        {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="//mdl.life">About</a></li>*/}
+                        {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">API</a></li>*/}
+                        {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Contact</a></li>*/}
+                        {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Terms of Use</a></li>*/}
+                        {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Privacy Policy</a></li>*/}
+                        {/*</ul>*/}
+                        {/*</div>*/}
                     </div>
 
                 </MuiThemeProvider>
-
             </div>
         )
     }

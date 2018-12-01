@@ -11,6 +11,8 @@ class Video extends Component {
     }
 
     render() {
+        const {t} = this.props;
+
         return (
             <div 
                 style={{
@@ -24,7 +26,7 @@ class Video extends Component {
                 }}
             >
                 <div>
-                    <h4 style={{margin: 0}}>Video</h4>
+                    <h4 style={{margin: 0}}>{t('video')}</h4>
                 </div>
                 <div 
                     style={{
@@ -47,7 +49,7 @@ class Video extends Component {
                                 height: 125
                             }}
                         >
-                            There is no video here now :)
+                            {t('video')}
                         </div>
                     }
                 </div>

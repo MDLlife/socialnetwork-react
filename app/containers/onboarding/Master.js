@@ -21,7 +21,13 @@ class Master extends Component {
         const username = LoginStore.user && LoginStore.user.username ? LoginStore.user.username : '';
         const avatarurl = LoginStore.user && LoginStore.user.avatarurl ? LoginStore.user.avatarurl : '';
 
-        const {children} = this.props;
+         const {children, t, i18n} = this.props;
+
+         const translateProps = {
+            t: t,
+            i18n: i18n,
+        }
+
         return (
             <div style={{backgroundColor: '#EEF2F5'}}>
                 <Helmet
@@ -53,7 +59,7 @@ class Master extends Component {
                                         top: -7,
                                         right: 15,
                                     }}>
-                                        {username}
+                                        {t('welcome_to_mdl')}, {username}
                                     </span>
                                     <Avatar src={avatarurl} size={36} style={{
                                         position: 'relative',
@@ -70,7 +76,7 @@ class Master extends Component {
                                 color: 'black'
                             }}
                         />
-                        {children}
+                        <div>{React.cloneElement(children, {...translateProps})}</div>
                         {/*<div className='menu-footer-container'>*/}
                         {/*<ul>*/}
                         {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="//mdl.life">About</a></li>*/}

@@ -156,7 +156,7 @@ export const SUCCESS_UPDATE_USER_DATA = success => ({
 export const FETCH_GET_USER_DATA = id => {
     return (dispatch) => {
         return superagent
-            .get(url + `/read/users/${id}`)
+            .get(url + `/v1/read/users/${id}`)
             .withCredentials()
             .then(res => {
                 dispatch(GET_USER_DATA(JSON.parse(res.text)))

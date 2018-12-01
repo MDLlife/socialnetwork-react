@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 const Categories = props => {
+    const {t} = props;
+
     return (
         <div style={{
             marginTop: 20,
@@ -16,12 +18,13 @@ const Categories = props => {
                         fontFamily: 'Gilroy Medium'
                     }}
                 >
-                    Categories
+                    {t('categories')}
                 </h4>
             </div>
             <div style={{marginTop: 30}}>
                 <div>
-                    <h5 style={{color: '#999999'}}>Work Areas</h5>
+
+                    <h5 style={{color: '#999999'}}>{t('work_areas')}</h5>
                 </div>
                 <div>
                     <ul
@@ -43,7 +46,7 @@ const Categories = props => {
             </div>
             <div>
                 <div>
-                    <h5 style={{color: '#999999'}}>Style</h5>
+                    <h5 style={{color: '#999999'}}>{t('styles')}</h5>
                 </div>
                 <div>
                     <ul

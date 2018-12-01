@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 class Medals extends Component {
     render() {
+        const {t} = this.props;
+
         return (
             <div style={{
                 height: 120,
@@ -19,7 +21,7 @@ class Medals extends Component {
                     }}
                 >
                     <h4 style={{margin: 0}}>
-                        Medals
+                        {t('medals')}
                     </h4>
                 </div>
                 <div 
@@ -47,7 +49,7 @@ class Medals extends Component {
                             padding: '0px 21px'
                         }}
                     >
-                        Congratulations! You are a part of MDL now!
+                        {t('congratulations')}
                     </div>
                 </div>
             </div>

@@ -108,15 +108,15 @@ class StepOne extends Component {
 
 
     render() {
-        console.log(this.props.profile)
+        const {t} = this.props;
+
         return [
             <Row>
                 <Col xs={12}>
                     <h2 style={{color: '#ea2f85'}}>
-                        Please input all parameters carefully and truly. After you save changes, it will be possible to
-                        change them only via the admin.
+                        {t('onboarding_measurements_tip')}
                     </h2>
-                    <h2>Body</h2>
+
                 </Col>
             </Row>,
 
@@ -132,7 +132,7 @@ class StepOne extends Component {
                                 marginLeft: 40,
                                 marginBottom: 10,
                             }}>
-                            <h4>Body type</h4>
+                            <h4>{t('body_type')}</h4>
                             <DropDownMenu
                                 value={this.props.profile.body_type || null}
                                 onChange={this.selectType}
@@ -165,7 +165,7 @@ class StepOne extends Component {
                                 <TextField
                                     floatingLabelText="Height"
                                     floatingLabelFixed={true}
-                                    name='height'
+                                    name={t('measurements_height')}
                                     inputStyle={{
                                         paddingLeft: 30,
                                         paddingRight: 30
@@ -195,7 +195,7 @@ class StepOne extends Component {
                                 <TextField
                                     floatingLabelFixed={true}
                                     floatingLabelText="Bust"
-                                    name='bust'
+                                    name={t('measurements_bust')}
                                     inputStyle={{
                                         paddingLeft: 30,
                                         paddingRight: 30
@@ -225,7 +225,7 @@ class StepOne extends Component {
                                 <TextField
                                     floatingLabelFixed={true}
                                     floatingLabelText="Waist"
-                                    name='waist'
+                                    name={t('measurements_waist')}
                                     inputStyle={{
                                         paddingLeft: 30,
                                         paddingRight: 30
@@ -255,7 +255,7 @@ class StepOne extends Component {
                                 <TextField
                                     floatingLabelFixed={true}
                                     floatingLabelText="Hips"
-                                    name='hips'
+                                    name={t('measurements_hips')}
                                     inputStyle={{
                                         paddingLeft: 30,
                                         paddingRight: 30
@@ -285,7 +285,7 @@ class StepOne extends Component {
                                 <TextField
                                     floatingLabelFixed={true}
                                     floatingLabelText="Shoe size"
-                                    name='size'
+                                    name={t('measurements_shoe_size')}
                                     inputStyle={{
                                         paddingLeft: 30,
                                         paddingRight: 30
@@ -320,7 +320,7 @@ class StepOne extends Component {
                 </Col>
             </Row>,
             <Row style={{marginTop: 30}}>
-                <h4 style={{paddingLeft: 15}}>Appearance</h4>
+                <h4 style={{paddingLeft: 15}}>{t('appearance')}</h4>
                 <Col xs={12}>
                     <div className='cards'>
                         <div className='card-avatar' style={{backgroundColor: '#fafafa', width: '50%'}}>
@@ -339,11 +339,11 @@ class StepOne extends Component {
                                     position: 'absolute',
                                     top: -7
                                 }}>
-                                    <label>Eye color</label>
+                                    <label>{t('measurements_eye_color')}</label>
                                 </div>
 
                                 <DropDownMenu
-                                    hintText='Eye color'
+                                    hintText={t('measurements_eye_color')}
                                     value={this.props.profile.eye_color || null}
                                     onChange={this.selectEyes}
                                     underlineStyle={{marginLeft: 0}}
@@ -372,10 +372,10 @@ class StepOne extends Component {
                                     position: 'absolute',
                                     top: -7
                                 }}>
-                                    <label>Hair length</label>
+                                    <label>{t('measurements_hair_length')}</label>
                                 </div>
                                 <DropDownMenu
-                                    hintText='Hair length'
+                                    hintText={t('measurements_hair_length')}
                                     value={this.props.profile.hair_length || ''}
                                     onChange={this.selectLength}
                                     underlineStyle={{marginLeft: 0}}
@@ -404,11 +404,11 @@ class StepOne extends Component {
                                     position: 'absolute',
                                     top: -7
                                 }}>
-                                    <label>Hair color</label>
+                                    <label>{t('measurements_hair_color')}</label>
                                 </div>
                                 <DropDownMenu
                                     disabled={this.props.profile && this.props.profile.hair_length === 'Bold' ? true : false}
-                                    hintText='Hair color'
+                                    hintText={t('measurements_hair_color')}
                                     value={this.props.profile.hair_color}
                                     onChange={this.selectHair}
                                     underlineStyle={{marginLeft: 0}}

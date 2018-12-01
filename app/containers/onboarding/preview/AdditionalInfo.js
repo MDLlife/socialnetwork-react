@@ -21,6 +21,8 @@ class AdditionalInfo extends Component {
     };
 
     render() {
+        const {t} = this.props;
+
         return (
             <div style={{
                 marginTop: 20,
@@ -40,7 +42,7 @@ class AdditionalInfo extends Component {
                 </div>
                 <div style={{marginTop: 30}}>
                     <div>
-                        <h5 style={{color: '#999999'}}>Ethnicity</h5>
+                        <h5 style={{color: '#999999'}}>{t('ethnicity')}</h5>
                     </div>
                     <div>
                         <ul
@@ -60,7 +62,7 @@ class AdditionalInfo extends Component {
                 </div>
                 <div>
                     <div>
-                        <h5 style={{color: '#999999'}}>Languages</h5>
+                        <h5 style={{color: '#999999'}}>{t('language')}</h5>
                     </div>
                     <div>
                         <ul
@@ -82,7 +84,7 @@ class AdditionalInfo extends Component {
                 </div>
                 <div>
                     <div>
-                        <h5 style={{color: '#999999'}}>Tattoos</h5>
+                        <h5 style={{color: '#999999'}}>{t('tattoo')}</h5>
                     </div>
                     <div style={{display: 'flex'}}>
                         {
@@ -92,7 +94,7 @@ class AdditionalInfo extends Component {
                 </div>
                 <div>
                     <div>
-                        <h5 style={{color: '#999999'}}>Piercing</h5>
+                        <h5 style={{color: '#999999'}}>{t('piercing')}</h5>
                     </div>
                     <div>
                     <ul

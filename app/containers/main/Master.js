@@ -5,10 +5,33 @@ import Helmet from 'react-helmet';
 import {withNamespaces} from 'react-i18next';
 
 class Master extends Component {
+
+    constructor() {
+        super();
+
+
+    }
+
+    componentDidMount() {
+        if (typeof window !== 'undefined') {
+            let lang = localStorage.getItem("lang");
+            if (lang) {
+                const {i18n} = this.props;
+                console.log('changeLanguage to ', lang);
+                i18n.changeLanguage(lang);
+            }
+        }
+    }
+
     render() {
         const {children, t, i18n} = this.props;
         const changeLanguage = (lng) => {
             i18n.changeLanguage(lng);
+            if (typeof window !== 'undefined') {
+                if (lng) {
+                    localStorage.setItem("lang", lng);
+                }
+            }
         };
 
         const translateProps = {
@@ -16,6 +39,7 @@ class Master extends Component {
             t: t,
             i18n: i18n,
         }
+
 
         return (
             <div>

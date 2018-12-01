@@ -143,28 +143,35 @@ class OnboardingSteps extends Component {
     };
 
     switchSteps = (step) => {
+         const {t, i18n} = this.props;
+         const translateProps = {
+            t: t,
+            i18n: i18n,
+        }
         switch (step) {
             case 0:
-                return <StepOne/>;
+                return <StepOne {...translateProps}/>;
             case 1:
-                return <StepTwo/>;
+                return <StepTwo {...translateProps}/>;
             case 2:
-                return <StepThree/>;
+                return <StepThree {...translateProps}/>;
             case 3:
-                return <StepFour/>;
+                return <StepFour {...translateProps}/>;
             default:
                 return <div>Error</div>;
         }
     };
 
     switchHeaderContent = (step) => {
+        const {t} = this.props;
+
         switch (step) {
             case 0:
-                return 'Do you now that 78% of people drop their creative hobbies and die in boredom?';
+                return t('witty_quote_1');
             case 1:
-                return 'Amount of people occupied in creative industries has increased by 465% for the last 30 years';
+                return t('witty_quote_2');
             case 2:
-                return 'Having a creative hobby increases your family and business success';
+                return t('witty_quote_3');
             case 3:
                 return 'Sociologists claim that having a creative hobby increases family life happiness';
             default:
@@ -216,6 +223,7 @@ class OnboardingSteps extends Component {
 
     render() {
         let {step} = this.state;
+        const {t} = this.props;
 
         return (
             <Grid className='main-content-container onboarding white-back' style={{marginBottom: 50}}>
@@ -228,7 +236,7 @@ class OnboardingSteps extends Component {
                             backgroundSize: 'cover'
                         }}
                     >
-                        <h1>{this.state.role === '1' ? this.switchHeaderContent(step) : 'MDL Talent Hub is for everyone'}</h1>
+                        <h1>{this.switchHeaderContent(step)}</h1>
                     </Col>
                 </Row>
                 <Row className='stepper-main'>
@@ -239,13 +247,13 @@ class OnboardingSteps extends Component {
                             className='stepper-main'
                         >
                             <Step className='stepper-step' style={step === 0 ? styles.stepBorder : null}>
-                                <StepLabel className='stepper' style={{margin: 'auto'}}>Personal</StepLabel>
+                                <StepLabel className='stepper' style={{margin: 'auto'}}>{t('personal')}</StepLabel>
                             </Step>
                             <Step className='stepper-step' style={step === 1 ? styles.stepBorder : null}>
-                                <StepLabel className='stepper' style={{margin: 'auto'}}>Categories</StepLabel>
+                                <StepLabel className='stepper' style={{margin: 'auto'}}>{t('categories')}</StepLabel>
                             </Step>
                             <Step className='stepper-step' style={step === 2 ? styles.stepBorder : null}>
-                                <StepLabel className='stepper' style={{margin: 'auto'}}>Measurements</StepLabel>
+                                <StepLabel className='stepper' style={{margin: 'auto'}}>{t('measurements')}</StepLabel>
                             </Step>
                             {/*<Step className='stepper-step' style={step === 3 ? styles.stepBorder : null}>*/}
                             {/*<StepLabel className='stepper' style={{margin: 'auto'}}>Media</StepLabel>*/}

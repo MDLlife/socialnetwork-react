@@ -213,11 +213,12 @@ class StepOne extends Component {
 
 
     render() {
-        console.log(this.state.styles)
+        const {t} = this.props;
+
         return [
             <Row>
                 <Col xs={12}>
-                    <h2>Work areas</h2>
+                    <h2>{t('work_areas')}</h2>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
                             categories.AREAS.map(this.renderChipWorkAreas, this)
@@ -227,7 +228,7 @@ class StepOne extends Component {
             </Row>,
             <Row>
                 <Col xs={12}>
-                    <h2>Niches</h2>
+                    <h2>{t('categories')}</h2>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
                             this.state.styles.map(this.renderChipStyle, this)
@@ -239,7 +240,7 @@ class StepOne extends Component {
             <Row>
                 <Col xs={12}>
                     <div>
-                        <h2>Features</h2>
+                        <h2>{t('appearance')}</h2>
                     </div>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
@@ -252,7 +253,7 @@ class StepOne extends Component {
             <Row>
                 <Col xs={12} style={{display: 'inline-flex', justifyContent: 'space-between'}}>
                     <div>
-                        <h2>Piercing</h2>
+                        <h2>{t('piercing')}</h2>
                     </div>
                     <div>
                         <Toggle
@@ -269,7 +270,7 @@ class StepOne extends Component {
                 <Row>
                     <Col xs={12} style={{display: 'inline-flex', justifyContent: 'space-between'}}>
                         <div>
-                            <h2>Tattoo</h2>
+                            <h2>{t('tattoo')}</h2>
                         </div>
                         <div>
                             <Toggle

@@ -24,6 +24,10 @@ class Master extends Component {
         const avatarurl = LoginStore.user && LoginStore.user.avatarurl ? LoginStore.user.avatarurl : '';
 
         const {children, t, i18n} = this.props;
+         const translateProps = {
+            t: t,
+            i18n: i18n,
+        }
         return (
             <div style={{backgroundColor: '#EEF2F5'}}>
                 <Helmet
@@ -70,7 +74,7 @@ class Master extends Component {
                         }}
                         // onClick={this.onClickMenu}
                     />
-                    {children}
+                    <div>{React.cloneElement(children, {...translateProps})}</div>
                     {/*<div className='menu-footer-container'>*/}
                         {/*<ul>*/}
                             {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="//mdl.life">About</a></li>*/}

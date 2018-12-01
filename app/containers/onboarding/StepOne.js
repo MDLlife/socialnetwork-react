@@ -148,12 +148,14 @@ class StepOne extends Component {
 
     render() {
         let {searchLanguages} = this.state;
+        const {t} = this.props;
+
         console.log(this.props.profile);
         return [
             <Row>
                 <Col xs={12}>
-                    <h2>Gender<span style={{color: '#ea2f85'}}>*</span></h2>
-                    <p>If you don't indentify yourself as female or male then please select 'Other'</p>
+                    <h2>{t('gender')}<span style={{color: '#ea2f85'}}>*</span></h2>
+                    <p>{t('if_you_dont_identify')}</p>
                     <RadioButtonGroup
                         name="gender"
                         onChange={this.selectGender}
@@ -161,23 +163,23 @@ class StepOne extends Component {
                     >
                         <RadioButton
                             value="female"
-                            label="Female"
+                            label={t('female')}
                             inputStyle={{color: '#541065'}}
                         />
                         <RadioButton
                             value="male"
-                            label="Male"
+                            label={t('male')}
                         />
                         <RadioButton
                             value="other"
-                            label="Other"
+                            label={t('other')}
                         />
                     </RadioButtonGroup>
                 </Col>
             </Row>,
             <Row>
                 <Col xs={12}>
-                    <h2>Date of birth <span style={{color: '#ea2f85'}}>*</span></h2>
+                    <h2>{t('date_of_birth')} <span style={{color: '#ea2f85'}}>*</span></h2>
                     <div style={{position: 'relative', display: 'flex'}}>
                         <DatePicker
                             hintText="mm/dd/yyyy"
@@ -204,7 +206,7 @@ class StepOne extends Component {
             </Row>,
             <Row style={{paddingBottom: 35}}>
                 <Col xs={12}>
-                    <h2>Ethnicity <span style={{color: '#ea2f85'}}>*</span></h2>
+                    <h2>{t('ethnicity')} <span style={{color: '#ea2f85'}}>*</span></h2>
                     <DropDownMenu
                         value={this.props.profile.ethnic || ''}
                         onChange={this.selectEthnic}
@@ -217,7 +219,7 @@ class StepOne extends Component {
             </Row>,
             <Row style={{paddingTop: 20, borderTop: '1px solid lightgrey'}}>
                 <Col xs={12}>
-                    <h2>Languages spoken</h2>
+                    <h2>{t('languages_spoken')}</h2>
                     <AutoComplete
                         filter={AutoComplete.fuzzyFilter}
                         dataSource={searchLanguages}
@@ -232,7 +234,7 @@ class StepOne extends Component {
                             this.props.profile.search_language.length > 0 && this.props.profile.search_language.map(this.renderSearchChip, this)
                         }
                     </div>
-                    <h4 style={{color: '#ea2f85', marginTop: 30}}>TOP MOST POPULAR LANGUAGES</h4>
+                    <h4 style={{color: '#ea2f85', marginTop: 30}}>{t('top_most_popular_languages')}</h4>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                         {
                             this.state.language.map(this.renderChip, this)

@@ -125,11 +125,13 @@ class GeneralInformation extends Component {
 
     render() {
         console.log(this.state)
+        const {t} = this.props;
+
         return [
             <Row>
                 <Col xs={12}>
-                    <h1 className='log-in-with text-center login-header-margin'>General information</h1>
-                    <p className='center'>Set up your profile name and location to get started</p>
+                    <h1 className='log-in-with text-center login-header-margin'>{t('get_started')}</h1>
+                    <p className='center'>{t('general_information')}</p>
                     <img className='center-line' src="/static/img/Line.png" alt=""/>
                 </Col>
             </Row>,
@@ -141,7 +143,7 @@ class GeneralInformation extends Component {
             <Row>
                 <Col xs={12} className='center'>
                     <button className='email-confirmation-actions-buttons clear-button'
-                            style={{marginTop: 30, backgroundColor: 'transparent'}}>Change photo
+                            style={{marginTop: 30, backgroundColor: 'transparent'}}>{t('change_photo')}
                     </button>
                 </Col>
             </Row>,
@@ -149,7 +151,7 @@ class GeneralInformation extends Component {
                 <Col xs={12} className='center'>
                     <TextField
                         value={this.state.username}
-                        floatingLabelText='Name'
+                        floatingLabelText={t('name')}
                         name='username'
                         onChange={this.handleChange}
                     />
@@ -194,7 +196,7 @@ class GeneralInformation extends Component {
             <Row>
                 <Col xs={12} className='center'>
                     <AutoComplete
-                        floatingLabelText="City (English only)"
+                        floatingLabelText={t('city_english_please')}
                         dataSource={this.state.dataSource}
                         onUpdateInput={this.handleUpdateInput}
                         maxSearchResults={5}
@@ -223,7 +225,7 @@ class GeneralInformation extends Component {
                         className='main-button radius-button clear-button'
                         onClick={this.toOnboarding}
                     >
-                        Save
+                        {t('save')}
                     </button>
                 </Col>
                 <SnackBar

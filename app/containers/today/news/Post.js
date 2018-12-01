@@ -75,6 +75,8 @@ class Post extends Component {
     }
 
     render() {
+        const {t} = this.props;
+
         return (
             <div style={{
                 backgroundColor: 'white',
@@ -142,7 +144,7 @@ class Post extends Component {
                            style={{cursor: 'pointer'}}
                        >
                            <a href={this.getArticleLink()}>
-                        Read more &rarr;
+                               {t('read_more')} &rarr;
                            </a>
                     </span>
                     </div>

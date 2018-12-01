@@ -65,6 +65,13 @@ class NewsFeed extends Component {
 
 
     render() {
+        const {t, i18n} = this.props;
+
+        const translateProps = {
+            t: t,
+            i18n: i18n,
+        };
+
 
         var value;
         if (!this.props.value) {
@@ -90,9 +97,9 @@ class NewsFeed extends Component {
                         that.state.articles.map(function (article) {
                             var mainSection = null;
                             if (value === 'future') {
-                                mainSection = <Future article={article}/>;
+                                mainSection = <Future article={article} {...translateProps}/>;
                             }else {
-                                 mainSection = <Post article={article}/>;
+                                 mainSection = <Post article={article} {...translateProps} />;
                             }
                             return (
                                 mainSection
@@ -112,14 +119,14 @@ class NewsFeed extends Component {
                         value="1"
                         onClick={this.selectingHeads}
                     >
-                        News
+                        {t('news')}
                     </li>
                     <li
                         className={`list-item ${value === 'future' ? 'selected-item' : null}`}
                         value="2"
                         onClick={this.selectingHeads}
                     >
-                        Future
+                        {t('future')}
                     </li>
                 </ul>
             </Col>

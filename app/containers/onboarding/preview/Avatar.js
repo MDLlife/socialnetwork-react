@@ -6,6 +6,8 @@ import AvatarProfile from 'material-ui/Avatar';
 
 class Avatar extends Component {
     render() {
+        const {t} = this.props;
+
         const username = LoginStore.user && LoginStore.user.username ? LoginStore.user.username : '';
         const avatarurl = LoginStore.user && LoginStore.user.avatarurl ? LoginStore.user.avatarurl : '';
         return (
@@ -27,7 +29,7 @@ class Avatar extends Component {
                         color: 'white',
                     }}
                 >
-                    Model
+                    {t('talent')}
                 </div>
                 <div>
                     <div
@@ -70,7 +72,7 @@ class Avatar extends Component {
                 >
                     <div style={{ fontSize: 24 }}>{username}</div>
                     <div>New York, USA</div>
-                    <div>Mature</div>
+                    <div>{t('age_category_mature')}</div>
                 </div>
             </div>
         )
