@@ -36,8 +36,8 @@ import logout from 'components/login/LogoutLayout'
 
 import Search from 'containers/search/SearchComponent';
 
-import Messager from 'containers/today/messager/Messager';
-import GigPayment from "../containers/payment/GigPayment";
+import Gigs from 'containers/gigs/Gigs';
+import GigsLayout from 'containers/gigs/Master';
 
 injectTapEventPlugin();
 
@@ -104,6 +104,16 @@ export default function (history) {
                     <Route path='booker' component={OnboardingBooker}/>
 
                     <Route path='profile-preview' component={ProfilePreview}/>
+                    <Route path="*" component={Notfound}/>
+                </Route>
+
+                <Route path='/gigs' component={GigsLayout}>
+                    <IndexRoute component={Gigs}/>
+                    <Route path={'ongoing'} component={Gigs}/>
+                    <Route path={'booked'} component={Gigs}/>
+                    <Route path={'pre-booked'} component={Gigs}/>
+                    <Route path={'favorites'} component={Gigs}/>
+                    <Route path={'completed'} component={Gigs}/>
                     <Route path="*" component={Notfound}/>
                 </Route>
 

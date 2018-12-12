@@ -16,11 +16,17 @@ class ProfileContainer extends Component {
     }
 
     render() {
-        var targetProfile = <ProfileFan/>
+        const {t, i18n} = this.props;
+        const translateProps = {
+            t: t,
+            i18n: i18n,
+        };
+
+        var targetProfile = <ProfileFan {...translateProps}/>
         if(this.props.index === 'talent'){
-            targetProfile = <ProfileTalent/>
+            targetProfile = <ProfileTalent {...translateProps}/>
         } else if (this.props.index === 'booker'){
-          targetProfile = <ProfileBooker/>
+          targetProfile = <ProfileBooker {...translateProps}/>
         }
 
         var targetComponent = this.state.edit === true ? <EditProfile/> : targetProfile;

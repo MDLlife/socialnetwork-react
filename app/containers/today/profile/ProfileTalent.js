@@ -32,6 +32,12 @@ class Profile extends Component {
 
     render() {
 
+        const {t, i18n} = this.props;
+        const translateProps = {
+            t: t,
+            i18n: i18n,
+        };
+
         return (
             <Col xs={9}>
                 <div className={"profile-talent-container"}>
@@ -101,10 +107,10 @@ class Profile extends Component {
                                     <div>Mature</div>
                                 </div>
                         </div>
-                        <Medals/>
-                        <Video/>
-                        <Categories/>
-                        <AdditionalInfo/>
+                        <Medals {...translateProps}/>
+                        <Video {...translateProps}/>
+                        <Categories {...translateProps}/>
+                        <AdditionalInfo {...translateProps}/>
                     </div>
                     <div className={"profile-talent-row"} style={{width: "55.1rem"}}>
                         {/*
@@ -160,7 +166,7 @@ class Profile extends Component {
                             */
                         }
                         <Gigs/>
-                        <InfoPanel/>
+                        <InfoPanel {...translateProps}/>
                         <CompCard/>
                     </div>
             </div>

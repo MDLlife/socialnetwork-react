@@ -36,6 +36,9 @@ class TodayContainer extends Component {
         }
     }
 
+    createGig = () => {
+        window.location.href = '/gig-creation';
+    };
 
     selectingMenu = event => {
         if (event.target.value === 2) {
@@ -48,7 +51,7 @@ class TodayContainer extends Component {
                 window.location.href = '/today/me/fan';
             }
         } else if (event.target.value === 3) {
-            window.location.href = '/gig-creation';
+            window.location.href = '/gigs';
         } else if (event.target.value === 4) {
             window.location.href = '/search';
         } else if (event.target.value === 5) {
@@ -130,7 +133,7 @@ class TodayContainer extends Component {
                             </li>
                             <Divider/>
                             <li
-                                className={`${index === 'gig-creation' ? 'selected-menu-item-today' : 'menu-item'}`}
+                                className={`${!this.props.location.pathname.indexOf("/gigs") ? 'selected-menu-item-today' : 'menu-item'}`}
                                 onClick={this.selectingMenu}
                                 value='3'
                             >
@@ -201,6 +204,11 @@ class TodayContainer extends Component {
                                 Payment management
                             </li>
                         </ul>
+                        { this.state.isBooker &&
+                            <span className={"menu-create-gig"} onClick={this.createGig}>
+                                Create gig
+                            </span>
+                        }
                     </Col>
                     {
                       block
