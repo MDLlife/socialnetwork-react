@@ -344,6 +344,7 @@
     display: flex;
     justify-content: flex-start;
     padding: 2rem 2.4rem 0 2.4rem;
+    font-family: "Gilroy Light", sans-serif;
     .gig-card-date, .gig-card-location {
       color: #000;
       font-size: 1.4rem;
@@ -400,5 +401,238 @@
     background-color: #f4f4f4;
     padding: 0 2.4rem 2rem 2.4rem;
 
+  }
+}
+
+.gigs-feedback-container{
+  background-color: #fff;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  border-radius: .4rem;
+  margin-top: 1rem;
+  min-height: calc(100vh - 9.4rem);
+  .back-header{
+    padding: 1.9rem 0 1.6rem 1.5rem;
+    border-bottom: .1rem solid rgba(128,128,128, 0.2);
+    display: flex;
+    justify-content: flex-start;
+    div{
+      display: flex;
+      cursor: pointer;
+      h5{
+        padding-left: .5rem;
+        margin: 0;
+        font-size: 1.6rem;
+        line-height: 1.5rem;
+        font-family: "Gilroy Medium", sans-serif;
+      }
+    }
+  }
+  .info-block {
+    display: flex;
+    padding-left: 5.4rem;
+    flex-wrap: nowrap;
+    border-bottom: .1rem solid rgba(128, 128, 128, 0.2);
+    .info-block-booker {
+      width: calc(100% - 23.8rem);
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      padding: 2.3rem 0 2rem 0;
+      border-right: .1rem solid rgba(128, 128, 128, 0.2);
+      .name-block {
+        align-self: center;
+        margin-left: 2.6rem;
+
+        h2 {
+          font-size: 2.1rem;
+          line-height: 1.5rem;
+          margin: 0 0 1.2rem 0;
+        }
+        div {
+          display: flex;
+          flex-wrap: nowrap;
+          p {
+            font-size: 1.2rem;
+            margin-left: .5rem;
+            padding-top: .2rem;
+            margin-bottom: 0;
+            line-height: .8rem;
+            font-family: "Gilroy Medium", sans-serif;
+          }
+        }
+      }
+    }
+    .gig-info {
+      width: 23.8rem;
+      background-image: url("/static/img/card_background.png");
+      background-repeat: no-repeat;
+      .gig-card-header{
+        display: flex;
+        justify-content: space-between;
+        padding-left: 1.4rem;
+        margin-bottom: .9rem;
+        h5{
+          margin: 1.4rem 0 0 0 ;
+          span{
+            font-family: "Gilroy ExtraBold", sans-serif;
+            font-size: 1.6rem;
+          }
+        }
+        .gig-card-pills-container {
+          display: flex;
+          justify-content: flex-end;
+          height: 2.2rem;
+          margin: 1.1rem 0.7rem .5rem 1.1rem;
+          overflow-y: auto;
+          span {
+            border-radius: 1.1rem;
+            font-size: 1.2rem;
+            background-color: #61116a;
+            color: #fff;
+            padding: 0.3rem 1.1rem 0 1.1rem;
+            margin-right: 0.4rem;
+            font-family: "Gilroy Medium", sans-serif;
+          }
+        }
+      }
+
+      .gig-card-name{
+        display: flex;
+        justify-content: space-between;
+        margin: 0 1.1rem 0 1.5rem;
+
+        h4{
+          color: #000;
+          font-size: 1.8rem;
+          margin-bottom: 1.6rem;
+        }
+
+        span{
+          padding: .9rem 0 0 0;
+          text-align: center;
+          font-size: 1.2rem;
+          font-family: "Gilroy Medium", sans-serif;
+        }
+
+        h4:before {
+          position: relative;
+          content: "";
+          width: 0.9rem;
+          height: 0.9rem;
+          display: inline-block;
+          border-radius: 50%;
+          margin: 0 0.6rem 0 0.3rem;
+          bottom: 0.1rem;
+        }
+        h4.blue:before {
+          background-color: #808bfe;
+        }
+        h4.sky-blue:before {
+          background-color: #72d6ff;
+        }
+        h4.yellow:before {
+          background-color: #ffc809;
+        }
+      }
+      h5{
+        margin: 0;
+      }
+      .gig-card-date, .gig-card-location{
+        color: #808080;
+        font-size: 1.4rem;
+        display: flex;
+        margin: 0 0 1.5rem 1.4rem;
+      }
+      .gig-card-date {
+        text-transform: uppercase;
+      }
+    }
+  }
+  .emotions-block{
+    display: flex;
+    flex-direction: column;
+    padding-left: 5.2rem;
+    border-bottom: .1rem solid rgba(128,128,128, 0.2);
+    h4{
+      margin-top: 3.2rem;
+      font-size: 1.6rem;
+      font-family: "Gilroy Medium", sans-serif;
+    }
+    span{
+      color:#eb3386;
+    }
+    .smiles{
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 1rem;
+      h6{
+        text-align: center;
+      }
+      img{
+        width: 4rem;
+        height: 4rem;
+      }
+      div{
+        opacity: .5;
+        margin-right: 2rem;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      div.active{
+        opacity: 1;
+      }
+    }
+    .pills-picker{
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 1rem;
+      span{
+        font-size: 1.4rem;
+        line-height: 1.1rem;
+        text-align: center;
+        width: 6.5rem;
+        border-radius: 1.3rem;
+        background-color: #e4e4e4;
+        padding: .7rem 0 .8rem 0;
+        color: #000;
+        margin-right: .8rem;
+        cursor: pointer;
+      }
+      span.active{
+        background-color: #541065;
+        color: #fff;
+      }
+    }
+    .pills-picker:last-child{
+      padding-bottom: 4rem;
+    }
+  }
+  .feedback-field-block{
+    padding: 4rem 5.3rem 7.5rem 5.3rem;
+    h6{
+      font-size: 1.6rem;
+      line-height: 1.3rem;
+      margin: 0 0 1rem 0;
+      font-family: "Gilroy Medium", sans-serif;
+    }
+  }
+  .submit-button-block{
+    span{
+      color: #fff;
+      background-color: #61116a;
+      width: 19.2rem;
+      border-radius: 1.5rem;
+      font-size: 1.6rem;
+      line-height: 1.3rem;
+      padding: 1.6rem 0 1.5rem 0;
+      font-family: "Gilroy Medium", sans-serif;
+      text-align: center;
+      cursor: pointer;
+    }
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 2.3rem 3.4rem 0;
   }
 }

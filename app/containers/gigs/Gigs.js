@@ -3,6 +3,7 @@ import { Grid, Row } from 'react-bootstrap';
 import Menu from 'components/gigs/Menu';
 import GigsContainer from 'components/gigs/GigsContainer';
 import {withRouter} from "react-router";
+import Feedback from 'components/gigs/Feedback';
 
 class Gigs extends React.Component{
 
@@ -11,15 +12,22 @@ class Gigs extends React.Component{
     }
 
     render(){
+        let gigs;
+        if (!this.props.location.pathname.indexOf("/gigs/feedback")){
+            gigs = <Feedback/>
+        } else {
+            gigs = <GigsContainer/>
+        }
+
         return(
             <Grid>
                 <Row>
                     <Menu/>
-                    <GigsContainer/>
+                    {gigs}
                 </Row>
             </Grid>
         )
     }
 }
 
-export default Gigs;
+export default withRouter(Gigs);

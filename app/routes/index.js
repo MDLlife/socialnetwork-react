@@ -114,6 +114,7 @@ export default function (history) {
                     <Route path={'pre-booked'} component={Gigs}/>
                     <Route path={'favorites'} component={Gigs}/>
                     <Route path={'completed'} component={Gigs}/>
+                    <Route path={'feedback'} component={Gigs}/>
                     <Route path="*" component={Notfound}/>
                 </Route>
 

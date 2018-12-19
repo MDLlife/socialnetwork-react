@@ -25,6 +25,10 @@ class GigCard extends React.Component{
         this.setState({paymentDialog: !this.state.paymentDialog})
     };
 
+    handleFeedback = () => {
+        window.location.href = '/gigs/feedback';
+    };
+
     render(){
         return(
             <div className={"gig-card-container"} style={this.props.style}>
@@ -60,7 +64,7 @@ class GigCard extends React.Component{
                         <div className={"gig-card-completed-buttons"} style={{backgroundColor: !this.props.feedback && !this.props.payment? "#f4f4f4": "#fff"}}>
                             {
                                 this.props.feedback &&
-                                    <div className={"completed-button"}><span>Leave feedback</span></div>
+                                    <div onClick={this.handleFeedback} className={"completed-button"}><span>Leave feedback</span></div>
                             }
                             {
                                 this.props.feedback && this.props.payment &&

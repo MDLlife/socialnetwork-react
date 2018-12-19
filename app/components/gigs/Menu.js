@@ -170,7 +170,7 @@ class Menu extends React.Component {
                         <span>12</span>
                     </div>
                     <div onClick={this.nextPage.bind(this,'/gigs/completed')}
-                         className={!this.props.location.pathname.indexOf("/gigs/completed")?"gigs-menu-item-active":"gigs-menu-item"}>
+                         className={!this.props.location.pathname.indexOf("/gigs/completed") || !this.props.location.pathname.indexOf("/gigs/feedback")?"gigs-menu-item-active":"gigs-menu-item"}>
                         <h5>Completed</h5>
                         <span>10</span>
                     </div>
