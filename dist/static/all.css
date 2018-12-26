@@ -2229,6 +2229,218 @@ label {
       background-color: #61116a;
       color: #fff; }
 
+.talent-payment-container {
+  background-color: #fff;
+  min-height: calc(100vh - 9.4rem);
+  border-radius: .4rem; }
+  .talent-payment-container .stepper {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 0.1rem solid rgba(128, 128, 128, 0.2); }
+    .talent-payment-container .stepper span.number {
+      border-radius: 50%;
+      color: #fff;
+      background-color: #EB3386;
+      width: 2.2rem;
+      height: 2.2rem;
+      display: block;
+      text-align: center;
+      padding-top: .3rem;
+      font-family: "Gilroy Medium", sans-serif;
+      margin-right: .3rem;
+      font-size: 1.2rem; }
+    .talent-payment-container .stepper .active {
+      border-bottom: .2rem solid #EB3386; }
+    .talent-payment-container .stepper .stepper-element {
+      display: flex;
+      align-items: center;
+      padding: 2.5rem 1.3rem 1.8rem .7rem;
+      color: #808080; }
+  .talent-payment-container .archive {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 3.6rem; }
+    .talent-payment-container .archive span {
+      align-self: flex-end;
+      padding-bottom: 3.2rem;
+      font-size: 1.6rem;
+      color: #808080;
+      cursor: pointer; }
+  .talent-payment-container .new-link {
+    cursor: pointer;
+    background-color: #f2f2f2;
+    color: #808080;
+    padding: .9rem 0 .5rem 5.4rem;
+    display: flex; }
+    .talent-payment-container .new-link h4 {
+      margin: 0; }
+  .talent-payment-container .add-new-link-container .gig-info-container {
+    display: flex;
+    background-color: #f7f9fa;
+    justify-content: space-between;
+    padding: 0 3.2rem 0 7.2rem; }
+    .talent-payment-container .add-new-link-container .gig-info-container h5 {
+      font-size: 1.4rem;
+      color: #000;
+      position: relative; }
+    .talent-payment-container .add-new-link-container .gig-info-container h5:before {
+      content: '';
+      height: .9rem;
+      width: .9rem;
+      background-color: #ffc809;
+      border-radius: 50%;
+      position: absolute;
+      left: -2rem;
+      bottom: .4rem; }
+    .talent-payment-container .add-new-link-container .gig-info-container p {
+      font-size: 1.2rem;
+      color: #808080;
+      margin-bottom: 1.2rem; }
+      .talent-payment-container .add-new-link-container .gig-info-container p span {
+        text-transform: uppercase; }
+    .talent-payment-container .add-new-link-container .gig-info-container h5, .talent-payment-container .add-new-link-container .gig-info-container h6 {
+      margin: 1.5rem 0 .9rem 0; }
+    .talent-payment-container .add-new-link-container .gig-info-container h6 {
+      font-size: 1.2rem;
+      color: #808080;
+      font-family: "Gilroy Medium", sans-serif; }
+    .talent-payment-container .add-new-link-container .gig-info-container .gig-total {
+      display: flex;
+      align-items: flex-end; }
+      .talent-payment-container .add-new-link-container .gig-info-container .gig-total p {
+        font-size: 1.4rem;
+        color: #000;
+        font-family: "Gilroy Medium", sans-serif; }
+    .talent-payment-container .add-new-link-container .gig-info-container .gig-edit {
+      margin-top: 1.2rem; }
+  .talent-payment-container .add-new-link-container .payment-method {
+    padding-left: 5.4rem;
+    display: flex; }
+    .talent-payment-container .add-new-link-container .payment-method h3 {
+      margin: 3rem 1.5rem 3rem 0;
+      font-family: "Gilroy Medium", sans-serif;
+      font-size: 2rem; }
+  .talent-payment-container .add-new-link-container .payment-link {
+    margin: 0 3.4rem 3rem 5.4rem; }
+    .talent-payment-container .add-new-link-container .payment-link h3 {
+      font-family: "Gilroy Medium", sans-serif;
+      font-size: 2rem; }
+    .talent-payment-container .add-new-link-container .payment-link span {
+      font-size: 1.2rem;
+      color: #808080; }
+    .talent-payment-container .add-new-link-container .payment-link div {
+      display: flex; }
+      .talent-payment-container .add-new-link-container .payment-link div span {
+        color: #fff;
+        border-radius: 1.5rem;
+        background-color: #61116a;
+        width: 19.2rem;
+        height: 4.4rem;
+        font-size: 1.6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 1.5rem;
+        font-family: "Gilroy Medium", sans-serif;
+        cursor: pointer; }
+  .talent-payment-container .payment-columns {
+    display: flex;
+    height: 5.4rem;
+    font-size: 1.2rem;
+    padding: 0 7.5rem 0 5.5rem;
+    background-color: #f7f9fa;
+    font-family: "Gilroy Medium", sans-serif;
+    align-items: center; }
+    .talent-payment-container .payment-columns .date {
+      color: #eb3386;
+      width: 5rem;
+      text-align: center; }
+    .talent-payment-container .payment-columns .method {
+      width: 5rem;
+      text-align: center; }
+    .talent-payment-container .payment-columns .address {
+      text-align: center;
+      width: calc(100% - 49rem);
+      margin: 0 auto 0 auto; }
+    .talent-payment-container .payment-columns .completed {
+      text-align: center;
+      width: 15rem; }
+    .talent-payment-container .payment-columns .receive {
+      width: 11rem; }
+  .talent-payment-container .navigation {
+    padding-top: 5rem;
+    padding-bottom: 8.3rem;
+    display: flex;
+    justify-content: center; }
+    .talent-payment-container .navigation span {
+      font-size: 1.4rem;
+      line-height: 1.1rem;
+      padding: 1.1rem 1.5rem 1rem 1.4rem;
+      border: .1rem solid #e4e4e4;
+      border-right: none;
+      cursor: pointer;
+      background-color: #fff; }
+    .talent-payment-container .navigation span:first-child {
+      border-radius: .4rem 0 0 .4rem;
+      width: 8.6rem;
+      text-align: center; }
+    .talent-payment-container .navigation span:last-child {
+      border-radius: 0 .4rem .4rem 0;
+      width: 8.6rem;
+      text-align: center;
+      border-right: .1rem solid #e4e4e4; }
+    .talent-payment-container .navigation span.disabled {
+      color: rgba(128, 128, 128, 0.5); }
+    .talent-payment-container .navigation span.active {
+      background-color: #61116a;
+      color: #fff; }
+  .talent-payment-container .payment-back {
+    color: #61116a;
+    cursor: pointer;
+    font-size: 1.6rem;
+    font-family: "Gilroy Medium",sans-serif;
+    padding: 5rem 0 5rem 5.6rem; }
+  .talent-payment-container .gig-container {
+    padding: 0 0 0 5.5rem;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center; }
+    .talent-payment-container .gig-container .gig-date {
+      width: 5rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #808080; }
+    .talent-payment-container .gig-container .payment-method {
+      width: 5rem;
+      display: flex;
+      justify-content: center; }
+    .talent-payment-container .gig-container .payment-address {
+      width: calc(100% - 49rem);
+      margin: 0 auto 0 auto; }
+      .talent-payment-container .gig-container .payment-address h5 {
+        font-size: 1.6rem;
+        color: #808080;
+        text-align: center; }
+    .talent-payment-container .gig-container .completed-gig {
+      width: 15rem;
+      padding-right: 1rem;
+      height: 2.6rem; }
+    .talent-payment-container .gig-container .receive-payment {
+      width: 11rem;
+      border-radius: 1.2rem;
+      text-align: center;
+      font-size: 1rem;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      background-color: #e9ebec;
+      color: #808080;
+      cursor: pointer; }
+    .talent-payment-container .gig-container .active {
+      background-color: #61116a;
+      color: #fff; }
+    .talent-payment-container .gig-container .edit {
+      width: 7.5rem; }
+
 .menu-show {
   margin-top: 1rem;
   background-color: #fff;
