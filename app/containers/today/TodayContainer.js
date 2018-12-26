@@ -9,6 +9,7 @@ import SvgIcon from 'material-ui/SvgIcon';
 import Divider from 'material-ui/Divider';
 import Payment from '../payment/Payment';
 import GigPayment from '../payment/GigPayment';
+import TalentPayment from "../payment/talent/Payment";
 
 class TodayContainer extends Component {
 
@@ -59,7 +60,7 @@ class TodayContainer extends Component {
         } else if (event.target.value === 6){
             window.location.href = '/today/calendar';
         } else if (event.target.value === 7) {
-            window.location.href = '/today/payment';
+            window.location.href = this.state.isTalent? '/today/payment/talent': '/today/payment/booker';
         } else {
             window.location.href = '/today';
         }
@@ -84,8 +85,10 @@ class TodayContainer extends Component {
             block = <Calendar {...translateProps}/>
         } else if(!this.props.location.pathname.indexOf('/today/payment/gig-payment')) {
             block = <GigPayment {...translateProps}/>
-        } else if(!this.props.location.pathname.indexOf('/today/payment')) {
+        } else if(!this.props.location.pathname.indexOf('/today/payment/booker')) {
             block = <Payment {...translateProps}/>
+        } else if(!this.props.location.pathname.indexOf('/today/payment/talent')) {
+            block = <TalentPayment {...translateProps}/>
         } else {
             block = index === '' || index === 'genre' ? <NewsFeed index={index} value={value} {...translateProps}/> :
                 <ProfileContainer index={index} value={value} {...translateProps}/>

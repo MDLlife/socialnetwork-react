@@ -129,7 +129,9 @@ export default function (history) {
 
                     <Route path="calendar" component={TodayContainer}/>
 
-                    <Route path="payment" component={TodayContainer}/>
+                    <Route path="payment/booker" component={TodayContainer}/>
+
+                    <Route path="payment/talent" component={TodayContainer}/>
 
                     <Route path="payment/gig-payment" component={TodayContainer}/>
 

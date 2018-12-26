@@ -48,16 +48,16 @@ class Menu extends React.Component {
                 <div className={"menu-show"}>
                     <span>Menu</span>
                     <SvgIcon style={{
-                        marginTop: "1.4rem",
-                        marginRight: ".6rem",
-                        cursor: "pointer",
-                        transform: this.state.menuOpened? "rotate(0deg)" : "rotate(180deg)",
-                    }}
-                        onClick={this.menuClick}
-                    >
-                        <path fill="#808080" xmlns="http://www.w3.org/2000/svg" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-                        <path xmlns="http://www.w3.org/2000/svg" fill="none" d="M0 0h24v24H0V0z"/>
-                    </SvgIcon>
+                    marginTop: "1.4rem",
+                    marginRight: ".6rem",
+                    cursor: "pointer",
+                    transform: this.state.menuOpened? "rotate(0deg)" : "rotate(180deg)",
+                }}
+                                    onClick={this.menuClick}
+                >
+                    <path fill="#808080" xmlns="http://www.w3.org/2000/svg" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                    <path xmlns="http://www.w3.org/2000/svg" fill="none" d="M0 0h24v24H0V0z"/>
+                </SvgIcon>
                 </div>
                 <Collapse in={this.state.menuOpened}>
                     <div className={'menu-list'}
@@ -125,7 +125,7 @@ class Menu extends React.Component {
                         <span>Profile</span>
                     </div>
                         <Divider/>
-                    <div onClick={this.nextPage.bind(this, '/today/payment')} className={`${!this.props.location.pathname.indexOf("/today/payment") ? 'selected-list-menu-item' : 'menu-list-item'}`}
+                    <div onClick={this.nextPage.bind(this, '/today/payment' + (isTalent? '/talent': '/booker'))} className={`${!this.props.location.pathname.indexOf("/today/payment") ? 'selected-list-menu-item' : 'menu-list-item'}`}
                          style={{display: "flex",
                              lineHeight: "2rem",
                              paddingTop: "2rem",
