@@ -20,5 +20,6 @@
   "env": {
     "NODE_ENV": "development"
   },
-  "ext": "js json"
+  "ext": "js json css scss",
+   "delay": "2500"
 }

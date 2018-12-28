@@ -79,7 +79,7 @@ export default function (history) {
                     <Route path="*" component={Notfound}/>
                 </Route>
 
-                <Route path="/search" component={TodayLayout}>
+                <Route path="/search" component={TodayLayout} onEnter={checkAuth}>
                     <IndexRoute component={Search}/>
                 </Route>
 
@@ -107,18 +107,27 @@ export default function (history) {
                     <Route path="*" component={Notfound}/>
                 </Route>
 
-                <Route path='/gigs' component={GigsLayout}>
+                <Route path='/gigs' component={GigsLayout} onEnter={checkAuth}>
                     <IndexRoute component={Gigs}/>
-                    <Route path={'ongoing'} component={Gigs}/>
-                    <Route path={'booked'} component={Gigs}/>
-                    <Route path={'pre-booked'} component={Gigs}/>
-                    <Route path={'favorites'} component={Gigs}/>
-                    <Route path={'completed'} component={Gigs}/>
-                    <Route path={'feedback'} component={Gigs}/>
+                    <Route path={'booker'} component={Gigs}/>
+                    <Route path={'talent'} component={Gigs}/>
+
+                    <Route path={'booker/ongoing'} component={Gigs}/>
+                    <Route path={'booker/upcoming'} component={Gigs}/>
+                    <Route path={'booker/completed'} component={Gigs}/>
+                    <Route path={'booker/feedback'} component={Gigs}/>
+
+                    <Route path={'talent/ongoing'} component={Gigs}/>
+                    <Route path={'talent/booked'} component={Gigs}/>
+                    <Route path={'talent/pre-booked'} component={Gigs}/>
+                    <Route path={'talent/favorites'} component={Gigs}/>
+                    <Route path={'talent/completed'} component={Gigs}/>
+                    <Route path={'talent/feedback'} component={Gigs}/>
+
                     <Route path="*" component={Notfound}/>
                 </Route>
 
-                <Route path='/today' component={TodayLayout}>
+                <Route path='/today' component={TodayLayout} onEnter={checkAuth}>
                     <IndexRoute component={TodayContainer}/>
                     <Route path="me/:index" component={TodayContainer} onEnter={checkAuth}/>
 
@@ -138,7 +147,7 @@ export default function (history) {
                     <Route path="*" component={Notfound}/>
                 </Route>
 
-                <Route path='/gig-creation' component={GigLayout}>
+                <Route path='/gig-creation' component={GigLayout} onEnter={checkAuth}>
                     <IndexRoute component={GigSteps}/>
                     <Route path="*" component={Notfound}/>
                 </Route>

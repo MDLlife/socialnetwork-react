@@ -5,10 +5,10 @@ import Helmet from 'react-helmet';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import getMuiTheme from "material-ui/styles/getMuiTheme";
-import Menu from '../Menu';
 import Avatar from 'material-ui/Avatar';
 import LoginStore from 'store/LoginStore';
 
+import Menu from 'containers/Menu';
 const muiTheme = getMuiTheme({
     stepper: {
         iconColor: 'rgb(234, 47, 133)'
@@ -75,15 +75,7 @@ class Master extends Component {
                         // onClick={this.onClickMenu}
                     />
                     <div>{React.cloneElement(children, {...translateProps})}</div>
-                    {/*<div className='menu-footer-container'>*/}
-                        {/*<ul>*/}
-                            {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="//mdl.life">About</a></li>*/}
-                            {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">API</a></li>*/}
-                            {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Contact</a></li>*/}
-                            {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Terms of Use</a></li>*/}
-                            {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Privacy Policy</a></li>*/}
-                        {/*</ul>*/}
-                    {/*</div>*/}
+
                 </MuiThemeProvider>
             </div>
         )

@@ -40,6 +40,8 @@ class Profile extends Component {
 
         return (
             <Col xs={9}>
+                <hr style={{margin: '-1px 0px 0px', height: '10px', border: 'none'}}/>
+
                 <div className={"profile-talent-container"}>
                     <div className={"profile-talent-row"} style={{width: "23.1rem"}}>
                         <div

@@ -26,7 +26,7 @@ class GigCard extends React.Component{
     };
 
     handleFeedback = () => {
-        window.location.href = '/gigs/feedback';
+        window.location.href = '/gigs/talent/feedback';
     };
 
     render(){

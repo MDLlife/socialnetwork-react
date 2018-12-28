@@ -92,6 +92,7 @@ class OngoingGigs extends React.Component{
         if (this.state.gigs.length) {
             content = <div>
                 <div className={"gigs-container"}>
+
                     {
                         this.state.gigs.map((item, index) => (
                             <GigCard

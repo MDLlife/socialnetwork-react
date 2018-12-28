@@ -5,10 +5,10 @@ import Helmet from 'react-helmet';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import getMuiTheme from "material-ui/styles/getMuiTheme";
-import Menu from '../Menu';
 import Avatar from 'material-ui/Avatar';
 import LoginStore from 'store/LoginStore';
 
+import Menu from 'containers/Menu';
 const muiTheme = getMuiTheme({
     stepper: {
         iconColor: 'rgb(234, 47, 133)'
@@ -16,14 +16,19 @@ const muiTheme = getMuiTheme({
 });
 
 class Master extends Component {
-    onClickMenu(){
+    onClickMenu() {
         window.location.href = '/today';
     }
+
     render() {
         const username = LoginStore.user && LoginStore.user.username ? LoginStore.user.username : '';
         const avatarurl = LoginStore.user && LoginStore.user.avatarurl ? LoginStore.user.avatarurl : '';
 
         const {children, t, i18n} = this.props;
+        const translateProps = {
+            t: t,
+            i18n: i18n,
+        }
         return (
             <div style={{backgroundColor: '#EEF2F5'}}>
                 <Helmet
@@ -58,7 +63,7 @@ class Master extends Component {
                                     position: 'relative',
                                     top: -7,
                                     borderRadius: '50%'
-                                }} />
+                                }}/>
                                 <Menu  {...this.props}/>
                             </div>
                         }
@@ -70,16 +75,8 @@ class Master extends Component {
                         }}
                         // onClick={this.onClickMenu}
                     />
-                    {children}
-                    {/*<div className='menu-footer-container'>*/}
-                    {/*<ul>*/}
-                    {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="//mdl.life">About</a></li>*/}
-                    {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">API</a></li>*/}
-                    {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Contact</a></li>*/}
-                    {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Terms of Use</a></li>*/}
-                    {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Privacy Policy</a></li>*/}
-                    {/*</ul>*/}
-                    {/*</div>*/}
+                    <div>{React.cloneElement(children, {...translateProps})}</div>
+
                 </MuiThemeProvider>
             </div>
         )

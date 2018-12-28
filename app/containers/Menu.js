@@ -33,6 +33,9 @@ const ProfileMenu = props => {
             <MenuItem primaryText="日本語" onClick={() => props.changeLanguage('ja')}/>
 
             <MenuItem primaryText="한글" onClick={() => props.changeLanguage('kr')}/>
+
+            <MenuItem primaryText="Croatian" onClick={() => props.changeLanguage('hr')}/>
+
         </IconMenu>
     )
 }

@@ -171,6 +171,7 @@ class GigCard extends React.Component{
                                     <path fill="none" d="M0 0h24v24H0V0z"/>
                                 </SvgIcon>
                             </div>
+
                         </div>
                     )
                 }

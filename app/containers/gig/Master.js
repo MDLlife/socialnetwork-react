@@ -7,8 +7,8 @@ import AppBar from 'material-ui/AppBar';
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import LoginStore from 'store/LoginStore';
 import Avatar from 'material-ui/Avatar';
-import ProfileMenu from '../Menu';
 
+import Menu from 'containers/Menu';
 
 const muiTheme = getMuiTheme({
     stepper: {
@@ -21,7 +21,13 @@ class Master extends Component {
         const username = LoginStore.user && LoginStore.user.username ? LoginStore.user.username : '';
         const avatarurl = LoginStore.user && LoginStore.user.avatarurl ? LoginStore.user.avatarurl : '';
 
-        const {children} = this.props;
+
+        const {children, t, i18n} = this.props;
+        const translateProps = {
+            t: t,
+            i18n: i18n,
+        }
+
         return (
             <div style={{backgroundColor: '#EEF2F5'}}>
                 <Helmet
@@ -40,7 +46,7 @@ class Master extends Component {
                     }}/>
                 </Helmet>
                 <MuiThemeProvider muiTheme={muiTheme}>
-                    <div >
+                    <div>
                         <AppBar
                             showMenuIconButton={false}
                             title={<img src="/static/img/logo_with_text.svg" alt="" style={{height: 60}}/>}
@@ -59,8 +65,8 @@ class Master extends Component {
                                         position: 'relative',
                                         top: -7,
                                         borderRadius: '50%'
-                                    }} />
-                                    <ProfileMenu {...this.props}/>
+                                    }}/>
+                                    <Menu {...this.props}/>
                                 </div>
                             }
                             style={{
@@ -70,16 +76,8 @@ class Master extends Component {
                                 color: 'black'
                             }}
                         />
-                        {children}
-                        {/*<div className='menu-footer-container'>*/}
-                        {/*<ul>*/}
-                        {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="//mdl.life">About</a></li>*/}
-                        {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">API</a></li>*/}
-                        {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Contact</a></li>*/}
-                        {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Terms of Use</a></li>*/}
-                        {/*<li><a style={{color: '#656972 !important', marginRight: '2rem', textTransform: 'uppercase', fontFamily:'Open Sans, sans-serif', fontWeight: '600'}} href="">Privacy Policy</a></li>*/}
-                        {/*</ul>*/}
-                        {/*</div>*/}
+                        <div>{React.cloneElement(children, {...translateProps})}</div>
+
                     </div>
 
                 </MuiThemeProvider>

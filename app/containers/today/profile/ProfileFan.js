@@ -24,7 +24,9 @@ class Profile extends Component {
     render() {
 
         return (
-            <Col xs={8}>
+            <Col xs={9}>
+                <hr style={{margin: '-1px 0px 0px', height: '10px', border: 'none'}}/>
+
                 <div
                     style={{
                         display: 'flex'

@@ -10,11 +10,11 @@ class GigsContainer extends React.Component{
 
     render(){
         let gigs;
-        if ((!this.props.location.pathname.indexOf("/gigs/ongoing"))|| ((!this.props.location.pathname.indexOf("/gigs")&& this.props.location.pathname.indexOf("/gigs/")))){
+        if ((!this.props.location.pathname.indexOf("/gigs/talent/ongoing"))|| ((!this.props.location.pathname.indexOf("/gigs/talent")&& this.props.location.pathname.indexOf("/gigs/talent")))){
             gigs = <OngoingGigs/>
-        } else if (!this.props.location.pathname.indexOf("/gigs/booked")){
+        } else if (!this.props.location.pathname.indexOf("/gigs/talent/booked")){
             gigs = <BookedGigs/>
-        } else if (!this.props.location.pathname.indexOf("/gigs/completed")){
+        } else if (!this.props.location.pathname.indexOf("/gigs/talent/completed")){
             gigs= <CompletedGigs/>
         }
         return(

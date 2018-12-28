@@ -85,51 +85,56 @@ class NewsFeed extends Component {
         }
         var that = this;
         return [
-            <Col xs={8}>
-                <InfiniteScroll
-                    ref='masonryContainer'
-                    skip={0}
-                    limit={50}
-                    loader={this.getLoaderElement()}
-                    loadMore={this.handlePageChange.bind(this)}
-                    hasMore={this.state.hasMore}>
-                    {
-                        that.state.articles.map(function (article) {
-                            var mainSection = null;
-                            if (value === 'future') {
-                                mainSection = <Future article={article} {...translateProps}/>;
-                            }else {
-                                 mainSection = <Post article={article} {...translateProps} />;
-                            }
-                            return (
-                                mainSection
-                            );
-                        })
-                    }
-                </InfiniteScroll>
+            <div>
+                <hr style={{ margin: '-1px 0px 0px', height: '10px', border: 'none' }}/>
+                <Col xs={7}>
 
-            </Col>,
-            <Col xs={2}>
-                <ul style={{
-                    listStyle: 'none',
-                    padding: 0
-                }}>
-                    <li
-                        className={`list-item ${value === 'news' ? 'selected-item' : null}`}
-                        value="1"
-                        onClick={this.selectingHeads}
-                    >
-                        {t('news')}
-                    </li>
-                    <li
-                        className={`list-item ${value === 'future' ? 'selected-item' : null}`}
-                        value="2"
-                        onClick={this.selectingHeads}
-                    >
-                        {t('future')}
-                    </li>
-                </ul>
-            </Col>
+
+                    <InfiniteScroll
+                        ref='masonryContainer'
+                        skip={0}
+                        limit={50}
+                        loader={this.getLoaderElement()}
+                        loadMore={this.handlePageChange.bind(this)}
+                        hasMore={this.state.hasMore}>
+                        {
+                            that.state.articles.map(function (article) {
+                                var mainSection = null;
+                                if (value === 'future') {
+                                    mainSection = <Future article={article} {...translateProps}/>;
+                                } else {
+                                    mainSection = <Post article={article} {...translateProps} />;
+                                }
+                                return (
+                                    mainSection
+                                );
+                            })
+                        }
+                    </InfiniteScroll>
+
+                </Col>,
+                <Col xs={2}>
+                    <ul style={{
+                        listStyle: 'none',
+                        padding: 0
+                    }}>
+                        <li
+                            className={`list-item ${value === 'news' ? 'selected-item' : null}`}
+                            value="1"
+                            onClick={this.selectingHeads}
+                        >
+                            {t('news')}
+                        </li>
+                        <li
+                            className={`list-item ${value === 'future' ? 'selected-item' : null}`}
+                            value="2"
+                            onClick={this.selectingHeads}
+                        >
+                            {t('future')}
+                        </li>
+                    </ul>
+                </Col>
+            </div>
         ]
     }
 }

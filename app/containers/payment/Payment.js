@@ -1,66 +1,68 @@
 import * as React from 'react';
-import { Col } from 'react-bootstrap';
+import {Col} from 'react-bootstrap';
 import Todo from 'components/payment/Todo';
 import Gigs from 'components/payment/Gigs';
 
-class Payment extends React.Component{
+class Payment extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
     }
 
     render() {
         return (
-            <Col xs={10}>
+            <Col xs={9}>
+                <hr style={{margin: '-1px 0px 0px', height: '10px', border: 'none'}}/>
+
                 <Todo
-                todoList={[{
-                    amount: 5,
-                    hours: 5,
-                    overtime: 12,
-                    location: "Longnan, China",
-                    time: "8-14-2018",
-                    point: "sky-blue",
-                    gig: "Underwear catalog",
-                },
-                    {
-                        amount: 10,
+                    todoList={[{
+                        amount: 5,
                         hours: 5,
-                        overtime: 2,
+                        overtime: 12,
                         location: "Longnan, China",
                         time: "8-14-2018",
                         point: "sky-blue",
                         gig: "Underwear catalog",
                     },
-                    {
-                        amount: 8,
-                        hours: 4,
-                        overtime: 7,
-                        location: "Longnan, China",
-                        time: "8-14-2018",
-                        point: "sky-blue",
-                        gig: "Underwear catalog",
-                    },
-                    {
-                        amount: 3,
-                        hours: 6,
-                        overtime: 6,
-                        location: "Longnan, China",
-                        time: "8-14-2018",
-                        point: "sky-blue",
-                        gig: "Underwear catalog",
-                    },
-                    {
-                        amount: 9,
-                        hours: 15,
-                        overtime: 7,
-                        location: "Longnan, China",
-                        time: "8-14-2018",
-                        point: "sky-blue",
-                        gig: "Underwear catalog",
-                    },]}/>
+                        {
+                            amount: 10,
+                            hours: 5,
+                            overtime: 2,
+                            location: "Longnan, China",
+                            time: "8-14-2018",
+                            point: "sky-blue",
+                            gig: "Underwear catalog",
+                        },
+                        {
+                            amount: 8,
+                            hours: 4,
+                            overtime: 7,
+                            location: "Longnan, China",
+                            time: "8-14-2018",
+                            point: "sky-blue",
+                            gig: "Underwear catalog",
+                        },
+                        {
+                            amount: 3,
+                            hours: 6,
+                            overtime: 6,
+                            location: "Longnan, China",
+                            time: "8-14-2018",
+                            point: "sky-blue",
+                            gig: "Underwear catalog",
+                        },
+                        {
+                            amount: 9,
+                            hours: 15,
+                            overtime: 7,
+                            location: "Longnan, China",
+                            time: "8-14-2018",
+                            point: "sky-blue",
+                            gig: "Underwear catalog",
+                        },]}/>
                 <Gigs
-                    gigUnpaidList = {[{
-                        talents: ["Actor","Model"],
+                    gigUnpaidList={[{
+                        talents: ["Actor", "Model"],
                         point: "blue",
                         name: "Underwear catalog",
                         date: "8-14-2018",
@@ -70,8 +72,8 @@ class Payment extends React.Component{
                         paid: 3,
                         unpaid: 1,
                         pending: 5,
-                    },{
-                        talents: ["Actor","Model"],
+                    }, {
+                        talents: ["Actor", "Model"],
                         point: "blue",
                         name: "Underwear catalog",
                         date: "8-14-2018",
@@ -81,8 +83,8 @@ class Payment extends React.Component{
                         paid: 3,
                         unpaid: 2,
                         pending: 5,
-                    },{
-                        talents: ["Actor","Model","Dancer"],
+                    }, {
+                        talents: ["Actor", "Model", "Dancer"],
                         point: "blue",
                         name: "Underwear catalog",
                         date: "8-14-2018",
@@ -92,8 +94,8 @@ class Payment extends React.Component{
                         paid: 3,
                         unpaid: 1,
                         pending: 1,
-                    },{
-                        talents: ["Actor","Model"],
+                    }, {
+                        talents: ["Actor", "Model"],
                         point: "sky-blue",
                         name: "Fashion show",
                         date: "8-14-2018",
@@ -103,8 +105,8 @@ class Payment extends React.Component{
                         paid: 3,
                         unpaid: 6,
                         pending: 5,
-                    },{
-                        talents: ["Actor","Model"],
+                    }, {
+                        talents: ["Actor", "Model"],
                         point: "blue",
                         name: "Underwear catalog",
                         date: "8-14-2018",
@@ -114,8 +116,8 @@ class Payment extends React.Component{
                         paid: 0,
                         unpaid: 1,
                         pending: 5,
-                    },{
-                        talents: ["Actor","Model","Dancer"],
+                    }, {
+                        talents: ["Actor", "Model", "Dancer"],
                         point: "sky-blue",
                         name: "Fashion show",
                         date: "8-14-2018",
@@ -126,7 +128,7 @@ class Payment extends React.Component{
                         unpaid: 1,
                         pending: 5,
                     },]}
-                    gigPaidList ={[
+                    gigPaidList={[
                         {
                             talents: ["Actor"],
                             point: "sky-blue",

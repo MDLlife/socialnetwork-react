@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {Tabs, Tab} from 'material-ui/Tabs';
+import {Tab, Tabs} from 'material-ui/Tabs';
 import {Col} from 'react-bootstrap';
 import Divider from 'material-ui/Divider';
 import SearchDialogField from 'components/messager/SearchDialogField';
@@ -31,35 +31,179 @@ const ActiveTabStyle = {
     height: "6.3rem"
 };
 
-class Messager extends React.Component{
+class Messager extends React.Component {
 
     state = {
         tabIndex: 0,
         activeDialogueIndex: 0,
         talentsList: [
-            {name: "Model1", index: 0, src: "", lastMessage: "I just came to say Hello", lastMessageTime: "just now", gigs: false, numMessages: 3, online: true},
-            {name: "Model2", index: 1, src: "", lastMessage: "I just came to say Hello", lastMessageTime: "just now", gigs: false, numMessages: 0, online: false},
-            {name: "Model3", index: 2, src: "", lastMessage: "I just came to say Hello", lastMessageTime: "just now", gigs: false, numMessages: 3, online: true},
-            {name: "Model4", index: 3, src: "", lastMessage: "I just came to say Hello", lastMessageTime: "just now", gigs: false, numMessages: 11, online: false},
-            {name: "Model5", index: 4, src: "", lastMessage: "I just came to say HelloHiHiHIHIHIHIHIHIHIHIHIH", lastMessageTime: "yesterday", gigs: true, numMessages: 3, online: true},
-            {name: "Model6", index: 5, src: "", lastMessage: "I just came to say Hello", lastMessageTime: "just now", gigs: false, numMessages: 0, online: false},
-            {name: "Model7", index: 6, src: "", lastMessage: "I just came to say Hello", lastMessageTime: "09:07", gigs: false, numMessages: 111, online: true},
-            {name: "Model8", index: 7, src: "", lastMessage: "I just came to say Hello", lastMessageTime: "just now", gigs: false, numMessages: 3, online: true},
+            {
+                name: "Model1",
+                index: 0,
+                src: "",
+                lastMessage: "I just came to say Hello",
+                lastMessageTime: "just now",
+                gigs: false,
+                numMessages: 3,
+                online: true
+            },
+            {
+                name: "Model2",
+                index: 1,
+                src: "",
+                lastMessage: "I just came to say Hello",
+                lastMessageTime: "just now",
+                gigs: false,
+                numMessages: 0,
+                online: false
+            },
+            {
+                name: "Model3",
+                index: 2,
+                src: "",
+                lastMessage: "I just came to say Hello",
+                lastMessageTime: "just now",
+                gigs: false,
+                numMessages: 3,
+                online: true
+            },
+            {
+                name: "Model4",
+                index: 3,
+                src: "",
+                lastMessage: "I just came to say Hello",
+                lastMessageTime: "just now",
+                gigs: false,
+                numMessages: 11,
+                online: false
+            },
+            {
+                name: "Model5",
+                index: 4,
+                src: "",
+                lastMessage: "I just came to say HelloHiHiHIHIHIHIHIHIHIHIHIH",
+                lastMessageTime: "yesterday",
+                gigs: true,
+                numMessages: 3,
+                online: true
+            },
+            {
+                name: "Model6",
+                index: 5,
+                src: "",
+                lastMessage: "I just came to say Hello",
+                lastMessageTime: "just now",
+                gigs: false,
+                numMessages: 0,
+                online: false
+            },
+            {
+                name: "Model7",
+                index: 6,
+                src: "",
+                lastMessage: "I just came to say Hello",
+                lastMessageTime: "09:07",
+                gigs: false,
+                numMessages: 111,
+                online: true
+            },
+            {
+                name: "Model8",
+                index: 7,
+                src: "",
+                lastMessage: "I just came to say Hello",
+                lastMessageTime: "just now",
+                gigs: false,
+                numMessages: 3,
+                online: true
+            },
         ],
         allUsersList: [
-            {name: "User1", index: 8, src: "", lastMessage: "I just came to say Hello", lastMessageTime: "just now", gigs: false, numMessages: 3, online: true},
-            {name: "User2", index: 9, src: "", lastMessage: "I just came to say Hello", lastMessageTime: "just now", gigs: false, numMessages: 3, online: false},
-            {name: "User3", index: 10, src: "", lastMessage: "I just came to say Hello", lastMessageTime: "just now", gigs: false, numMessages: 0, online: true},
-            {name: "User4", index: 11, src: "", lastMessage: "I just came to say Hello", lastMessageTime: "just now", gigs: false, numMessages: 3, online: false},
-            {name: "User5", index: 12, src: "", lastMessage: "I just came to say Hello", lastMessageTime: "18:52", gigs: false, numMessages: 3, online: true},
-            {name: "User6", index: 13, src: "", lastMessage: "I just came to say Hello", lastMessageTime: "just now", gigs: false, numMessages: 30, online: false},
-            {name: "User7", index: 14, src: "", lastMessage: "I just came to say Hello", lastMessageTime: "just now", gigs: false, numMessages: 3, online: true},
-            {name: "User8", index: 15, src: "", lastMessage: "I just came to say Hello", lastMessageTime: "just now", gigs: false, numMessages: 3, online: true},
+            {
+                name: "User1",
+                index: 8,
+                src: "",
+                lastMessage: "I just came to say Hello",
+                lastMessageTime: "just now",
+                gigs: false,
+                numMessages: 3,
+                online: true
+            },
+            {
+                name: "User2",
+                index: 9,
+                src: "",
+                lastMessage: "I just came to say Hello",
+                lastMessageTime: "just now",
+                gigs: false,
+                numMessages: 3,
+                online: false
+            },
+            {
+                name: "User3",
+                index: 10,
+                src: "",
+                lastMessage: "I just came to say Hello",
+                lastMessageTime: "just now",
+                gigs: false,
+                numMessages: 0,
+                online: true
+            },
+            {
+                name: "User4",
+                index: 11,
+                src: "",
+                lastMessage: "I just came to say Hello",
+                lastMessageTime: "just now",
+                gigs: false,
+                numMessages: 3,
+                online: false
+            },
+            {
+                name: "User5",
+                index: 12,
+                src: "",
+                lastMessage: "I just came to say Hello",
+                lastMessageTime: "18:52",
+                gigs: false,
+                numMessages: 3,
+                online: true
+            },
+            {
+                name: "User6",
+                index: 13,
+                src: "",
+                lastMessage: "I just came to say Hello",
+                lastMessageTime: "just now",
+                gigs: false,
+                numMessages: 30,
+                online: false
+            },
+            {
+                name: "User7",
+                index: 14,
+                src: "",
+                lastMessage: "I just came to say Hello",
+                lastMessageTime: "just now",
+                gigs: false,
+                numMessages: 3,
+                online: true
+            },
+            {
+                name: "User8",
+                index: 15,
+                src: "",
+                lastMessage: "I just came to say Hello",
+                lastMessageTime: "just now",
+                gigs: false,
+                numMessages: 3,
+                online: true
+            },
         ],
         openDialog: false,
     };
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.handleTabClick = this.handleTabClick.bind(this);
@@ -68,27 +212,28 @@ class Messager extends React.Component{
         this.handleDialog = this.handleDialog.bind(this);
     }
 
-    handleTabClick(e){
+    handleTabClick(e) {
         this.setState({tabIndex: e});
     }
 
-    handleSearchChange(e){
+    handleSearchChange(e) {
 
     }
 
-    handleDialogueClick(e){
+    handleDialogueClick(e) {
         this.setState({activeDialogueIndex: e})
     }
 
-    handleDialog(){
+    handleDialog() {
         this.setState({openDialog: !this.state.openDialog});
     }
 
-    render(){
+    render() {
         const time = (new Date()).toISOString();
-        const lessTime = (new Date()).setDate((new Date(time)).getDate()-1);
-        return(
-            <Col xs={9}>
+        const lessTime = (new Date()).setDate((new Date(time)).getDate() - 1);
+        return (
+            <Col>
+                <hr style={{margin: '-1px 0px 0px', height: '10px', border: 'none'}}/>
                 <div className={'messager-container'}>
                     <div>
                         <Tabs
@@ -102,7 +247,7 @@ class Messager extends React.Component{
                             <Tab
                                 label="Talents"
                                 value={0}
-                                style={this.state.tabIndex === 0? ActiveTabStyle : TabStyle}  >
+                                style={this.state.tabIndex === 0 ? ActiveTabStyle : TabStyle}>
 
                                 <Divider/>
                                 <SearchDialogField handler={this.handleSearchChange}/>
@@ -116,7 +261,7 @@ class Messager extends React.Component{
                             <Tab
                                 label="All users"
                                 value={1}
-                                style={this.state.tabIndex === 1? ActiveTabStyle : TabStyle}>
+                                style={this.state.tabIndex === 1 ? ActiveTabStyle : TabStyle}>
 
                                 <Divider/>
                                 <SearchDialogField handler={this.handleSearchChange}/>
@@ -129,7 +274,7 @@ class Messager extends React.Component{
                             </Tab>
                         </Tabs>
                     </div>
-                    <div style={{width: "100%",borderLeft: "0.1rem solid #e4e4e4"}}>
+                    <div style={{width: "100%", borderLeft: "0.1rem solid #e4e4e4"}}>
                         <DialogueHeader
                             name={"Model Name"}
                             onlineStatus={"Last seen 20 minutes ago"}
@@ -137,10 +282,21 @@ class Messager extends React.Component{
                         />
                         <ChatField messages={[
                             {owner: "me", text: "Lorem ipsum dolor sit amet", time: lessTime, type: "message"},
-                            {owner: "notMe", text: "Lorem ipsum dolor sit amet, consectetur adipis " +
-                                "sed do eiusmod tempor incididunt ut labore " +
-                                "magna aliqua. ", name: "Model Name", time: time, type: "message"},
-                            {owner: "notMe", type: "gig", gigName: "TV Commercial", date: time, talent: "Model", pay: "125$", tags: ["Male", "Senior", "Eurasian"], place: "Longnan, China"}
+                            {
+                                owner: "notMe", text: "Lorem ipsum dolor sit amet, consectetur adipis " +
+                            "sed do eiusmod tempor incididunt ut labore " +
+                            "magna aliqua. ", name: "Model Name", time: time, type: "message"
+                            },
+                            {
+                                owner: "notMe",
+                                type: "gig",
+                                gigName: "TV Commercial",
+                                date: time,
+                                talent: "Model",
+                                pay: "125$",
+                                tags: ["Male", "Senior", "Eurasian"],
+                                place: "Longnan, China"
+                            }
                         ]}/>
                         <ChatInputField handler={this.handleDialog}/>
                         <Dialog
@@ -151,7 +307,7 @@ class Messager extends React.Component{
                             bodyStyle={{padding: 0}}
                         >
                             <OfferGigModal
-                            handler={this.handleDialog}
+                                handler={this.handleDialog}
                             />
                         </Dialog>
                     </div>
