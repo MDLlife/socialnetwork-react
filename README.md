@@ -9,6 +9,8 @@
 # Run
 `npm run dev`
 
+For localhost development with backend also localhost, use in browser: http://127.0.0.1:3002/ 
+
 
 # Webstorm:
 ```

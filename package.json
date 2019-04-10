@@ -1,10 +1,10 @@
 {
   "name": "socialnetwork-react",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "MDL ReactJS",
   "scripts": {
-    "dev": "cross-env REDIS_HOST=localhost DISABLE_CACHE=true DEBUG=true WEBPACK_PORT=3004 NODE_PATH=./app concurrent --kill-others \"nodemon app/server\" \"node webpack.server.js\" \"gulp css:watch\"",
-    "dev-local": "REDIS_HOST=localhost DISABLE_CACHE=true DEBUG=true WEBPACK_PORT=3004 cross-env DEV=true NODE_PATH=./app concurrent --kill-others \"nodemon app/server\" \"node webpack.server.js\" \"gulp css:watch\"",
+    "dev": "cross-env REDIS_HOST=localhost DISABLE_CACHE=true DEBUG=true WEBPACK_PORT=3004 NODE_PATH=./app concurrent --kill-others \"node_modules/.bin/nodemon app/server\" \"node webpack.server.js\" \"node_modules/.bin/gulp css:watch\"",
+    "dev-local": "REDIS_HOST=localhost DISABLE_CACHE=true DEBUG=true WEBPACK_PORT=3004 cross-env DEV=true NODE_PATH=./app concurrent --kill-others \"node_modules/.bin/nodemon app/server\" \"node webpack.server.js\" \"node_modules/.bin/gulp css:watch\"",
     "prod": "npm run build && REDIS_HOST=localhost NODE_ENV=production PORT=3005 NODE_PATH=./app node app/server",
     "webpack": "webpack",
     "bower": "bower install",
@@ -15,7 +15,7 @@
     "kill": "lsof -i tcp:3002 | awk 'NR!=1 {print $2}' | xargs kill -9 | true;"
   },
   "engines": {
-    "node": "8.11",
+    "node": "8.15",
     "npm": "5.6.0",
     "bower": "1.7.9"
   },

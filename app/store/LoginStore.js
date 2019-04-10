@@ -23,7 +23,7 @@ class LoginStore extends EventEmitter {
         if (typeof window !== 'undefined') {
             let jwt = localStorage.getItem("jv_jwt");
 
-            if (!jwt || jwt === "null") {
+            if (window.parent.location.href.match(/jwt=/) || !jwt || jwt === "null") {
 
                 var vars = [], hash;
                 var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -35,29 +35,34 @@ class LoginStore extends EventEmitter {
 
                 var session = vars["session"];
                 var jv_jwt = vars["jv_jwt"];
-                //console.log(session);
 
-                //console.log(jv_jwt);
-                if (session || jv_jwt) {
-                    console.log("&*&*&* will login from req params");
+                console.log("&*&*&* NEW SESSION, will login from req params");
+                let success = false;
 
+                if (!session) {
                     createCookie("session", session);
+                    success = true;
+                }
+
+                if(jv_jwt) {
                     localStorage.setItem("jv_jwt", jv_jwt);
                     this._jwt = jv_jwt;
                     this._user = jwt_decode(this._jwt);
-                    //console.log(this._user);
-                    console.log("&*&*&* autologin success");
-
-                } else {
-                    console.log("&*&*&* failed to get session or jwt token :| --> " + window.location.href);
+                    success = true;
                 }
+                if(success){
+                    console.log("&*&*& NEW SESSION,* autologin success");
+                } else {
+                    console.log("&*&*&* NEW SESSION, failed to get session or jwt token :| --> " + window.location.href);
+                }
+
             } else {
                 console.log("&*&*&* will login from localStorage");
                 this._jwt = jwt;
                 console.log("this._jwt, ", this._jwt);
                 if (this._jwt) {
                     this._user = jwt_decode(this.jwt);
-                    console.log("&*&*&* autologin success");
+                    console.log("&*&*&* autologin success, ", this._user);
                 } else {
                     console.log("&*&*&* failed to get session or jwt token :| --> " + window.location.href);
                 }

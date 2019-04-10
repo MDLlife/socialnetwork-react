@@ -19,9 +19,11 @@ class LoginLayout extends Component {
             if (!loggedIn) {
                 console.log("*&*&*&* User is not logged in, going to redirect to login page")
 
+                const urlTarget = `${config.API_URL}/login?referer=${window.location.href}`;
+                console.log("*&*&*&* will redirect ", urlTarget);
 
                 setTimeout(function () {
-                    window.location.href = config.API_URL + "/login";
+                    window.location.href = urlTarget;
                 }, 1000);
 
             } else {
@@ -42,13 +44,13 @@ class LoginLayout extends Component {
                     // double check with the API results
                     // console.log(user)
 
-                    if(!user._key){
+                    if (!user._key) {
                         console.log("ERROR: COULD NOT GET USER _KEY FROM USER!! WILL RETRY USING ID");
-                        if(!user.id){
+                        if (!user.id) {
                             console.log("ERROR: COULD NOT GET USER ID FROM USER!! DOES THIS USER EXISTS ?? WILL REDIRECT TO LOGIN AGAIN");
                         } else {
-                            var _key = user.id.replaceAll("users/","");
-                            if(!_key){
+                            var _key = user.id.replaceAll("users/", "");
+                            if (!_key) {
                                 console.log("ERROR: COULD NOT GET _key FROM ID FIELD!! DOES THIS USER EXISTS ?? WILL REDIRECT TO LOGIN AGAIN")
                             } else {
                                 user._key = _key;
