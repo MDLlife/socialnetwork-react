@@ -16,7 +16,6 @@
   },
   "engines": {
     "node": "8.15",
-    "npm": "5.6.0",
     "bower": "1.7.9"
   },
   "dependencies": {
