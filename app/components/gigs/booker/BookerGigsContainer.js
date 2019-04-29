@@ -7,16 +7,16 @@ import CompletedGigs from './CompletedGigs';
 
 class BookerGigsContainer extends React.Component {
 
-    render(){
+    render() {
         let gigs;
-        if ((!this.props.location.pathname.indexOf("/gigs/booker/upcoming"))|| ((!this.props.location.pathname.indexOf("/gigs/booker")&& this.props.location.pathname.indexOf("/gigs/booker/")))){
+        if (!this.props.location.pathname.indexOf("/gigs/booker/upcoming") || !this.props.location.pathname.indexOf("/gigs/booker")) {
             gigs = <UpcomingGigs/>
-        } else if (!this.props.location.pathname.indexOf("/gigs/booker/ongoing")){
+        } else if (!this.props.location.pathname.indexOf("/gigs/booker/ongoing")) {
             gigs = <OngoingGigs/>
-        } else if (!this.props.location.pathname.indexOf("/gigs/booker/completed")){
-            gigs= <CompletedGigs/>
+        } else if (!this.props.location.pathname.indexOf("/gigs/booker/completed")) {
+            gigs = <CompletedGigs/>
         }
-        return(
+        return (
             <Col md={9}>
                 <div className={"gigs-paper"}>
                     <div className={"gigs-menu"}>
