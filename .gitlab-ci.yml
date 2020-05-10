@@ -1,0 +1,37 @@
+image: docker:latest
+services:
+  - docker:dind
+
+variables:
+  ECR_REPO: rg.fr-par.scw.cloud/comentarismoregistry
+  CONTAINER_IMAGE: $ECR_REPO/socialnetworkreact:${CI_COMMIT_SHORT_SHA}
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+
+  script:
+    - apk add --no-cache py-pip
+    - pip install docker
+    - docker login ${ECR_REPO} -u nologin -p ${DOCKER_PSW}
+    - IMAGE_TAG="$(echo $CI_COMMIT_SHA | head -c 8)"
+    - docker build -t ${CONTAINER_IMAGE} .
+    - docker tag ${CONTAINER_IMAGE} ${CONTAINER_IMAGE}
+    - docker tag ${CONTAINER_IMAGE} $ECR_REPO/socialnetworkreact:latest
+    - docker push ${CONTAINER_IMAGE}
+    - docker push $ECR_REPO/socialnetworkreact:latest
+
+deploy-stage:
+  stage: deploy
+  image: dtzar/helm-kubectl
+  script:
+    - kubectl config set-cluster comentarismocluster --server="${SERVER}" --insecure-skip-tls-verify=true
+#    - kubectl config set clusters.comentarismocluster.certificate-authority-data ${CERTIFICATE_AUTHORITY_DATA}
+    - kubectl config set-credentials gitlab --token="${USER_TOKEN}"
+    - kubectl config set-context default --cluster=comentarismocluster --user=gitlab
+    - kubectl config use-context default
+    - helm upgrade --install socialnetworkreact helm/socialnetworkreact --set socialnetworkreact.tag=${CI_COMMIT_SHORT_SHA}
+
