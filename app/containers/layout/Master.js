@@ -7,7 +7,6 @@ import {darkWhite, lightWhite, grey900} from 'material-ui/styles/colors';
 import AppNavDrawer from './AppNavDrawer';
 import {MEDIUM, LARGE} from 'material-ui/utils/withWidth';
 import LoginStore from 'store/LoginStore';
-import config from 'config'
 import FlatButton from 'material-ui/FlatButton';
 import Helmet from "react-helmet";
 

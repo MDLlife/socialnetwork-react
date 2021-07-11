@@ -109,6 +109,7 @@ class GigSteps extends Component {
     componentWillReceiveProps(props) {
         if (props.gig.success) {
             console.log("Saved success")
+            window.location.href = '/today'
         }
 
         if (props.gig.error) {

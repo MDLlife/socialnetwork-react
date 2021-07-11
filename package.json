@@ -3,19 +3,21 @@
   "version": "1.0.24",
   "description": "MDL ReactJS",
   "scripts": {
-    "dev": "cross-env REDIS_HOST=localhost DISABLE_CACHE=true DEBUG=true WEBPACK_PORT=3004 NODE_PATH=./app concurrent --kill-others \"node_modules/.bin/nodemon app/server\" \"node webpack.server.js\" \"node_modules/.bin/gulp css:watch\"",
-    "dev-local": "REDIS_HOST=localhost DISABLE_CACHE=true DEBUG=true WEBPACK_PORT=3004 cross-env DEV=true NODE_PATH=./app concurrent --kill-others \"node_modules/.bin/nodemon app/server\" \"node webpack.server.js\" \"node_modules/.bin/gulp css:watch\"",
+    "dev": "cross-env REDIS_HOST=localhost DISABLE_CACHE=true DEBUG=true WEBPACK_PORT=3004 NODE_PATH=./app concurrently --kill-others \"node_modules/.bin/nodemon app/server\" \"node webpack.server.js\" \"node_modules/.bin/gulp css:watch\"",
+    "dev-local": "REDIS_HOST=localhost DISABLE_CACHE=true DEBUG=true WEBPACK_PORT=3004 cross-env DEV=true NODE_PATH=./app concurrently --kill-others \"node_modules/.bin/nodemon app/server\" \"node webpack.server.js\" \"node_modules/.bin/gulp css:watch\"",
     "prod": "npm run build && REDIS_HOST=localhost NODE_ENV=production PORT=3005 NODE_PATH=./app node app/server",
     "webpack": "webpack",
-    "bower": "bower install",
+    "bower": "bower install --allow-root",
     "build": "rimraf ./dist/ && npm run bower && cross-env NODE_ENV=production npm run webpack --optimize-minimize -p && gulp prod && node scripts/writeVersion",
     "flow": "yarn run flow",
     "version": "node scripts/writeVersion",
     "install-prod": "rimraf ./node_modules/ && REDIS_HOST=localhost NPM_CONFIG_LOGLEVEL=error NPM_CONFIG_PRODUCTION=true NODE_VERBOSE=false NODE_ENV=production NODE_MODULES_CACHE=true yarn && REDIS_HOST=localhost NODE_ENV=production PORT=3005 NODE_PATH=./app node app/server",
-    "kill": "lsof -i tcp:3002 | awk 'NR!=1 {print $2}' | xargs kill -9 | true;"
+    "kill": "lsof -i tcp:3002 | awk 'NR!=1 {print $2}' | xargs kill -9 | true;",
+    "docker": "docker build -t socialnetworkreact . && docker run --env-file ./scripts/env.sh -it -p 3002:3002 socialnetworkreact"
+
   },
   "engines": {
-    "node": "8.15",
+    "node": "^10.15",
     "bower": "1.7.9"
   },
   "dependencies": {
@@ -135,7 +137,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
     "flow-bin": "^0.63.1",
-    "gulp": "^3.9.1",
+    "gulp": "^3.9",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-babel": "^7.0.1",
     "gulp-clean-css": "^3.9.4",
